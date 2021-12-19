@@ -13,8 +13,12 @@
 <lastmod>2016-08-29T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/test/2021/12/01/test/</loc>
+<loc>http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/</loc>
 <lastmod>2021-12-01T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/test/2021/12/02/t/</loc>
+<lastmod>2021-12-02T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/categories/</loc>

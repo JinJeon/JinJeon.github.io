@@ -35,7 +35,7 @@ plugins:
   - jemoji
 
 # 3. Gem settings
-paginate: 2 # jekyll-paginate > items per page
+paginate: 4 # jekyll-paginate > items per page
 paginate_path: blog/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
 twitter:
@@ -63,11 +63,11 @@ timezone: Asia/Seoul # Timezone for blog posts and alike
 # 5. Collections
 collections:
   posts:
-    title: Posts # Needed for Siteleaf
+    title: POSTS # Needed for Siteleaf
     output: true
-    description: "My thoughts and ideas" # The post list page content
+    description: "ABOUT CODE" # The post list page content
     feature_text: |
-      Welcome to the blog
+      THIS IS FOR STUDYING
     feature_image: "https://picsum.photos/2560/600?image=866"
 
 # 6. Jekyll collections settings
@@ -92,7 +92,7 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "JINJEONIMUM" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "HELLO" # Site description and default description, also used in jekyll-seo-tag
+description: "I'M STUDYING JAVASCRIPT" # Site description and default description, also used in jekyll-seo-tag
 url: "https://JinJeon.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/daviddarnes/alembic"
