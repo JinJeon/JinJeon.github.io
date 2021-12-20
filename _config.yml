@@ -69,6 +69,13 @@ collections:
     feature_text: |
       THIS IS FOR STUDYING
     feature_image: "https://picsum.photos/2560/600?image=866"
+  # guide:
+  #   title: POSTS # Needed for Siteleaf
+  #   output: true
+  #   description: "ABOUT CODE" # The post list page content
+  #   feature_text: |
+  #     THIS IS FOR STUDYING
+  #   feature_image: "https://picsum.photos/2560/600?image=866"
 
 # 6. Jekyll collections settings
 defaults:
@@ -128,16 +135,18 @@ navigation_header:
     url: /categories/
   - title: SEARCH
     url: /search/
+  - title: GUIDE
+    url: /guide/
 
 navigation_footer:
-  - title: Created by David Darnes
-    url: https://darn.es
+  - title: TO HOME
+    url: https://jinjeon.github.io
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
-  Twitter: https://twitter.com/JinJeon
-  LinkedIn: https://www.linkedin.com/in/JinJeon
+  Twitter: https://twitter.com/
+  LinkedIn: https://www.linkedin.com/in/
   GitHub: https://github.com/JinJeon
-  link: https://darn.es
+  link:
   RSS: /feed.xml
 
 sharing_links: # Appear at the bottom of single blog posts, add as desired. The value can be 'true' or the desired button colour
