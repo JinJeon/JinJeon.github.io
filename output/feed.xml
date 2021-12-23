@@ -1,18 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2021-12-20T17:45:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle>I&apos;M STUDYING JAVASCRIPT</subtitle><author><name>JinJeon</name></author><entry><title type="html">THIS IS TEST</title><link href="http://localhost:4000/test/2021/12/02/t/" rel="alternate" type="text/html" title="THIS IS TEST" /><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><id>http://localhost:4000/test/2021/12/02/t</id><content type="html" xml:base="http://localhost:4000/test/2021/12/02/t/">&lt;p&gt;THIS IS TEST.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2021-12-24T02:00:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle>FOR STUDYING</subtitle><author><name>JinJeon</name></author><entry><title type="html">동기 ∙ 비동기</title><link href="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/" rel="alternate" type="text/html" title="동기 ∙ 비동기" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester</id><content type="html" xml:base="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/">&lt;h2 id=&quot;1-동기synchronous&quot;&gt;1. 동기(synchronous)&lt;/h2&gt;
 
-&lt;p&gt;이것은 한국어 테스트입니다. 정상 작동 시 이쁠 듯…&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;IF MORE.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Originally from &lt;a href=&quot;https://en.wikipedia.org/wiki/Alembic&quot;&gt;Alembic - Wikipedia&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="TEST" /><summary type="html">THIS IS TEST. 이것은 한국어 테스트입니다. 정상 작동 시 이쁠 듯…</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">동기 ∙ 비동기</title><link href="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/" rel="alternate" type="text/html" title="동기 ∙ 비동기" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester</id><content type="html" xml:base="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/">&lt;h2 id=&quot;1-동기synchronous&quot;&gt;1. 동기(synchronous)&lt;/h2&gt;
-
-&lt;p&gt;자바스크립트는 한 번에 하나의 작업만 수행한다.&lt;/p&gt;
-
-&lt;p&gt;‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다.&lt;/p&gt;
-
-&lt;p&gt;이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 &lt;strong&gt;Memory Heap, Call Stack&lt;/strong&gt;이 있다.&lt;/p&gt;
+&lt;p&gt;자바스크립트는 한 번에 하나의 작업만 수행한다.&lt;br /&gt;
+‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다.&lt;br /&gt;
+이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 &lt;strong&gt;Memory Heap, Call Stack&lt;/strong&gt;이 있다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Memory Heap : 변수, 객체의 메모리 할당을 담당한다.&lt;/li&gt;
@@ -23,9 +13,8 @@
 
 &lt;h3 id=&quot;1-1-call-stack&quot;&gt;1-1. CALL STACK&lt;/h3&gt;
 
-&lt;p&gt;함수 내의 다른 함수를 실행하는 경우, 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;debugger&lt;/code&gt;를 통해 보면 아래와 같이 &lt;strong&gt;callstack&lt;/strong&gt;이 쌓여있는 것을 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이는 함수의 실행 순서를 &lt;strong&gt;stack&lt;/strong&gt;의 형태로 표현한 것인데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;foo&lt;/code&gt;내에 있는 함수 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bar&lt;/code&gt;가 먼저 실행을 다 마쳐야 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;foo&lt;/code&gt;가 다시 진행되는 것을 알 수 있다.&lt;/p&gt;
+&lt;p&gt;함수 내의 다른 함수를 실행하는 경우, 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;debugger&lt;/code&gt;를 통해 보면 아래와 같이 &lt;strong&gt;callstack&lt;/strong&gt;이 쌓여있는 것을 볼 수 있다.&lt;br /&gt;
+이는 함수의 실행 순서를 &lt;strong&gt;stack&lt;/strong&gt;의 형태로 표현한 것인데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;foo&lt;/code&gt;내에 있는 함수 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bar&lt;/code&gt;가 먼저 실행을 다 마쳐야 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;foo&lt;/code&gt;가 다시 진행되는 것을 알 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;baseData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 
@@ -48,19 +37,15 @@
 
 &lt;h2 id=&quot;2-비동기asynchronous&quot;&gt;2. 비동기(asynchronous)&lt;/h2&gt;
 
-&lt;p&gt;자바스크립트의 단일 스레드, 동기식 동작과 달리, &lt;strong&gt;어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것&lt;/strong&gt;을 말한다.&lt;/p&gt;
-
-&lt;p&gt;동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 &lt;strong&gt;비동기 방식&lt;/strong&gt;이다.&lt;/p&gt;
+&lt;p&gt;자바스크립트의 단일 스레드, 동기식 동작과 달리, &lt;strong&gt;어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것&lt;/strong&gt;을 말한다.&lt;br /&gt;
+동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다.&lt;br /&gt;
+이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 &lt;strong&gt;비동기 방식&lt;/strong&gt;이다.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-1-여러-이벤트의-동시-동작-원리&quot;&gt;2-1. 여러 이벤트의 동시 동작 원리&lt;/h3&gt;
 
-&lt;p&gt;자바스크립트의 기본 동작 원리로는 안되는 비동기는 &lt;strong&gt;자바스크립트의 실행 환경(runtime)&lt;/strong&gt;을 통해 이루어낼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;브라우저&lt;/strong&gt;가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 &lt;strong&gt;web API&lt;/strong&gt;가 들어가있어 비동기 작업을 해낼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;더불어, 이것들의 제어를 위한 &lt;strong&gt;Event Loop, Callback Queue&lt;/strong&gt;가 존재한다.&lt;/p&gt;
+&lt;p&gt;자바스크립트의 기본 동작 원리로는 안되는 비동기는 &lt;strong&gt;자바스크립트의 실행 환경(runtime)&lt;/strong&gt;을 통해 이루어낼 수 있다.&lt;br /&gt;
+&lt;strong&gt;브라우저&lt;/strong&gt;가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 &lt;strong&gt;web API&lt;/strong&gt;가 들어가있어 비동기 작업을 해낼 수 있다.&lt;br /&gt;
+더불어, 이것들의 제어를 위한 &lt;strong&gt;Event Loop, Callback Queue&lt;/strong&gt;가 존재한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-2-비동기의-동작-순서&quot;&gt;2-2. 비동기의 동작 순서&lt;/h3&gt;
 
@@ -75,17 +60,12 @@ THIRD
 */&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다.&lt;/p&gt;
-
-&lt;p&gt;위 코드에서 setTimeout은 &lt;strong&gt;web API(브라우저의 제공 API)&lt;/strong&gt;로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다.&lt;/p&gt;
-
-&lt;p&gt;API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다.&lt;/p&gt;
-
-&lt;p&gt;그리고 이 API는 &lt;strong&gt;작성된 코드의 중간에 갑자기 끼어들어서는 안 된다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;실행이 완료된 모든 WEB API는 &lt;strong&gt;task queue&lt;/strong&gt;에 들어가서 대기하게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;event loop&lt;/strong&gt;가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다.&lt;/p&gt;
+&lt;p&gt;우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다.&lt;br /&gt;
+위 코드에서 setTimeout은 &lt;strong&gt;web API(브라우저의 제공 API)&lt;/strong&gt;로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다.&lt;br /&gt;
+API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다.&lt;br /&gt;
+그리고 이 API는 &lt;strong&gt;작성된 코드의 중간에 갑자기 끼어들어서는 안 된다.&lt;/strong&gt;&lt;br /&gt;
+실행이 완료된 모든 WEB API는 &lt;strong&gt;task queue&lt;/strong&gt;에 들어가서 대기하게 된다.&lt;br /&gt;
+&lt;strong&gt;event loop&lt;/strong&gt;가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;동기 ∙ 비동기 상황에 대한 다른 예시&lt;/li&gt;
@@ -105,9 +85,8 @@ result : 1
 */&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;위 예시에서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log&lt;/code&gt;가 마무리 된 후에 API가 진행된 것을 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이를 통해, API는 모든 stack내의 내용들이 정리된 후에 &lt;strong&gt;event loop&lt;/strong&gt;를 통해서 진행됨을 알 수 있다.&lt;/p&gt;
+&lt;p&gt;위 예시에서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log&lt;/code&gt;가 마무리 된 후에 API가 진행된 것을 볼 수 있다.&lt;br /&gt;
+이를 통해, API는 모든 stack내의 내용들이 정리된 후에 &lt;strong&gt;event loop&lt;/strong&gt;를 통해서 진행됨을 알 수 있다.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -127,9 +106,8 @@ result : 1
 &lt;span class=&quot;c1&quot;&gt;// 7 7 7 7 7 7 7&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 &lt;strong&gt;7&lt;/strong&gt;이 계속 출력된 것을 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;가 가진 특징 때문인데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;는 함수레벨 스코프를 가지며, &lt;strong&gt;전역변수의 값이 변경&lt;/strong&gt;될 수 있게 된다.&lt;/p&gt;
+&lt;p&gt;위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 &lt;strong&gt;7&lt;/strong&gt;이 계속 출력된 것을 볼 수 있다.&lt;br /&gt;
+이는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;가 가진 특징 때문인데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;는 함수레벨 스코프를 가지며, &lt;strong&gt;전역변수의 값이 변경&lt;/strong&gt;될 수 있게 된다.&lt;/p&gt;
 
 &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;baseData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -143,11 +121,9 @@ result : 1
 &lt;span class=&quot;c1&quot;&gt;// 7 7 7 7 7 7 7 7&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;위 코드를 보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var i = 2;&lt;/code&gt;로 값을 지정해준 상태에서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asyncRun&lt;/code&gt; 함수 안에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log&lt;/code&gt;가 이루어지기 때문에, 값이 &lt;strong&gt;2&lt;/strong&gt;로 나와야 한다.&lt;/p&gt;
-
-&lt;p&gt;그러나, for문 내의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var i = 0&lt;/code&gt;을 통해서 값이 재지정되었기 때문에 &lt;strong&gt;7&lt;/strong&gt;이라는 값이 나오게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setTimeout()&lt;/code&gt;역시 이미 1초보다 훨씬 이전에 처리된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;의 값으로 처리가 진행되기 때문에 &lt;strong&gt;7&lt;/strong&gt;만 나오게 된다.&lt;/p&gt;
+&lt;p&gt;위 코드를 보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var i = 2;&lt;/code&gt;로 값을 지정해준 상태에서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;asyncRun&lt;/code&gt; 함수 안에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log&lt;/code&gt;가 이루어지기 때문에, 값이 &lt;strong&gt;2&lt;/strong&gt;로 나와야 한다.&lt;br /&gt;
+그러나, for문 내의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var i = 0&lt;/code&gt;을 통해서 값이 재지정되었기 때문에 &lt;strong&gt;7&lt;/strong&gt;이라는 값이 나오게 된다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setTimeout()&lt;/code&gt;역시 이미 1초보다 훨씬 이전에 처리된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;의 값으로 처리가 진행되기 때문에 &lt;strong&gt;7&lt;/strong&gt;만 나오게 된다.&lt;/p&gt;
 
 &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;baseData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -162,9 +138,8 @@ result : 1
 &lt;span class=&quot;c1&quot;&gt;// 2 0 1 2 3 4 5 6&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;이와 달리, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;은 블록레벨 스코프를 가져, 함수, if문, while문 등 &lt;strong&gt;중괄호로 된 곳내에서만&lt;/strong&gt; 작동한다.&lt;/p&gt;
-
-&lt;p&gt;실행 시 1차적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문 밖 i의 값이 &lt;strong&gt;2&lt;/strong&gt;로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다.&lt;/p&gt;
+&lt;p&gt;이와 달리, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;은 블록레벨 스코프를 가져, 함수, if문, while문 등 &lt;strong&gt;중괄호로 된 곳내에서만&lt;/strong&gt; 작동한다.&lt;br /&gt;
+실행 시 1차적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문 밖 i의 값이 &lt;strong&gt;2&lt;/strong&gt;로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;3-2-foreach&quot;&gt;3-2. forEach&lt;/h3&gt;
 

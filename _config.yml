@@ -35,7 +35,7 @@ plugins:
   - jemoji
 
 # 3. Gem settings
-paginate: 4 # jekyll-paginate > items per page
+paginate: 3 # jekyll-paginate > items per page
 paginate_path: blog/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
 twitter:
@@ -63,19 +63,16 @@ timezone: Asia/Seoul # Timezone for blog posts and alike
 # 5. Collections
 collections:
   posts:
-    title: POSTS # Needed for Siteleaf
+    title: ALL POSTS # Needed for Siteleaf
     output: true
-    description: "ABOUT CODE" # The post list page content
     feature_text: |
-      THIS IS FOR STUDYING
-    feature_image: "https://picsum.photos/2560/600?image=866"
-  # guide:
-  #   title: POSTS # Needed for Siteleaf
-  #   output: true
-  #   description: "ABOUT CODE" # The post list page content
-  #   feature_text: |
-  #     THIS IS FOR STUDYING
-  #   feature_image: "https://picsum.photos/2560/600?image=866"
+      공부를 위한 블로그
+  guide:
+    title: ALL GUIDE # Needed for Siteleaf
+    output: true
+    # description: "ABOUT CODE" # The post list page content
+    feature_text: |
+      가져온 테마의 사용법
 
 # 6. Jekyll collections settings
 defaults:
@@ -93,13 +90,18 @@ defaults:
       type: "pages"
     values:
       layout: page # Set the default layout for pages
+  - scope:
+      path: ""
+      type: "manual"
+    values:
+      layout: post # Set the default layout for pages
 
 # 7. Site settings
 encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "JINJEONIMUM" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "I'M STUDYING JAVASCRIPT" # Site description and default description, also used in jekyll-seo-tag
+description: "FOR STUDYING" # Site description and default description, also used in jekyll-seo-tag
 url: "https://JinJeon.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/daviddarnes/alembic"
@@ -127,8 +129,6 @@ favicons: # Favicons are also used in the manifest file. Syntax is 'size: path'
 navigation_header:
   - title: HOME
     url: /
-  - title: ELEMENT
-    url: /elements/
   - title: BLOG
     url: /blog/
   - title: CATEGORIES
@@ -162,6 +162,6 @@ fonts:
   preconnect_urls:
     - https://fonts.gstatic.com
   font_urls:
-    - https://fonts.googleapis.com/css2?family=Jua&display=swap
+    - https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap
 
 destination: ./output/

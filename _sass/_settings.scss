@@ -1,21 +1,24 @@
 // Background colours
 $backgroundColour: #ffffff !default;
 $codeBackgroundColour: #fafafa !default;
-$featureBackgroundColour: #f9fafa !default;
+$headerBackgroundColour: #e4d26d !default;
 $accentColour: #05bf85 !default;
 
 // Text colours
 $headingColour: #242e2b !default;
 $bodyColour: #384743 !default;
-$linkColour: #05bf85 !default;
-$hoverColour: #008000 !default;
+$linkColour: #64ac88 !default;
+$hoverColour: #477a61 !default;
 $focusColour: #fa407a !default;
-$captionColour: #a8adac !default;
+$captionColour: #7a7e7d !default;
+$featureFontColour: black !default;
+$footerhoverColour: black !default;
+
 $white: #ffffff !default;
 
 // Typography
 $bodytype: (
-  font-family: "Jua",
+  font-family: "IBM Plex Sans KR",
   regular: 400,
   bold: 700,
   italic: italic,
@@ -23,14 +26,14 @@ $bodytype: (
 ) !default;
 
 $headingtype: (
-  font-family: "Jua",
+  font-family: "IBM Plex Sans KR",
   regular: 400,
   bold: 700,
   cap-height: 0.75,
 ) !default;
 
 $monospacetype: (
-  font-family: "Jua",
+  font-family: "IBM Plex Sans KR",
   regular: 400,
   cap-height: 0.68,
 ) !default;
