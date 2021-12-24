@@ -1,8 +1,8 @@
-const version = '20211224020034';
+const version = '20211225012810';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/%EB%8F%99%EA%B8%B0/2021/12/01/tester/","/general/2016/08/29/example-post-three/","/history/external/2016/08/28/example-post-two/","/general/external/2016/08/27/example-post-one/","/manual/2021-12-01-elements/","/manual/2021-12-01-guide/","/categories/","/guide/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/%EB%8F%99%EA%B8%B0/2021/12/01/tester/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/general/2016/08/29/example-post-three/","/history/external/2016/08/28/example-post-two/","/general/external/2016/08/27/example-post-one/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 

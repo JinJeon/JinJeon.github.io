@@ -33,7 +33,10 @@ body {
     }
   }
 }
-
+.header {
+  background-color: $headerBackgroundColour;
+  border-bottom: dashed 0.25rem $featureFontColour;
+}
 .header .nav {
   display: flex;
   flex-direction: column-reverse;
@@ -44,18 +47,21 @@ body {
 
 .feature {
   padding-bottom: 0.4rem;
-  margin-bottom: 1.6rem;
   text-align: center;
   background: $headerBackgroundColour;
   background-size: cover;
   background-position: center;
   .container {
-    font-size: 30px;
+    font-size: 1.5em;
     color: $featureFontColour;
     min-height: 25vh;
     max-width: 60%;
     @include flex-direction(column);
     @include justify-content(center);
+    p {
+      line-height: 1.5em;
+      margin-bottom: 0px;
+    }
   }
 }
 
@@ -72,7 +78,7 @@ body {
 
 .nav {
   a {
-    padding: 0.2rem;
+    // padding: 0.2rem;
   }
   &--social a {
     display: inline-block;
@@ -123,6 +129,7 @@ body {
   @include flex(1, 0, auto);
   @include justify-content(flex-start);
   margin-bottom: 1.6rem;
+  margin-top: 1.6rem;
   @include breakpoint(break-1) {
     @include justify-content(center);
     @include flex-direction(row);
@@ -137,7 +144,7 @@ body {
 
 .content {
   @include breakpoint(break-1) {
-    width: 62%;
+    width: 70%;
   }
 }
 
@@ -364,7 +371,8 @@ input[type="color"],
 textarea,
 select {
   width: 100%;
-  border: 1px solid $captionColour;
+  border: 2.5px solid $hoverColour;
+  border-radius: 2.5px;
   &:hover {
     border-color: $bodyColour;
   }

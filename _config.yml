@@ -135,8 +135,6 @@ navigation_header:
     url: /categories/
   - title: SEARCH
     url: /search/
-  - title: GUIDE
-    url: /guide/
 
 navigation_footer:
   - title: TO HOME

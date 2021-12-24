@@ -1,4 +1,293 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2021-12-24T02:00:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle>FOR STUDYING</subtitle><author><name>JinJeon</name></author><entry><title type="html">동기 ∙ 비동기</title><link href="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/" rel="alternate" type="text/html" title="동기 ∙ 비동기" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester</id><content type="html" xml:base="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/">&lt;h2 id=&quot;1-동기synchronous&quot;&gt;1. 동기(synchronous)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2021-12-25T01:28:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle>FOR STUDYING</subtitle><author><name>JinJeon</name></author><entry><title type="html">ELEMENTS</title><link href="http://localhost:4000/guide/2021/12/01/elements/" rel="alternate" type="text/html" title="ELEMENTS" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/elements</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/elements/">&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+
+&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
+
+&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
+
+&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
+
+&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
+
+&lt;p&gt;&lt;small&gt;A small element&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adip* isicing elit, sed do eiusmod *tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+
+&lt;p&gt;Duis aute irure dolor in &lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt; reprehenderit in voluptate velit esse cillum &lt;strong&gt;bold text&lt;/strong&gt; dolore eu fugiat nulla pariatur. Excepteur span element sint occaecat cupidatat non proident, sunt &lt;em&gt;italicised text&lt;/em&gt; in culpa qui officia deserunt mollit anim id &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;some code&lt;/code&gt; est laborum.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item one&lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+  &lt;li&gt;Item three&lt;/li&gt;
+  &lt;li&gt;Item four&lt;/li&gt;
+  &lt;li&gt;Item five&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A simple blockquote&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Some HTML…&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;You planning a vacation, Mr. Sullivan?&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sunways Security Guard&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…CSS…&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8rem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…and JavaScript&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mr. Sullivan&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Single line of code&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;html-includes&quot;&gt;HTML Includes&lt;/h2&gt;
+
+&lt;h3 id=&quot;contact-form&quot;&gt;Contact form&lt;/h3&gt;
+
+&lt;form class=&quot;form  form--contact&quot; method=&quot;post&quot; name=&quot;Contact&quot; action=&quot;/thanks/&quot;&gt;
+  &lt;fieldset class=&quot;fieldset  form__fieldset&quot;&gt;
+    &lt;legend class=&quot;legend form__legend&quot;&gt;Contact&lt;/legend&gt;
+    &lt;label class=&quot;label&quot; for=&quot;name--contact&quot;&gt;Name: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&quot;input&quot; id=&quot;name--contact&quot; type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot; placeholder=&quot;Your Name&quot; required=&quot;required&quot; /&gt;
+
+    &lt;label class=&quot;label&quot; for=&quot;email--contact&quot;&gt;Email Address: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&quot;input&quot; id=&quot;email--contact&quot; type=&quot;email&quot; name=&quot;email&quot; value=&quot;&quot; placeholder=&quot;email@website.com&quot; required=&quot;required&quot; /&gt;
+
+    &lt;label class=&quot;label&quot; for=&quot;message--contact&quot;&gt;Message: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;textarea class=&quot;textarea&quot; id=&quot;message--contact&quot; name=&quot;message&quot; placeholder=&quot;Your message...&quot; required=&quot;required&quot;&gt;&lt;/textarea&gt;
+
+    &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Send message&quot; /&gt;
+    &lt;br /&gt;
+    &lt;small class=&quot;small&quot;&gt;&lt;span class=&quot;required&quot;&gt;*&lt;/span&gt; indicates a required field&lt;/small&gt;
+
+    
+      &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; style=&quot;display:none&quot; /&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;JINJEONIMUM submission from Contact&quot; /&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;_next&quot; value=&quot;/thanks/&quot; /&gt;
+    
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+    var email = &quot;moc.liamg@10gnoynan&quot;;
+    var unraveledEmail = email.split(&quot;&quot;).reverse().join(&quot;&quot;);
+    var form = document.querySelector(&quot;.form--contact&quot;);
+      form.setAttribute(&quot;action&quot;, &quot;https://formspree.io/&quot; + unraveledEmail);
+  &lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to use the form.&lt;/noscript&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include site-form.html %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;demo-map-embed&quot;&gt;Demo map embed&lt;/h3&gt;
+
+&lt;div class=&quot;map&quot;&gt;&lt;iframe src=&quot;https://www.google.com/maps/d/u/0/embed?mid=1UT-2Z-Vg_MG_TrS5X2p8SthsJhc&quot; title=&quot;Coffee shop map&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include map.html id=&quot;XXXXXX&quot; title=&quot;Coffee shop map&quot; %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;button-include&quot;&gt;Button include&lt;/h3&gt;
+
+&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://david.darn.es&quot;&gt;A button&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://twitter.com/daviddarnes&quot;&gt;A button with icon  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include button.html text=&quot;A button&quot; link=&quot;https://david.darn.es&quot; %}
+{% include button.html text=&quot;A button with icon&quot;
+link=&quot;https://twitter.com/daviddarnes&quot; icon=&quot;twitter&quot; %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;icon-include&quot;&gt;Icon include&lt;/h3&gt;
+
+&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/in/daviddarnes&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--linkedin&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#linkedin&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include icon.html id=&quot;twitter&quot; title=&quot;twitter&quot; %} [{% include
+icon.html id=&quot;linkedin&quot; title=&quot;twitter&quot;
+%}](https://www.linkedin.com/in/daviddarnes)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;video-include&quot;&gt;Video include&lt;/h3&gt;
+
+&lt;div class=&quot;video&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/zrkcGL5H3MU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot; title=&quot;Siteleaf tutorial video&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include video.html id=&quot;zrkcGL5H3MU&quot; title=&quot;Siteleaf tutorial video&quot;
+%}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;image-includes&quot;&gt;Image includes&lt;/h3&gt;
+
+&lt;figure class=&quot;figure  figure--center&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Image with caption&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--right&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Right aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Right aligned image&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--left&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Left aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Left aligned image&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--center&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot; width=&quot;&quot; height=&quot;&quot; /&gt;
+  
+&lt;/figure&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include figure.html image=&quot;https://picsum.photos/600/800?image=894&quot;
+caption=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Right aligned image&quot;
+position=&quot;right&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Left aligned image&quot;
+position=&quot;left&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot;
+%}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JinJeon</name></author><category term="GUIDE" /><summary type="html">MARKDOWN AND HTML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ALEMBIC</title><link href="http://localhost:4000/guide/2021/12/01/guide/" rel="alternate" type="text/html" title="ALEMBIC" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/guide</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/guide/">&lt;p&gt;Alembic is a starting point for &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; projects. Rather than starting from scratch, this boilerplate is designed to get rolling immediately. Install it, configure it, tweak it, push it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://github.com/daviddarnes/alembic&quot; style=&quot;background: #0366d6&quot;&gt;Fork it  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--github&quot; role=&quot;img&quot; alt=&quot;github&quot;&gt;&lt;title&gt;github&lt;/title&gt;&lt;use xlink:href=&quot;#github&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;
+ &lt;a class=&quot;button&quot; href=&quot;https://buymeacoffee.com/daviddarnes#support&quot; style=&quot;background: #f68140&quot;&gt;Buy me a coffee ☕️&lt;/a&gt;
+ &lt;a class=&quot;button&quot; href=&quot;https://twitter.com/intent/tweet/?url=https://alembic.darn.es&amp;amp;text=Alembic%20-%20A%20Jekyll%20boilerplate%20theme&amp;amp;via=DavidDarnes&quot; style=&quot;background: #0d94e7&quot;&gt;Tweet it  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;
+ &lt;a class=&quot;button&quot; href=&quot;https://github.com/daviddarnes/alembic#installation&quot;&gt;Install Alembic ⚗️&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Clear and elegant design that can be used out of the box or as solid starting point&lt;/li&gt;
+  &lt;li&gt;Tested in all major browsers, including &lt;strong&gt;IE and Edge&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Built in &lt;strong&gt;Service Worker&lt;/strong&gt; so it can work offline and on slow connections&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configurable colours&lt;/strong&gt; and typography in a single settings file&lt;/li&gt;
+  &lt;li&gt;Extensive set of &lt;strong&gt;shortcodes&lt;/strong&gt; to include various elements; such as buttons, icons, figure images and more&lt;/li&gt;
+  &lt;li&gt;Solid &lt;strong&gt;typographic framework&lt;/strong&gt; from &lt;a href=&quot;https://sassline.com/&quot;&gt;Sassline&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Configurable navigation via a single file&lt;/li&gt;
+  &lt;li&gt;Modular Jekyll components&lt;/li&gt;
+  &lt;li&gt;Post category support in the form of a single post index page grouped by category&lt;/li&gt;
+  &lt;li&gt;Built in live search using JavaScript&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Contact form&lt;/strong&gt; built in using &lt;a href=&quot;https://formspree.io/&quot;&gt;Formspree&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Designed with &lt;strong&gt;&lt;a href=&quot;https://www.siteleaf.com/&quot;&gt;Siteleaf&lt;/a&gt;&lt;/strong&gt; in mind&lt;/li&gt;
+  &lt;li&gt;Has 9 of the most popular networks as performant sharing buttons&lt;/li&gt;
+  &lt;li&gt;Has documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Here are a few examples of Alembic out in the wild being used in a variety of ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bawejakunal.github.io/&quot;&gt;bawejakunal.github.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://case2111.github.io/&quot;&gt;case2111.github.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.karateca.org/&quot;&gt;karateca.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&quot;quick-setup&quot;&gt;Quick setup&lt;/h3&gt;
+
+&lt;p&gt;To give you a running start I’ve put together some starter kits that you can download, fork or even deploy immediately:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;⚗️🍨 Vanilla Jekyll starter kit&lt;br /&gt;
+&lt;a href=&quot;https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-kit&quot; style=&quot;background: none&quot;&gt;&lt;img src=&quot;https://www.netlify.com/img/deploy/button.svg&quot; alt=&quot;Deploy to Netlify&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;⚗️🌲 Forestry starter kit&lt;br /&gt;
+&lt;a href=&quot;https://app.forestry.io/quick-start?repo=daviddarnes/alembic-forestry-kit&amp;amp;engine=jekyll&quot; style=&quot;background: none&quot;&gt;&lt;img src=&quot;https://assets.forestry.io/import-to-forestry.svg&quot; alt=&quot;Deploy to Forestry&quot; /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-forestry-kit&quot; style=&quot;background: none&quot;&gt;&lt;img src=&quot;https://www.netlify.com/img/deploy/button.svg&quot; alt=&quot;Deploy to Netlify&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;⚗️💠 Netlify CMS starter kit&lt;br /&gt;
+&lt;a href=&quot;https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-netlifycms-kit&amp;amp;stack=cms&quot; style=&quot;background: none&quot;&gt;&lt;img src=&quot;https://www.netlify.com/img/deploy/button.svg&quot; alt=&quot;Deploy to Netlify&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;⚗️:octocat: GitHub Pages with remote theme kit&lt;br /&gt;
+&lt;a class=&quot;button&quot; href=&quot;https://github.com/daviddarnes/alembic-kit/archive/remote-theme.zip&quot; style=&quot;background: #24292e&quot;&gt;Download kit&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⚗️🚀 Stackbit starter kit&lt;br /&gt;
+&lt;a href=&quot;https://app.stackbit.com/create?theme=https://github.com/daviddarnes/alembic-stackbit-kit&quot; style=&quot;background: none&quot;&gt;&lt;img src=&quot;https://assets.stackbit.com/badge/create-with-stackbit.svg&quot; alt=&quot;Create with Stackbit&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;as-a-jekyll-theme&quot;&gt;As a Jekyll theme&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem &quot;alembic-jekyll-theme&quot;&lt;/code&gt; to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; to add the theme as a dependancy&lt;/li&gt;
+  &lt;li&gt;Run the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; in the root of project to install the theme and its dependancies&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;theme: alembic-jekyll-theme&lt;/code&gt; to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file to set the site theme&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; to build and serve your site&lt;/li&gt;
+  &lt;li&gt;Done! Use the &lt;a href=&quot;#configuration&quot;&gt;configuration&lt;/a&gt; documentation and the example &lt;a href=&quot;https://github.com/daviddarnes/alembic/blob/master/_config.yml&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/a&gt; file to set things like the navigation, contact form and social sharing buttons&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;as-a-github-pages-remote-theme&quot;&gt;As a GitHub Pages remote theme&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem &quot;jekyll-remote-theme&quot;&lt;/code&gt; to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; to add the theme as a dependancy&lt;/li&gt;
+  &lt;li&gt;Run the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; in the root of project to install the jekyll remote theme gem as a dependancy&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-remote-theme&lt;/code&gt; to the list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugins&lt;/code&gt; in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote_theme: daviddarnes/alembic@main&lt;/code&gt; to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file to set the site theme&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; to build and serve your site&lt;/li&gt;
+  &lt;li&gt;Done! Use the &lt;a href=&quot;#configuration&quot;&gt;configuration&lt;/a&gt; documentation and the example &lt;a href=&quot;https://github.com/daviddarnes/alembic/blob/master/_config.yml&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/a&gt; file to set things like the navigation, contact form and social sharing buttons&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;as-a-boilerplate--fork&quot;&gt;As a Boilerplate / Fork&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;(deprecated, not recommended)&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/daviddarnes/alembic#fork-destination-box&quot;&gt;Fork the repo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Replace the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; with one stating all the gems used in your project&lt;/li&gt;
+  &lt;li&gt;Delete the following unnecessary files/folders: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LICENSE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screenshot.png&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CNAME&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alembic-jekyll-theme.gemspec&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; in the root of project to install the jekyll remote theme gem as a dependancy&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; to build and serve your site&lt;/li&gt;
+  &lt;li&gt;Done! Use the &lt;a href=&quot;#configuration&quot;&gt;configuration&lt;/a&gt; documentation and the example &lt;a href=&quot;https://github.com/daviddarnes/alembic/blob/master/_config.yml&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/a&gt; file to set things like the navigation, contact form and social sharing buttons&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;customising&quot;&gt;Customising&lt;/h2&gt;
+
+&lt;p&gt;When using Alembic as a theme means you can take advantage of the file overriding method. This allows you to overwrite any file in this theme with your own custom file, by matching the file name and path. The most common example of this would be if you want to add your own styles or change the core style settings.&lt;/p&gt;
+
+&lt;p&gt;To add your own styles copy the &lt;a href=&quot;https://github.com/daviddarnes/alembic/blob/master/assets/styles.scss&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;styles.scss&lt;/code&gt;&lt;/a&gt; into your own project with the same file path (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets/styles.scss&lt;/code&gt;). From there you can add your own styles, you can even optionally ignore the theme styles by removing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@import &quot;alembic&quot;;&lt;/code&gt; line.&lt;/p&gt;
+
+&lt;p&gt;If you’re looking to set your own colours and fonts you can overwrite them by matching the variable names from the &lt;a href=&quot;https://github.com/daviddarnes/alembic/blob/master/_sass/_settings.scss&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_settings.scss&lt;/code&gt;&lt;/a&gt; file in your own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;styles.scss&lt;/code&gt;, make sure to state them before the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@import &quot;alembic&quot;;&lt;/code&gt; line so they take effect. The settings are a mixture of custom variables and settings from &lt;a href=&quot;https://medium.com/@jakegiltsoff/sassline-v2-0-e424b2881e7e&quot;&gt;Sassline&lt;/a&gt; - follow the link to find out how to configure the typographic settings.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="GUIDE" /><summary type="html">Alembic is a starting point for [Jekyll](https://jekyllrb.com/) projects. Rather than starting from scratch, this boilerplate is designed to get the ball rolling immediately. Install it, configure it, tweak it, push it.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">동기 ∙ 비동기</title><link href="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/" rel="alternate" type="text/html" title="동기 ∙ 비동기" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester</id><content type="html" xml:base="http://localhost:4000/%EB%8F%99%EA%B8%B0/2021/12/01/tester/">&lt;h2 id=&quot;1-동기synchronous&quot;&gt;1. 동기(synchronous)&lt;/h2&gt;
 
 &lt;p&gt;자바스크립트는 한 번에 하나의 작업만 수행한다.&lt;br /&gt;
 ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다.&lt;br /&gt;
@@ -8,8 +297,6 @@
   &lt;li&gt;Memory Heap : 변수, 객체의 메모리 할당을 담당한다.&lt;/li&gt;
   &lt;li&gt;Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
 
 &lt;h3 id=&quot;1-1-call-stack&quot;&gt;1-1. CALL STACK&lt;/h3&gt;
 
@@ -199,9 +486,8 @@ cb 2
 */&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 &lt;strong&gt;우선적으로 들어온 함수를 처리&lt;/strong&gt;하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이를 통해, &lt;strong&gt;TASK QUEUE에서 QUEUE의 의미&lt;/strong&gt;를 다시 알 수 있다.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="동기" /><summary type="html">1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&amp;gt; { console.log(&quot;sync &quot;, i); bar(); }); } function bar() { baseData.forEach((v, i) =&amp;gt; { debugger; console.log(&quot;sync 2&quot;, i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log(&quot;FIRST&quot;); setTimeout(() =&amp;gt; console.log(&quot;THIRD&quot;), 5000); console.log(&quot;SECOND&quot;); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&amp;gt; console.log(++a), 1000); return a; } const result = plus(); console.log(&quot;result :&quot;, result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00+09:00</published><updated>2016-08-29T00:00:00+09:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
+&lt;p&gt;비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 &lt;strong&gt;우선적으로 들어온 함수를 처리&lt;/strong&gt;하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다.&lt;br /&gt;
+이를 통해, &lt;strong&gt;TASK QUEUE에서 QUEUE의 의미&lt;/strong&gt;를 다시 알 수 있다.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="동기" /><summary type="html">1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&amp;gt; { console.log(&quot;sync &quot;, i); bar(); }); } function bar() { baseData.forEach((v, i) =&amp;gt; { debugger; console.log(&quot;sync 2&quot;, i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log(&quot;FIRST&quot;); setTimeout(() =&amp;gt; console.log(&quot;THIRD&quot;), 5000); console.log(&quot;SECOND&quot;); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&amp;gt; console.log(++a), 1000); return a; } const result = plus(); console.log(&quot;result :&quot;, result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00+09:00</published><updated>2016-08-29T00:00:00+09:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
 
 &lt;p&gt;At standard atmospheric pressure, alcohol boils at 78 °C (172 °F), while water boils at 100 °C (212 °F). During distillation, the vapour contains more alcohol than the liquid. When the vapours are condensed, the resulting liquid contains a higher concentration of alcohol. In the pot still, the alcohol and water vapour combine with esters and flow from the still through the condensing coil. There they condense into the first distillation liquid, the so-called “low wines”. The low wines have a strength of about 25–35% alcohol by volume, and flow into a second still. It is then distilled a second time to produce the colourless spirit, collected at about 70% alcohol by volume. Colour is added through maturation in an oak aging barrel, and develops over time.&lt;/p&gt;
 
