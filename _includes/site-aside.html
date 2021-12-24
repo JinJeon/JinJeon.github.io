@@ -7,14 +7,14 @@
 
   {% elsif page.layout == "page" or page.layout == "home" or page.layout == "blog" %}
     <section class="section  section--description">
-      <h3>ABOUT THIS SITE</h3>
+      <h4>ABOUT THIS SITE</h4>
       <p>{{ site.description }}</p>
       {% include nav-social.html %}
     </section>
 
   {% elsif page.layout == "categories" %}
     <section class="section  section--category-index">
-      <h3>INDEX</h3>
+      <h4>INDEX</h4>
       {% include nav-categories.html %}
     </section>
 

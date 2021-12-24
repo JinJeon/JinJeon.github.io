@@ -34,7 +34,7 @@ body {
   }
 }
 .header {
-  background-color: $headerBackgroundColour;
+  // background-color: $headerBackgroundColour;
   border-bottom: dashed 0.25rem $featureFontColour;
 }
 .header .nav {
@@ -46,6 +46,7 @@ body {
 }
 
 .feature {
+  border-top: dashed 0.25rem $featureFontColour;
   padding-bottom: 0.4rem;
   text-align: center;
   background: $headerBackgroundColour;
@@ -435,6 +436,7 @@ pre code {
   }
   .button,
   button {
+    border-radius: 0.25rem;
     background-image: none;
     text-shadow: none;
     color: $backgroundColour;

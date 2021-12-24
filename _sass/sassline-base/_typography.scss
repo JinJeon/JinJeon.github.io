@@ -385,6 +385,7 @@ a {
   // Code block.
   code,
   pre {
+    border-radius: 0.25rem;
     background-color: $codeBackgroundColour;
     font-family: unquote(map-get($monospacetype, font-family));
   }

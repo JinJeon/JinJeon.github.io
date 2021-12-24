@@ -35,7 +35,7 @@ plugins:
   - jemoji
 
 # 3. Gem settings
-paginate: 3 # jekyll-paginate > items per page
+paginate: 5 # jekyll-paginate > items per page
 paginate_path: blog/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
 twitter:
@@ -101,7 +101,7 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "JINJEONIMUM" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "FOR STUDYING" # Site description and default description, also used in jekyll-seo-tag
+description: "" # Site description and default description, also used in jekyll-seo-tag
 url: "https://JinJeon.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/daviddarnes/alembic"
