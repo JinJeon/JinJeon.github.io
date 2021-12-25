@@ -8,16 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-aside {
-  .section {
-    // margin-top: 3.5%;
-    h4 {
-      margin-left: 0.2rem;
-      margin-right: 0.2rem;
-    }
-  }
-}
-
 .container {
   width: 90%;
   max-width: 1200px;
@@ -166,7 +156,7 @@ aside {
 
 .aside {
   @include breakpoint(break-1) {
-    max-width: 34%;
+    max-width: 27.5%;
     margin-left: 4%;
     @include flex(1, 0, auto);
     opacity: 0.5;
@@ -186,8 +176,18 @@ aside {
   }
 }
 
-.section {
-  margin: 0;
+.category {
+  margin-top: 2rem;
+  h2 {
+    margin-left: -1rem;
+    padding-top: 0;
+    padding-left: 0.65rem;
+    border-left: solid 0.35rem $accentColour;
+  }
+}
+
+.article--page {
+  margin-bottom: 1rem;
 }
 
 // Lists
@@ -199,10 +199,6 @@ aside {
   }
   .item--post {
     margin-left: 0;
-    // padding: 0.5rem;
-    // border-bottom: dashed 0.25rem $featureFontColour;
-    // margin-bottom: 1rem;
-    // border-radius: 1rem;
     .article--post {
       border-bottom: dashed 0.25rem $featureFontColour;
       margin-bottom: 1rem;
@@ -481,7 +477,7 @@ pre code {
   .nav a {
     padding-left: 0;
     padding-right: 0;
-    margin-left: 0.2rem;
+    // margin-left: 0.2rem;
     margin-right: 0.2rem;
   }
   pre {
