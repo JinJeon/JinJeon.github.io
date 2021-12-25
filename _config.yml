@@ -66,7 +66,7 @@ collections:
     title: ALL POSTS # Needed for Siteleaf
     output: true
     feature_text: |
-      공부를 위한 블로그
+      ALL STUDY
   guide:
     title: ALL GUIDE # Needed for Siteleaf
     output: true

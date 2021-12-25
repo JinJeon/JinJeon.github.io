@@ -8,6 +8,16 @@ body {
   overflow-x: hidden;
 }
 
+aside {
+  .section {
+    // margin-top: 3.5%;
+    h4 {
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+    }
+  }
+}
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -34,7 +44,7 @@ body {
   }
 }
 .header {
-  // background-color: $headerBackgroundColour;
+  background-color: $headerBackgroundColour;
   border-bottom: dashed 0.25rem $featureFontColour;
 }
 .header .nav {
@@ -46,7 +56,6 @@ body {
 }
 
 .feature {
-  border-top: dashed 0.25rem $featureFontColour;
   padding-bottom: 0.4rem;
   text-align: center;
   background: $headerBackgroundColour;
@@ -117,6 +126,8 @@ body {
   @include justify-content(space-between);
   color: $captionColour;
   text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .pagination {
@@ -185,6 +196,17 @@ body {
   &--nav {
     overflow: hidden;
     margin-bottom: var(--listHeight, 0);
+  }
+  .item--post {
+    margin-left: 0;
+    // padding: 0.5rem;
+    // border-bottom: dashed 0.25rem $featureFontColour;
+    // margin-bottom: 1rem;
+    // border-radius: 1rem;
+    .article--post {
+      border-bottom: dashed 0.25rem $featureFontColour;
+      margin-bottom: 1rem;
+    }
   }
   .item--post,
   .item--result,
