@@ -67,12 +67,12 @@ collections:
     output: true
     feature_text: |
       ALL STUDY
-  guide:
-    title: ALL GUIDE # Needed for Siteleaf
-    output: true
-    # description: "ABOUT CODE" # The post list page content
-    feature_text: |
-      가져온 테마의 사용법
+  # manuals:
+  #   title: ALL MANUALS # Needed for Siteleaf
+  #   output: true
+  #   # description: "ABOUT CODE" # The post list page content
+  #   feature_text: |
+  #     HOW TO USE
 
 # 6. Jekyll collections settings
 defaults:
@@ -90,11 +90,11 @@ defaults:
       type: "pages"
     values:
       layout: page # Set the default layout for pages
-  - scope:
-      path: ""
-      type: "manual"
-    values:
-      layout: post # Set the default layout for pages
+  # - scope:
+  #     path: ""
+  #     type: "manuals"
+  #   values:
+  #     layout: page # Set the default layout for pages
 
 # 7. Site settings
 encoding: utf-8 # Make sure the encoding is right
@@ -135,6 +135,8 @@ navigation_header:
     url: /categories/
   - title: SEARCH
     url: /search/
+  # - title: MANUAL
+  #   url: /manual/
 
 navigation_footer:
   - title: TO HOME
