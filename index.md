@@ -7,4 +7,4 @@ excerpt: |
 feature_image: ""
 ---
 
-I'm studying about JavaScript.
+메인 화면. 수정 예정.
