@@ -10,24 +10,26 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>CATEGORIES | JINJEONIMUM</title>
+<title>해시 ∙ 해시맵 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="CATEGORIES" />
+<meta property="og:title" content="해시 ∙ 해시맵" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_GB" />
-<meta name="description" content="CATEGORIES" />
-<meta property="og:description" content="CATEGORIES" />
-<link rel="canonical" href="http://localhost:4000/categories/" />
-<meta property="og:url" content="http://localhost:4000/categories/" />
+<meta name="description" content="1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = &quot;string&quot;; let testObject = { A: &quot;a&quot; }; let testFucntion = (B) =&gt; { B = &quot;b&quot;; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, &#39;string&#39; =&gt; 2, { A: &#39;a&#39; } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get(&quot;none&quot;); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, &quot;=&quot;, value); } // 1 = 1 // string = 2 // { A: &#39;a&#39; } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: &#39;a&#39; } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, &#39;string&#39;, { A: &#39;a&#39; }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript" />
+<meta property="og:description" content="1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = &quot;string&quot;; let testObject = { A: &quot;a&quot; }; let testFucntion = (B) =&gt; { B = &quot;b&quot;; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, &#39;string&#39; =&gt; 2, { A: &#39;a&#39; } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get(&quot;none&quot;); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, &quot;=&quot;, value); } // 1 = 1 // string = 2 // { A: &#39;a&#39; } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: &#39;a&#39; } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, &#39;string&#39;, { A: &#39;a&#39; }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript" />
+<link rel="canonical" href="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/" />
+<meta property="og:url" content="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-11T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="CATEGORIES" />
+<meta property="twitter:title" content="해시 ∙ 해시맵" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <script type="application/ld+json">
-{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"url":"http://localhost:4000/categories/","author":{"@type":"Person","name":"JinJeon"},"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","description":"CATEGORIES","headline":"CATEGORIES","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"url":"http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/","author":{"@type":"Person","name":"JinJeon"},"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","description":"1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = &quot;string&quot;; let testObject = { A: &quot;a&quot; }; let testFucntion = (B) =&gt; { B = &quot;b&quot;; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, &#39;string&#39; =&gt; 2, { A: &#39;a&#39; } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get(&quot;none&quot;); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, &quot;=&quot;, value); } // 1 = 1 // string = 2 // { A: &#39;a&#39; } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: &#39;a&#39; } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, &#39;string&#39;, { A: &#39;a&#39; }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript","headline":"해시 ∙ 해시맵","dateModified":"2021-12-11T00:00:00+09:00","datePublished":"2021-12-11T00:00:00+09:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -95,7 +97,7 @@
 
   </head>
 
-  <body class="layout-categories  categories">
+  <body class="layout-post  해시-해시맵">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -150,7 +152,7 @@
 
       
 
-      <li class="item  item--nav  item--current">
+      <li class="item  item--nav">
         <a href="/categories/">CATEGORIES</a>
       </li>
     
@@ -207,265 +209,23 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>해시, 해시맵이란?</p>
+
+    </div>
+  </div>
+
 
 </header>
 
 
 <main class="main  container">
 
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
-      <h1>CATEGORIES</h1>
-
+  <article class="article  article--post  content  typeset">
+    <div class="article--title">
+      <h1>해시 ∙ 해시맵</h1>
       
-
-
-    </article>
-
-    
-  
-  <section class="section  typeset  category">
-    <h2 id="general">GENERAL</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/general/2016/08/29/example-post-three/">Description of a Pot Still</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#general">GENERAL</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2016-08-29T00:00:00+09:00" class="time">29 Aug 2016</time>
-</small>
-
-            <p>The modern pot still is a descendant of the alembic, an earlier distillation device</p>
-
-            
-          </article>
-        </li>
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/general/external/2016/08/27/example-post-one/">Description of an Alembic</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#general">GENERAL</a></span>,
-    
-      <span class="label  label--category"><a href="/categories/#external">EXTERNAL</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2016-08-27T00:00:00+09:00" class="time">27 Aug 2016</time>
-</small>
-
-            <p>TEST TEXT</p>
-
-            
-          </article>
-        </li>
-      
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="external">EXTERNAL</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/history/external/2016/08/28/example-post-two/">History of the Alembic</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#history">HISTORY</a></span>,
-    
-      <span class="label  label--category"><a href="/categories/#external">EXTERNAL</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2016-08-28T00:00:00+09:00" class="time">28 Aug 2016</time>
-</small>
-
-            <p>The History of the Alembic tool</p>
-
-            
-          </article>
-        </li>
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/general/external/2016/08/27/example-post-one/">Description of an Alembic</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#general">GENERAL</a></span>,
-    
-      <span class="label  label--category"><a href="/categories/#external">EXTERNAL</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2016-08-27T00:00:00+09:00" class="time">27 Aug 2016</time>
-</small>
-
-            <p>TEST TEXT</p>
-
-            
-          </article>
-        </li>
-      
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="history">HISTORY</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/history/external/2016/08/28/example-post-two/">History of the Alembic</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#history">HISTORY</a></span>,
-    
-      <span class="label  label--category"><a href="/categories/#external">EXTERNAL</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2016-08-28T00:00:00+09:00" class="time">28 Aug 2016</time>
-</small>
-
-            <p>The History of the Alembic tool</p>
-
-            
-          </article>
-        </li>
-      
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="guide">GUIDE</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/guide/2021/12/01/guide/">ALEMBIC</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#guide">GUIDE</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2021-12-01T00:00:00+09:00" class="time">01 Dec 2021</time>
-</small>
-
-            <p>가져온 블로그 테마에 대한 소개</p>
-
-            
-          </article>
-        </li>
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/guide/2021/12/01/elements/">ELEMENTS</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#guide">GUIDE</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2021-12-01T00:00:00+09:00" class="time">01 Dec 2021</time>
-</small>
-
-            <p>마크다운 및 HTML 사용 예시</p>
-
-            
-          </article>
-        </li>
-      
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="동기">동기</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/%EB%8F%99%EA%B8%B0/2021/12/01/tester/">동기 ∙ 비동기</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#동기">동기</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2021-12-01T00:00:00+09:00" class="time">01 Dec 2021</time>
-</small>
-
-            <p>동기와 비동기에 대한 간단한 소개</p>
-
-            
-          </article>
-        </li>
-      
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="해시">해시</h2>
-    <ul class="list  list--posts">
-      
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/">해시 ∙ 해시맵</a></h3>
-            
 
 <small class="small  post-meta">
   
@@ -478,101 +238,294 @@
   &nbsp;&middot;&nbsp;<time datetime="2021-12-11T00:00:00+09:00" class="time">11 Dec 2021</time>
 </small>
 
-            <p>해시, 해시맵이란?</p>
+    </div>
 
-            
-          </article>
-        </li>
+    <h1 id="1-해시hash">1. 해시(Hash)</h1>
+
+<h2 id="1-1-직접-주소-테이블direct-address-table">1-1. 직접 주소 테이블(Direct Address Table)</h2>
+
+<p>해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다.<br />
+key와 value를 가지며 <strong>하나의 key에 하나의 value</strong>가 매칭된다.<br />
+Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다.<br />
+찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다.<br />
+<strong>시간복잡도 O(1)으로 표현된다.</strong><br />
+이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다.<br />
+그러나, 단점으로 꼽히는 것이 <strong>‘공간의 효율성’</strong>이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span> <span class="p">&lt;</span><span class="nt">3</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 3, <span class="p">&lt;</span><span class="nt">6</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 10, <span class="p">&lt;</span><span class="nt">79</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 90 ]
+</code></pre></div></div>
+
+<p>‘<strong>적재율</strong>‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 <strong>3.15%의 적재율</strong>이라 볼 수 있다.</p>
+
+<h2 id="1-2-해시-테이블과-해시-함수">1-2. 해시 테이블과 해시 함수</h2>
+
+<blockquote>
+  <p>해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수</p>
+</blockquote>
+
+<p>직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 <strong>해시 테이블</strong>을 사용하는 것이다.<br />
+해시 테이블의 사용을 위해서 <strong>‘해시 함수’</strong>를 만들어주게 된다.</p>
+
+<ul>
+  <li>해시 함수의 특징<br />
+해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다.<br />
+value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다.
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hashFunction</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">key</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>위 함수에서 가장 중요한 것은 <strong>‘10’이라는 크기 내로 한정되어진다</strong>는 것이다.<br />
+Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS)<br />
+key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다.<br />
+해시함수 과정에서 <strong>해시충돌(Collision)</strong>이 발생할 수 있다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="2-해시-충돌collision">2. 해시 충돌(Collision)</h1>
+
+<blockquote>
+  <p>해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황</p>
+</blockquote>
+
+<p>해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다.<br />
+근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다.</p>
+
+<h2 id="2-1-개방-주소법open-address">2-1. 개방 주소법(open address)</h2>
+
+<p>충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식.<br />
+해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다.</p>
+
+<h3 id="a-선형-탐사법linear-probing">A. 선형 탐사법(Linear Probing)</h3>
+
+<p>선형으로 순차적으로 탐사하는 방법.<br />
+충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashingIndex</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">class</span> <span class="nx">hashTable</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+
+  <span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">hashingIndex</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">getTable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">myTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">hashTable</span><span class="p">();</span>
+<span class="nx">myTable</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">myTable</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTable</span><span class="p">.</span><span class="nx">getTable</span><span class="p">());</span>
+<span class="c1">// [ &lt;1 empty item&gt;, 4, 7 ]</span>
+</code></pre></div></div>
+
+<p>위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다.<br />
+ → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다.<br />
+문제점 : 값의 주변이 모두 채워지는 <strong>일차 군집화(Primay Clustering)</strong>가 발생하기 쉽다.<br />
+ → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다.</p>
+
+<h3 id="b-제곱-탐사법quadratic-probing">B. 제곱 탐사법(Quadratic Probing)</h3>
+
+<p>선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다.<br />
+<strong>충돌의 발생 수의 제곱만큼</strong> 이동하게 되므로 <strong>‘한 번 충돌 시 1, 두 번 충돌 시 4’</strong> 이런식으로 늘어나게 된다.</p>
+
+<hr />
+
+<h1 id="3-javascript의-해시테이블hash-table--map">3. JavaScript의 해시테이블(Hash Table) : Map</h1>
+
+<p>JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다.</p>
+
+<h2 id="3-1-map">3-1. Map</h2>
+
+<p>key-value로 이루어진 해시 테이블로, Object와 주로 비교된다.<br />
+탐색은 <code class="language-plaintext highlighter-rouge">get()</code>, 삽입은 <code class="language-plaintext highlighter-rouge">set()</code>으로 한다.<br />
+key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다.<br />
+<code class="language-plaintext highlighter-rouge">set()</code>을 이용해 value를 설정한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="kd">let</span> <span class="nx">testNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">testString</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">testObject</span> <span class="o">=</span> <span class="p">{</span> <span class="na">A</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">testFucntion</span> <span class="o">=</span> <span class="p">(</span><span class="nx">B</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">B</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testString</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testObject</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="cm">/*
+Map(4) {
+  1 =&gt; 1,
+  'string' =&gt; 2,
+  { A: 'a' } =&gt; 3,
+  [Function (anonymous)] =&gt; 4
+}
+*/</span>
+<span class="c1">// map의 형태</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">get()</code>을 통한 value 가져오기</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testString</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testObject</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">has()</code>를 통한 value 찾기</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">delete()</code>를 통한 value 삭제</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">size</code>를 통한 value의 유무 확인</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span> <span class="c1">// 3</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">for-of</code>를 통한 hash 탐색</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">map</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="dl">"</span><span class="s2">=</span><span class="dl">"</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 1 = 1</span>
+<span class="c1">// string = 2</span>
+<span class="c1">// { A: 'a' } = 3</span>
+<span class="c1">// [Function: testFucntion] = 4</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 1</span>
+<span class="c1">// string</span>
+<span class="c1">// { A: 'a' }</span>
+<span class="c1">// [Function: testFucntion]</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+<span class="c1">// 4</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">());</span>
+<span class="c1">// [Map Iterator] { 1, 2, 3, 4 }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+<span class="c1">// [Map Iterator] { 1, 'string', { A: 'a' }, [Function: testFucntion] }</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4-충돌collision">4. 충돌(Collision)</h1>
+
+<p>받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 <strong>collision</strong>이라고 한다.<br />
+해결을 위해서 대표적인 두 가지 방법이 존재한다.</p>
+
+<ol>
+  <li>Open Addressing<br />
+겹치는 해당 index의 <strong>옆 자리</strong>에 넣게 되는 방법이다.<br />
+이후에 <strong>해당 자리</strong>를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다.</li>
+  <li>Separate Chainining<br />
+Linked List를 이용해 <strong>다음 링크</strong>에 끼워넣는 방법이다.<br />
+이후 찾을 때에는 <strong>해당 링크</strong>를 타고 들어가면 된다.</li>
+</ol>
+
+<hr />
+
+<h1 id="참고-링크">참고 링크</h1>
+
+<ul>
+  <li>JavaScript Map, Hashmap<br />
+전체적인 설명 : <a href="https://velog.io/@jun094/Hash%EC%99%80-Map">https://velog.io/@jun094/Hash와-Map</a><br />
+설명 동영상 : <a href="https://www.youtube.com/watch?v=HraOg7W3VAM">https://www.youtube.com/watch?v=HraOg7W3VAM</a></li>
+  <li>Hashmap 충돌 해결법<br />
+<a href="https://overcome-the-limits.tistory.com/entry/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%ED%95%B4%EC%8B%9C%ED%85%8C%EC%9D%B4%EB%B8%94-with-JavaScript">https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript</a></li>
+</ul>
+
+
+    <div class="share">
+  
+    
       
-    </ul>
-    
-    <!-- <hr/> -->
-    
-  </section>
-
-  
-  <section class="section  typeset  category">
-    <h2 id="해시맵">해시맵</h2>
-    <ul class="list  list--posts">
       
-        
-        <li class="item  item--post">
-          <article class="article  article--post  typeset">
-            <h3><a href="/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/">해시 ∙ 해시맵</a></h3>
-            
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#해시">해시</a></span>,
-    
-      <span class="label  label--category"><a href="/categories/#해시맵">해시맵</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2021-12-11T00:00:00+09:00" class="time">11 Dec 2021</time>
-</small>
-
-            <p>해시, 해시맵이란?</p>
-
-            
-          </article>
-        </li>
       
-    </ul>
+      
+
+      
+
+      <a class="button" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/&text=%ED%95%B4%EC%8B%9C%20%E2%88%99%20%ED%95%B4%EC%8B%9C%EB%A7%B5" style="background: #0d94e7">Twitter&nbsp; <svg width="16" height="16" class="icon  icon--twitter" role="img" alt="twitter"><title>twitter</title><use xlink:href="#twitter" fill="CurrentColor"></use></svg>
+</a>
+
     
-  </section>
+  
+    
+      
+      
+      
+      
+
+      
+
+      <a class="button" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/" style="background: #3B5998">facebook&nbsp; <svg width="16" height="16" class="icon  icon--facebook" role="img" alt="facebook"><title>facebook</title><use xlink:href="#facebook" fill="CurrentColor"></use></svg>
+</a>
+
+    
+  
+    
+      
+      
+      
+      
+
+      
+
+      <a class="button" href="mailto:?subject=해시 ∙ 해시맵&body=Hey, check out this: http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/" style="background: true">Email&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
+    
+  
+</div>
 
 
+    
 
 
-
-  </div>
-
-  <aside class="aside  typeset  aside--right">
+  </article>
 
   
-    <section class="section  section--category-index">
-      <h4>INDEX</h4>
-      <nav class="nav  nav--categories">
-  <ul class="list  list--categories">
-    
-      <li class="item  item--category">
-        <a href="#general">GENERAL</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#external">EXTERNAL</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#history">HISTORY</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#guide">GUIDE</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#동기">동기</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#해시">해시</a>
-      </li>
-    
-      <li class="item  item--category">
-        <a href="#해시맵">해시맵</a>
-      </li>
-    
-  </ul>
-</nav>
-
-    </section>
-
-  
-
-</aside>
-
 
 </main>
 

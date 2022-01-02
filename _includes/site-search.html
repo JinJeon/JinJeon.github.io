@@ -28,12 +28,13 @@
 
   function displayResults() {
     const resultsArray = findResults(this.value, pages);
+    console.log(resultsArray)
     const html = resultsArray.map(item => {
       return `
-        <li class="item  item--result">
+        <li class="item  item--result  search--result">
           <article class="article  typeset">
             <h4><a href="${item.url}">${item.title}</a></h4>
-            <p>${item.excerpt}</p>
+            <p>${item.feature_text}</p>
           </article>
         </li>`;
     }).join('');

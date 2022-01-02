@@ -1,8 +1,8 @@
-const version = '20211228140649';
+const version = '20211230180224';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/%EB%8F%99%EA%B8%B0/2021/12/01/tester/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/general/2016/08/29/example-post-three/","/history/external/2016/08/28/example-post-two/","/general/external/2016/08/27/example-post-one/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/","/%EB%8F%99%EA%B8%B0/2021/12/01/tester/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/general/2016/08/29/example-post-three/","/history/external/2016/08/28/example-post-two/","/general/external/2016/08/27/example-post-one/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
