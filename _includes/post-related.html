@@ -7,7 +7,7 @@
 
         <h4><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h4>
         {% include post-meta.html %}
-        {{ page.feature_text | markdownify | truncatewords: 10 }}
+        {{ page.feature_text | markdownify | truncatewords: 20 }}
       </article>
     </li>
   {% endfor %}

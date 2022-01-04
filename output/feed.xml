@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2021-12-30T18:02:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">해시 ∙ 해시맵</title><link href="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/" rel="alternate" type="text/html" title="해시 ∙ 해시맵" /><published>2021-12-11T00:00:00+09:00</published><updated>2021-12-11T00:00:00+09:00</updated><id>http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C</id><content type="html" xml:base="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C/">&lt;h1 id=&quot;1-해시hash&quot;&gt;1. 해시(Hash)&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-01-04T14:46:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">디지털 논리회로</title><link href="http://localhost:4000/%EA%B2%8C%EC%9D%B4%ED%8A%B8/%EB%B0%98%EA%B0%80%EC%82%B0%EA%B8%B0/%EC%A0%84%EA%B0%80%EC%82%B0%EA%B8%B0/10%EC%A7%84%EB%B2%95/2%EC%A7%84%EB%B2%95/2022/01/03/1%EB%B2%88/" rel="alternate" type="text/html" title="디지털 논리회로" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-01-03T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B2%8C%EC%9D%B4%ED%8A%B8/%EB%B0%98%EA%B0%80%EC%82%B0%EA%B8%B0/%EC%A0%84%EA%B0%80%EC%82%B0%EA%B8%B0/10%EC%A7%84%EB%B2%95/2%EC%A7%84%EB%B2%95/2022/01/03/1%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/%EA%B2%8C%EC%9D%B4%ED%8A%B8/%EB%B0%98%EA%B0%80%EC%82%B0%EA%B8%B0/%EC%A0%84%EA%B0%80%EC%82%B0%EA%B8%B0/10%EC%A7%84%EB%B2%95/2%EC%A7%84%EB%B2%95/2022/01/03/1%EB%B2%88/">&lt;h1 id=&quot;디지털-논리회로란&quot;&gt;디지털 논리회로란?&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이산적인 숫자를 게이트 입력으로 받아, 입력 논리의 필요 조건을 만족, 불만족하는 지에 대해 1 또는 0의 신호로 출력하는 하드웨어 소자이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;디지털 논리회로의 연결을 통해 컴퓨터의 구성 부품을 만들게 된다.&lt;br /&gt;
+또한, 논리적 사고를 위한 가장 기본적인 동작으로 프로그래밍 논리 구조와 연결된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;종류진리표-추가하기&quot;&gt;종류(진리표 추가하기)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;AND 게이트(논리곱) : 두 입력 모두 1인 경우에만 1, 나머지는 0이 출력된다.
+&lt;img src=&quot;/image/ANDgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OR 게이트(논리합) : 두 입력 중 1이 존재할 경우 1, 아닐 시 0이 출력된다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/ORgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NOT 게이트(논리부정, INVERTOR) : 입력이 반전되어 출력된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/NOTgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NAND 게이트 : 두 입력 중 하나 이상 0인 경우 1, 나머지는 0이 출력된다.
+즉, 두 입력이 모두 1인 경우 0이 출력된다. AND 게이트와 반대의 역할을 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/NANDgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NOR 게이트(부정논리합) : 두 입력 중 하나 이상 1인 경우 0, 나머지는 1이 출력된다.
+즉, 두 입력 모두 0인 경우에 1이 출력된다.
+OR 게이트와 반대의 역할을 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/NORgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;XOR 게이트(배타적 논리합) : 입력이 같을 경우 0, 다를 경우 1이 출력된다. 참 입력의 개수가 홀수일 때 참을 내보낸다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/XORgate.png&quot; alt=&quot;drawing&quot; width=&quot;25%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이진수&quot;&gt;이진수&lt;/h2&gt;
+
+&lt;p&gt;전원이 켜진 상태와 꺼진 상태를 각각 true, false의 형태로 나타낼 수 있으며, 이런 방식을 수학자 조지 부울의 이름을 따서 Boolean 타입이라고 부른다.&lt;br /&gt;
+Boolean 타입은 &lt;strong&gt;논리대수의 기본 타입&lt;/strong&gt;이며 동시에 디지털 시스템을 구성하는 하드웨어 및 소프트웨어의 &lt;strong&gt;가장 기본적인 타입&lt;/strong&gt;이다.&lt;br /&gt;
+모든 전자부품은 전기의 흐름 유무로 Boolean 타입을 나타낼 수 있으며, 이 개념의 확장으로 모든 10진수 숫자를 2진수 코드로 나타낼 수 있다.&lt;br /&gt;
+예시로, 1비트(bit)는 2개(0-1)의 값을 나타낼 수 있고, 2비트는 4개(0-3), 3비트는 8개(0-7)의 값을 나타낼 수 있다. 그리고 이는 각각 2^(비트수)의 형태로 나타난다.&lt;/p&gt;
+
+&lt;h2 id=&quot;반가산기half-adder&quot;&gt;반가산기(half-adder)&lt;/h2&gt;
+
+&lt;p&gt;두 개의 비트를 더하는 과정에서, 결과값을 2비트의 값으로 표현해볼 수 있다.
+&lt;img src=&quot;/image/halfAdder.png&quot; alt=&quot;drawing&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- | +   | 0   | 1   |
+| --- | --- | --- |
+| 0   | 00  | 01  |
+| 1   | 01  | 10  | --&gt;
+
+&lt;p&gt;왼쪽과 같이 2비트의 값으로 나타낼 수 있고, 한 비트 내의 두 이진수를 더하면, 두 비트가 되어 각각의 비트를 합(sum)비트, 자리올림(carry)비트라고 한다.&lt;/p&gt;
+
+&lt;!-- 합비트
+
+|     | 0   | 1   |
+| --- | --- | --- |
+| 0   | 0   | 1   |
+| 1   | 1   | 0   |
+
+자리올림비트
+
+|     | 0   | 1   |
+| --- | --- | --- |
+| 0   | 0   | 0   |
+| 1   | 0   | 1   | --&gt;
+
+&lt;h2 id=&quot;전가산기full-adder&quot;&gt;전가산기(full-adder)&lt;/h2&gt;
+
+&lt;p&gt;두번째 자리부터는 자리올림이 발생한 경우에 대해서도 더해줘야 하기 때문에, 세 개의 이진수를 더하는 경우에는 두 개의 반가산기 및 OR 게이트를 활용하는 전가산기를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/fullAdder.png&quot; alt=&quot;drawing&quot; width=&quot;50%&quot; /&gt;
+&lt;img src=&quot;/image/fullAdder2.png&quot; alt=&quot;drawing&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;10진법과-2진법&quot;&gt;10진법과 2진법&lt;/h1&gt;
+
+&lt;h2 id=&quot;10진법&quot;&gt;10진법&lt;/h2&gt;
+
+&lt;p&gt;10의 배수의 단위로 숫자를 나누어 나타내는 방법이다. 10단위가 올라갈 때마다 숫자가 증가하는 모습을 보인다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2진법&quot;&gt;2진법&lt;/h2&gt;
+
+&lt;p&gt;2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="게이트" /><category term="반가산기" /><category term="전가산기" /><category term="10진법" /><category term="2진법" /><summary type="html">디지털 논리회로란? 이산적인 숫자를 게이트 입력으로 받아, 입력 논리의 필요 조건을 만족, 불만족하는 지에 대해 1 또는 0의 신호로 출력하는 하드웨어 소자이다. 디지털 논리회로의 연결을 통해 컴퓨터의 구성 부품을 만들게 된다. 또한, 논리적 사고를 위한 가장 기본적인 동작으로 프로그래밍 논리 구조와 연결된다. 종류(진리표 추가하기) AND 게이트(논리곱) : 두 입력 모두 1인 경우에만 1, 나머지는 0이 출력된다. OR 게이트(논리합) : 두 입력 중 1이 존재할 경우 1, 아닐 시 0이 출력된다. NOT 게이트(논리부정, INVERTOR) : 입력이 반전되어 출력된다. NAND 게이트 : 두 입력 중 하나 이상 0인 경우 1, 나머지는 0이 출력된다. 즉, 두 입력이 모두 1인 경우 0이 출력된다. AND 게이트와 반대의 역할을 한다. NOR 게이트(부정논리합) : 두 입력 중 하나 이상 1인 경우 0, 나머지는 1이 출력된다. 즉, 두 입력 모두 0인 경우에 1이 출력된다. OR 게이트와 반대의 역할을 한다. XOR 게이트(배타적 논리합) : 입력이 같을 경우 0, 다를 경우 1이 출력된다. 참 입력의 개수가 홀수일 때 참을 내보낸다. 이진수 전원이 켜진 상태와 꺼진 상태를 각각 true, false의 형태로 나타낼 수 있으며, 이런 방식을 수학자 조지 부울의 이름을 따서 Boolean 타입이라고 부른다. Boolean 타입은 논리대수의 기본 타입이며 동시에 디지털 시스템을 구성하는 하드웨어 및 소프트웨어의 가장 기본적인 타입이다. 모든 전자부품은 전기의 흐름 유무로 Boolean 타입을 나타낼 수 있으며, 이 개념의 확장으로 모든 10진수 숫자를 2진수 코드로 나타낼 수 있다. 예시로, 1비트(bit)는 2개(0-1)의 값을 나타낼 수 있고, 2비트는 4개(0-3), 3비트는 8개(0-7)의 값을 나타낼 수 있다. 그리고 이는 각각 2^(비트수)의 형태로 나타난다. 반가산기(half-adder) 두 개의 비트를 더하는 과정에서, 결과값을 2비트의 값으로 표현해볼 수 있다. 왼쪽과 같이 2비트의 값으로 나타낼 수 있고, 한 비트 내의 두 이진수를 더하면, 두 비트가 되어 각각의 비트를 합(sum)비트, 자리올림(carry)비트라고 한다. 전가산기(full-adder) 두번째 자리부터는 자리올림이 발생한 경우에 대해서도 더해줘야 하기 때문에, 세 개의 이진수를 더하는 경우에는 두 개의 반가산기 및 OR 게이트를 활용하는 전가산기를 사용한다. 10진법과 2진법 10진법 10의 배수의 단위로 숫자를 나누어 나타내는 방법이다. 10단위가 올라갈 때마다 숫자가 증가하는 모습을 보인다. 2진법 2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해시 ∙ 해시맵</title><link href="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C-copy/" rel="alternate" type="text/html" title="해시 ∙ 해시맵" /><published>2021-12-11T00:00:00+09:00</published><updated>2021-12-11T00:00:00+09:00</updated><id>http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C%20copy</id><content type="html" xml:base="http://localhost:4000/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C-copy/">&lt;h1 id=&quot;1-해시hash&quot;&gt;1. 해시(Hash)&lt;/h1&gt;
 
 &lt;h2 id=&quot;1-1-직접-주소-테이블direct-address-table&quot;&gt;1-1. 직접 주소 테이블(Direct Address Table)&lt;/h2&gt;
 
@@ -231,194 +331,7 @@ Linked List를 이용해 &lt;strong&gt;다음 링크&lt;/strong&gt;에 끼워넣
 설명 동영상 : &lt;a href=&quot;https://www.youtube.com/watch?v=HraOg7W3VAM&quot;&gt;https://www.youtube.com/watch?v=HraOg7W3VAM&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Hashmap 충돌 해결법&lt;br /&gt;
 &lt;a href=&quot;https://overcome-the-limits.tistory.com/entry/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%ED%95%B4%EC%8B%9C%ED%85%8C%EC%9D%B4%EB%B8%94-with-JavaScript&quot;&gt;https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>JinJeon</name></author><category term="해시" /><category term="해시맵" /><summary type="html">1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &amp;lt;3 empty items&amp;gt;, 3, &amp;lt;6 empty items&amp;gt;, 10, &amp;lt;79 empty items&amp;gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &amp;lt;1 empty item&amp;gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = &quot;string&quot;; let testObject = { A: &quot;a&quot; }; let testFucntion = (B) =&amp;gt; { B = &quot;b&quot;; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&amp;gt; 1, &apos;string&apos; =&amp;gt; 2, { A: &apos;a&apos; } =&amp;gt; 3, [Function (anonymous)] =&amp;gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get(&quot;none&quot;); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, &quot;=&quot;, value); } // 1 = 1 // string = 2 // { A: &apos;a&apos; } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: &apos;a&apos; } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, &apos;string&apos;, { A: &apos;a&apos; }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ELEMENTS</title><link href="http://localhost:4000/guide/2021/12/01/elements/" rel="alternate" type="text/html" title="ELEMENTS" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/elements</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/elements/">&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
-
-&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
-
-&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
-
-&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
-
-&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
-
-&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
-
-&lt;p&gt;&lt;small&gt;A small element&lt;/small&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adip* isicing elit, sed do eiusmod *tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
-
-&lt;p&gt;Duis aute irure dolor in &lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt; reprehenderit in voluptate velit esse cillum &lt;strong&gt;bold text&lt;/strong&gt; dolore eu fugiat nulla pariatur. Excepteur span element sint occaecat cupidatat non proident, sunt &lt;em&gt;italicised text&lt;/em&gt; in culpa qui officia deserunt mollit anim id &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;some code&lt;/code&gt; est laborum.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item one&lt;/li&gt;
-  &lt;li&gt;Item two&lt;/li&gt;
-  &lt;li&gt;Item three&lt;/li&gt;
-  &lt;li&gt;Item four&lt;/li&gt;
-  &lt;li&gt;Item five&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A simple blockquote&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Some HTML…&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;You planning a vacation, Mr. Sullivan?&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sunways Security Guard&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;…CSS…&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8rem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;…and JavaScript&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mr. Sullivan&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Single line of code&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;html-includes&quot;&gt;HTML Includes&lt;/h2&gt;
-
-&lt;h3 id=&quot;contact-form&quot;&gt;Contact form&lt;/h3&gt;
-
-&lt;form class=&quot;form  form--contact&quot; method=&quot;post&quot; name=&quot;Contact&quot; action=&quot;/thanks/&quot;&gt;
-  &lt;fieldset class=&quot;fieldset  form__fieldset&quot;&gt;
-    &lt;legend class=&quot;legend form__legend&quot;&gt;Contact&lt;/legend&gt;
-    &lt;label class=&quot;label&quot; for=&quot;name--contact&quot;&gt;Name: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
-    &lt;input class=&quot;input&quot; id=&quot;name--contact&quot; type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot; placeholder=&quot;Your Name&quot; required=&quot;required&quot; /&gt;
-
-    &lt;label class=&quot;label&quot; for=&quot;email--contact&quot;&gt;Email Address: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
-    &lt;input class=&quot;input&quot; id=&quot;email--contact&quot; type=&quot;email&quot; name=&quot;email&quot; value=&quot;&quot; placeholder=&quot;email@website.com&quot; required=&quot;required&quot; /&gt;
-
-    &lt;label class=&quot;label&quot; for=&quot;message--contact&quot;&gt;Message: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
-    &lt;textarea class=&quot;textarea&quot; id=&quot;message--contact&quot; name=&quot;message&quot; placeholder=&quot;Your message...&quot; required=&quot;required&quot;&gt;&lt;/textarea&gt;
-
-    &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Send message&quot; /&gt;
-    &lt;br /&gt;
-    &lt;small class=&quot;small&quot;&gt;&lt;span class=&quot;required&quot;&gt;*&lt;/span&gt; indicates a required field&lt;/small&gt;
-
-    
-      &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; style=&quot;display:none&quot; /&gt;
-      &lt;input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;JINJEONIMUM submission from Contact&quot; /&gt;
-      &lt;input type=&quot;hidden&quot; name=&quot;_next&quot; value=&quot;/thanks/&quot; /&gt;
-    
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;script&gt;
-    var email = &quot;moc.liamg@10gnoynan&quot;;
-    var unraveledEmail = email.split(&quot;&quot;).reverse().join(&quot;&quot;);
-    var form = document.querySelector(&quot;.form--contact&quot;);
-      form.setAttribute(&quot;action&quot;, &quot;https://formspree.io/&quot; + unraveledEmail);
-  &lt;/script&gt;
-
-&lt;noscript&gt;Please enable JavaScript to use the form.&lt;/noscript&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include site-form.html %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;demo-map-embed&quot;&gt;Demo map embed&lt;/h3&gt;
-
-&lt;div class=&quot;map&quot;&gt;&lt;iframe src=&quot;https://www.google.com/maps/d/u/0/embed?mid=1UT-2Z-Vg_MG_TrS5X2p8SthsJhc&quot; title=&quot;Coffee shop map&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include map.html id=&quot;XXXXXX&quot; title=&quot;Coffee shop map&quot; %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;button-include&quot;&gt;Button include&lt;/h3&gt;
-
-&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://david.darn.es&quot;&gt;A button&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://twitter.com/daviddarnes&quot;&gt;A button with icon  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include button.html text=&quot;A button&quot; link=&quot;https://david.darn.es&quot; %}
-{% include button.html text=&quot;A button with icon&quot;
-link=&quot;https://twitter.com/daviddarnes&quot; icon=&quot;twitter&quot; %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;icon-include&quot;&gt;Icon include&lt;/h3&gt;
-
-&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/in/daviddarnes&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--linkedin&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#linkedin&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include icon.html id=&quot;twitter&quot; title=&quot;twitter&quot; %} [{% include
-icon.html id=&quot;linkedin&quot; title=&quot;twitter&quot;
-%}](https://www.linkedin.com/in/daviddarnes)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;video-include&quot;&gt;Video include&lt;/h3&gt;
-
-&lt;div class=&quot;video&quot;&gt;
-  &lt;iframe src=&quot;https://www.youtube.com/embed/zrkcGL5H3MU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot; title=&quot;Siteleaf tutorial video&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include video.html id=&quot;zrkcGL5H3MU&quot; title=&quot;Siteleaf tutorial video&quot;
-%}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;image-includes&quot;&gt;Image includes&lt;/h3&gt;
-
-&lt;figure class=&quot;figure  figure--center&quot;&gt;
-  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
-  &lt;figcaption class=&quot;caption&quot;&gt;Image with caption&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;figure  figure--right&quot;&gt;
-  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Right aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
-  &lt;figcaption class=&quot;caption&quot;&gt;Right aligned image&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;figure  figure--left&quot;&gt;
-  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Left aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
-  &lt;figcaption class=&quot;caption&quot;&gt;Left aligned image&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;figure  figure--center&quot;&gt;
-  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot; width=&quot;&quot; height=&quot;&quot; /&gt;
-  
-&lt;/figure&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include figure.html image=&quot;https://picsum.photos/600/800?image=894&quot;
-caption=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
-image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Right aligned image&quot;
-position=&quot;right&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
-image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Left aligned image&quot;
-position=&quot;left&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
-image=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot;
-%}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JinJeon</name></author><category term="GUIDE" /><summary type="html">MARKDOWN AND HTML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ALEMBIC</title><link href="http://localhost:4000/guide/2021/12/01/guide/" rel="alternate" type="text/html" title="ALEMBIC" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/guide</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/guide/">&lt;p&gt;Alembic is a starting point for &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; projects. Rather than starting from scratch, this boilerplate is designed to get rolling immediately. Install it, configure it, tweak it, push it.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>JinJeon</name></author><category term="해시" /><category term="해시맵" /><summary type="html">1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &amp;lt;3 empty items&amp;gt;, 3, &amp;lt;6 empty items&amp;gt;, 10, &amp;lt;79 empty items&amp;gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &amp;lt;1 empty item&amp;gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = &quot;string&quot;; let testObject = { A: &quot;a&quot; }; let testFucntion = (B) =&amp;gt; { B = &quot;b&quot;; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&amp;gt; 1, &apos;string&apos; =&amp;gt; 2, { A: &apos;a&apos; } =&amp;gt; 3, [Function (anonymous)] =&amp;gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get(&quot;none&quot;); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, &quot;=&quot;, value); } // 1 = 1 // string = 2 // { A: &apos;a&apos; } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: &apos;a&apos; } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, &apos;string&apos;, { A: &apos;a&apos; }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ALEMBIC</title><link href="http://localhost:4000/guide/2021/12/01/guide/" rel="alternate" type="text/html" title="ALEMBIC" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/guide</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/guide/">&lt;p&gt;Alembic is a starting point for &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; projects. Rather than starting from scratch, this boilerplate is designed to get rolling immediately. Install it, configure it, tweak it, push it.&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://github.com/daviddarnes/alembic&quot; style=&quot;background: #0366d6&quot;&gt;Fork it  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--github&quot; role=&quot;img&quot; alt=&quot;github&quot;&gt;&lt;title&gt;github&lt;/title&gt;&lt;use xlink:href=&quot;#github&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
 &lt;/a&gt;
@@ -722,7 +635,194 @@ cb 2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 &lt;strong&gt;우선적으로 들어온 함수를 처리&lt;/strong&gt;하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다.&lt;br /&gt;
-이를 통해, &lt;strong&gt;TASK QUEUE에서 QUEUE의 의미&lt;/strong&gt;를 다시 알 수 있다.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="동기" /><summary type="html">1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&amp;gt; { console.log(&quot;sync &quot;, i); bar(); }); } function bar() { baseData.forEach((v, i) =&amp;gt; { debugger; console.log(&quot;sync 2&quot;, i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log(&quot;FIRST&quot;); setTimeout(() =&amp;gt; console.log(&quot;THIRD&quot;), 5000); console.log(&quot;SECOND&quot;); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&amp;gt; console.log(++a), 1000); return a; } const result = plus(); console.log(&quot;result :&quot;, result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다. 3. 비동기의 예시 3-1. for, setTimeout() const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { for (var i = 0; i &amp;lt; arr.length; i++) { setTimeout(() =&amp;gt; fn(i), 1000); } }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 7 7 7 7 7 7 7 위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 7이 계속 출력된 것을 볼 수 있다. 이는 var가 가진 특징 때문인데, var는 함수레벨 스코프를 가지며, 전역변수의 값이 변경될 수 있게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&amp;gt; { for (var i = 0; i &amp;lt; arr.length; i++) { setTimeout(() =&amp;gt; fn(i), 1000); } console.log(i); // 7 }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 7 7 7 7 7 7 7 7 위 코드를 보면, var i = 2;로 값을 지정해준 상태에서, asyncRun 함수 안에서 console.log가 이루어지기 때문에, 값이 2로 나와야 한다. 그러나, for문 내의 var i = 0을 통해서 값이 재지정되었기 때문에 7이라는 값이 나오게 된다. setTimeout()역시 이미 1초보다 훨씬 이전에 처리된 i의 값으로 처리가 진행되기 때문에 7만 나오게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&amp;gt; { for (let i = 0; i &amp;lt; arr.length; i++) { // var를 let으로 변경 setTimeout(() =&amp;gt; fn(i), 1000); } console.log(i); // 2 }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 2 0 1 2 3 4 5 6 이와 달리, let은 블록레벨 스코프를 가져, 함수, if문, while문 등 중괄호로 된 곳내에서만 작동한다. 실행 시 1차적으로 for문 밖 i의 값이 2로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다. 3-2. forEach const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { arr.forEach((v, i) =&amp;gt; { setTimeout(() =&amp;gt; fn(i), 1000); }); }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 0 1 2 3 4 5 6 forEach로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다. 3-3. 비동기 + 비동기 const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { arr.forEach((v, i) =&amp;gt; { setTimeout(() =&amp;gt; { setTimeout(() =&amp;gt; { console.log(&quot;cb 2&quot;); fn(i); }, 1000); console.log(&quot;cb 1&quot;); }, 1000); }); }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); /* cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 2 0 cb 2 1 cb 2 2 cb 2 3 cb 2 4 cb 2 5 cb 2 6 */ 비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 우선적으로 들어온 함수를 처리하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다. 이를 통해, TASK QUEUE에서 QUEUE의 의미를 다시 알 수 있다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00+09:00</published><updated>2016-08-29T00:00:00+09:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
+이를 통해, &lt;strong&gt;TASK QUEUE에서 QUEUE의 의미&lt;/strong&gt;를 다시 알 수 있다.&lt;/p&gt;</content><author><name>JinJeon</name></author><category term="동기" /><summary type="html">1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&amp;gt; { console.log(&quot;sync &quot;, i); bar(); }); } function bar() { baseData.forEach((v, i) =&amp;gt; { debugger; console.log(&quot;sync 2&quot;, i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log(&quot;FIRST&quot;); setTimeout(() =&amp;gt; console.log(&quot;THIRD&quot;), 5000); console.log(&quot;SECOND&quot;); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&amp;gt; console.log(++a), 1000); return a; } const result = plus(); console.log(&quot;result :&quot;, result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다. 3. 비동기의 예시 3-1. for, setTimeout() const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { for (var i = 0; i &amp;lt; arr.length; i++) { setTimeout(() =&amp;gt; fn(i), 1000); } }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 7 7 7 7 7 7 7 위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 7이 계속 출력된 것을 볼 수 있다. 이는 var가 가진 특징 때문인데, var는 함수레벨 스코프를 가지며, 전역변수의 값이 변경될 수 있게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&amp;gt; { for (var i = 0; i &amp;lt; arr.length; i++) { setTimeout(() =&amp;gt; fn(i), 1000); } console.log(i); // 7 }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 7 7 7 7 7 7 7 7 위 코드를 보면, var i = 2;로 값을 지정해준 상태에서, asyncRun 함수 안에서 console.log가 이루어지기 때문에, 값이 2로 나와야 한다. 그러나, for문 내의 var i = 0을 통해서 값이 재지정되었기 때문에 7이라는 값이 나오게 된다. setTimeout()역시 이미 1초보다 훨씬 이전에 처리된 i의 값으로 처리가 진행되기 때문에 7만 나오게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&amp;gt; { for (let i = 0; i &amp;lt; arr.length; i++) { // var를 let으로 변경 setTimeout(() =&amp;gt; fn(i), 1000); } console.log(i); // 2 }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 2 0 1 2 3 4 5 6 이와 달리, let은 블록레벨 스코프를 가져, 함수, if문, while문 등 중괄호로 된 곳내에서만 작동한다. 실행 시 1차적으로 for문 밖 i의 값이 2로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다. 3-2. forEach const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { arr.forEach((v, i) =&amp;gt; { setTimeout(() =&amp;gt; fn(i), 1000); }); }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); // 0 1 2 3 4 5 6 forEach로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다. 3-3. 비동기 + 비동기 const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&amp;gt; { arr.forEach((v, i) =&amp;gt; { setTimeout(() =&amp;gt; { setTimeout(() =&amp;gt; { console.log(&quot;cb 2&quot;); fn(i); }, 1000); console.log(&quot;cb 1&quot;); }, 1000); }); }; asyncRun(baseData, (idx) =&amp;gt; console.log(idx)); /* cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 2 0 cb 2 1 cb 2 2 cb 2 3 cb 2 4 cb 2 5 cb 2 6 */ 비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 우선적으로 들어온 함수를 처리하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다. 이를 통해, TASK QUEUE에서 QUEUE의 의미를 다시 알 수 있다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ELEMENTS</title><link href="http://localhost:4000/guide/2021/12/01/elements/" rel="alternate" type="text/html" title="ELEMENTS" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/elements</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/elements/">&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+
+&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
+
+&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
+
+&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
+
+&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
+
+&lt;p&gt;&lt;small&gt;A small element&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adip* isicing elit, sed do eiusmod *tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+
+&lt;p&gt;Duis aute irure dolor in &lt;a href=&quot;https://david.darn.es&quot; title=&quot;A link&quot;&gt;A link&lt;/a&gt; reprehenderit in voluptate velit esse cillum &lt;strong&gt;bold text&lt;/strong&gt; dolore eu fugiat nulla pariatur. Excepteur span element sint occaecat cupidatat non proident, sunt &lt;em&gt;italicised text&lt;/em&gt; in culpa qui officia deserunt mollit anim id &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;some code&lt;/code&gt; est laborum.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+  &lt;li&gt;An item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item one&lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+  &lt;li&gt;Item three&lt;/li&gt;
+  &lt;li&gt;Item four&lt;/li&gt;
+  &lt;li&gt;Item five&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A simple blockquote&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Some HTML…&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;You planning a vacation, Mr. Sullivan?&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.imdb.com/title/tt0284978/quotes/qt1375101&quot;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sunways Security Guard&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…CSS…&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8rem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…and JavaScript&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keyString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bolden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mr. Sullivan&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blockquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Single line of code&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;html-includes&quot;&gt;HTML Includes&lt;/h2&gt;
+
+&lt;h3 id=&quot;contact-form&quot;&gt;Contact form&lt;/h3&gt;
+
+&lt;form class=&quot;form  form--contact&quot; method=&quot;post&quot; name=&quot;Contact&quot; action=&quot;/thanks/&quot;&gt;
+  &lt;fieldset class=&quot;fieldset  form__fieldset&quot;&gt;
+    &lt;legend class=&quot;legend form__legend&quot;&gt;Contact&lt;/legend&gt;
+    &lt;label class=&quot;label&quot; for=&quot;name--contact&quot;&gt;Name: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&quot;input&quot; id=&quot;name--contact&quot; type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot; placeholder=&quot;Your Name&quot; required=&quot;required&quot; /&gt;
+
+    &lt;label class=&quot;label&quot; for=&quot;email--contact&quot;&gt;Email Address: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&quot;input&quot; id=&quot;email--contact&quot; type=&quot;email&quot; name=&quot;email&quot; value=&quot;&quot; placeholder=&quot;email@website.com&quot; required=&quot;required&quot; /&gt;
+
+    &lt;label class=&quot;label&quot; for=&quot;message--contact&quot;&gt;Message: &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;textarea class=&quot;textarea&quot; id=&quot;message--contact&quot; name=&quot;message&quot; placeholder=&quot;Your message...&quot; required=&quot;required&quot;&gt;&lt;/textarea&gt;
+
+    &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Send message&quot; /&gt;
+    &lt;br /&gt;
+    &lt;small class=&quot;small&quot;&gt;&lt;span class=&quot;required&quot;&gt;*&lt;/span&gt; indicates a required field&lt;/small&gt;
+
+    
+      &lt;input type=&quot;text&quot; name=&quot;_gotcha&quot; style=&quot;display:none&quot; /&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;JINJEONIMUM submission from Contact&quot; /&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;_next&quot; value=&quot;/thanks/&quot; /&gt;
+    
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+    var email = &quot;moc.liamg@10gnoynan&quot;;
+    var unraveledEmail = email.split(&quot;&quot;).reverse().join(&quot;&quot;);
+    var form = document.querySelector(&quot;.form--contact&quot;);
+      form.setAttribute(&quot;action&quot;, &quot;https://formspree.io/&quot; + unraveledEmail);
+  &lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to use the form.&lt;/noscript&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include site-form.html %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;demo-map-embed&quot;&gt;Demo map embed&lt;/h3&gt;
+
+&lt;div class=&quot;map&quot;&gt;&lt;iframe src=&quot;https://www.google.com/maps/d/u/0/embed?mid=1UT-2Z-Vg_MG_TrS5X2p8SthsJhc&quot; title=&quot;Coffee shop map&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include map.html id=&quot;XXXXXX&quot; title=&quot;Coffee shop map&quot; %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;button-include&quot;&gt;Button include&lt;/h3&gt;
+
+&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://david.darn.es&quot;&gt;A button&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;button&quot; href=&quot;https://twitter.com/daviddarnes&quot;&gt;A button with icon  &lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include button.html text=&quot;A button&quot; link=&quot;https://david.darn.es&quot; %}
+{% include button.html text=&quot;A button with icon&quot;
+link=&quot;https://twitter.com/daviddarnes&quot; icon=&quot;twitter&quot; %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;icon-include&quot;&gt;Icon include&lt;/h3&gt;
+
+&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--twitter&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#twitter&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/in/daviddarnes&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; class=&quot;icon  icon--linkedin&quot; role=&quot;img&quot; alt=&quot;twitter&quot;&gt;&lt;title&gt;twitter&lt;/title&gt;&lt;use xlink:href=&quot;#linkedin&quot; fill=&quot;CurrentColor&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include icon.html id=&quot;twitter&quot; title=&quot;twitter&quot; %} [{% include
+icon.html id=&quot;linkedin&quot; title=&quot;twitter&quot;
+%}](https://www.linkedin.com/in/daviddarnes)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;video-include&quot;&gt;Video include&lt;/h3&gt;
+
+&lt;div class=&quot;video&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/zrkcGL5H3MU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot; title=&quot;Siteleaf tutorial video&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include video.html id=&quot;zrkcGL5H3MU&quot; title=&quot;Siteleaf tutorial video&quot;
+%}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;image-includes&quot;&gt;Image includes&lt;/h3&gt;
+
+&lt;figure class=&quot;figure  figure--center&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Image with caption&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--right&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Right aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Right aligned image&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--left&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/600/800?image=894&quot; alt=&quot;Left aligned image&quot; width=&quot;300&quot; height=&quot;800&quot; /&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;Left aligned image&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;figure  figure--center&quot;&gt;
+  &lt;img class=&quot;image&quot; src=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot; width=&quot;&quot; height=&quot;&quot; /&gt;
+  
+&lt;/figure&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include figure.html image=&quot;https://picsum.photos/600/800?image=894&quot;
+caption=&quot;Image with caption&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Right aligned image&quot;
+position=&quot;right&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/600/800?image=894&quot; caption=&quot;Left aligned image&quot;
+position=&quot;left&quot; width=&quot;300&quot; height=&quot;800&quot; %} {% include figure.html
+image=&quot;https://picsum.photos/1600/800?image=894&quot; alt=&quot;Image with just alt text&quot;
+%}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JinJeon</name></author><category term="GUIDE" /><summary type="html">MARKDOWN AND HTML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00+09:00</published><updated>2016-08-29T00:00:00+09:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
 
 &lt;p&gt;At standard atmospheric pressure, alcohol boils at 78 °C (172 °F), while water boils at 100 °C (212 °F). During distillation, the vapour contains more alcohol than the liquid. When the vapours are condensed, the resulting liquid contains a higher concentration of alcohol. In the pot still, the alcohol and water vapour combine with esters and flow from the still through the condensing coil. There they condense into the first distillation liquid, the so-called “low wines”. The low wines have a strength of about 25–35% alcohol by volume, and flow into a second still. It is then distilled a second time to produce the colourless spirit, collected at about 70% alcohol by volume. Colour is added through maturation in an oak aging barrel, and develops over time.&lt;/p&gt;
 
