@@ -164,6 +164,9 @@ body {
     .section {
       position: sticky;
       top: 0;
+      .nav--social {
+        margin-top: 1rem;
+      }
     }
     &--left {
       margin-left: 0;
@@ -179,10 +182,12 @@ body {
 .category {
   margin-top: 2rem;
   h2 {
-    margin-left: -1.3rem;
     padding-top: 0;
     padding-left: 0.9rem;
-    border-left: solid 0.4rem $accentColour;
+    border-left: solid 0.4rem $linkColour;
+    @include breakpoint(break-1) {
+      margin-left: -1.3rem;
+    }
   }
 }
 
@@ -191,9 +196,11 @@ body {
 }
 .article--title {
   margin-bottom: 2.6rem;
-  margin-left: -1.3rem;
   padding-left: 0.9rem;
-  border-left: solid 0.4rem $accentColour;
+  border-left: solid 0.4rem $linkColour;
+  @include breakpoint(break-1) {
+    margin-left: -1.3rem;
+  }
 }
 
 // Lists
@@ -206,8 +213,15 @@ body {
   .item--post {
     margin-left: 0;
     .article--post {
-      border-bottom: dashed 0.25rem $featureFontColour;
-      margin-bottom: 1rem;
+      border-bottom: solid 0.25rem $codeBackgroundColour;
+      margin-bottom: 1.5rem;
+      .article--title {
+        // margin-top: 1.5rem;
+        margin-bottom: 0rem;
+      }
+      h3 {
+        padding-top: 0rem;
+      }
     }
   }
   .item--post,
@@ -217,7 +231,14 @@ body {
   }
   .search--result {
     padding: 1rem 0rem;
-    border-bottom: dashed 0.25rem $featureFontColour;
+    border-bottom: solid 0.25rem $codeBackgroundColour;
+    // h4 {
+    //   padding-left: 0.9rem;
+    //   border-left: solid 0.4rem $linkColour;
+    //   @include breakpoint(break-1) {
+    //     margin-left: -1.3rem;
+    //   }
+    // }
     p {
       margin-top: 0.1rem;
       margin-bottom: 0.1rem;

@@ -4,9 +4,10 @@
       {% for page in paginator.posts %}
         <li class="item  item--post">
           <article class="article  article--post">
-
-            <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
-            {% include post-meta.html %}
+            <div class="article--title">
+              <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
+              {% include post-meta.html %}
+            </div>
             {{ page.feature_text | markdownify | truncatewords: 60 }}
 
           </article>

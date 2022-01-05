@@ -1,8 +1,8 @@
-const version = '20220104144624';
+const version = '20220106022008';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/%EA%B2%8C%EC%9D%B4%ED%8A%B8/%EB%B0%98%EA%B0%80%EC%82%B0%EA%B8%B0/%EC%A0%84%EA%B0%80%EC%82%B0%EA%B8%B0/10%EC%A7%84%EB%B2%95/2%EC%A7%84%EB%B2%95/2022/01/03/1%EB%B2%88/","/%ED%95%B4%EC%8B%9C/%ED%95%B4%EC%8B%9C%EB%A7%B5/2021/12/11/%ED%95%B4%EC%8B%9C-copy/","/%EB%8F%99%EA%B8%B0/2021/12/01/tester/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/general/2016/08/29/example-post-three/","/history/external/2016/08/28/example-post-two/","/general/external/2016/08/27/example-post-one/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/develop/2022/01/03/%EB%94%94%EC%A7%80%ED%84%B8_%EB%85%BC%EB%A6%AC%ED%9A%8C%EB%A1%9C/","/develop/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5/","/develop/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 

@@ -310,9 +310,9 @@ a {
   // Quotes.
   blockquote {
     p {
-      border-left: 0.2rem solid $linkColour;
+      border-left: 0.4rem solid $accentColour;
       font-style: map-get($bodytype, italic);
-      padding-left: 0.8rem;
+      padding-left: 0.9rem;
 
       // Add spacing below blockquote paragraphs to align to baseline grid.
       $get-scale: map-get($modular-scale, scale-0);
@@ -367,7 +367,7 @@ a {
     }
 
     @include breakpoint(break-1) {
-      margin-left: -1rem;
+      margin-left: -1.3rem;
     }
   }
 
