@@ -241,20 +241,26 @@ a {
 
   // Tables.
   table {
-    @include sassline(eta, $headingtype, 2, 0, all);
-
+    @include sassline(eta, $headingtype, 2, 2, all); // 두번째 2가 원래는 0
     font-family: unquote(map-get($headingtype, font-family));
     font-feature-settings: "liga", "lnum", "tnum", "kern";
     font-style: normal;
     font-weight: map-get($headingtype, regular);
     width: 100%;
-
     thead {
+      border-bottom: solid 0.5rem $codeBackgroundColour;
       th {
-        @include sassline(zeta, $headingtype, 2, 0, all);
+        @include sassline(eta, $headingtype, 2, 0, all); // zeta => eta 변경
         padding-bottom: 1px;
+        font-weight: bolder;
+        color: $accentColour;
       }
     }
+    border-collapse: separate !important;
+    border: solid 0.5rem $codeBackgroundColour;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
   }
 
   // Bold.
@@ -390,7 +396,7 @@ a {
   // Code block.
   code,
   pre {
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     background-color: $codeBackgroundColour;
     font-family: unquote(map-get($monospacetype, font-family));
   }

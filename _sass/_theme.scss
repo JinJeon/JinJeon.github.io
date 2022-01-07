@@ -13,7 +13,6 @@ body {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 // Header, feature and footer
 .header,
 .footer {
@@ -282,6 +281,7 @@ a .icon {
 img {
   max-width: 100%;
   height: auto;
+  border-radius: 0.5rem;
 }
 
 .figure {

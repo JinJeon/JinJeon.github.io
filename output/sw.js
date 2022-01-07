@@ -1,8 +1,8 @@
-const version = '20220106022008';
+const version = '20220107092403';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/develop/2022/01/03/%EB%94%94%EC%A7%80%ED%84%B8_%EB%85%BC%EB%A6%AC%ED%9A%8C%EB%A1%9C/","/develop/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5/","/develop/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/dev/2022/01/06/%EB%A6%AC%EB%88%85%EC%8A%A4/","/dev/2022/01/03/%EB%94%94%EC%A7%80%ED%84%B8_%EB%85%BC%EB%A6%AC%ED%9A%8C%EB%A1%9C/","/dev/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5/","/dev/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0/","/guide/2021/12/01/guide/","/guide/2021/12/01/elements/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
