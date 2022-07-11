@@ -217,7 +217,7 @@ body {
   .item--post {
     margin-left: 0;
     .article--post {
-      border-bottom: solid 0.25rem $codeBackgroundColour;
+      border-bottom: dashed 0.25rem $codeBackgroundColour;
       margin-bottom: 1.5rem;
       .article--title {
         // margin-top: 1.5rem;
@@ -524,11 +524,5 @@ pre code {
   pre {
     white-space: pre;
     overflow-x: scroll;
-  }
-}
-
-ul {
-  li {
-    margin-bottom: 0.5rem;
   }
 }
