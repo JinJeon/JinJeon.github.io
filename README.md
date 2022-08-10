@@ -1,2 +1,0 @@
-# JinJeon.github.io
-BLOG

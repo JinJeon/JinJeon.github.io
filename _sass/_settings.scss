@@ -1,0 +1,41 @@
+// Background colours
+$backgroundColour: #ffffff !default;
+$codeBackgroundColour: #eeeeee !default;
+$headerBackgroundColour: #ffeb7a !default;
+$accentColour: #af6055 !default;
+
+// Text colours
+$headingColour: #242e2b !default;
+$bodyColour: #384743 !default;
+$linkColour: #4e9986 !default;
+$hoverColour: #276d5b !default;
+$focusColour: #fa407a !default;
+$captionColour: #276d5b !default;
+$featureFontColour: #000000 !default;
+$footerhoverColour: #000000 !default;
+
+$white: #ffffff !default;
+
+// Typography
+$bodytype: (
+  font-family: "IBM Plex Sans KR",
+  regular: 400,
+  bold: 700,
+  italic: italic,
+  cap-height: 0.75,
+) !default;
+
+$headingtype: (
+  font-family: "IBM Plex Sans KR",
+  regular: 400,
+  bold: 700,
+  cap-height: 0.75,
+) !default;
+
+$monospacetype: (
+  font-family: "IBM Plex Sans KR",
+  regular: 400,
+  cap-height: 0.68,
+) !default;
+
+// TIP: Load custom fonts in _config.yaml
