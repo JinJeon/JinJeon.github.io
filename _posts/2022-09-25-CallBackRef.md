@@ -1,7 +1,7 @@
 ---
 title: 자동 스크롤을 위한 React의 Callback Ref
 categories:
-  - REACt
+  - REACT
 feature_image: ""
 feature_text: |
   자동 스크롤을 위한 React의 Callback Ref
