@@ -202,10 +202,12 @@ body {
 .article--page {
   margin-bottom: 1rem;
 }
+
 .article--title {
   margin-bottom: 2.6rem;
-  padding-left: 0.9rem;
+  padding-left: 1rem;
   border-left: solid 0.4rem $linkColour;
+
   @include breakpoint(break-1) {
     margin-left: -1.3rem;
   }
@@ -222,12 +224,17 @@ body {
     margin-left: 0;
 
     .article--post {
-      border-bottom: solid 0.25rem transparent;
+      border-bottom: solid 0.25rem $codeBackgroundColour;
       margin-bottom: 1.5rem;
 
       .article--title {
         margin-bottom: 0rem;
-        border-left: solid 0.4rem transparent;
+        border-left: none;
+
+        @include breakpoint(break-1) {
+          padding-left: 0;
+          margin-left: 0;
+        }
       }
 
       h3 {

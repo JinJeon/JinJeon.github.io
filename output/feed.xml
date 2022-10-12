@@ -1,4 +1,235 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-10-12T21:22:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">깊이 우선 그래프 순회</title><link href="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C/" rel="alternate" type="text/html" title="깊이 우선 그래프 순회" /><published>2022-10-10T00:00:00+09:00</published><updated>2022-10-10T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C/"><![CDATA[<p>트리는 그래프의 일종으로, 그래프 자체는 한 노드에서 다른 노드로 갈 수 있는 경로가 트리에 비해 더 많아집니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-10-12T22:12:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'date'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentDateTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDateTime</span><span class="si">}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'time'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeTime</span><span class="si">}</span> <span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/first.gif" alt="" width="35%" height="" /> 
+</figure>
+
+<p>하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다.<br />
+(링크 : <a href="https://reactdatepicker.com/">React Datepicker crafted by HackerOne</a>)</p>
+
+<p>설치는 아래 코드들로 진행했습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install react-datepicker --save
+npm install @types/react-datepicker
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="날짜-설정">날짜 설정</h3>
+
+<p>사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="dl">"</span><span class="s2">react-datepicker/dist/react-datepicker.css</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">ReactDatePicker</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-datepicker</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledDatePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
+  border: none;
+  background-color: transparent;
+  padding: 0;
+`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
+  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
+  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
+<span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/date default.png" alt="" width="50%" height="" /> 
+</figure>
+
+<p>이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">react</span><span class="o">-</span><span class="nx">datepicker</span> <span class="p">{</span>
+	<span class="o">&amp;</span><span class="nx">__day</span> <span class="p">{</span>
+	  <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
+	  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
+	  <span class="nl">width</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="sr">/ 10</span><span class="se">)</span><span class="err">;
+</span>	  <span class="nx">aspect</span><span class="o">-</span><span class="nx">ratio</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+	  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="p">:</span> <span class="nx">initial</span><span class="p">;</span>
+	  <span class="nl">display</span><span class="p">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">flex</span><span class="p">;</span>
+	  <span class="nx">align</span><span class="o">-</span><span class="nx">items</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+	  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+	  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+
+	  <span class="p">:</span><span class="nx">hover</span> <span class="p">{</span>
+	    <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">10</span><span class="nx">rem</span><span class="p">;</span>
+	  <span class="p">}</span>
+
+	  <span class="o">&amp;-</span><span class="nx">name</span> <span class="p">{</span>
+	    <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
+
+		<span class="p">...</span>
+
+	  <span class="o">&amp;--</span><span class="nx">disabled</span> <span class="p">{</span>
+	    <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="p">:</span> <span class="nx">line</span><span class="o">-</span><span class="nx">through</span><span class="p">;</span>
+	    <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey3</span><span class="p">};</span>
+	  <span class="p">}</span>
+	<span class="p">}</span>
+
+
+</code></pre></div></div>
+
+<p>날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(<code class="language-plaintext highlighter-rouge">react-datepicker__current-month</code>)와 같은 선상에 있으면서 <code class="language-plaintext highlighter-rouge">position: absolute</code>로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 <code class="language-plaintext highlighter-rouge">top</code>으로 직접 받아 처리하도록 우선 구성했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&amp;</span><span class="nx">__current</span> <span class="p">{</span>
+  <span class="o">&amp;-</span><span class="nx">month</span> <span class="p">{</span>
+    <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">left</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">/</span> <span class="mi">80</span> <span class="o">-</span> <span class="mi">5</span><span class="nx">px</span><span class="p">);</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mf">0.5</span><span class="nx">rem</span><span class="p">;</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">top</span><span class="p">:</span> <span class="mf">0.75</span><span class="nx">rem</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">&amp;</span><span class="nx">__navigation</span> <span class="p">{</span>
+	  <span class="o">&amp;--</span><span class="nx">previous</span> <span class="p">{</span>
+	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
+	    <span class="nl">left</span><span class="p">:</span> <span class="nx">unset</span><span class="p">;</span>
+	    <span class="nl">right</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">32</span><span class="nx">px</span><span class="p">);</span>
+	  <span class="p">}</span>
+	  <span class="o">&amp;--</span><span class="nx">next</span> <span class="p">{</span>
+	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
+	    <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span><span class="nx">px</span><span class="p">;</span>
+	  <span class="p">}</span>
+	  <span class="o">&amp;-</span><span class="nx">icon</span> <span class="p">{</span>
+	    <span class="p">::</span><span class="nx">before</span> <span class="p">{</span>
+	      <span class="nl">border</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+	    <span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
+  <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">appointmentDateTime</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 선택된 날짜를 지정</span>
+  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
+  <span class="c1">// input에 보이는 날짜 형식 설정</span>
+  <span class="na">minDate</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><span class="si">}</span>
+  <span class="c1">// 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨</span>
+  <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+  <span class="c1">// 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정</span>
+  <span class="na">formatWeekDay</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">nameOfDay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">nameOfDay</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경</span>
+  <span class="na">nextMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronRight"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
+  <span class="c1">// 다음 달 보기 버튼 표현방식 변경</span>
+  <span class="na">previousMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronLeft"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
+  <span class="c1">// 이전 달 보기 버튼 표현방식 변경</span>
+<span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/date finish.gif" alt="" width="50%" height="" /> 
+</figure>
+
+<h3 id="시간-설정">시간 설정</h3>
+
+<p>시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다.</p>
+
+<div style="display: flex">
+  <figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time design.png" alt="" width="65%" height="" /> 
+</figure>
+
+  <figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time default.png" alt="" width="100%" height="" /> 
+</figure>
+
+</div>
+
+<p>왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다.</p>
+
+<p>시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledTimePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  :focus {
+    outline: none;
+  }
+`</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="o">&amp;</span><span class="nx">__header</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="o">&amp;--</span><span class="nx">time</span> <span class="p">{</span>
+    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">:</span> <span class="nx">transparent</span><span class="p">;</span>
+    <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">&amp;-</span><span class="nx">time__header</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">{</span><span class="nx">flexCenter</span><span class="p">};</span>
+
+  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">word</span><span class="o">-</span><span class="nx">spacing</span><span class="p">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+  <span class="nx">white</span><span class="o">-</span><span class="nx">space</span><span class="p">:</span> <span class="nx">pre</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">8</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">400</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="mi">25</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span> <span class="na">isTimeFocused</span><span class="p">=</span><span class="si">{</span><span class="nx">isTimeFocused</span><span class="si">}</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledTimePicker</span>
+    <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChangeTimeTest</span><span class="si">}</span>
+    <span class="c1">// 기존 input과 동일</span>
+    <span class="na">timeIntervals</span><span class="p">=</span><span class="si">{</span><span class="nx">timeIntervals</span><span class="si">}</span>
+    <span class="c1">// 시간 설정의 간격을 조절함</span>
+    <span class="na">showTimeSelect</span>
+    <span class="na">showTimeSelectOnly</span>
+    <span class="c1">// 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함</span>
+    <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="nx">currentTimeDateType</span><span class="si">}</span>
+    <span class="c1">// 선택된 시간에 selected 클래스를 지정함</span>
+    <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+    <span class="na">timeFormat</span><span class="p">=</span><span class="s">"HH mm aa"</span>
+    <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span>
+    <span class="na">timeCaption</span><span class="p">=</span><span class="s">"HOUR MINUTE"</span>
+    <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+    <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronDown"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.9</span><span class="si">}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p>날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다.</p>
+
+<p>단, 시간 설정을 할 때에는 <code class="language-plaintext highlighter-rouge">showTimeSelect</code>, <code class="language-plaintext highlighter-rouge">showTimeSelectOnly</code> 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다.</p>
+
+<p>시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time finish.gif" alt="" width="45%" height="" /> 
+</figure>
+
+<h3 id="특이-사항">특이 사항</h3>
+
+<p>스타일 관련 작업들을 진행하면서, <code class="language-plaintext highlighter-rouge">!important</code>를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. <code class="language-plaintext highlighter-rouge">!important</code>를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.</p>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다. &lt;S.DateInputForm type='date' value={appointmentDateTime} onChange={handelChangeDateTime} /&gt; &lt;S.DateInputForm type='time' value={appointmentTime} onChange={handelChangeTime} /&gt; 하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다. (링크 : React Datepicker crafted by HackerOne) 설치는 아래 코드들로 진행했습니다. npm install react-datepicker --save npm install @types/react-datepicker 날짜 설정 사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다. import "react-datepicker/dist/react-datepicker.css"; import ReactDatePicker from "react-datepicker"; export const StyledDatePicker = styled(ReactDatePicker)` border: none; background-color: transparent; padding: 0; `; &lt;S.StyledDatePicker onFocus={() =&gt; setIsDateFocused(true)} onBlur={() =&gt; setIsDateFocused(false)} onChange={handelChangeDate} dateFormat="yyyy.MM.dd" /&gt; 이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다. .react-datepicker { &amp;__day { ${fonts.xSmall}; color: ${colors.grey4}; width: calc(100% / 10); aspect-ratio: 1; line-height: initial; display: inline-flex; align-items: center; justify-content: center; margin: 0; :hover { border-radius: 10rem; } &amp;-name { ${fonts.xSmall}; ... &amp;--disabled { text-decoration: line-through; color: ${colors.grey3}; } } 날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(react-datepicker__current-month)와 같은 선상에 있으면서 position: absolute로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 top으로 직접 받아 처리하도록 우선 구성했습니다. &amp;__current { &amp;-month { text-align: left; padding-left: calc(100% * 7 / 80 - 5px); padding-bottom: 0.5rem; padding-top: 0.75rem; } } &amp;__navigation { &amp;--previous { top: 5px; left: unset; right: calc(32px); } &amp;--next { top: 5px; right: 0px; } &amp;-icon { ::before { border: none; } } } } datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다. &lt;S.StyledDatePicker selected={new Date(appointmentDateTime)} // 선택된 날짜를 지정 onFocus={() =&gt; setIsDateFocused(true)} // 기존 input과 동일 onBlur={() =&gt; setIsDateFocused(false)} // 기존 input과 동일 onChange={handelChangeDate} // 기존 input과 동일 dateFormat="yyyy.MM.dd" // input에 보이는 날짜 형식 설정 minDate={new Date()} // 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨 showPopperArrow={false} // 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정 formatWeekDay={(nameOfDay) =&gt; nameOfDay.substring(0, 1)} // 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경 nextMonthButtonLabel={&lt;Icon iconName="ChevronRight" iconSize={0.75} /&gt;} // 다음 달 보기 버튼 표현방식 변경 previousMonthButtonLabel={&lt;Icon iconName="ChevronLeft" iconSize={0.75} /&gt;} // 이전 달 보기 버튼 표현방식 변경 /&gt; 시간 설정 시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다. 왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다. 시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다. export const StyledTimePicker = styled(ReactDatePicker)` width: 100%; border: none; background-color: transparent; padding: 0; :focus { outline: none; } `; ... &amp;__header { padding: 0; &amp;--time { background-color: transparent; border-bottom: none; } } &amp;-time__header { ${flexCenter}; justify-content: left; width: 100px; word-spacing: 10px; margin: 0 auto; white-space: pre; font-size: 8px; font-weight: 400; height: 25px; color: ${colors.grey4}; } ... &lt;S.TimeInputWrapper isTimeFocused={isTimeFocused}&gt; &lt;S.StyledTimePicker onChange={handleChangeTimeTest} // 기존 input과 동일 timeIntervals={timeIntervals} // 시간 설정의 간격을 조절함 showTimeSelect showTimeSelectOnly // 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함 selected={currentTimeDateType} // 선택된 시간에 selected 클래스를 지정함 showPopperArrow={false} timeFormat="HH mm aa" value={appointmentTime} timeCaption="HOUR MINUTE" onFocus={() =&gt; setIsTimeFocused(true)} onBlur={() =&gt; setIsTimeFocused(false)} /&gt; &lt;Icon iconName="ChevronDown" iconSize={0.9} /&gt; &lt;/S.TimeInputWrapper&gt; 날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다. 단, 시간 설정을 할 때에는 showTimeSelect, showTimeSelectOnly 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다. 시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다. 특이 사항 스타일 관련 작업들을 진행하면서, !important를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. !important를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">깊이 우선 그래프 순회</title><link href="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/" rel="alternate" type="text/html" title="깊이 우선 그래프 순회" /><published>2022-10-10T00:00:00+09:00</published><updated>2022-10-10T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C%20copy</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/"><![CDATA[<p>트리는 그래프의 일종으로, 그래프 자체는 한 노드에서 다른 노드로 갈 수 있는 경로가 트리에 비해 더 많아집니다.</p>
 
 <p>여러 갈래로 연결된 그래프에서 최단 거리를 찾는 것과 같은 작업에서 ‘그래프 순회’의 방법을 사용하게 되며, 예시는 아래와 같습니다.</p>
 
@@ -1454,106 +1685,4 @@ cb 2
 </code></pre></div></div>
 
 <p>비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 <strong>우선적으로 들어온 함수를 처리</strong>하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다.<br />
-이를 통해, <strong>TASK QUEUE에서 QUEUE의 의미</strong>를 다시 알 수 있다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&gt; { console.log("sync ", i); bar(); }); } function bar() { baseData.forEach((v, i) =&gt; { debugger; console.log("sync 2", i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log("FIRST"); setTimeout(() =&gt; console.log("THIRD"), 5000); console.log("SECOND"); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&gt; console.log(++a), 1000); return a; } const result = plus(); console.log("result :", result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다. 3. 비동기의 예시 3-1. for, setTimeout() const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 7이 계속 출력된 것을 볼 수 있다. 이는 var가 가진 특징 때문인데, var는 함수레벨 스코프를 가지며, 전역변수의 값이 변경될 수 있게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 7 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 7 위 코드를 보면, var i = 2;로 값을 지정해준 상태에서, asyncRun 함수 안에서 console.log가 이루어지기 때문에, 값이 2로 나와야 한다. 그러나, for문 내의 var i = 0을 통해서 값이 재지정되었기 때문에 7이라는 값이 나오게 된다. setTimeout()역시 이미 1초보다 훨씬 이전에 처리된 i의 값으로 처리가 진행되기 때문에 7만 나오게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (let i = 0; i &lt; arr.length; i++) { // var를 let으로 변경 setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 2 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 2 0 1 2 3 4 5 6 이와 달리, let은 블록레벨 스코프를 가져, 함수, if문, while문 등 중괄호로 된 곳내에서만 작동한다. 실행 시 1차적으로 for문 밖 i의 값이 2로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다. 3-2. forEach const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; fn(i), 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 0 1 2 3 4 5 6 forEach로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다. 3-3. 비동기 + 비동기 const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; { setTimeout(() =&gt; { console.log("cb 2"); fn(i); }, 1000); console.log("cb 1"); }, 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); /* cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 2 0 cb 2 1 cb 2 2 cb 2 3 cb 2 4 cb 2 5 cb 2 6 */ 비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 우선적으로 들어온 함수를 처리하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다. 이를 통해, TASK QUEUE에서 QUEUE의 의미를 다시 알 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ALEMBIC</title><link href="http://localhost:4000/guide/2021/12/01/guide/" rel="alternate" type="text/html" title="ALEMBIC" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/guide/2021/12/01/guide</id><content type="html" xml:base="http://localhost:4000/guide/2021/12/01/guide/"><![CDATA[<p>Alembic is a starting point for <a href="https://jekyllrb.com/">Jekyll</a> projects. Rather than starting from scratch, this boilerplate is designed to get rolling immediately. Install it, configure it, tweak it, push it.</p>
-
-<p><a class="button" href="https://github.com/daviddarnes/alembic" style="background: #0366d6">Fork it  <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
-</a>
- <a class="button" href="https://buymeacoffee.com/daviddarnes#support" style="background: #f68140">Buy me a coffee ☕️</a>
- <a class="button" href="https://twitter.com/intent/tweet/?url=https://alembic.darn.es&amp;text=Alembic%20-%20A%20Jekyll%20boilerplate%20theme&amp;via=DavidDarnes" style="background: #0d94e7">Tweet it  <svg width="16" height="16" class="icon  icon--twitter" role="img" alt="twitter"><title>twitter</title><use xlink:href="#twitter" fill="CurrentColor"></use></svg>
-</a>
- <a class="button" href="https://github.com/daviddarnes/alembic#installation">Install Alembic ⚗️</a></p>
-
-<h2 id="features">Features</h2>
-
-<ul>
-  <li>Clear and elegant design that can be used out of the box or as solid starting point</li>
-  <li>Tested in all major browsers, including <strong>IE and Edge</strong></li>
-  <li>Built in <strong>Service Worker</strong> so it can work offline and on slow connections</li>
-  <li><strong>Configurable colours</strong> and typography in a single settings file</li>
-  <li>Extensive set of <strong>shortcodes</strong> to include various elements; such as buttons, icons, figure images and more</li>
-  <li>Solid <strong>typographic framework</strong> from <a href="https://sassline.com/">Sassline</a></li>
-  <li>Configurable navigation via a single file</li>
-  <li>Modular Jekyll components</li>
-  <li>Post category support in the form of a single post index page grouped by category</li>
-  <li>Built in live search using JavaScript</li>
-  <li><strong>Contact form</strong> built in using <a href="https://formspree.io/">Formspree</a></li>
-  <li>Designed with <strong><a href="https://www.siteleaf.com/">Siteleaf</a></strong> in mind</li>
-  <li>Has 9 of the most popular networks as performant sharing buttons</li>
-  <li>Has documentation</li>
-</ul>
-
-<h2 id="examples">Examples</h2>
-
-<p>Here are a few examples of Alembic out in the wild being used in a variety of ways:</p>
-
-<ul>
-  <li><a href="https://bawejakunal.github.io/">bawejakunal.github.io</a></li>
-  <li><a href="https://case2111.github.io/">case2111.github.io</a></li>
-  <li><a href="https://www.karateca.org/">karateca.org</a></li>
-</ul>
-
-<h2 id="installation">Installation</h2>
-
-<h3 id="quick-setup">Quick setup</h3>
-
-<p>To give you a running start I’ve put together some starter kits that you can download, fork or even deploy immediately:</p>
-
-<ul>
-  <li>⚗️🍨 Vanilla Jekyll starter kit<br />
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-kit" style="background: none"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" /></a></li>
-  <li>⚗️🌲 Forestry starter kit<br />
-<a href="https://app.forestry.io/quick-start?repo=daviddarnes/alembic-forestry-kit&amp;engine=jekyll" style="background: none"><img src="https://assets.forestry.io/import-to-forestry.svg" alt="Deploy to Forestry" /></a><br />
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-forestry-kit" style="background: none"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" /></a></li>
-  <li>
-    <p>⚗️💠 Netlify CMS starter kit<br />
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/daviddarnes/alembic-netlifycms-kit&amp;stack=cms" style="background: none"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" /></a></p>
-  </li>
-  <li>
-    <p>⚗️:octocat: GitHub Pages with remote theme kit<br />
-<a class="button" href="https://github.com/daviddarnes/alembic-kit/archive/remote-theme.zip" style="background: #24292e">Download kit</a></p>
-  </li>
-  <li>⚗️🚀 Stackbit starter kit<br />
-<a href="https://app.stackbit.com/create?theme=https://github.com/daviddarnes/alembic-stackbit-kit" style="background: none"><img src="https://assets.stackbit.com/badge/create-with-stackbit.svg" alt="Create with Stackbit" /></a></li>
-</ul>
-
-<h3 id="as-a-jekyll-theme">As a Jekyll theme</h3>
-
-<ol>
-  <li>Add <code class="language-plaintext highlighter-rouge">gem "alembic-jekyll-theme"</code> to your <code class="language-plaintext highlighter-rouge">Gemfile</code> to add the theme as a dependancy</li>
-  <li>Run the command <code class="language-plaintext highlighter-rouge">bundle install</code> in the root of project to install the theme and its dependancies</li>
-  <li>Add <code class="language-plaintext highlighter-rouge">theme: alembic-jekyll-theme</code> to your <code class="language-plaintext highlighter-rouge">_config.yml</code> file to set the site theme</li>
-  <li>Run <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to build and serve your site</li>
-  <li>Done! Use the <a href="#configuration">configuration</a> documentation and the example <a href="https://github.com/daviddarnes/alembic/blob/master/_config.yml"><code class="language-plaintext highlighter-rouge">_config.yml</code></a> file to set things like the navigation, contact form and social sharing buttons</li>
-</ol>
-
-<h3 id="as-a-github-pages-remote-theme">As a GitHub Pages remote theme</h3>
-
-<ol>
-  <li>Add <code class="language-plaintext highlighter-rouge">gem "jekyll-remote-theme"</code> to your <code class="language-plaintext highlighter-rouge">Gemfile</code> to add the theme as a dependancy</li>
-  <li>Run the command <code class="language-plaintext highlighter-rouge">bundle install</code> in the root of project to install the jekyll remote theme gem as a dependancy</li>
-  <li>Add <code class="language-plaintext highlighter-rouge">jekyll-remote-theme</code> to the list of <code class="language-plaintext highlighter-rouge">plugins</code> in your <code class="language-plaintext highlighter-rouge">_config.yml</code> file</li>
-  <li>Add <code class="language-plaintext highlighter-rouge">remote_theme: daviddarnes/alembic@main</code> to your <code class="language-plaintext highlighter-rouge">_config.yml</code> file to set the site theme</li>
-  <li>Run <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to build and serve your site</li>
-  <li>Done! Use the <a href="#configuration">configuration</a> documentation and the example <a href="https://github.com/daviddarnes/alembic/blob/master/_config.yml"><code class="language-plaintext highlighter-rouge">_config.yml</code></a> file to set things like the navigation, contact form and social sharing buttons</li>
-</ol>
-
-<h3 id="as-a-boilerplate--fork">As a Boilerplate / Fork</h3>
-
-<p><em>(deprecated, not recommended)</em></p>
-
-<ol>
-  <li><a href="https://github.com/daviddarnes/alembic#fork-destination-box">Fork the repo</a></li>
-  <li>Replace the <code class="language-plaintext highlighter-rouge">Gemfile</code> with one stating all the gems used in your project</li>
-  <li>Delete the following unnecessary files/folders: <code class="language-plaintext highlighter-rouge">.github</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">screenshot.png</code>, <code class="language-plaintext highlighter-rouge">CNAME</code> and <code class="language-plaintext highlighter-rouge">alembic-jekyll-theme.gemspec</code></li>
-  <li>Run the command <code class="language-plaintext highlighter-rouge">bundle install</code> in the root of project to install the jekyll remote theme gem as a dependancy</li>
-  <li>Run <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to build and serve your site</li>
-  <li>Done! Use the <a href="#configuration">configuration</a> documentation and the example <a href="https://github.com/daviddarnes/alembic/blob/master/_config.yml"><code class="language-plaintext highlighter-rouge">_config.yml</code></a> file to set things like the navigation, contact form and social sharing buttons</li>
-</ol>
-
-<h2 id="customising">Customising</h2>
-
-<p>When using Alembic as a theme means you can take advantage of the file overriding method. This allows you to overwrite any file in this theme with your own custom file, by matching the file name and path. The most common example of this would be if you want to add your own styles or change the core style settings.</p>
-
-<p>To add your own styles copy the <a href="https://github.com/daviddarnes/alembic/blob/master/assets/styles.scss"><code class="language-plaintext highlighter-rouge">styles.scss</code></a> into your own project with the same file path (<code class="language-plaintext highlighter-rouge">assets/styles.scss</code>). From there you can add your own styles, you can even optionally ignore the theme styles by removing the <code class="language-plaintext highlighter-rouge">@import "alembic";</code> line.</p>
-
-<p>If you’re looking to set your own colours and fonts you can overwrite them by matching the variable names from the <a href="https://github.com/daviddarnes/alembic/blob/master/_sass/_settings.scss"><code class="language-plaintext highlighter-rouge">_settings.scss</code></a> file in your own <code class="language-plaintext highlighter-rouge">styles.scss</code>, make sure to state them before the <code class="language-plaintext highlighter-rouge">@import "alembic";</code> line so they take effect. The settings are a mixture of custom variables and settings from <a href="https://medium.com/@jakegiltsoff/sassline-v2-0-e424b2881e7e">Sassline</a> - follow the link to find out how to configure the typographic settings.</p>]]></content><author><name>JinJeon</name></author><category term="GUIDE" /><summary type="html"><![CDATA[Alembic is a starting point for [Jekyll](https://jekyllrb.com/) projects. Rather than starting from scratch, this boilerplate is designed to get the ball rolling immediately. Install it, configure it, tweak it, push it.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+이를 통해, <strong>TASK QUEUE에서 QUEUE의 의미</strong>를 다시 알 수 있다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&gt; { console.log("sync ", i); bar(); }); } function bar() { baseData.forEach((v, i) =&gt; { debugger; console.log("sync 2", i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log("FIRST"); setTimeout(() =&gt; console.log("THIRD"), 5000); console.log("SECOND"); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&gt; console.log(++a), 1000); return a; } const result = plus(); console.log("result :", result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다. 3. 비동기의 예시 3-1. for, setTimeout() const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 7이 계속 출력된 것을 볼 수 있다. 이는 var가 가진 특징 때문인데, var는 함수레벨 스코프를 가지며, 전역변수의 값이 변경될 수 있게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 7 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 7 위 코드를 보면, var i = 2;로 값을 지정해준 상태에서, asyncRun 함수 안에서 console.log가 이루어지기 때문에, 값이 2로 나와야 한다. 그러나, for문 내의 var i = 0을 통해서 값이 재지정되었기 때문에 7이라는 값이 나오게 된다. setTimeout()역시 이미 1초보다 훨씬 이전에 처리된 i의 값으로 처리가 진행되기 때문에 7만 나오게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (let i = 0; i &lt; arr.length; i++) { // var를 let으로 변경 setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 2 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 2 0 1 2 3 4 5 6 이와 달리, let은 블록레벨 스코프를 가져, 함수, if문, while문 등 중괄호로 된 곳내에서만 작동한다. 실행 시 1차적으로 for문 밖 i의 값이 2로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다. 3-2. forEach const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; fn(i), 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 0 1 2 3 4 5 6 forEach로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다. 3-3. 비동기 + 비동기 const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; { setTimeout(() =&gt; { console.log("cb 2"); fn(i); }, 1000); console.log("cb 1"); }, 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); /* cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 2 0 cb 2 1 cb 2 2 cb 2 3 cb 2 4 cb 2 5 cb 2 6 */ 비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 우선적으로 들어온 함수를 처리하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다. 이를 통해, TASK QUEUE에서 QUEUE의 의미를 다시 알 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

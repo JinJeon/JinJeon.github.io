@@ -10,26 +10,26 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Shell Script | JINJEONIMUM</title>
+<title>REACT DATEPICKER | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Shell Script" />
+<meta property="og:title" content="REACT DATEPICKER" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_GB" />
-<meta name="description" content="Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/" />
-<meta property="og:description" content="Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/" />
-<link rel="canonical" href="http://localhost:4000/dev/2022/01/09/%EC%89%98/" />
-<meta property="og:url" content="http://localhost:4000/dev/2022/01/09/%EC%89%98/" />
+<meta name="description" content="날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다. &lt;S.DateInputForm type=&#39;date&#39; value={appointmentDateTime} onChange={handelChangeDateTime} /&gt; &lt;S.DateInputForm type=&#39;time&#39; value={appointmentTime} onChange={handelChangeTime} /&gt; 하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다. (링크 : React Datepicker crafted by HackerOne) 설치는 아래 코드들로 진행했습니다. npm install react-datepicker --save npm install @types/react-datepicker 날짜 설정 사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다. import &quot;react-datepicker/dist/react-datepicker.css&quot;; import ReactDatePicker from &quot;react-datepicker&quot;; export const StyledDatePicker = styled(ReactDatePicker)` border: none; background-color: transparent; padding: 0; `; &lt;S.StyledDatePicker onFocus={() =&gt; setIsDateFocused(true)} onBlur={() =&gt; setIsDateFocused(false)} onChange={handelChangeDate} dateFormat=&quot;yyyy.MM.dd&quot; /&gt; 이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다. .react-datepicker { &amp;__day { ${fonts.xSmall}; color: ${colors.grey4}; width: calc(100% / 10); aspect-ratio: 1; line-height: initial; display: inline-flex; align-items: center; justify-content: center; margin: 0; :hover { border-radius: 10rem; } &amp;-name { ${fonts.xSmall}; ... &amp;--disabled { text-decoration: line-through; color: ${colors.grey3}; } } 날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(react-datepicker__current-month)와 같은 선상에 있으면서 position: absolute로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 top으로 직접 받아 처리하도록 우선 구성했습니다. &amp;__current { &amp;-month { text-align: left; padding-left: calc(100% * 7 / 80 - 5px); padding-bottom: 0.5rem; padding-top: 0.75rem; } } &amp;__navigation { &amp;--previous { top: 5px; left: unset; right: calc(32px); } &amp;--next { top: 5px; right: 0px; } &amp;-icon { ::before { border: none; } } } } datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다. &lt;S.StyledDatePicker selected={new Date(appointmentDateTime)} // 선택된 날짜를 지정 onFocus={() =&gt; setIsDateFocused(true)} // 기존 input과 동일 onBlur={() =&gt; setIsDateFocused(false)} // 기존 input과 동일 onChange={handelChangeDate} // 기존 input과 동일 dateFormat=&quot;yyyy.MM.dd&quot; // input에 보이는 날짜 형식 설정 minDate={new Date()} // 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨 showPopperArrow={false} // 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정 formatWeekDay={(nameOfDay) =&gt; nameOfDay.substring(0, 1)} // 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경 nextMonthButtonLabel={&lt;Icon iconName=&quot;ChevronRight&quot; iconSize={0.75} /&gt;} // 다음 달 보기 버튼 표현방식 변경 previousMonthButtonLabel={&lt;Icon iconName=&quot;ChevronLeft&quot; iconSize={0.75} /&gt;} // 이전 달 보기 버튼 표현방식 변경 /&gt; 시간 설정 시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다. 왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다. 시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다. export const StyledTimePicker = styled(ReactDatePicker)` width: 100%; border: none; background-color: transparent; padding: 0; :focus { outline: none; } `; ... &amp;__header { padding: 0; &amp;--time { background-color: transparent; border-bottom: none; } } &amp;-time__header { ${flexCenter}; justify-content: left; width: 100px; word-spacing: 10px; margin: 0 auto; white-space: pre; font-size: 8px; font-weight: 400; height: 25px; color: ${colors.grey4}; } ... &lt;S.TimeInputWrapper isTimeFocused={isTimeFocused}&gt; &lt;S.StyledTimePicker onChange={handleChangeTimeTest} // 기존 input과 동일 timeIntervals={timeIntervals} // 시간 설정의 간격을 조절함 showTimeSelect showTimeSelectOnly // 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함 selected={currentTimeDateType} // 선택된 시간에 selected 클래스를 지정함 showPopperArrow={false} timeFormat=&quot;HH mm aa&quot; value={appointmentTime} timeCaption=&quot;HOUR MINUTE&quot; onFocus={() =&gt; setIsTimeFocused(true)} onBlur={() =&gt; setIsTimeFocused(false)} /&gt; &lt;Icon iconName=&quot;ChevronDown&quot; iconSize={0.9} /&gt; &lt;/S.TimeInputWrapper&gt; 날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다. 단, 시간 설정을 할 때에는 showTimeSelect, showTimeSelectOnly 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다. 시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다. 특이 사항 스타일 관련 작업들을 진행하면서, !important를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. !important를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다." />
+<meta property="og:description" content="날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다. &lt;S.DateInputForm type=&#39;date&#39; value={appointmentDateTime} onChange={handelChangeDateTime} /&gt; &lt;S.DateInputForm type=&#39;time&#39; value={appointmentTime} onChange={handelChangeTime} /&gt; 하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다. (링크 : React Datepicker crafted by HackerOne) 설치는 아래 코드들로 진행했습니다. npm install react-datepicker --save npm install @types/react-datepicker 날짜 설정 사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다. import &quot;react-datepicker/dist/react-datepicker.css&quot;; import ReactDatePicker from &quot;react-datepicker&quot;; export const StyledDatePicker = styled(ReactDatePicker)` border: none; background-color: transparent; padding: 0; `; &lt;S.StyledDatePicker onFocus={() =&gt; setIsDateFocused(true)} onBlur={() =&gt; setIsDateFocused(false)} onChange={handelChangeDate} dateFormat=&quot;yyyy.MM.dd&quot; /&gt; 이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다. .react-datepicker { &amp;__day { ${fonts.xSmall}; color: ${colors.grey4}; width: calc(100% / 10); aspect-ratio: 1; line-height: initial; display: inline-flex; align-items: center; justify-content: center; margin: 0; :hover { border-radius: 10rem; } &amp;-name { ${fonts.xSmall}; ... &amp;--disabled { text-decoration: line-through; color: ${colors.grey3}; } } 날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(react-datepicker__current-month)와 같은 선상에 있으면서 position: absolute로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 top으로 직접 받아 처리하도록 우선 구성했습니다. &amp;__current { &amp;-month { text-align: left; padding-left: calc(100% * 7 / 80 - 5px); padding-bottom: 0.5rem; padding-top: 0.75rem; } } &amp;__navigation { &amp;--previous { top: 5px; left: unset; right: calc(32px); } &amp;--next { top: 5px; right: 0px; } &amp;-icon { ::before { border: none; } } } } datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다. &lt;S.StyledDatePicker selected={new Date(appointmentDateTime)} // 선택된 날짜를 지정 onFocus={() =&gt; setIsDateFocused(true)} // 기존 input과 동일 onBlur={() =&gt; setIsDateFocused(false)} // 기존 input과 동일 onChange={handelChangeDate} // 기존 input과 동일 dateFormat=&quot;yyyy.MM.dd&quot; // input에 보이는 날짜 형식 설정 minDate={new Date()} // 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨 showPopperArrow={false} // 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정 formatWeekDay={(nameOfDay) =&gt; nameOfDay.substring(0, 1)} // 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경 nextMonthButtonLabel={&lt;Icon iconName=&quot;ChevronRight&quot; iconSize={0.75} /&gt;} // 다음 달 보기 버튼 표현방식 변경 previousMonthButtonLabel={&lt;Icon iconName=&quot;ChevronLeft&quot; iconSize={0.75} /&gt;} // 이전 달 보기 버튼 표현방식 변경 /&gt; 시간 설정 시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다. 왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다. 시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다. export const StyledTimePicker = styled(ReactDatePicker)` width: 100%; border: none; background-color: transparent; padding: 0; :focus { outline: none; } `; ... &amp;__header { padding: 0; &amp;--time { background-color: transparent; border-bottom: none; } } &amp;-time__header { ${flexCenter}; justify-content: left; width: 100px; word-spacing: 10px; margin: 0 auto; white-space: pre; font-size: 8px; font-weight: 400; height: 25px; color: ${colors.grey4}; } ... &lt;S.TimeInputWrapper isTimeFocused={isTimeFocused}&gt; &lt;S.StyledTimePicker onChange={handleChangeTimeTest} // 기존 input과 동일 timeIntervals={timeIntervals} // 시간 설정의 간격을 조절함 showTimeSelect showTimeSelectOnly // 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함 selected={currentTimeDateType} // 선택된 시간에 selected 클래스를 지정함 showPopperArrow={false} timeFormat=&quot;HH mm aa&quot; value={appointmentTime} timeCaption=&quot;HOUR MINUTE&quot; onFocus={() =&gt; setIsTimeFocused(true)} onBlur={() =&gt; setIsTimeFocused(false)} /&gt; &lt;Icon iconName=&quot;ChevronDown&quot; iconSize={0.9} /&gt; &lt;/S.TimeInputWrapper&gt; 날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다. 단, 시간 설정을 할 때에는 showTimeSelect, showTimeSelectOnly 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다. 시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다. 특이 사항 스타일 관련 작업들을 진행하면서, !important를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. !important를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다." />
+<link rel="canonical" href="http://localhost:4000/react/2022/10/11/react_datepicker/" />
+<meta property="og:url" content="http://localhost:4000/react/2022/10/11/react_datepicker/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-01-09T00:00:00+09:00" />
+<meta property="article:published_time" content="2022-10-11T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="Shell Script" />
+<meta property="twitter:title" content="REACT DATEPICKER" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"Shell Script","dateModified":"2022-01-09T00:00:00+09:00","datePublished":"2022-01-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dev/2022/01/09/%EC%89%98/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \\; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/","url":"http://localhost:4000/dev/2022/01/09/%EC%89%98/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"REACT DATEPICKER","dateModified":"2022-10-11T00:00:00+09:00","datePublished":"2022-10-11T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/react/2022/10/11/react_datepicker/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다. &lt;S.DateInputForm type=&#39;date&#39; value={appointmentDateTime} onChange={handelChangeDateTime} /&gt; &lt;S.DateInputForm type=&#39;time&#39; value={appointmentTime} onChange={handelChangeTime} /&gt; 하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다. (링크 : React Datepicker crafted by HackerOne) 설치는 아래 코드들로 진행했습니다. npm install react-datepicker --save npm install @types/react-datepicker 날짜 설정 사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다. import &quot;react-datepicker/dist/react-datepicker.css&quot;; import ReactDatePicker from &quot;react-datepicker&quot;; export const StyledDatePicker = styled(ReactDatePicker)` border: none; background-color: transparent; padding: 0; `; &lt;S.StyledDatePicker onFocus={() =&gt; setIsDateFocused(true)} onBlur={() =&gt; setIsDateFocused(false)} onChange={handelChangeDate} dateFormat=&quot;yyyy.MM.dd&quot; /&gt; 이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다. .react-datepicker { &amp;__day { ${fonts.xSmall}; color: ${colors.grey4}; width: calc(100% / 10); aspect-ratio: 1; line-height: initial; display: inline-flex; align-items: center; justify-content: center; margin: 0; :hover { border-radius: 10rem; } &amp;-name { ${fonts.xSmall}; ... &amp;--disabled { text-decoration: line-through; color: ${colors.grey3}; } } 날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(react-datepicker__current-month)와 같은 선상에 있으면서 position: absolute로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 top으로 직접 받아 처리하도록 우선 구성했습니다. &amp;__current { &amp;-month { text-align: left; padding-left: calc(100% * 7 / 80 - 5px); padding-bottom: 0.5rem; padding-top: 0.75rem; } } &amp;__navigation { &amp;--previous { top: 5px; left: unset; right: calc(32px); } &amp;--next { top: 5px; right: 0px; } &amp;-icon { ::before { border: none; } } } } datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다. &lt;S.StyledDatePicker selected={new Date(appointmentDateTime)} // 선택된 날짜를 지정 onFocus={() =&gt; setIsDateFocused(true)} // 기존 input과 동일 onBlur={() =&gt; setIsDateFocused(false)} // 기존 input과 동일 onChange={handelChangeDate} // 기존 input과 동일 dateFormat=&quot;yyyy.MM.dd&quot; // input에 보이는 날짜 형식 설정 minDate={new Date()} // 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨 showPopperArrow={false} // 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정 formatWeekDay={(nameOfDay) =&gt; nameOfDay.substring(0, 1)} // 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경 nextMonthButtonLabel={&lt;Icon iconName=&quot;ChevronRight&quot; iconSize={0.75} /&gt;} // 다음 달 보기 버튼 표현방식 변경 previousMonthButtonLabel={&lt;Icon iconName=&quot;ChevronLeft&quot; iconSize={0.75} /&gt;} // 이전 달 보기 버튼 표현방식 변경 /&gt; 시간 설정 시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다. 왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다. 시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다. export const StyledTimePicker = styled(ReactDatePicker)` width: 100%; border: none; background-color: transparent; padding: 0; :focus { outline: none; } `; ... &amp;__header { padding: 0; &amp;--time { background-color: transparent; border-bottom: none; } } &amp;-time__header { ${flexCenter}; justify-content: left; width: 100px; word-spacing: 10px; margin: 0 auto; white-space: pre; font-size: 8px; font-weight: 400; height: 25px; color: ${colors.grey4}; } ... &lt;S.TimeInputWrapper isTimeFocused={isTimeFocused}&gt; &lt;S.StyledTimePicker onChange={handleChangeTimeTest} // 기존 input과 동일 timeIntervals={timeIntervals} // 시간 설정의 간격을 조절함 showTimeSelect showTimeSelectOnly // 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함 selected={currentTimeDateType} // 선택된 시간에 selected 클래스를 지정함 showPopperArrow={false} timeFormat=&quot;HH mm aa&quot; value={appointmentTime} timeCaption=&quot;HOUR MINUTE&quot; onFocus={() =&gt; setIsTimeFocused(true)} onBlur={() =&gt; setIsTimeFocused(false)} /&gt; &lt;Icon iconName=&quot;ChevronDown&quot; iconSize={0.9} /&gt; &lt;/S.TimeInputWrapper&gt; 날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다. 단, 시간 설정을 할 때에는 showTimeSelect, showTimeSelectOnly 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다. 시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다. 특이 사항 스타일 관련 작업들을 진행하면서, !important를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. !important를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.","url":"http://localhost:4000/react/2022/10/11/react_datepicker/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -97,7 +97,7 @@
 
   </head>
 
-  <body class="layout-post  shell-script">
+  <body class="layout-post  react-datepicker">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -211,7 +211,7 @@
 
   <div class="feature" style="background-image: url()">
     <div class="container  typeset">
-      <p>Shell Script에 대한 설명 및 사용 방법</p>
+      <p>REACT DATEPICKER를 활용한 날짜, 시간 설정</p>
 
     </div>
   </div>
@@ -223,220 +223,252 @@
 
   <article class="article  article--post  content  typeset">
     <div class="article--title">
-      <h1>Shell Script</h1>
+      <h1>REACT DATEPICKER</h1>
       
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#dev">DEV</a></span>
+      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-01-09T00:00:00+09:00" class="time">09 Jan 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-10-11T00:00:00+09:00" class="time">11 Oct 2022</time>
 </small>
 
     </div>
 
-    <h1 id="shell">Shell</h1>
+    <p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
 
-<blockquote>
-  <p>OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다.</p>
-</blockquote>
-
-<h2 id="1-shell-script">1. Shell Script?</h2>
-
-<p>Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다.<br />
-Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다.<br />
-zsh는 z셸 스크립을 위한 명령 인터프리터이다.<br />
-Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다.<br />
-자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다.</p>
-
-<h2 id="2-shell-script-파일-생성-작성-실행">2. Shell Script 파일 생성, 작성, 실행</h2>
-
-<ul>
-  <li>생성 : <code class="language-plaintext highlighter-rouge">vi (filename).sh</code>을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다.</li>
-  <li>입력 : <code class="language-plaintext highlighter-rouge">i</code>키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다.</li>
-  <li>저장 : <code class="language-plaintext highlighter-rouge">esc</code>키를 누른 뒤, <code class="language-plaintext highlighter-rouge">:wq</code>키를 입력해 나오면 된다.</li>
-  <li>실행 : <code class="language-plaintext highlighter-rouge">sh (filename).sh</code>를 입력하면 저장된 내용이 실행된다.</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
-echo "HIHIHI!"
-pwd
-ls
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'date'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentDateTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDateTime</span><span class="si">}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'time'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeTime</span><span class="si">}</span> <span class="p">/&gt;</span>
 </code></pre></div></div>
 
-<p>위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다.<br />
-입력값 불러오기(<code class="language-plaintext highlighter-rouge">echo</code>), 현재 위치 경로 출력(<code class="language-plaintext highlighter-rouge">pwd</code>), 현재 위치 디렉토리 파일 출력(<code class="language-plaintext highlighter-rouge">ls</code>)의 순서대로 나온 것을 볼 수 있다.</p>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/first.gif" alt="" width="35%" height="" /> 
+</figure>
 
-<p><img src="/image/220109/12.png" alt="drawing" width="100%" /></p>
+<p>하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다.<br />
+(링크 : <a href="https://reactdatepicker.com/">React Datepicker crafted by HackerOne</a>)</p>
 
-<h2 id="3-shell-script내-간단한-문법들">3. Shell Script내 간단한 문법들</h2>
+<p>설치는 아래 코드들로 진행했습니다.</p>
 
-<h3 id="3-1-반복문---for">3-1. 반복문 - for</h3>
-
-<p>기본적으로 사용하는 반복문으로 for가 있다. <code class="language-plaintext highlighter-rouge">for in - do - done</code>의 형태로 이루어지며, 코드로 보면 다음과 같다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>file <span class="k">in</span> <span class="nv">$files</span>
-<span class="k">do
-	</span><span class="nv">filename</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$file</span><span class="sb">`</span>
-<span class="k">done</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install react-datepicker --save
+npm install @types/react-datepicker
 </code></pre></div></div>
-
-<p>변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다.</p>
-
-<h3 id="3-2-파일-디렉토리-찾기---find">3-2. 파일, 디렉토리 찾기 - find</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span>
-
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> d
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> f
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">‘.’</code>은 현재 디렉토리 내의 모든 파일, <code class="language-plaintext highlighter-rouge">-name</code>은 이름으로 찾는 것, <code class="language-plaintext highlighter-rouge">“DAY*”</code>는 DAY라는 형식으로 이루어진 모든 파일임을 말한다.<br />
-<code class="language-plaintext highlighter-rouge">-type d</code>는 디렉토리로, <code class="language-plaintext highlighter-rouge">-type f</code>는 파일로 찾는다는 것을 말한다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-empty</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-empty</code>를 이용해 빈 파일을 찾는 데에 사용할 수 있다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-size</span> +100M
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-size</code>를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-exec</span> <span class="nb">ls</span> <span class="nt">-l</span> <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-exec</code>를 이용해 부가적인 작업의 수행이 가능하다.<br />
-검색된 파일이 <code class="language-plaintext highlighter-rouge">{}</code> 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다.</p>
-
-<h3 id="3-3-디렉토리-생성--삭제">3-3. 디렉토리 생성 ∙ 삭제</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>ABC
-<span class="nb">rm</span> <span class="nt">-rf</span> ABC
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">mkdir</code>를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다.<br />
-<code class="language-plaintext highlighter-rouge">rm</code>을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 <code class="language-plaintext highlighter-rouge">-r</code>이라는 옵션이 들어가야하고, <code class="language-plaintext highlighter-rouge">-f</code>라는 옵션을 함께 사용하면, 경고 없이 <strong>모두 강제로 삭제된다.</strong></p>
-
-<h3 id="3-4-경로에서-파일명-가져오기">3-4. 경로에서 파일명 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dirname</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$dir</span><span class="sb">`</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">basename</code>을 이용하면 특정 경로를 나타내는 값들의 마지막 부분,<br />
-예를 들면, <code class="language-plaintext highlighter-rouge">home/ABC/backup/test.txt</code>와 같은 상황에서 <code class="language-plaintext highlighter-rouge">test.txt</code>만 나오도록 할 수 있다.<br />
-위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우,  <code class="language-plaintext highlighter-rouge">dirname</code>이라는 변수가 만들어지고, <code class="language-plaintext highlighter-rouge">$dirname</code>로 활용할 수 있다.</p>
-
-<h3 id="3-5-문자열-일부-가져오기">3-5. 문자열 일부 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">dirnum</span><span class="o">=</span><span class="k">${</span><span class="nv">dirname</span>:3<span class="k">}</span>
-
-<span class="c"># dirname : "HELLO WORLD"</span>
-<span class="c"># dirnum : LO WORLD</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">dirname</code>의 값으로 나오는 문자열 중, 네 번째<code class="language-plaintext highlighter-rouge">(3+1)</code>의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다.</p>
-
-<h3 id="3-6-조건문-사용하기---if">3-6. 조건문 사용하기 - if</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$filename</span> <span class="o">]</span>
-<span class="k">then</span>
-  ...
-<span class="k">else</span>
-	...
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">if</code> 의 내부에 값이 true일 경우, <code class="language-plaintext highlighter-rouge">then</code>의 다음에 오는 과정들을 처리하고, 아닐경우 <code class="language-plaintext highlighter-rouge">else</code>의 뒤에 오는 과정들을 처리한다. 이 과정을 <code class="language-plaintext highlighter-rouge">fi</code>가 나올 때까지 진행한다.<br />
-조건문의 여러 상황에 대해 정리된 <a href="https://hand-over.tistory.com/32">자료 링크</a>가 있어 아래에 추가적으로 적는다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># if 여러 상황에 대해서</span>
-<span class="o">[</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이면 TRUE
-<span class="o">[</span> <span class="nt">-n</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이 아니면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-eq</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ne</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 다르면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-gt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ge</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크거나 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-lt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-le</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작거나 같으면 TRUE
-
-<span class="o">[</span> 조건식A <span class="nt">-a</span> 조건식B <span class="o">]</span> : 조건식 A와 B가 모두 TRUE이면 TRUE <span class="o">(&amp;&amp;</span> 와 동일<span class="o">)</span>
-<span class="o">[</span> 조건식A <span class="nt">-o</span> 조건식B <span class="o">]</span> : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE <span class="o">(||</span> 와 동일<span class="o">)</span>
-
-파일관련
-<span class="o">[</span> <span class="nt">-d</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리면 TRUE
-<span class="o">[</span> <span class="nt">-e</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이<span class="o">(</span>노드, 디렉토리, 소켓 등등 모두<span class="o">)</span> 존재하면 TRUE
-<span class="o">[</span> <span class="nt">-L</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 심볼릭 링크면 TRUE
-<span class="o">[</span> <span class="nt">-r</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 읽기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-s</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일의 크기가 0 보다 크면 TRUE
-<span class="o">[</span> <span class="nt">-w</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 쓰기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-x</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 실행 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-c</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 Special character file 이면 TRUE
-<span class="o">[</span> <span class="nt">-f</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE
-<span class="o">[</span> <span class="nt">-S</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 소켓이면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-nt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일 B 파일보다 최신파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ot</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span>  : A 파일이 B 파일보다 이전파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ef</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일과 B 파일이 같은 파일이면 참
-</code></pre></div></div>
-
-<h3 id="3-7-결과값-표시---echo">3-7. 결과값 표시 - echo</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>text or 변수명
-</code></pre></div></div>
-
-<p>적혀진 텍스트, 혹은 변수의 값을 표현해준다.<br />
-JavaScript의 <code class="language-plaintext highlighter-rouge">console.log</code>와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다.</p>
-
-<h3 id="3-8-시간-구하기---date">3-8. 시간 구하기 - date</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date
-
-</span><span class="nv">day</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%Y%m%d<span class="sb">`</span>
-</code></pre></div></div>
-
-<p>date라고 작성할 시 <code class="language-plaintext highlighter-rouge">2022년 1월 10일 월요일 01시 51분 38초 KST</code> 와 같이 결과값이 나오게 된다.<br />
-위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. <a href="https://iamfreeman.tistory.com/entry/리눅스-date-명령어를-이용한-시간-확인-및-설정하기">세세한 여러 표현 방법을 알려주는 링크</a>를 참고하면 좋을 듯 하다.</p>
-
-<h3 id="3-9-파일-압축하기---zip">3-9. 파일 압축하기 - zip</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip BACKUP_<span class="nv">$day</span>.zip ./BEFORE_ZIP
-
-zip AAA.zip <span class="nt">-r</span> ./<span class="k">*</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">zip “파일이름” “압축할 디렉토리”</code> 의 순서로 작성하면 된다.<br />
-두 번째와 같이 <code class="language-plaintext highlighter-rouge">-r</code>을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다.</p>
-
-<h3 id="3-10-다른-서버로의-파일-전송---scp">3-10. 다른 서버로의 파일 전송 - scp</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 로컬에서 원격</span>
-scp <span class="o">[</span>전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-
-<span class="c"># 원격에서 로컬</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>받을 경로]
-
-<span class="c"># 원격에서 원격</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-</code></pre></div></div>
-
-<p>scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다.</p>
 
 <hr />
 
-<h1 id="링크">링크</h1>
+<h3 id="날짜-설정">날짜 설정</h3>
 
-<ul>
-  <li>쉘 스크립트 생성<br />
-<a href="https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%8B%A4%ED%96%89">https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행</a><br />
-<a href="https://rrecoder.tistory.com/62">https://rrecoder.tistory.com/62</a></li>
-  <li>쉘 스크립트 scp 간단 사용법<br />
-<a href="https://doheejin.github.io/linux/2021/03/03/linux-scp.html">https://doheejin.github.io/linux/2021/03/03/linux-scp.html</a></li>
-  <li>터미널 디렉토리, 파일 삭제 방법<br />
-<a href="https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/">https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/</a></li>
-</ul>
+<p>사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="dl">"</span><span class="s2">react-datepicker/dist/react-datepicker.css</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">ReactDatePicker</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-datepicker</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledDatePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
+  border: none;
+  background-color: transparent;
+  padding: 0;
+`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
+  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
+  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
+<span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/date default.png" alt="" width="50%" height="" /> 
+</figure>
+
+<p>이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">react</span><span class="o">-</span><span class="nx">datepicker</span> <span class="p">{</span>
+	<span class="o">&amp;</span><span class="nx">__day</span> <span class="p">{</span>
+	  <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
+	  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
+	  <span class="nl">width</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="sr">/ 10</span><span class="se">)</span><span class="err">;
+</span>	  <span class="nx">aspect</span><span class="o">-</span><span class="nx">ratio</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+	  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="p">:</span> <span class="nx">initial</span><span class="p">;</span>
+	  <span class="nl">display</span><span class="p">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">flex</span><span class="p">;</span>
+	  <span class="nx">align</span><span class="o">-</span><span class="nx">items</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+	  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+	  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+
+	  <span class="p">:</span><span class="nx">hover</span> <span class="p">{</span>
+	    <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">10</span><span class="nx">rem</span><span class="p">;</span>
+	  <span class="p">}</span>
+
+	  <span class="o">&amp;-</span><span class="nx">name</span> <span class="p">{</span>
+	    <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
+
+		<span class="p">...</span>
+
+	  <span class="o">&amp;--</span><span class="nx">disabled</span> <span class="p">{</span>
+	    <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="p">:</span> <span class="nx">line</span><span class="o">-</span><span class="nx">through</span><span class="p">;</span>
+	    <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey3</span><span class="p">};</span>
+	  <span class="p">}</span>
+	<span class="p">}</span>
+
+
+</code></pre></div></div>
+
+<p>날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(<code class="language-plaintext highlighter-rouge">react-datepicker__current-month</code>)와 같은 선상에 있으면서 <code class="language-plaintext highlighter-rouge">position: absolute</code>로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 <code class="language-plaintext highlighter-rouge">top</code>으로 직접 받아 처리하도록 우선 구성했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&amp;</span><span class="nx">__current</span> <span class="p">{</span>
+  <span class="o">&amp;-</span><span class="nx">month</span> <span class="p">{</span>
+    <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">left</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">/</span> <span class="mi">80</span> <span class="o">-</span> <span class="mi">5</span><span class="nx">px</span><span class="p">);</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mf">0.5</span><span class="nx">rem</span><span class="p">;</span>
+    <span class="nx">padding</span><span class="o">-</span><span class="nx">top</span><span class="p">:</span> <span class="mf">0.75</span><span class="nx">rem</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">&amp;</span><span class="nx">__navigation</span> <span class="p">{</span>
+	  <span class="o">&amp;--</span><span class="nx">previous</span> <span class="p">{</span>
+	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
+	    <span class="nl">left</span><span class="p">:</span> <span class="nx">unset</span><span class="p">;</span>
+	    <span class="nl">right</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">32</span><span class="nx">px</span><span class="p">);</span>
+	  <span class="p">}</span>
+	  <span class="o">&amp;--</span><span class="nx">next</span> <span class="p">{</span>
+	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
+	    <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span><span class="nx">px</span><span class="p">;</span>
+	  <span class="p">}</span>
+	  <span class="o">&amp;-</span><span class="nx">icon</span> <span class="p">{</span>
+	    <span class="p">::</span><span class="nx">before</span> <span class="p">{</span>
+	      <span class="nl">border</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+	    <span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
+  <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">appointmentDateTime</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 선택된 날짜를 지정</span>
+  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
+  <span class="c1">// 기존 input과 동일</span>
+  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
+  <span class="c1">// input에 보이는 날짜 형식 설정</span>
+  <span class="na">minDate</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><span class="si">}</span>
+  <span class="c1">// 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨</span>
+  <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+  <span class="c1">// 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정</span>
+  <span class="na">formatWeekDay</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">nameOfDay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">nameOfDay</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span>
+  <span class="c1">// 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경</span>
+  <span class="na">nextMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronRight"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
+  <span class="c1">// 다음 달 보기 버튼 표현방식 변경</span>
+  <span class="na">previousMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronLeft"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
+  <span class="c1">// 이전 달 보기 버튼 표현방식 변경</span>
+<span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/date finish.gif" alt="" width="50%" height="" /> 
+</figure>
+
+<h3 id="시간-설정">시간 설정</h3>
+
+<p>시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다.</p>
+
+<div style="display: flex">
+  <figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time design.png" alt="" width="65%" height="" /> 
+</figure>
+
+  <figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time default.png" alt="" width="100%" height="" /> 
+</figure>
+
+</div>
+
+<p>왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다.</p>
+
+<p>시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledTimePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  :focus {
+    outline: none;
+  }
+`</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="o">&amp;</span><span class="nx">__header</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="o">&amp;--</span><span class="nx">time</span> <span class="p">{</span>
+    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">:</span> <span class="nx">transparent</span><span class="p">;</span>
+    <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">&amp;-</span><span class="nx">time__header</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">{</span><span class="nx">flexCenter</span><span class="p">};</span>
+
+  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">word</span><span class="o">-</span><span class="nx">spacing</span><span class="p">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+  <span class="nx">white</span><span class="o">-</span><span class="nx">space</span><span class="p">:</span> <span class="nx">pre</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">8</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">400</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="mi">25</span><span class="nx">px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span> <span class="na">isTimeFocused</span><span class="p">=</span><span class="si">{</span><span class="nx">isTimeFocused</span><span class="si">}</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledTimePicker</span>
+    <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChangeTimeTest</span><span class="si">}</span>
+    <span class="c1">// 기존 input과 동일</span>
+    <span class="na">timeIntervals</span><span class="p">=</span><span class="si">{</span><span class="nx">timeIntervals</span><span class="si">}</span>
+    <span class="c1">// 시간 설정의 간격을 조절함</span>
+    <span class="na">showTimeSelect</span>
+    <span class="na">showTimeSelectOnly</span>
+    <span class="c1">// 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함</span>
+    <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="nx">currentTimeDateType</span><span class="si">}</span>
+    <span class="c1">// 선택된 시간에 selected 클래스를 지정함</span>
+    <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+    <span class="na">timeFormat</span><span class="p">=</span><span class="s">"HH mm aa"</span>
+    <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span>
+    <span class="na">timeCaption</span><span class="p">=</span><span class="s">"HOUR MINUTE"</span>
+    <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
+    <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+  <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronDown"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.9</span><span class="si">}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p>날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다.</p>
+
+<p>단, 시간 설정을 할 때에는 <code class="language-plaintext highlighter-rouge">showTimeSelect</code>, <code class="language-plaintext highlighter-rouge">showTimeSelectOnly</code> 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다.</p>
+
+<p>시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221011/time finish.gif" alt="" width="45%" height="" /> 
+</figure>
+
+<h3 id="특이-사항">특이 사항</h3>
+
+<p>스타일 관련 작업들을 진행하면서, <code class="language-plaintext highlighter-rouge">!important</code>를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. <code class="language-plaintext highlighter-rouge">!important</code>를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.</p>
 
 
     <div class="share">
@@ -449,7 +481,7 @@ scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <spa
 
       
 
-      <a class="button" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/dev/2022/01/09/%EC%89%98/" style="background: #3B5998">facebook&nbsp; <svg width="16" height="16" class="icon  icon--facebook" role="img" alt="facebook"><title>facebook</title><use xlink:href="#facebook" fill="CurrentColor"></use></svg>
+      <a class="button" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/react/2022/10/11/react_datepicker/" style="background: #3B5998">facebook&nbsp; <svg width="16" height="16" class="icon  icon--facebook" role="img" alt="facebook"><title>facebook</title><use xlink:href="#facebook" fill="CurrentColor"></use></svg>
 </a>
 
     
@@ -462,7 +494,7 @@ scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <spa
 
       
 
-      <a class="button" href="mailto:?subject=Shell Script&body=CHECK OUT THIS : http://localhost:4000/dev/2022/01/09/%EC%89%98/" style="background: #498f64">Email&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+      <a class="button" href="mailto:?subject=REACT DATEPICKER&body=CHECK OUT THIS : http://localhost:4000/react/2022/10/11/react_datepicker/" style="background: #498f64">Email&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
 </a>
 
     
@@ -475,7 +507,7 @@ scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <spa
 
       
 
-      <a class="button" href="https://reddit.com/submit?url=http://localhost:4000/dev/2022/01/09/%EC%89%98/&title=Shell Script&resubmit=true" style="background: #bd8444">Reddit&nbsp; <svg width="16" height="16" class="icon  icon--reddit" role="img" alt="reddit"><title>reddit</title><use xlink:href="#reddit" fill="CurrentColor"></use></svg>
+      <a class="button" href="https://reddit.com/submit?url=http://localhost:4000/react/2022/10/11/react_datepicker/&title=REACT DATEPICKER&resubmit=true" style="background: #bd8444">Reddit&nbsp; <svg width="16" height="16" class="icon  icon--reddit" role="img" alt="reddit"><title>reddit</title><use xlink:href="#reddit" fill="CurrentColor"></use></svg>
 </a>
 
     
@@ -488,7 +520,7 @@ scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <spa
 
       
 
-      <a class="button" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/dev/2022/01/09/%EC%89%98/&description=Shell Script&media=/assets/default-social-image.png" style="background: #8a4b43">Pinterest&nbsp; <svg width="16" height="16" class="icon  icon--pinterest" role="img" alt="pinterest"><title>pinterest</title><use xlink:href="#pinterest" fill="CurrentColor"></use></svg>
+      <a class="button" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/react/2022/10/11/react_datepicker/&description=REACT DATEPICKER&media=/assets/default-social-image.png" style="background: #8a4b43">Pinterest&nbsp; <svg width="16" height="16" class="icon  icon--pinterest" role="img" alt="pinterest"><title>pinterest</title><use xlink:href="#pinterest" fill="CurrentColor"></use></svg>
 </a>
 
     
