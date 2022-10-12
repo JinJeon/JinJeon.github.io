@@ -205,7 +205,7 @@ body {
 .article--title {
   margin-bottom: 2.6rem;
   padding-left: 0.9rem;
-  border-left: solid 0.4rem transparent;
+  border-left: solid 0.4rem $linkColour;
   @include breakpoint(break-1) {
     margin-left: -1.3rem;
   }
@@ -220,13 +220,16 @@ body {
   }
   .item--post {
     margin-left: 0;
+
     .article--post {
-      border-bottom: solid 0.25rem $codeBackgroundColour;
+      border-bottom: solid 0.25rem transparent;
       margin-bottom: 1.5rem;
+
       .article--title {
-        // margin-top: 1.5rem;
         margin-bottom: 0rem;
+        border-left: solid 0.4rem transparent;
       }
+
       h3 {
         padding-top: 0rem;
       }
@@ -240,13 +243,7 @@ body {
   .search--result {
     padding: 1rem 0rem;
     border-bottom: solid 0.25rem $codeBackgroundColour;
-    // h4 {
-    //   padding-left: 0.9rem;
-    //   border-left: solid 0.4rem $linkColour;
-    //   @include breakpoint(break-1) {
-    //     margin-left: -1.3rem;
-    //   }
-    // }
+
     p {
       margin-top: 0.1rem;
       margin-bottom: 0.1rem;
