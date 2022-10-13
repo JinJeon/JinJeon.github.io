@@ -81,6 +81,7 @@ body {
   @include align-items(center);
   img {
     max-height: 5rem;
+    margin: 0;
   }
 }
 
@@ -230,6 +231,7 @@ body {
       .article--title {
         margin-bottom: 0rem;
         border-left: none;
+        padding-left: 0;
 
         @include breakpoint(break-1) {
           padding-left: 0;
