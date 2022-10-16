@@ -33,12 +33,7 @@ body {
   }
 }
 .header {
-  background: rgb(255, 245, 189);
-  background: linear-gradient(
-    162deg,
-    rgba(255, 245, 189, 1) 0%,
-    rgba(255, 235, 122, 1) 38%
-  );
+  background: $headerBackgroundColour;
   border-bottom: dashed 0.2rem $featureFontColour;
   .feature {
     margin-top: 0.5rem;
