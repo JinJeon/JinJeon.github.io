@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-10-13T12:08:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-10-16T23:58:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'date'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentDateTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDateTime</span><span class="si">}</span> <span class="p">/&gt;</span>
 <span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'time'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeTime</span><span class="si">}</span> <span class="p">/&gt;</span>
@@ -389,7 +389,242 @@ npm install @types/react-datepicker
     <span class="p">&lt;/</span><span class="nc">S</span><span class="p">.</span><span class="nc">Chats</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nc">S</span><span class="p">.</span><span class="nc">Wrapper</span><span class="p">&gt;</span>
 <span class="p">);</span>
-</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[채팅을 구현하는 상황에서, 채팅의 경우 첫 렌더링 시 무조건 가장 하단의 채팅부터 보여주어야 하기 때문에, 이를 위해서 렌더링 후 바로 채팅의 하단을 보여주는 것을 구현했습니다. 이 상황에서 기존에는 두 가지 방법을 사용했습니다. window의 scroll 기능 사용하기 useEffect와 ref를 적용해 보여주기 window.scrollTo(0, document.body.offsetHeight); 두 방법 중 처음에는 위와 같이 1번의 방법을 사용했으나, 리액트의 특성을 살리지 못한다는 판단이 들어(document.body와 같은 부분에서), 2번의 방법을 시도했었습니다. useEffect를 사용하고, 의존성에 ref를 부여하는 방법으로 원래 해결을 하려고 했으나, 이는 올바르지 않은 방법임을 곧 알게 됐습니다. 왜냐하면, 렌더링을 건너뛰는useEffect 의 경우, 컴포넌트가 다시 렌더링이 이루어질 때까지 ref가 업데이트 된 것을 확인할 수가 없기 때문입니다. 즉, 이미 설정된 ref에 대해서는 useEffect 내부의 메소드가 작동하지만(원래 한 번 동작하므로), 이후에는 ref의 변경이 있어도, 그 순서가 useEffect보다 늦다면, 의존성 배열에 담아주어도 전혀 반응하지 않습니다. 즉, ref를 useEffect에 넣는 것은 렌더링이 모두 이루어진 다음에 수행하는 데에 적합하지 않은 방식이기 때문에, ref의 지정에 따른 메소드를 수행하는 방법이 필요했습니다. 그 과정에서 발견한 것이 callback ref라는 개념인데, 이는 React에 기본적으로 내장된 기능으로서, React Element의 ref props에 useCallback으로 설정된 함수를 넣어주는 경우, 해당 React Element가 파라미터가 되어, 해당 함수를 실행하게 됩니다. //**callback ref for scroll to bottom */ const scrollToBottomRef = useCallback((lastChatDiv: HTMLDivElement) =&gt; { if (!lastChatDiv) return; // change target only if last chat didn't exist setLastChat((prevLastChat) =&gt; (prevLastChat ? prevLastChat : lastChatDiv)); lastChatDiv.scrollIntoView({ block: "end" }); }, []); 위 함수가 해당 기능을 하는 함수인데, 위와 같이 lastChatDiv라는 element를 받는 함수를 만들어, 해당 함수 내에 원하는 기능이 이루어지도록 했습니다. 위 함수를 통해, 처음에 페이지에 진입하는 상황에 대해서 지정된 요소(가장 하단 요소)로 스크롤이 이루어지도록 만들었습니다. return ( &lt;S.Wrapper&gt; &lt;S.Date&gt;2021년 5월 29일&lt;/S.Date&gt; &lt;S.Chats&gt; {chatroomLogs} &lt;S.EmptyBlock ref={scrollToBottomRef} /&gt; // 최하단에 만들어지는 빈 블록으로, 이 곳에 설정을 해주어 이 곳에 이동이 되도록 합니다. &lt;/S.Chats&gt; &lt;/S.Wrapper&gt; );]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[채팅을 구현하는 상황에서, 채팅의 경우 첫 렌더링 시 무조건 가장 하단의 채팅부터 보여주어야 하기 때문에, 이를 위해서 렌더링 후 바로 채팅의 하단을 보여주는 것을 구현했습니다. 이 상황에서 기존에는 두 가지 방법을 사용했습니다. window의 scroll 기능 사용하기 useEffect와 ref를 적용해 보여주기 window.scrollTo(0, document.body.offsetHeight); 두 방법 중 처음에는 위와 같이 1번의 방법을 사용했으나, 리액트의 특성을 살리지 못한다는 판단이 들어(document.body와 같은 부분에서), 2번의 방법을 시도했었습니다. useEffect를 사용하고, 의존성에 ref를 부여하는 방법으로 원래 해결을 하려고 했으나, 이는 올바르지 않은 방법임을 곧 알게 됐습니다. 왜냐하면, 렌더링을 건너뛰는useEffect 의 경우, 컴포넌트가 다시 렌더링이 이루어질 때까지 ref가 업데이트 된 것을 확인할 수가 없기 때문입니다. 즉, 이미 설정된 ref에 대해서는 useEffect 내부의 메소드가 작동하지만(원래 한 번 동작하므로), 이후에는 ref의 변경이 있어도, 그 순서가 useEffect보다 늦다면, 의존성 배열에 담아주어도 전혀 반응하지 않습니다. 즉, ref를 useEffect에 넣는 것은 렌더링이 모두 이루어진 다음에 수행하는 데에 적합하지 않은 방식이기 때문에, ref의 지정에 따른 메소드를 수행하는 방법이 필요했습니다. 그 과정에서 발견한 것이 callback ref라는 개념인데, 이는 React에 기본적으로 내장된 기능으로서, React Element의 ref props에 useCallback으로 설정된 함수를 넣어주는 경우, 해당 React Element가 파라미터가 되어, 해당 함수를 실행하게 됩니다. //**callback ref for scroll to bottom */ const scrollToBottomRef = useCallback((lastChatDiv: HTMLDivElement) =&gt; { if (!lastChatDiv) return; // change target only if last chat didn't exist setLastChat((prevLastChat) =&gt; (prevLastChat ? prevLastChat : lastChatDiv)); lastChatDiv.scrollIntoView({ block: "end" }); }, []); 위 함수가 해당 기능을 하는 함수인데, 위와 같이 lastChatDiv라는 element를 받는 함수를 만들어, 해당 함수 내에 원하는 기능이 이루어지도록 했습니다. 위 함수를 통해, 처음에 페이지에 진입하는 상황에 대해서 지정된 요소(가장 하단 요소)로 스크롤이 이루어지도록 만들었습니다. return ( &lt;S.Wrapper&gt; &lt;S.Date&gt;2021년 5월 29일&lt;/S.Date&gt; &lt;S.Chats&gt; {chatroomLogs} &lt;S.EmptyBlock ref={scrollToBottomRef} /&gt; // 최하단에 만들어지는 빈 블록으로, 이 곳에 설정을 해주어 이 곳에 이동이 되도록 합니다. &lt;/S.Chats&gt; &lt;/S.Wrapper&gt; );]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SOCKET 연결 및 채팅</title><link href="http://localhost:4000/javascript/2022/08/16/socket/" rel="alternate" type="text/html" title="SOCKET 연결 및 채팅" /><published>2022-08-16T00:00:00+09:00</published><updated>2022-08-16T00:00:00+09:00</updated><id>http://localhost:4000/javascript/2022/08/16/socket</id><content type="html" xml:base="http://localhost:4000/javascript/2022/08/16/socket/"><![CDATA[<p>채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다.</p>
+
+<h2 id="web-socket">Web Socket</h2>
+
+<p>TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다.</p>
+
+<p>서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다.</p>
+
+<p>서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다.</p>
+
+<h2 id="sockjs">SockJS</h2>
+
+<p>(<a href="https://velog.io/@yyong3519/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%9B%B9%EC%86%8C%EC%BC%932">큰 도움을 주신 사이트</a>)</p>
+
+<p>브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다.</p>
+
+<p>브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다.</p>
+
+<p>(현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.)</p>
+
+<p>구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다!</p>
+
+<h3 id="구성">구성</h3>
+
+<ul>
+  <li>SockJS Protocol</li>
+  <li>SockJS Javascript Client: 브라우저용 클라이언트 라이브러리</li>
+  <li>SockJS Server: Spring-websocket 모듈로 제공</li>
+  <li>SockJS Java Client: Spring-websocket 모듈로 제공</li>
+</ul>
+
+<h3 id="전송-타입">전송 타입</h3>
+
+<ol>
+  <li>WebSocket</li>
+  <li>HTTP Streaming</li>
+  <li>HTTP Long Polling</li>
+</ol>
+
+<h2 id="stompjs">StompJS</h2>
+
+<p>(<a href="https://dev-gorany.tistory.com/m/235">추후 참고할 만한 링크</a>)</p>
+
+<p>웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다.</p>
+
+<p>서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다.</p>
+
+<h2 id="사용">사용</h2>
+
+<h3 id="설치">설치</h3>
+
+<p>아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run --save-dev sockjs-client stompjs
+</code></pre></div></div>
+
+<h3 id="sockjs-stompjs-연결">SockJS, StompJS 연결</h3>
+
+<p>이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">SockJs</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">sockjs-client</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">StompJs</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">stompjs</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// 들어갈 주소 설정</span>
+<span class="kd">const</span> <span class="nx">sockServer</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_BASE_URL</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">WEBSOCKET</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">sock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SockJs</span><span class="p">(</span><span class="nx">sockServer</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">stompClient</span> <span class="o">=</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">over</span><span class="p">(</span><span class="nx">sock</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="stomp-client로-서버에-연결-요청">Stomp Client로 서버에 연결 요청</h3>
+
+<p>Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">connectChatroom</span> <span class="o">=</span> <span class="p">(</span><span class="nx">subscribeParams</span><span class="p">:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+  <span class="c1">// 현재 서버에서 확인을 위해 필요로 하는 헤더</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// stompClient.debug = () =&gt; null;</span>
+    <span class="c1">// console 창에 나오게 되는 내용들이 보이지 않도록 함</span>
+    <span class="nx">stompClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">headers</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">subscribeChat</span><span class="p">(</span><span class="nx">subscribeParams</span><span class="p">));</span>
+    <span class="c1">// 연결을 시도함</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="원하는-주소로-구독-및-메세지-올-때-처리하기">원하는 주소로 구독 및 메세지 올 때 처리하기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">subscribeChat</code>이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. <code class="language-plaintext highlighter-rouge">stompClient.connect</code>를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 <code class="language-plaintext highlighter-rouge">header</code>, <code class="language-plaintext highlighter-rouge">body</code>를 넣을 수 있고 현재는 <code class="language-plaintext highlighter-rouge">header</code>만 보낸 상황입니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">subscribeChat</span> <span class="o">=</span> <span class="p">({</span>
+  <span class="nx">onReceive</span><span class="p">,</span>
+  <span class="nx">chatroomId</span><span class="p">,</span>
+  <span class="nx">chatroomIds</span><span class="p">,</span>
+<span class="p">}:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">subscribeToStomp</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">TOPIC</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOM_MEMBERS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="c1">// 서버와 협의된 구독 URL</span>
+    <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscribeURL</span><span class="p">,</span> <span class="nx">onReceive</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+    <span class="c1">// Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함</span>
+  <span class="p">};</span>
+
+  <span class="c1">// id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span><span class="p">)</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomIds</span><span class="p">)</span> <span class="nx">chatroomIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>현재 앱의 특성상 <code class="language-plaintext highlighter-rouge">id</code>값을 하나만 받는 경우(채팅 상세에 들어갈 시), <code class="language-plaintext highlighter-rouge">id</code>값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">subscribeURL</code>을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다.</p>
+
+<h3 id="구독-끊기">구독 끊기</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">stompClient</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="dl">"</span><span class="s2">sub-0</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">unsubscribe</code> 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 <strong>해당 주소에 대한 구독만 끊어내는</strong> 개념으로 볼 수 있습니다.</p>
+
+<h3 id="연결-끊기">연결 끊기</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">disconnectChatroom</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// stompClient.debug = () =&gt; null;</span>
+    <span class="nx">stompClient</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">unsubscribe</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">diconnect</code>를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다.</p>
+
+<hr />
+
+<h2 id="추가적인-문제">추가적인 문제</h2>
+
+<p>(위에 반영되었습니다.)</p>
+
+<p>아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">useChatAlarm</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">contents</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useRecoilValueLoadable</span><span class="p">(</span><span class="nx">chatroomIdsState</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">state</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">hasValue</span><span class="dl">"</span> <span class="o">||</span> <span class="o">!</span><span class="nx">contents</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="nx">contents</span><span class="p">?.</span><span class="nx">forEach</span><span class="p">(({</span> <span class="nx">id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">connectChatroom</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">chatSocket</span><span class="p">();</span>
+        <span class="nx">connectChatroom</span><span class="p">({</span> <span class="na">chatroomId</span><span class="p">:</span> <span class="nx">id</span> <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">state</span><span class="p">]);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">subscribeChat</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">setter</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">}:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">TOPIC</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOM_MEMBERS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">chatroomId</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="c1">// 하나의 id만 등록이 가능함</span>
+  <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+
+  <span class="c1">// 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨</span>
+  <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+    <span class="nx">subscribeURL</span><span class="p">,</span>
+    <span class="c1">// 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함</span>
+    <span class="p">(</span><span class="nx">chatData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">newChat</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">chatData</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+      <span class="nx">setter</span><span class="p">((</span><span class="nx">chats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">newChats</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">chats</span><span class="p">,</span> <span class="nx">newChat</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nx">newChats</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">headers</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220816/error.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다.</p>
+
+<h2 id="해결-방법">해결 방법</h2>
+
+<h3 id="1-onset-함수-및-주소-분리">1. <code class="language-plaintext highlighter-rouge">onSet</code> 함수 및 주소 분리</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">subscribeParamsType</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">onSet</span><span class="p">:</span> <span class="p">(</span><span class="na">chatData</span><span class="p">:</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+  <span class="nl">chatroomId</span><span class="p">?:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">chatroomIds</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="kr">number</span><span class="p">[];</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">subscribeChat</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">onSet</span><span class="p">,</span> <span class="nx">chatroomId</span><span class="p">,</span> <span class="nx">chatroomIds</span> <span class="p">}:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">subscribeToStomp</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">TOPIC</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOM_MEMBERS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+		<span class="c1">// id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정</span>
+    <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscribeURL</span><span class="p">,</span> <span class="nx">onSet</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+		<span class="c1">// subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록</span>
+  <span class="p">};</span>
+	<span class="p">...</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">chatroomId</code>의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 <code class="language-plaintext highlighter-rouge">onSet</code>이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getNewChatMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">chatData</span><span class="p">:</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">newChat</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">chatData</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="nx">setCurChats</span><span class="p">((</span><span class="nx">chats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newChats</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">chats</span><span class="p">,</span> <span class="nx">newChat</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="nx">newChats</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+<span class="c1">// onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">disconnectChatroom</span><span class="p">,</span> <span class="nx">connectChatroom</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">chatroomSocket</span><span class="p">();</span>
+  <span class="nx">connectChatroom</span><span class="p">({</span> <span class="na">onSet</span><span class="p">:</span> <span class="nx">getNewChatMessage</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">});</span>
+  <span class="c1">// 연결할 때 함수를 대입</span>
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">disconnectChatroom</span><span class="p">();</span>
+<span class="p">},</span> <span class="p">[]);</span>
+</code></pre></div></div>
+
+<h3 id="2-id-개수에-따른-상황-분리">2. id 개수에 따른 상황 분리</h3>
+
+<p>id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span><span class="p">)</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">chatroomIds</span><span class="p">)</span> <span class="nx">chatroomIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다. Web Socket TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다. 서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다. 서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다. SockJS (큰 도움을 주신 사이트) 브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다. 브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다. (현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.) 구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다! 구성 SockJS Protocol SockJS Javascript Client: 브라우저용 클라이언트 라이브러리 SockJS Server: Spring-websocket 모듈로 제공 SockJS Java Client: Spring-websocket 모듈로 제공 전송 타입 WebSocket HTTP Streaming HTTP Long Polling StompJS (추후 참고할 만한 링크) 웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다. 서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다. 사용 설치 아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다. npm run --save-dev sockjs-client stompjs SockJS, StompJS 연결 이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다. import SockJs from "sockjs-client"; import StompJs from "stompjs"; // 들어갈 주소 설정 const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); Stomp Client로 서버에 연결 요청 Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다. const connectChatroom = (subscribeParams: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); // 현재 서버에서 확인을 위해 필요로 하는 헤더 try { // stompClient.debug = () =&gt; null; // console 창에 나오게 되는 내용들이 보이지 않도록 함 stompClient.connect(headers, () =&gt; subscribeChat(subscribeParams)); // 연결을 시도함 } catch (error) { console.log(error); } }; 원하는 주소로 구독 및 메세지 올 때 처리하기 subscribeChat이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. stompClient.connect를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 header, body를 넣을 수 있고 현재는 header만 보낸 상황입니다. const subscribeChat = ({ onReceive, chatroomId, chatroomIds, }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // 서버와 협의된 구독 URL stompClient.subscribe(subscribeURL, onReceive, headers); // Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함 }; // id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정 if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; 현재 앱의 특성상 id값을 하나만 받는 경우(채팅 상세에 들어갈 시), id값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다. subscribeURL을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다. 구독 끊기 const unsubscribe = () =&gt; { stompClient.unsubscribe("sub-0"); }; unsubscribe 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 해당 주소에 대한 구독만 끊어내는 개념으로 볼 수 있습니다. 연결 끊기 const disconnectChatroom = () =&gt; { try { // stompClient.debug = () =&gt; null; stompClient.disconnect(() =&gt; unsubscribe()); } catch (error) { console.log(error); } }; diconnect를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다. 추가적인 문제 (위에 반영되었습니다.) 아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다. const useChatAlarm = () =&gt; { const { state, contents } = useRecoilValueLoadable(chatroomIdsState); return () =&gt; { useEffect(() =&gt; { if (state !== "hasValue" || !contents) return; contents?.forEach(({ id }) =&gt; { const { connectChatroom } = chatSocket(); connectChatroom({ chatroomId: id }); }); }, [state]); }; }; const subscribeChat = ({ setter, chatroomId }: subscribeParamsType) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${chatroomId}`; // 하나의 id만 등록이 가능함 const headers = getAuthHeaders(); // 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨 stompClient.subscribe( subscribeURL, // 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함 (chatData) =&gt; { const newChat = JSON.parse(chatData.body); setter((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }, headers ); }; 사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다. 해결 방법 1. onSet 함수 및 주소 분리 type subscribeParamsType = { onSet: (chatData: StompJs.Message) =&gt; void; chatroomId?: string | number; chatroomIds?: string[] | number[]; }; const subscribeChat = ({ onSet, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정 stompClient.subscribe(subscribeURL, onSet, headers); // subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록 }; ... }; chatroomId의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 onSet이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다. const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }; // onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수 useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onSet: getNewChatMessage, chatroomId }); // 연결할 때 함수를 대입 return () =&gt; disconnectChatroom(); }, []); 2. id 개수에 따른 상황 분리 id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다. if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id));]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
 추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다.</p>
 
 <h1 id="1-비선형-구조">1. 비선형 구조</h1>
@@ -1483,206 +1718,4 @@ Linked List를 이용해 <strong>다음 링크</strong>에 끼워넣는 방법�
 <p>유닉스 기반의 무료 오픈 소스 운영체제이며, 윈도우와 맥과 가장 구별되는 점으로 <strong>‘오픈 소스’</strong>를 꼽을 수 있다.<br />
 커스터마이즈된 OS를 만들 수 있는 커널로, Linux 커널을 기반으로 하며, 커널은 운영 체제의 핵심이라고 할 수 있다.
 즉, 이 커널로 자신의 운영 체제를 개발할 수 있다.<br />
-Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = "string"; let testObject = { A: "a" }; let testFucntion = (B) =&gt; { B = "b"; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, 'string' =&gt; 2, { A: 'a' } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get("none"); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, "=", value); } // 1 = 1 // string = 2 // { A: 'a' } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: 'a' } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, 'string', { A: 'a' }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript Linux Linux의 특징 유닉스 기반의 무료 오픈 소스 운영체제이며, 윈도우와 맥과 가장 구별되는 점으로 ‘오픈 소스’를 꼽을 수 있다. 커스터마이즈된 OS를 만들 수 있는 커널로, Linux 커널을 기반으로 하며, 커널은 운영 체제의 핵심이라고 할 수 있다. 즉, 이 커널로 자신의 운영 체제를 개발할 수 있다. Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">동기 ∙ 비동기</title><link href="http://localhost:4000/dev/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0/" rel="alternate" type="text/html" title="동기 ∙ 비동기" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/dev/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/dev/2021/12/01/%EB%8F%99%EA%B8%B0_%EB%B9%84%EB%8F%99%EA%B8%B0/"><![CDATA[<h2 id="1-동기synchronous">1. 동기(synchronous)</h2>
-
-<p>자바스크립트는 한 번에 하나의 작업만 수행한다.<br />
-‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다.<br />
-이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 <strong>Memory Heap, Call Stack</strong>이 있다.</p>
-
-<ul>
-  <li>Memory Heap : 변수, 객체의 메모리 할당을 담당한다.</li>
-  <li>Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다.</li>
-</ul>
-
-<h3 id="1-1-call-stack">1-1. CALL STACK</h3>
-
-<p>함수 내의 다른 함수를 실행하는 경우, 이를 <code class="language-plaintext highlighter-rouge">debugger</code>를 통해 보면 아래와 같이 <strong>callstack</strong>이 쌓여있는 것을 볼 수 있다.<br />
-이는 함수의 실행 순서를 <strong>stack</strong>의 형태로 표현한 것인데, <code class="language-plaintext highlighter-rouge">foo</code>내에 있는 함수 <code class="language-plaintext highlighter-rouge">bar</code>가 먼저 실행을 다 마쳐야 <code class="language-plaintext highlighter-rouge">foo</code>가 다시 진행되는 것을 알 수 있다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-
-<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">baseData</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">sync </span><span class="dl">"</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-    <span class="nx">bar</span><span class="p">();</span>
-  <span class="p">});</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">baseData</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">debugger</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">sync 2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">}</span>
-
-<span class="nx">foo</span><span class="p">();</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="2-비동기asynchronous">2. 비동기(asynchronous)</h2>
-
-<p>자바스크립트의 단일 스레드, 동기식 동작과 달리, <strong>어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것</strong>을 말한다.<br />
-동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다.<br />
-이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 <strong>비동기 방식</strong>이다.</p>
-
-<h3 id="2-1-여러-이벤트의-동시-동작-원리">2-1. 여러 이벤트의 동시 동작 원리</h3>
-
-<p>자바스크립트의 기본 동작 원리로는 안되는 비동기는 <strong>자바스크립트의 실행 환경(runtime)</strong>을 통해 이루어낼 수 있다.<br />
-<strong>브라우저</strong>가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 <strong>web API</strong>가 들어가있어 비동기 작업을 해낼 수 있다.<br />
-더불어, 이것들의 제어를 위한 <strong>Event Loop, Callback Queue</strong>가 존재한다.</p>
-
-<h3 id="2-2-비동기의-동작-순서">2-2. 비동기의 동작 순서</h3>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">FIRST</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">THIRD</span><span class="dl">"</span><span class="p">),</span> <span class="mi">5000</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">SECOND</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="cm">/*
-THIS IS FIRST
-THIS IS SECOND
-THIRD
-*/</span>
-</code></pre></div></div>
-
-<p>우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다.<br />
-위 코드에서 setTimeout은 <strong>web API(브라우저의 제공 API)</strong>로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다.<br />
-API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다.<br />
-그리고 이 API는 <strong>작성된 코드의 중간에 갑자기 끼어들어서는 안 된다.</strong><br />
-실행이 완료된 모든 WEB API는 <strong>task queue</strong>에 들어가서 대기하게 된다.<br />
-<strong>event loop</strong>가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다.</p>
-
-<ul>
-  <li>동기 ∙ 비동기 상황에 대한 다른 예시</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">plus</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">++</span><span class="nx">a</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">plus</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">result :</span><span class="dl">"</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-<span class="cm">/*
-result : 1
-2
-*/</span>
-</code></pre></div></div>
-
-<p>위 예시에서, <code class="language-plaintext highlighter-rouge">console.log</code>가 마무리 된 후에 API가 진행된 것을 볼 수 있다.<br />
-이를 통해, API는 모든 stack내의 내용들이 정리된 후에 <strong>event loop</strong>를 통해서 진행됨을 알 수 있다.</p>
-
-<hr />
-
-<h2 id="3-비동기의-예시">3. 비동기의 예시</h2>
-
-<h3 id="3-1-for-settimeout">3-1. for, setTimeout()</h3>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">asyncRun</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="nx">asyncRun</span><span class="p">(</span><span class="nx">baseData</span><span class="p">,</span> <span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span><span class="p">));</span>
-<span class="c1">// 7 7 7 7 7 7 7</span>
-</code></pre></div></div>
-
-<p>위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 <strong>7</strong>이 계속 출력된 것을 볼 수 있다.<br />
-이는 <code class="language-plaintext highlighter-rouge">var</code>가 가진 특징 때문인데, <code class="language-plaintext highlighter-rouge">var</code>는 함수레벨 스코프를 가지며, <strong>전역변수의 값이 변경</strong>될 수 있게 된다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">asyncRun</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="c1">// 7</span>
-<span class="p">};</span>
-<span class="nx">asyncRun</span><span class="p">(</span><span class="nx">baseData</span><span class="p">,</span> <span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span><span class="p">));</span>
-<span class="c1">// 7 7 7 7 7 7 7 7</span>
-</code></pre></div></div>
-
-<p>위 코드를 보면, <code class="language-plaintext highlighter-rouge">var i = 2;</code>로 값을 지정해준 상태에서, <code class="language-plaintext highlighter-rouge">asyncRun</code> 함수 안에서 <code class="language-plaintext highlighter-rouge">console.log</code>가 이루어지기 때문에, 값이 <strong>2</strong>로 나와야 한다.<br />
-그러나, for문 내의 <code class="language-plaintext highlighter-rouge">var i = 0</code>을 통해서 값이 재지정되었기 때문에 <strong>7</strong>이라는 값이 나오게 된다.<br />
-<code class="language-plaintext highlighter-rouge">setTimeout()</code>역시 이미 1초보다 훨씬 이전에 처리된 <code class="language-plaintext highlighter-rouge">i</code>의 값으로 처리가 진행되기 때문에 <strong>7</strong>만 나오게 된다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">asyncRun</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// var를 let으로 변경</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="c1">// 2</span>
-<span class="p">};</span>
-<span class="nx">asyncRun</span><span class="p">(</span><span class="nx">baseData</span><span class="p">,</span> <span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span><span class="p">));</span>
-<span class="c1">// 2 0 1 2 3 4 5 6</span>
-</code></pre></div></div>
-
-<p>이와 달리, <code class="language-plaintext highlighter-rouge">let</code>은 블록레벨 스코프를 가져, 함수, if문, while문 등 <strong>중괄호로 된 곳내에서만</strong> 작동한다.<br />
-실행 시 1차적으로 <code class="language-plaintext highlighter-rouge">for</code>문 밖 i의 값이 <strong>2</strong>로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다.</p>
-
-<h3 id="3-2-foreach">3-2. forEach</h3>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">asyncRun</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">};</span>
-<span class="nx">asyncRun</span><span class="p">(</span><span class="nx">baseData</span><span class="p">,</span> <span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span><span class="p">));</span>
-<span class="c1">// 0 1 2 3 4 5 6</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">forEach</code>로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다.</p>
-
-<h3 id="3-3-비동기--비동기">3-3. 비동기 + 비동기</h3>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">baseData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">asyncRun</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">cb 2</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">fn</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
-      <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">cb 1</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">};</span>
-
-<span class="nx">asyncRun</span><span class="p">(</span><span class="nx">baseData</span><span class="p">,</span> <span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">idx</span><span class="p">));</span>
-
-<span class="cm">/*
-cb 1
-cb 1
-cb 1
-cb 1
-cb 1
-cb 1
-cb 1
-cb 2
-0
-cb 2
-1
-cb 2
-2
-cb 2
-3
-cb 2
-4
-cb 2
-5
-cb 2
-6
-*/</span>
-</code></pre></div></div>
-
-<p>비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 <strong>우선적으로 들어온 함수를 처리</strong>하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다.<br />
-이를 통해, <strong>TASK QUEUE에서 QUEUE의 의미</strong>를 다시 알 수 있다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 동기(synchronous) 자바스크립트는 한 번에 하나의 작업만 수행한다. ‘동기’라는 상황은 쉽게 말해, 한 작업이 실행되는 동안 다른 작업은 실행되지 않고 기다리는 것이다. 이러한 자바스크립트의 특성은 그 엔진의 주요 구성 요소로 인해 나타나며, 그 종류로는 Memory Heap, Call Stack이 있다. Memory Heap : 변수, 객체의 메모리 할당을 담당한다. Call Stack : 호출된 함수가 쌓이는 곳을 의미한다. stack이라는 단어에서 알 수 있듯, LIFO(Last in First Out)의 구조로 이루어져 있다. 1-1. CALL STACK 함수 내의 다른 함수를 실행하는 경우, 이를 debugger를 통해 보면 아래와 같이 callstack이 쌓여있는 것을 볼 수 있다. 이는 함수의 실행 순서를 stack의 형태로 표현한 것인데, foo내에 있는 함수 bar가 먼저 실행을 다 마쳐야 foo가 다시 진행되는 것을 알 수 있다. const baseData = [1, 2, 3, 4, 5, 6, 100]; function foo() { baseData.forEach((v, i) =&gt; { console.log("sync ", i); bar(); }); } function bar() { baseData.forEach((v, i) =&gt; { debugger; console.log("sync 2", i); }); } foo(); 2. 비동기(asynchronous) 자바스크립트의 단일 스레드, 동기식 동작과 달리, 어떠한 요청을 보내면 그 요청이 끝나기 전에 바로 다음 동작이 진행되는 것을 말한다. 동기식으로만 진행되는 경우, 하나의 작업에 많은 시간이 걸리게 되면, 다음 동작들이 모두 영향을 받게 되어 전체적인 속도가 느려지게 되고, 이는 매우 비효율적인 것으로 볼 수 있다. 이러한 작업의 비효율성을 줄이기 위해 나타난 방식이 비동기 방식이다. 2-1. 여러 이벤트의 동시 동작 원리 자바스크립트의 기본 동작 원리로는 안되는 비동기는 자바스크립트의 실행 환경(runtime)을 통해 이루어낼 수 있다. 브라우저가 바로 그 환경인데, 여기서는 DOM, AJAX와 같은 비동기를 위한 web API가 들어가있어 비동기 작업을 해낼 수 있다. 더불어, 이것들의 제어를 위한 Event Loop, Callback Queue가 존재한다. 2-2. 비동기의 동작 순서 console.log("FIRST"); setTimeout(() =&gt; console.log("THIRD"), 5000); console.log("SECOND"); /* THIS IS FIRST THIS IS SECOND THIRD */ 우선 위 코드들을 실행함으로서, ‘first → setTimeout() → second’ 의 순서로 내용들이 진행된다. 위 코드에서 setTimeout은 web API(브라우저의 제공 API)로, 자바스크립트의 런타임 환경에서 별도의 API로 존재한다. API가 실행되게 되면, stack에서 우선 실행되는데, 이는 호출을 시킨다는 의미로 호출 후 stack에서는 사라지게 된다. 그리고 이 API는 작성된 코드의 중간에 갑자기 끼어들어서는 안 된다. 실행이 완료된 모든 WEB API는 task queue에 들어가서 대기하게 된다. event loop가 call stack과 task queue를 지속적으로 주시하는데, stack이 비어있게 되면, 첫 번째 실행될 API부터 순차적으로 가져와 실행하게 된다. 동기 ∙ 비동기 상황에 대한 다른 예시 function plus() { let a = 1; setTimeout(() =&gt; console.log(++a), 1000); return a; } const result = plus(); console.log("result :", result); /* result : 1 2 */ 위 예시에서, console.log가 마무리 된 후에 API가 진행된 것을 볼 수 있다. 이를 통해, API는 모든 stack내의 내용들이 정리된 후에 event loop를 통해서 진행됨을 알 수 있다. 3. 비동기의 예시 3-1. for, setTimeout() const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 위 코드를 보면, 원래의 의도(0 1 2 3 4 5 6)와 달리 7이 계속 출력된 것을 볼 수 있다. 이는 var가 가진 특징 때문인데, var는 함수레벨 스코프를 가지며, 전역변수의 값이 변경될 수 있게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (var i = 0; i &lt; arr.length; i++) { setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 7 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 7 7 7 7 7 7 7 7 위 코드를 보면, var i = 2;로 값을 지정해준 상태에서, asyncRun 함수 안에서 console.log가 이루어지기 때문에, 값이 2로 나와야 한다. 그러나, for문 내의 var i = 0을 통해서 값이 재지정되었기 때문에 7이라는 값이 나오게 된다. setTimeout()역시 이미 1초보다 훨씬 이전에 처리된 i의 값으로 처리가 진행되기 때문에 7만 나오게 된다. const baseData = [1, 2, 3, 4, 5, 6, 100]; var i = 2; const asyncRun = (arr, fn) =&gt; { for (let i = 0; i &lt; arr.length; i++) { // var를 let으로 변경 setTimeout(() =&gt; fn(i), 1000); } console.log(i); // 2 }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 2 0 1 2 3 4 5 6 이와 달리, let은 블록레벨 스코프를 가져, 함수, if문, while문 등 중괄호로 된 곳내에서만 작동한다. 실행 시 1차적으로 for문 밖 i의 값이 2로 제대로 출력되는 것을 볼 수 있고, 내부에서도 원래 의도대로 출력되는 것을 볼 수 있다. 3-2. forEach const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; fn(i), 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); // 0 1 2 3 4 5 6 forEach로 실행할 시에는 따로 영향받는 요소 없이 지정한 시간 뒤에 모두 제대로 실행되는 것을 볼 수 있다. 3-3. 비동기 + 비동기 const baseData = [1, 2, 3, 4, 5, 6, 100]; const asyncRun = (arr, fn) =&gt; { arr.forEach((v, i) =&gt; { setTimeout(() =&gt; { setTimeout(() =&gt; { console.log("cb 2"); fn(i); }, 1000); console.log("cb 1"); }, 1000); }); }; asyncRun(baseData, (idx) =&gt; console.log(idx)); /* cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 1 cb 2 0 cb 2 1 cb 2 2 cb 2 3 cb 2 4 cb 2 5 cb 2 6 */ 비동기 내에 또다른 비동기적인 함수를 넣게 되는 경우에는 우선적으로 들어온 함수를 처리하고, 그 다음 들어온 함수의 순서대로 처리되는 것을 볼 수 있다. 이를 통해, TASK QUEUE에서 QUEUE의 의미를 다시 알 수 있다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = "string"; let testObject = { A: "a" }; let testFucntion = (B) =&gt; { B = "b"; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, 'string' =&gt; 2, { A: 'a' } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get("none"); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, "=", value); } // 1 = 1 // string = 2 // { A: 'a' } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: 'a' } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, 'string', { A: 'a' }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript Linux Linux의 특징 유닉스 기반의 무료 오픈 소스 운영체제이며, 윈도우와 맥과 가장 구별되는 점으로 ‘오픈 소스’를 꼽을 수 있다. 커스터마이즈된 OS를 만들 수 있는 커널로, Linux 커널을 기반으로 하며, 커널은 운영 체제의 핵심이라고 할 수 있다. 즉, 이 커널로 자신의 운영 체제를 개발할 수 있다. Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
