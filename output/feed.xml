@@ -1,4 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-10-16T23:58:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-11-04T09:39:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">IP, TCP ∙ UDP</title><link href="http://localhost:4000/react/2022/10/20/IP_TCP_UDP/" rel="alternate" type="text/html" title="IP, TCP ∙ UDP" /><published>2022-10-20T00:00:00+09:00</published><updated>2022-10-20T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/20/IP_TCP_UDP</id><content type="html" xml:base="http://localhost:4000/react/2022/10/20/IP_TCP_UDP/"><![CDATA[<h2 id="ipinternet-protocol">IP(Internet Protocol)</h2>
+
+<p>IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다.</p>
+
+<p>클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 <strong>‘패킷’</strong>이라는 단위를 사용합니다.</p>
+
+<p><strong>클라이언트 주소, 서버 주소, 보낼 내용</strong> 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221020/Untitled-8.png" alt="" width="" height="" /> 
+</figure>
+
+<h3 id="문제점">문제점</h3>
+
+<ol>
+  <li><strong>비연결성</strong> : 패킷 대상이 없거나 불능이어도 보내게 됩니다.</li>
+  <li><strong>비신뢰성</strong> : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다.
+    <ul>
+      <li>중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다.</li>
+      <li>1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다.</li>
+    </ul>
+  </li>
+  <li><strong>프로그램 구분</strong> : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다.</li>
+</ol>
+
+<hr />
+
+<h2 id="tcpudp">TCP/UDP</h2>
+
+<p>인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다.</p>
+
+<ol>
+  <li>애플리케이션 계층 - HTTP, FTP</li>
+  <li>전송 계층 - TDP, UDP (IP 보완)</li>
+  <li>인터넷 계층 - IP</li>
+  <li>네트워크 인터페이스 계층 - LAN 드라이버 등</li>
+</ol>
+
+<h3 id="순서">순서</h3>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221020/Untitled-9.png" alt="" width="" height="" /> 
+</figure>
+
+<ol>
+  <li>일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달</li>
+  <li>OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함</li>
+  <li>이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄</li>
+  <li>서버로 전송</li>
+</ol>
+
+<h3 id="ip-tcp-패킷-정보">IP, TCP 패킷 정보</h3>
+
+<p>패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다.</p>
+
+<p>TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221020/Untitled-10.png" alt="" width="" height="" /> 
+</figure>
+
+<h3 id="tcp의-특징">TCP의 특징</h3>
+
+<ol>
+  <li>TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다.</li>
+  <li>먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake)</li>
+  <li>데이터가 상대에게 제대로 보내졌는지를 확인하는 <strong>데이터 전달 보증</strong>이 이루어집니다.</li>
+  <li>데이터가 보낸 순서대로 도착하도록 하는 <strong>순서 보증</strong>의 역할을 합니다.</li>
+  <li>위와 같은 기능들을 갖고 있어 <strong>신뢰가능</strong>한 프로토콜입니다.</li>
+</ol>
+
+<h3 id="tcp-3-way-handshake">TCP 3 way handshake</h3>
+
+<p>클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다.</p>
+
+<ol>
+  <li>클라이언트가 서버에게 요청</li>
+  <li>서버가 요청을 수락하고 다시 클라이언트에게 요청</li>
+  <li>클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송)</li>
+  <li>데이터 전송</li>
+</ol>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221020/Untitled-11.png" alt="" width="" height="" /> 
+</figure>
+
+<p>TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 <strong>클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미</strong>합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다.</p>
+
+<h3 id="장점">장점</h3>
+
+<ul>
+  <li>전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다.</li>
+  <li>순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.)</li>
+</ul>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221020/Untitled-12.png" alt="" width="" height="" /> 
+</figure>
+
+<hr />
+
+<h3 id="udp">UDP</h3>
+
+<p>사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다.</p>
+
+<h3 id="udp의-특징">UDP의 특징</h3>
+
+<ul>
+  <li>하얀 도화지에 비유되며 기능이 거의 없습니다.</li>
+  <li>연결 지향성을 띄며 3-way handshake가 없습니다.</li>
+  <li>데이터 전달 보증이나 순서 보증이 없습니다.</li>
+  <li>IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, <strong>각 패킷의 용도를 구분하기 위해 PORT를 사용</strong>하며. <strong>체크섬은 메세지가 제대로 된 것인지 확인하는 용도</strong>로 사용됩니다.</li>
+  <li>UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다.</li>
+  <li>주목받는 이유로 아래와 같은 사항들이 있습니다.
+    <ol>
+      <li>TCP의 단점인 3 way handshake로 인한 시간</li>
+      <li>여러 데이터들로 인한 데이터 양 증가 → 속도 감소</li>
+      <li>TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움</li>
+      <li>무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음</li>
+    </ol>
+  </li>
+  <li>UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.</li>
+</ul>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[IP(Internet Protocol) IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다. 클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 ‘패킷’이라는 단위를 사용합니다. 클라이언트 주소, 서버 주소, 보낼 내용 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다. 문제점 비연결성 : 패킷 대상이 없거나 불능이어도 보내게 됩니다. 비신뢰성 : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다. 중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다. 1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다. 프로그램 구분 : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다. TCP/UDP 인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다. 애플리케이션 계층 - HTTP, FTP 전송 계층 - TDP, UDP (IP 보완) 인터넷 계층 - IP 네트워크 인터페이스 계층 - LAN 드라이버 등 순서 일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달 OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함 이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄 서버로 전송 IP, TCP 패킷 정보 패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다. TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다. TCP의 특징 TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다. 먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake) 데이터가 상대에게 제대로 보내졌는지를 확인하는 데이터 전달 보증이 이루어집니다. 데이터가 보낸 순서대로 도착하도록 하는 순서 보증의 역할을 합니다. 위와 같은 기능들을 갖고 있어 신뢰가능한 프로토콜입니다. TCP 3 way handshake 클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다. 클라이언트가 서버에게 요청 서버가 요청을 수락하고 다시 클라이언트에게 요청 클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송) 데이터 전송 TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다. 장점 전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다. 순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.) UDP 사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다. UDP의 특징 하얀 도화지에 비유되며 기능이 거의 없습니다. 연결 지향성을 띄며 3-way handshake가 없습니다. 데이터 전달 보증이나 순서 보증이 없습니다. IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, 각 패킷의 용도를 구분하기 위해 PORT를 사용하며. 체크섬은 메세지가 제대로 된 것인지 확인하는 용도로 사용됩니다. UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다. 주목받는 이유로 아래와 같은 사항들이 있습니다. TCP의 단점인 3 way handshake로 인한 시간 여러 데이터들로 인한 데이터 양 증가 → 속도 감소 TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움 무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음 UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'date'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentDateTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDateTime</span><span class="si">}</span> <span class="p">/&gt;</span>
 <span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'time'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeTime</span><span class="si">}</span> <span class="p">/&gt;</span>
@@ -442,7 +564,7 @@ npm install @types/react-datepicker
 
 <p>아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run --save-dev sockjs-client stompjs
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save-dev sockjs-client stompjs
 </code></pre></div></div>
 
 <h3 id="sockjs-stompjs-연결">SockJS, StompJS 연결</h3>
@@ -624,7 +746,7 @@ npm install @types/react-datepicker
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span><span class="p">)</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomIds</span><span class="p">)</span> <span class="nx">chatroomIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
-</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다. Web Socket TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다. 서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다. 서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다. SockJS (큰 도움을 주신 사이트) 브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다. 브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다. (현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.) 구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다! 구성 SockJS Protocol SockJS Javascript Client: 브라우저용 클라이언트 라이브러리 SockJS Server: Spring-websocket 모듈로 제공 SockJS Java Client: Spring-websocket 모듈로 제공 전송 타입 WebSocket HTTP Streaming HTTP Long Polling StompJS (추후 참고할 만한 링크) 웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다. 서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다. 사용 설치 아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다. npm run --save-dev sockjs-client stompjs SockJS, StompJS 연결 이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다. import SockJs from "sockjs-client"; import StompJs from "stompjs"; // 들어갈 주소 설정 const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); Stomp Client로 서버에 연결 요청 Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다. const connectChatroom = (subscribeParams: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); // 현재 서버에서 확인을 위해 필요로 하는 헤더 try { // stompClient.debug = () =&gt; null; // console 창에 나오게 되는 내용들이 보이지 않도록 함 stompClient.connect(headers, () =&gt; subscribeChat(subscribeParams)); // 연결을 시도함 } catch (error) { console.log(error); } }; 원하는 주소로 구독 및 메세지 올 때 처리하기 subscribeChat이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. stompClient.connect를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 header, body를 넣을 수 있고 현재는 header만 보낸 상황입니다. const subscribeChat = ({ onReceive, chatroomId, chatroomIds, }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // 서버와 협의된 구독 URL stompClient.subscribe(subscribeURL, onReceive, headers); // Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함 }; // id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정 if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; 현재 앱의 특성상 id값을 하나만 받는 경우(채팅 상세에 들어갈 시), id값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다. subscribeURL을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다. 구독 끊기 const unsubscribe = () =&gt; { stompClient.unsubscribe("sub-0"); }; unsubscribe 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 해당 주소에 대한 구독만 끊어내는 개념으로 볼 수 있습니다. 연결 끊기 const disconnectChatroom = () =&gt; { try { // stompClient.debug = () =&gt; null; stompClient.disconnect(() =&gt; unsubscribe()); } catch (error) { console.log(error); } }; diconnect를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다. 추가적인 문제 (위에 반영되었습니다.) 아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다. const useChatAlarm = () =&gt; { const { state, contents } = useRecoilValueLoadable(chatroomIdsState); return () =&gt; { useEffect(() =&gt; { if (state !== "hasValue" || !contents) return; contents?.forEach(({ id }) =&gt; { const { connectChatroom } = chatSocket(); connectChatroom({ chatroomId: id }); }); }, [state]); }; }; const subscribeChat = ({ setter, chatroomId }: subscribeParamsType) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${chatroomId}`; // 하나의 id만 등록이 가능함 const headers = getAuthHeaders(); // 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨 stompClient.subscribe( subscribeURL, // 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함 (chatData) =&gt; { const newChat = JSON.parse(chatData.body); setter((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }, headers ); }; 사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다. 해결 방법 1. onSet 함수 및 주소 분리 type subscribeParamsType = { onSet: (chatData: StompJs.Message) =&gt; void; chatroomId?: string | number; chatroomIds?: string[] | number[]; }; const subscribeChat = ({ onSet, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정 stompClient.subscribe(subscribeURL, onSet, headers); // subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록 }; ... }; chatroomId의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 onSet이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다. const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }; // onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수 useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onSet: getNewChatMessage, chatroomId }); // 연결할 때 함수를 대입 return () =&gt; disconnectChatroom(); }, []); 2. id 개수에 따른 상황 분리 id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다. if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id));]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다. Web Socket TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다. 서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다. 서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다. SockJS (큰 도움을 주신 사이트) 브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다. 브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다. (현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.) 구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다! 구성 SockJS Protocol SockJS Javascript Client: 브라우저용 클라이언트 라이브러리 SockJS Server: Spring-websocket 모듈로 제공 SockJS Java Client: Spring-websocket 모듈로 제공 전송 타입 WebSocket HTTP Streaming HTTP Long Polling StompJS (추후 참고할 만한 링크) 웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다. 서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다. 사용 설치 아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다. npm install --save-dev sockjs-client stompjs SockJS, StompJS 연결 이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다. import SockJs from "sockjs-client"; import StompJs from "stompjs"; // 들어갈 주소 설정 const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); Stomp Client로 서버에 연결 요청 Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다. const connectChatroom = (subscribeParams: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); // 현재 서버에서 확인을 위해 필요로 하는 헤더 try { // stompClient.debug = () =&gt; null; // console 창에 나오게 되는 내용들이 보이지 않도록 함 stompClient.connect(headers, () =&gt; subscribeChat(subscribeParams)); // 연결을 시도함 } catch (error) { console.log(error); } }; 원하는 주소로 구독 및 메세지 올 때 처리하기 subscribeChat이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. stompClient.connect를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 header, body를 넣을 수 있고 현재는 header만 보낸 상황입니다. const subscribeChat = ({ onReceive, chatroomId, chatroomIds, }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // 서버와 협의된 구독 URL stompClient.subscribe(subscribeURL, onReceive, headers); // Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함 }; // id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정 if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; 현재 앱의 특성상 id값을 하나만 받는 경우(채팅 상세에 들어갈 시), id값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다. subscribeURL을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다. 구독 끊기 const unsubscribe = () =&gt; { stompClient.unsubscribe("sub-0"); }; unsubscribe 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 해당 주소에 대한 구독만 끊어내는 개념으로 볼 수 있습니다. 연결 끊기 const disconnectChatroom = () =&gt; { try { // stompClient.debug = () =&gt; null; stompClient.disconnect(() =&gt; unsubscribe()); } catch (error) { console.log(error); } }; diconnect를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다. 추가적인 문제 (위에 반영되었습니다.) 아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다. const useChatAlarm = () =&gt; { const { state, contents } = useRecoilValueLoadable(chatroomIdsState); return () =&gt; { useEffect(() =&gt; { if (state !== "hasValue" || !contents) return; contents?.forEach(({ id }) =&gt; { const { connectChatroom } = chatSocket(); connectChatroom({ chatroomId: id }); }); }, [state]); }; }; const subscribeChat = ({ setter, chatroomId }: subscribeParamsType) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${chatroomId}`; // 하나의 id만 등록이 가능함 const headers = getAuthHeaders(); // 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨 stompClient.subscribe( subscribeURL, // 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함 (chatData) =&gt; { const newChat = JSON.parse(chatData.body); setter((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }, headers ); }; 사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다. 해결 방법 1. onSet 함수 및 주소 분리 type subscribeParamsType = { onSet: (chatData: StompJs.Message) =&gt; void; chatroomId?: string | number; chatroomIds?: string[] | number[]; }; const subscribeChat = ({ onSet, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정 stompClient.subscribe(subscribeURL, onSet, headers); // subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록 }; ... }; chatroomId의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 onSet이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다. const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }; // onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수 useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onSet: getNewChatMessage, chatroomId }); // 연결할 때 함수를 대입 return () =&gt; disconnectChatroom(); }, []); 2. id 개수에 따른 상황 분리 id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다. if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id));]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
 추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다.</p>
 
 <h1 id="1-비선형-구조">1. 비선형 구조</h1>
@@ -1474,248 +1596,4 @@ Boolean 타입은 <strong>논리대수의 기본 타입</strong>이며 동시에
 
 <h2 id="2진법">2진법</h2>
 
-<p>2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[디지털 논리회로란? 이산적인 숫자를 게이트 입력으로 받아, 입력 논리의 필요 조건을 만족, 불만족하는 지에 대해 1 또는 0의 신호로 출력하는 하드웨어 소자이다. 디지털 논리회로의 연결을 통해 컴퓨터의 구성 부품을 만들게 된다. 또한, 논리적 사고를 위한 가장 기본적인 동작으로 프로그래밍 논리 구조와 연결된다. 종류 AND 게이트(논리곱) : 두 입력 모두 1인 경우에만 1, 나머지는 0이 출력된다. OR 게이트(논리합) : 두 입력 중 1이 존재할 경우 1, 아닐 시 0이 출력된다. NOT 게이트(논리부정, INVERTOR) : 입력이 반전되어 출력된다. NAND 게이트 : 두 입력 중 하나 이상 0인 경우 1, 나머지는 0이 출력된다. 즉, 두 입력이 모두 1인 경우 0이 출력된다. AND 게이트와 반대의 역할을 한다. NOR 게이트(부정논리합) : 두 입력 중 하나 이상 1인 경우 0, 나머지는 1이 출력된다. 즉, 두 입력 모두 0인 경우에 1이 출력된다. OR 게이트와 반대의 역할을 한다. XOR 게이트(배타적 논리합) : 입력이 같을 경우 0, 다를 경우 1이 출력된다. 참 입력의 개수가 홀수일 때 참을 내보낸다. 이진수 전원이 켜진 상태와 꺼진 상태를 각각 true, false의 형태로 나타낼 수 있으며, 이런 방식을 수학자 조지 부울의 이름을 따서 Boolean 타입이라고 부른다. Boolean 타입은 논리대수의 기본 타입이며 동시에 디지털 시스템을 구성하는 하드웨어 및 소프트웨어의 가장 기본적인 타입이다. 모든 전자부품은 전기의 흐름 유무로 Boolean 타입을 나타낼 수 있으며, 이 개념의 확장으로 모든 10진수 숫자를 2진수 코드로 나타낼 수 있다. 예시로, 1비트(bit)는 2개(0-1)의 값을 나타낼 수 있고, 2비트는 4개(0-3), 3비트는 8개(0-7)의 값을 나타낼 수 있다. 그리고 이는 각각 2^(비트수)의 형태로 나타난다. 반가산기(half-adder) 두 개의 비트를 더하는 과정에서, 결과값을 2비트의 값으로 표현해볼 수 있다. + 0 1 0 00 01 1 01 10 왼쪽과 같이 2비트의 값으로 나타낼 수 있고, 한 비트 내의 두 이진수를 더하면, 두 비트가 되어 각각의 비트를 합(sum)비트, 자리올림(carry)비트라고 한다. 합비트   0 1 0 0 1 1 1 0 자리올림비트   0 1 0 0 0 1 0 1 전가산기(full-adder) 두번째 자리부터는 자리올림이 발생한 경우에 대해서도 더해줘야 하기 때문에, 세 개의 이진수를 더하는 경우에는 두 개의 반가산기 및 OR 게이트를 활용하는 전가산기를 사용한다. 10진법과 2진법 10진법 10의 배수의 단위로 숫자를 나누어 나타내는 방법이다. 10단위가 올라갈 때마다 숫자가 증가하는 모습을 보인다. 2진법 2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">해시 ∙ 해시맵</title><link href="http://localhost:4000/dev/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5/" rel="alternate" type="text/html" title="해시 ∙ 해시맵" /><published>2021-12-11T00:00:00+09:00</published><updated>2021-12-11T00:00:00+09:00</updated><id>http://localhost:4000/dev/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5</id><content type="html" xml:base="http://localhost:4000/dev/2021/12/11/%ED%95%B4%EC%8B%9C_%ED%95%B4%EC%8B%9C%EB%A7%B5/"><![CDATA[<h1 id="1-해시hash">1. 해시(Hash)</h1>
-
-<h2 id="1-1-직접-주소-테이블direct-address-table">1-1. 직접 주소 테이블(Direct Address Table)</h2>
-
-<p>해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다.<br />
-key와 value를 가지며 <strong>하나의 key에 하나의 value</strong>가 매칭된다.<br />
-Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다.<br />
-찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다.<br />
-<strong>시간복잡도 O(1)으로 표현된다.</strong><br />
-이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다.<br />
-그러나, 단점으로 꼽히는 것이 <strong>‘공간의 효율성’</strong>이다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span> <span class="p">&lt;</span><span class="nt">3</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 3, <span class="p">&lt;</span><span class="nt">6</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 10, <span class="p">&lt;</span><span class="nt">79</span> <span class="na">empty</span> <span class="na">items</span><span class="p">&gt;</span>, 90 ]
-</code></pre></div></div>
-
-<p>‘<strong>적재율</strong>‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 <strong>3.15%의 적재율</strong>이라 볼 수 있다.</p>
-
-<h2 id="1-2-해시-테이블과-해시-함수">1-2. 해시 테이블과 해시 함수</h2>
-
-<blockquote>
-  <p>해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수</p>
-</blockquote>
-
-<p>직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 <strong>해시 테이블</strong>을 사용하는 것이다.<br />
-해시 테이블의 사용을 위해서 <strong>‘해시 함수’</strong>를 만들어주게 된다.</p>
-
-<ul>
-  <li>해시 함수의 특징<br />
-해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다.<br />
-value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다.
-    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hashFunction</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">key</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-    <p>위 함수에서 가장 중요한 것은 <strong>‘10’이라는 크기 내로 한정되어진다</strong>는 것이다.<br />
-Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS)<br />
-key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다.<br />
-해시함수 과정에서 <strong>해시충돌(Collision)</strong>이 발생할 수 있다.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h1 id="2-해시-충돌collision">2. 해시 충돌(Collision)</h1>
-
-<blockquote>
-  <p>해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황</p>
-</blockquote>
-
-<p>해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다.<br />
-근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다.</p>
-
-<h2 id="2-1-개방-주소법open-address">2-1. 개방 주소법(open address)</h2>
-
-<p>충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식.<br />
-해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다.</p>
-
-<h3 id="a-선형-탐사법linear-probing">A. 선형 탐사법(Linear Probing)</h3>
-
-<p>선형으로 순차적으로 탐사하는 방법.<br />
-충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashingIndex</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="kd">class</span> <span class="nx">hashTable</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">table</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="p">}</span>
-
-  <span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">hashingIndex</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="nx">getTable</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">myTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">hashTable</span><span class="p">();</span>
-<span class="nx">myTable</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="nx">myTable</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTable</span><span class="p">.</span><span class="nx">getTable</span><span class="p">());</span>
-<span class="c1">// [ &lt;1 empty item&gt;, 4, 7 ]</span>
-</code></pre></div></div>
-
-<p>위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다.<br />
- → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다.<br />
-문제점 : 값의 주변이 모두 채워지는 <strong>일차 군집화(Primay Clustering)</strong>가 발생하기 쉽다.<br />
- → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다.</p>
-
-<h3 id="b-제곱-탐사법quadratic-probing">B. 제곱 탐사법(Quadratic Probing)</h3>
-
-<p>선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다.<br />
-<strong>충돌의 발생 수의 제곱만큼</strong> 이동하게 되므로 <strong>‘한 번 충돌 시 1, 두 번 충돌 시 4’</strong> 이런식으로 늘어나게 된다.</p>
-
-<hr />
-
-<h1 id="3-javascript의-해시테이블hash-table--map">3. JavaScript의 해시테이블(Hash Table) : Map</h1>
-
-<p>JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다.</p>
-
-<h2 id="3-1-map">3-1. Map</h2>
-
-<p>key-value로 이루어진 해시 테이블로, Object와 주로 비교된다.<br />
-탐색은 <code class="language-plaintext highlighter-rouge">get()</code>, 삽입은 <code class="language-plaintext highlighter-rouge">set()</code>으로 한다.<br />
-key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다.<br />
-<code class="language-plaintext highlighter-rouge">set()</code>을 이용해 value를 설정한다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
-
-<span class="kd">let</span> <span class="nx">testNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">testString</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">testObject</span> <span class="o">=</span> <span class="p">{</span> <span class="na">A</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span> <span class="p">};</span>
-<span class="kd">let</span> <span class="nx">testFucntion</span> <span class="o">=</span> <span class="p">(</span><span class="nx">B</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">B</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testString</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testObject</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
-<span class="cm">/*
-Map(4) {
-  1 =&gt; 1,
-  'string' =&gt; 2,
-  { A: 'a' } =&gt; 3,
-  [Function (anonymous)] =&gt; 4
-}
-*/</span>
-<span class="c1">// map의 형태</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">get()</code>을 통한 value 가져오기</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">);</span> <span class="c1">// 1</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testString</span><span class="p">);</span> <span class="c1">// 2</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testObject</span><span class="p">);</span> <span class="c1">// 3</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// 4</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">has()</code>를 통한 value 찾기</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">);</span> <span class="c1">// true</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">delete()</code>를 통한 value 삭제</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">testFucntion</span><span class="p">);</span> <span class="c1">// undefined</span>
-<span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// undefined</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">size</code>를 통한 value의 유무 확인</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">map</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span> <span class="c1">// 3</span>
-<span class="nx">map</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// undefined</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">for-of</code>를 통한 hash 탐색</li>
-</ul>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">map</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="dl">"</span><span class="s2">=</span><span class="dl">"</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// 1 = 1</span>
-<span class="c1">// string = 2</span>
-<span class="c1">// { A: 'a' } = 3</span>
-<span class="c1">// [Function: testFucntion] = 4</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// 1</span>
-<span class="c1">// string</span>
-<span class="c1">// { A: 'a' }</span>
-<span class="c1">// [Function: testFucntion]</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// 1</span>
-<span class="c1">// 2</span>
-<span class="c1">// 3</span>
-<span class="c1">// 4</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">());</span>
-<span class="c1">// [Map Iterator] { 1, 2, 3, 4 }</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
-<span class="c1">// [Map Iterator] { 1, 'string', { A: 'a' }, [Function: testFucntion] }</span>
-</code></pre></div></div>
-
-<hr />
-
-<h1 id="4-충돌collision">4. 충돌(Collision)</h1>
-
-<p>받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 <strong>collision</strong>이라고 한다.<br />
-해결을 위해서 대표적인 두 가지 방법이 존재한다.</p>
-
-<ol>
-  <li>Open Addressing<br />
-겹치는 해당 index의 <strong>옆 자리</strong>에 넣게 되는 방법이다.<br />
-이후에 <strong>해당 자리</strong>를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다.</li>
-  <li>Separate Chainining<br />
-Linked List를 이용해 <strong>다음 링크</strong>에 끼워넣는 방법이다.<br />
-이후 찾을 때에는 <strong>해당 링크</strong>를 타고 들어가면 된다.</li>
-</ol>
-
-<hr />
-
-<h1 id="참고-링크">참고 링크</h1>
-
-<ul>
-  <li>JavaScript Map, Hashmap<br />
-전체적인 설명 : <a href="https://velog.io/@jun094/Hash%EC%99%80-Map">https://velog.io/@jun094/Hash와-Map</a><br />
-설명 동영상 : <a href="https://www.youtube.com/watch?v=HraOg7W3VAM">https://www.youtube.com/watch?v=HraOg7W3VAM</a></li>
-  <li>Hashmap 충돌 해결법<br />
-<a href="https://overcome-the-limits.tistory.com/entry/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%ED%95%B4%EC%8B%9C%ED%85%8C%EC%9D%B4%EB%B8%94-with-JavaScript">https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript</a></li>
-</ul>
-
-<h1 id="linux">Linux</h1>
-
-<hr />
-
-<h2 id="linux의-특징">Linux의 특징</h2>
-
-<p>유닉스 기반의 무료 오픈 소스 운영체제이며, 윈도우와 맥과 가장 구별되는 점으로 <strong>‘오픈 소스’</strong>를 꼽을 수 있다.<br />
-커스터마이즈된 OS를 만들 수 있는 커널로, Linux 커널을 기반으로 하며, 커널은 운영 체제의 핵심이라고 할 수 있다.
-즉, 이 커널로 자신의 운영 체제를 개발할 수 있다.<br />
-Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 해시(Hash) 1-1. 직접 주소 테이블(Direct Address Table) 해시 테이블은 ‘직접 주소 테이블’이라는 자료구조에서 시작된다. key와 value를 가지며 하나의 key에 하나의 value가 매칭된다. Array에서는 key값에 숫자만 가능함(index). 그러나 Hash Table은 key값에 문자열도 가능하다. 찾고자 하는 value와 테이블의 index가 일치하므로, 저장된 데이터를 바로 꺼내올 수 있다. 시간복잡도 O(1)으로 표현된다. 이진트리검색, linked list와 같은 구조를 쓰게 될 시 특정값의 삭제가 다른 값의 탐색에 영향을 미칠 수가 있는데, map은 그러한 것에서 자유롭다. 그러나, 단점으로 꼽히는 것이 ‘공간의 효율성’이다. [ &lt;3 empty items&gt;, 3, &lt;6 empty items&gt;, 10, &lt;79 empty items&gt;, 90 ] ‘적재율‘로 이러한 공간의 활용도를 표현할 수도 있는데, 위와 같은 경우는 총 95개의 공간 중 3개가 사용되어 3.15%의 적재율이라 볼 수 있다. 1-2. 해시 테이블과 해시 함수 해시 함수 : 임의의 길이를 가지는 데이터를 고정된 길이의 데이터로 매핑해주는 함수 직접 주소 테이블의 단점을 보완하기 위해 사용할 수 있는 방법이 해시 테이블을 사용하는 것이다. 해시 테이블의 사용을 위해서 ‘해시 함수’를 만들어주게 된다. 해시 함수의 특징 해시 함수를 거쳐 나온 값을 통해 value를 추측할 수 없다. value를 바로 적용하지 않기 때문에, 예를 들면 ‘100’이라는 숫자에 대해서 100개의 공간을 만든 뒤 값을 배치할 필요가 없어지게 된다. function hashFunction(key) { return key % 10; } 위 함수에서 가장 중요한 것은 ‘10’이라는 크기 내로 한정되어진다는 것이다. Hash Table의 key와 연결된 value를 삽입, 삭제, 탐색하는 알고리즘 함수이다.(대표적으로 MDS) key가 들어오면 랜덤한 주소값을 생성한 뒤, 그 주소값으로 설정된 테이블에 key, value를 저장한다. 해시함수 과정에서 해시충돌(Collision)이 발생할 수 있다. 2. 해시 충돌(Collision) 해시 충돌 : 서로 다른 value를 입력했을 때, 테이블 내 같은 index로 값이 들어가(같은 값이 나오게 되어) 겹치는 상황 해시 테이블은 데이터의 개수보다 테이블의 크기를 줄이고자 하는 생각에서 나왔기 때문에, 이에 대한 해결책이 존재한다. 근본적으로, 해시 함수를 짤 때 가능한 겹치는 값이 나오지 않도록 하는 것이 중요하지만, 결국 겹치는 구간이 존재할 수 밖에 없다. 2-1. 개방 주소법(open address) 충돌이 발생할 시, 테이블 내 새로운 주소를 탐사한 후, 비어있는 곳에 데이터를 입력하는 방식. 해시 함수의 결과값 외에 다른 인덱스를 허용한다는 의미로 ‘개방 주소’라고 표현한다. A. 선형 탐사법(Linear Probing) 선형으로 순차적으로 탐사하는 방법. 충돌이 일어났을 경우, 충돌이 발생한 곳의 바로 옆자리로 배치가 이루어진다. const hashingIndex = function (number) { const result = number % 3; return result; }; class hashTable { constructor() { this.table = []; } setValue(value = -1) { const index = hashingIndex(value); if (this.table[index]) { this.table[index + 1] = value; } else { this.table[index] = value; } } getTable() { return this.table; } } const myTable = new hashTable(); myTable.setValue(4); myTable.setValue(7); console.log(myTable.getTable()); // [ &lt;1 empty item&gt;, 4, 7 ] 위 코드에서 입력된 4, 7은 모두 3으로 나눌 때의 나머지 값이 1이므로, index 1에 값이 들어가야 한다. → 4가 이미 배치되어 있어 7은 그 옆 칸으로 이동하여 배치된다. 문제점 : 값의 주변이 모두 채워지는 일차 군집화(Primay Clustering)가 발생하기 쉽다. → 이로 인해, 옆 칸에 저장되는 데이터가 늘어나고, 그 근처에 새로 저장되려는 값들도 끊임없이 옆으로 새로 이동해 저장되는 문제가 발생한다. B. 제곱 탐사법(Quadratic Probing) 선형 탐사법과 유사한 방식이지만, 탐사의 폭이 제곱으로 늘어난다. 충돌의 발생 수의 제곱만큼 이동하게 되므로 ‘한 번 충돌 시 1, 두 번 충돌 시 4’ 이런식으로 늘어나게 된다. 3. JavaScript의 해시테이블(Hash Table) : Map JavaScript에서의 key-value 자료구조는 Object가 대표적이었는데, Map, Set이 추가되어 현재 JavaScript의 해시테이블은 “Object, Map, Set”가 있다. 3-1. Map key-value로 이루어진 해시 테이블로, Object와 주로 비교된다. 탐색은 get(), 삽입은 set()으로 한다. key 값은 고유한 값으로, 하나만 존재할 수 있으며, number, string, function, object, NaN이 자료형으로 사용된다. set()을 이용해 value를 설정한다. let map = new Map(); let testNumber = 1; let testString = "string"; let testObject = { A: "a" }; let testFucntion = (B) =&gt; { B = "b"; }; map.set(testNumber, 1); map.set(testString, 2); map.set(testObject, 3); map.set(testFucntion, 4); console.log(map); /* Map(4) { 1 =&gt; 1, 'string' =&gt; 2, { A: 'a' } =&gt; 3, [Function (anonymous)] =&gt; 4 } */ // map의 형태 get()을 통한 value 가져오기 map.get(testNumber); // 1 map.get(testString); // 2 map.get(testObject); // 3 map.get(testFucntion); // 4 has()를 통한 value 찾기 map.has(testFucntion); // true map.has(testNumber); // true delete()를 통한 value 삭제 map.delete(testFucntion); // true map.get(testFucntion); // undefined map.get("none"); // undefined size를 통한 value의 유무 확인 map.size; // 3 map.length; // undefined for-of를 통한 hash 탐색 for (let [key, value] of map) { console.log(key, "=", value); } // 1 = 1 // string = 2 // { A: 'a' } = 3 // [Function: testFucntion] = 4 for (let key of map.keys()) { console.log(key); } // 1 // string // { A: 'a' } // [Function: testFucntion] for (let value of map.values()) { console.log(value); } // 1 // 2 // 3 // 4 console.log(map.values()); // [Map Iterator] { 1, 2, 3, 4 } console.log(map.keys()); // [Map Iterator] { 1, 'string', { A: 'a' }, [Function: testFucntion] } 4. 충돌(Collision) 받아온 key값에 대해 hash function으로 index를 지정하고 넣어주게 되는데, 이미 해당 index에 값이 존재하는 경우가 발생할 수 있으며 이를 collision이라고 한다. 해결을 위해서 대표적인 두 가지 방법이 존재한다. Open Addressing 겹치는 해당 index의 옆 자리에 넣게 되는 방법이다. 이후에 해당 자리를 찾기 위해서 hash 값 index 이후부터 찾는 key값이 나올 때까지 찾는다. Separate Chainining Linked List를 이용해 다음 링크에 끼워넣는 방법이다. 이후 찾을 때에는 해당 링크를 타고 들어가면 된다. 참고 링크 JavaScript Map, Hashmap 전체적인 설명 : https://velog.io/@jun094/Hash와-Map 설명 동영상 : https://www.youtube.com/watch?v=HraOg7W3VAM Hashmap 충돌 해결법 https://overcome-the-limits.tistory.com/entry/자료구조-해시테이블-with-JavaScript Linux Linux의 특징 유닉스 기반의 무료 오픈 소스 운영체제이며, 윈도우와 맥과 가장 구별되는 점으로 ‘오픈 소스’를 꼽을 수 있다. 커스터마이즈된 OS를 만들 수 있는 커널로, Linux 커널을 기반으로 하며, 커널은 운영 체제의 핵심이라고 할 수 있다. 즉, 이 커널로 자신의 운영 체제를 개발할 수 있다. Linux 아키텍처는 커널, 시스템 라이브러리, 시스템 도구와 같은 구성 요소로 이루어진다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.</p>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[디지털 논리회로란? 이산적인 숫자를 게이트 입력으로 받아, 입력 논리의 필요 조건을 만족, 불만족하는 지에 대해 1 또는 0의 신호로 출력하는 하드웨어 소자이다. 디지털 논리회로의 연결을 통해 컴퓨터의 구성 부품을 만들게 된다. 또한, 논리적 사고를 위한 가장 기본적인 동작으로 프로그래밍 논리 구조와 연결된다. 종류 AND 게이트(논리곱) : 두 입력 모두 1인 경우에만 1, 나머지는 0이 출력된다. OR 게이트(논리합) : 두 입력 중 1이 존재할 경우 1, 아닐 시 0이 출력된다. NOT 게이트(논리부정, INVERTOR) : 입력이 반전되어 출력된다. NAND 게이트 : 두 입력 중 하나 이상 0인 경우 1, 나머지는 0이 출력된다. 즉, 두 입력이 모두 1인 경우 0이 출력된다. AND 게이트와 반대의 역할을 한다. NOR 게이트(부정논리합) : 두 입력 중 하나 이상 1인 경우 0, 나머지는 1이 출력된다. 즉, 두 입력 모두 0인 경우에 1이 출력된다. OR 게이트와 반대의 역할을 한다. XOR 게이트(배타적 논리합) : 입력이 같을 경우 0, 다를 경우 1이 출력된다. 참 입력의 개수가 홀수일 때 참을 내보낸다. 이진수 전원이 켜진 상태와 꺼진 상태를 각각 true, false의 형태로 나타낼 수 있으며, 이런 방식을 수학자 조지 부울의 이름을 따서 Boolean 타입이라고 부른다. Boolean 타입은 논리대수의 기본 타입이며 동시에 디지털 시스템을 구성하는 하드웨어 및 소프트웨어의 가장 기본적인 타입이다. 모든 전자부품은 전기의 흐름 유무로 Boolean 타입을 나타낼 수 있으며, 이 개념의 확장으로 모든 10진수 숫자를 2진수 코드로 나타낼 수 있다. 예시로, 1비트(bit)는 2개(0-1)의 값을 나타낼 수 있고, 2비트는 4개(0-3), 3비트는 8개(0-7)의 값을 나타낼 수 있다. 그리고 이는 각각 2^(비트수)의 형태로 나타난다. 반가산기(half-adder) 두 개의 비트를 더하는 과정에서, 결과값을 2비트의 값으로 표현해볼 수 있다. + 0 1 0 00 01 1 01 10 왼쪽과 같이 2비트의 값으로 나타낼 수 있고, 한 비트 내의 두 이진수를 더하면, 두 비트가 되어 각각의 비트를 합(sum)비트, 자리올림(carry)비트라고 한다. 합비트   0 1 0 0 1 1 1 0 자리올림비트   0 1 0 0 0 1 0 1 전가산기(full-adder) 두번째 자리부터는 자리올림이 발생한 경우에 대해서도 더해줘야 하기 때문에, 세 개의 이진수를 더하는 경우에는 두 개의 반가산기 및 OR 게이트를 활용하는 전가산기를 사용한다. 10진법과 2진법 10진법 10의 배수의 단위로 숫자를 나누어 나타내는 방법이다. 10단위가 올라갈 때마다 숫자가 증가하는 모습을 보인다. 2진법 2의 배수의 단위로 숫자를 나누어 나타낸다. 2단위가 증가 시 숫자가 올라가게 된다. 가장 작은 단위는 2^0 단위로, 이 한 단위를 비트(bit)로 표현하게 된다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
