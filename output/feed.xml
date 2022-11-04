@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-11-04T12:14:26+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">textarea 줄바꿈 시 자동 스크롤</title><link href="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" rel="alternate" type="text/html" title="textarea 줄바꿈 시 자동 스크롤" /><published>2022-10-26T00:00:00+09:00</published><updated>2022-10-26T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/26/textarea%20%EC%A4%84%EB%B0%94%EA%BF%88%20%EC%8B%9C%20%EC%9E%90%EB%8F%99%20%EC%8A%A4%ED%81%AC%EB%A1%A4</id><content type="html" xml:base="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"><![CDATA[<h2 id="textarea-태그-내-줄바꿈-시-문제점">textarea 태그 내 줄바꿈 시 문제점</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-11-04T12:24:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">textarea 줄바꿈 시 자동 스크롤</title><link href="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" rel="alternate" type="text/html" title="textarea 줄바꿈 시 자동 스크롤" /><published>2022-10-26T00:00:00+09:00</published><updated>2022-10-26T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/26/textarea%20%EC%A4%84%EB%B0%94%EA%BF%88%20%EC%8B%9C%20%EC%9E%90%EB%8F%99%20%EC%8A%A4%ED%81%AC%EB%A1%A4</id><content type="html" xml:base="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"><![CDATA[<h2 id="textarea-태그-내-줄바꿈-시-문제점">textarea 태그 내 줄바꿈 시 문제점</h2>
 
 <p><code class="language-plaintext highlighter-rouge">textarea</code> 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 <code class="language-plaintext highlighter-rouge">input</code> 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. <code class="language-plaintext highlighter-rouge">input</code> 태그는 한 줄로만 이어져 줄바꿈이 없었지만, <code class="language-plaintext highlighter-rouge">textarea</code>는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다.</p>
 
@@ -117,7 +117,91 @@
 
 <figure class="figure  figure--center">
   <img class="image" src="/image/221026/3.gif" alt="" width="75%" height="" /> 
-</figure>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} ... onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder='메시지를 입력하세요.' /&gt; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === 'insertLineBreak') return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type 'Enter' key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // 'keyCode' is deprecated but error occurs when just use 'key' in korean if (key !== 'Enter' || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + '\n'); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder='메시지를 입력하세요.' /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">PORT ∙ DNS ∙ URI</title><link href="http://localhost:4000/http/2022/10/24/PORT-DNS-URI/" rel="alternate" type="text/html" title="PORT ∙ DNS ∙ URI" /><published>2022-10-24T00:00:00+09:00</published><updated>2022-10-24T00:00:00+09:00</updated><id>http://localhost:4000/http/2022/10/24/PORT%20%E2%88%99%20DNS%20%E2%88%99%20URI</id><content type="html" xml:base="http://localhost:4000/http/2022/10/24/PORT-DNS-URI/"><![CDATA[<h2 id="port">PORT</h2>
+</figure>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} ... onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder='메시지를 입력하세요.' /&gt; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === 'insertLineBreak') return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type 'Enter' key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // 'keyCode' is deprecated but error occurs when just use 'key' in korean if (key !== 'Enter' || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + '\n'); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder='메시지를 입력하세요.' /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">textarea 태그 Enter 처리 문제</title><link href="http://localhost:4000/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="textarea 태그 Enter 처리 문제" /><published>2022-10-25T00:00:00+09:00</published><updated>2022-10-25T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/25/textarea%20%EC%97%94%ED%84%B0%20%EC%B2%98%EB%A6%AC%20%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/"><![CDATA[<h2 id="input-태그를-textarea-태그로-바꾸기">input 태그를 textarea 태그로 바꾸기</h2>
+
+<p>기존에 <code class="language-plaintext highlighter-rouge">input</code> 태그로 되어있던 채팅 입력창을 <code class="language-plaintext highlighter-rouge">textarea</code> 태그로 바꾸면서 Enter 키에 대한 이벤트 적용 방식을 변경하게 됐습니다. <code class="language-plaintext highlighter-rouge">input</code> 태그의 경우 Enter 키를 입력 시 바로 <code class="language-plaintext highlighter-rouge">submit</code> 이벤트가 발생하게 되는 것에 반해, <code class="language-plaintext highlighter-rouge">textarea</code>는 줄바꿈이 발생하기 때문에 이 부분에 대한 해결책이 필요했습니다.</p>
+
+<h2 id="onkeydown-이벤트-적용">onKeyDown 이벤트 적용</h2>
+
+<p>Enter키가 입력되는 상황에 대해서만 처리를 하면 되었기 때문에 <code class="language-plaintext highlighter-rouge">onKeyDown</code>이라는 이벤트 핸들러를 사용했습니다. 여기서 key가 Enter인 상황에 대해 처리를 해주었고, 더불어 Shift 키와 함께 눌리는 상황에는 한 줄 띄우기가 가능하도록 설정을 했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleKeyDownChat</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">KeyboardEvent</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">shiftKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// Enter 키 여부 확인</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shiftKey</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Shift 키 여부 확인</span>
+    <span class="nx">sendCurChat</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">setChatValue</span><span class="p">(</span><span class="nx">chatValue</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">// 한 줄 띄운 값으로 기존 채팅값을 변경</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>그리고 Enter 키가 입력이 된 상황에 대해, 기존에 설정을 해두었던 <code class="language-plaintext highlighter-rouge">onChange</code> 함수에서는 Enter를 받지 않도록 해야됐기 때문에, 이 부분도 설정을 해주었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleChangeChatValue</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">ChangeEvent</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">inputType</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span> <span class="k">as</span> <span class="nx">any</span><span class="p">;</span>
+  <span class="c1">//</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">inputType</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">insertLineBreak</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="nx">setChatValue</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이 부분을 설정하면서 어려움을 느꼈던 부분은 ‘<code class="language-plaintext highlighter-rouge">onChange</code> 이벤트에서 어떻게 Enter를 감지하는가’ 였습니다. 이 부분은 정확한 해결책이 나오지 않아, 우선 <code class="language-plaintext highlighter-rouge">nativeEvent</code> 객체 내에 존재하는 <code class="language-plaintext highlighter-rouge">inputType</code>을 찾아 Enter를 누를 시 보여주게 되는 ‘<code class="language-plaintext highlighter-rouge">insertLineBreak</code>’을 사용했습니다.<br />
+(이 부분을 사용하면서 type 상의 에러가 발생했는데, 이 부분은 정확히 타입을 다시 적용할 방법을 찾지 못해 우선 임시적으로 <code class="language-plaintext highlighter-rouge">any</code>로 처리했습니다…)</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221025/1.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>위 과정을 통해서 Enter키를 누른 상황에는 <code class="language-plaintext highlighter-rouge">onKeyDown</code>, 누르지 않은 상황은 <code class="language-plaintext highlighter-rouge">onChange</code>에서 처리를 하는 방식을 사용했습니다.</p>
+
+<h2 id="enter-중복-처리-문제">Enter 중복 처리 문제</h2>
+
+<p>하지만, 이렇게 설정을 해도 문제가 발생했는데, 그 문제는 바로 한글을 입력할 때 채팅이 두 번씩 입력이 된다는 것이었습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221025/2.gif" alt="" width="50%" height="" /> 
+</figure>
+
+<p>이 부분을 해결하기 위해서 우선 영어와 한글로 Enter 키를 입력할 때의 차이점을 찾는 것부터 했습니다. 아래 사진과 같이 <code class="language-plaintext highlighter-rouge">onKeyDown</code> 이벤트의 결과값이 나오게 되는데, 위 사진이 영어, 아래 사진이 한글입니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221025/3.png" alt="" width="" height="" /> 
+</figure>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221025/4.png" alt="" width="" height="" /> 
+</figure>
+
+<p>영어로 입력하는 경우는 위 사진의 결과만 나오게 되며, 한글로 입력할 때는 위, 아래 사진의 결과가 나와, 결론적으로 Enter가 두 번 발생하게 되고, gif와 같이 한 글자씩 더 입력이 되는 과정을 거쳐 문제가 발생했습니다. 이를 해결하는 방법으로는 <code class="language-plaintext highlighter-rouge">keyCode</code>를 사용하는 것이었는데, <code class="language-plaintext highlighter-rouge">keyCode</code>를 사용하면서 우려가 되었던 부분은 현재 deprecated 되었다는 경고가 나왔기 때문입니다. 당장의 사용에는 문제가 없으나, 추후에 <code class="language-plaintext highlighter-rouge">keyCode</code> 외의 다른 방법을 찾아야한다는 단점이 존재하는 해결 방법을 사용했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleKeyDownChat</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">KeyboardEvent</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">shiftKey</span><span class="p">,</span> <span class="nx">keyCode</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+  <span class="c1">// 'keyCode' is deprecated but error occurs when just use 'key' in korean</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">keyCode</span> <span class="o">!==</span> <span class="mi">13</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shiftKey</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sendCurChat</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">setChatValue</span><span class="p">(</span><span class="nx">chatValue</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="띄워쓰기-스타일-적용하기">띄워쓰기 스타일 적용하기</h3>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221025/5.png" alt="" width="50%" height="" /> 
+</figure>
+
+<p>띄워쓰기를 적용해주었음에도 나오는 결과 상으로는 띄워쓰기가 제대로 되지 않는데, 이는 ‘<code class="language-plaintext highlighter-rouge">\n</code>’이라는 줄바꿈값을 스타일적으로 처리하지 않았기 때문이었습니다. 이는 간단히 아래의 코드를 입력해 줄바꿈을 해줄 수 있었습니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">white-space</span><span class="o">:</span> <span class="nt">pre-wrap</span><span class="o">;</span>
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[input 태그를 textarea 태그로 바꾸기 기존에 input 태그로 되어있던 채팅 입력창을 textarea 태그로 바꾸면서 Enter 키에 대한 이벤트 적용 방식을 변경하게 됐습니다. input 태그의 경우 Enter 키를 입력 시 바로 submit 이벤트가 발생하게 되는 것에 반해, textarea는 줄바꿈이 발생하기 때문에 이 부분에 대한 해결책이 필요했습니다. onKeyDown 이벤트 적용 Enter키가 입력되는 상황에 대해서만 처리를 하면 되었기 때문에 onKeyDown이라는 이벤트 핸들러를 사용했습니다. 여기서 key가 Enter인 상황에 대해 처리를 해주었고, 더불어 Shift 키와 함께 눌리는 상황에는 한 줄 띄우기가 가능하도록 설정을 했습니다. const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey } = event; if (key !== "Enter") return; // Enter 키 여부 확인 if (!shiftKey) { // Shift 키 여부 확인 sendCurChat(); } else { setChatValue(chatValue + "\n"); // 한 줄 띄운 값으로 기존 채팅값을 변경 } }; 그리고 Enter 키가 입력이 된 상황에 대해, 기존에 설정을 해두었던 onChange 함수에서는 Enter를 받지 않도록 해야됐기 때문에, 이 부분도 설정을 해주었습니다. const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; // if (inputType === 'insertLineBreak') return; setChatValue(event.target.value); }; 이 부분을 설정하면서 어려움을 느꼈던 부분은 ‘onChange 이벤트에서 어떻게 Enter를 감지하는가’ 였습니다. 이 부분은 정확한 해결책이 나오지 않아, 우선 nativeEvent 객체 내에 존재하는 inputType을 찾아 Enter를 누를 시 보여주게 되는 ‘insertLineBreak’을 사용했습니다. (이 부분을 사용하면서 type 상의 에러가 발생했는데, 이 부분은 정확히 타입을 다시 적용할 방법을 찾지 못해 우선 임시적으로 any로 처리했습니다…) 위 과정을 통해서 Enter키를 누른 상황에는 onKeyDown, 누르지 않은 상황은 onChange에서 처리를 하는 방식을 사용했습니다. Enter 중복 처리 문제 하지만, 이렇게 설정을 해도 문제가 발생했는데, 그 문제는 바로 한글을 입력할 때 채팅이 두 번씩 입력이 된다는 것이었습니다. 이 부분을 해결하기 위해서 우선 영어와 한글로 Enter 키를 입력할 때의 차이점을 찾는 것부터 했습니다. 아래 사진과 같이 onKeyDown 이벤트의 결과값이 나오게 되는데, 위 사진이 영어, 아래 사진이 한글입니다. 영어로 입력하는 경우는 위 사진의 결과만 나오게 되며, 한글로 입력할 때는 위, 아래 사진의 결과가 나와, 결론적으로 Enter가 두 번 발생하게 되고, gif와 같이 한 글자씩 더 입력이 되는 과정을 거쳐 문제가 발생했습니다. 이를 해결하는 방법으로는 keyCode를 사용하는 것이었는데, keyCode를 사용하면서 우려가 되었던 부분은 현재 deprecated 되었다는 경고가 나왔기 때문입니다. 당장의 사용에는 문제가 없으나, 추후에 keyCode 외의 다른 방법을 찾아야한다는 단점이 존재하는 해결 방법을 사용했습니다. const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // 'keyCode' is deprecated but error occurs when just use 'key' in korean if (key !== "Enter" || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { setChatValue(chatValue + "\n"); } }; 띄워쓰기 스타일 적용하기 띄워쓰기를 적용해주었음에도 나오는 결과 상으로는 띄워쓰기가 제대로 되지 않는데, 이는 ‘\n’이라는 줄바꿈값을 스타일적으로 처리하지 않았기 때문이었습니다. 이는 간단히 아래의 코드를 입력해 줄바꿈을 해줄 수 있었습니다. white-space: pre-wrap;]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">PORT ∙ DNS ∙ URI</title><link href="http://localhost:4000/http/2022/10/24/PORT-DNS-URI/" rel="alternate" type="text/html" title="PORT ∙ DNS ∙ URI" /><published>2022-10-24T00:00:00+09:00</published><updated>2022-10-24T00:00:00+09:00</updated><id>http://localhost:4000/http/2022/10/24/PORT%20%E2%88%99%20DNS%20%E2%88%99%20URI</id><content type="html" xml:base="http://localhost:4000/http/2022/10/24/PORT-DNS-URI/"><![CDATA[<h2 id="port">PORT</h2>
 
 <p>PORT란 IP 내 프로세스 구분을 위해 사용하는 번호입니다. 보통 한 번에 둘 이상의 애플리케이션을 연결해야하는 상황에서 사용합니다.<br />
 통신을 주고 받으면서 패킷이 오는 경우, 해당 패킷이 어느 곳에서 오는 패킷인지를 구분해야하는 문제가 발생합니다. 이 상황에서 <strong>데이터를 전송할 목적지 서버를 찾는 것이 IP, 서버 내에서 구분된 애플리케이션을 찾는 것이 PORT라고 볼 수 있습니다.</strong></p>
@@ -963,98 +1047,7 @@ npm install @types/react-datepicker
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span><span class="p">)</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomIds</span><span class="p">)</span> <span class="nx">chatroomIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
-</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다. Web Socket TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다. 서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다. 서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다. SockJS (큰 도움을 주신 사이트) 브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다. 브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다. (현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.) 구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다! 구성 SockJS Protocol SockJS Javascript Client: 브라우저용 클라이언트 라이브러리 SockJS Server: Spring-websocket 모듈로 제공 SockJS Java Client: Spring-websocket 모듈로 제공 전송 타입 WebSocket HTTP Streaming HTTP Long Polling StompJS (추후 참고할 만한 링크) 웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다. 서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다. 사용 설치 아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다. npm install --save-dev sockjs-client stompjs SockJS, StompJS 연결 이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다. import SockJs from "sockjs-client"; import StompJs from "stompjs"; // 들어갈 주소 설정 const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); Stomp Client로 서버에 연결 요청 Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다. const connectChatroom = (subscribeParams: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); // 현재 서버에서 확인을 위해 필요로 하는 헤더 try { // stompClient.debug = () =&gt; null; // console 창에 나오게 되는 내용들이 보이지 않도록 함 stompClient.connect(headers, () =&gt; subscribeChat(subscribeParams)); // 연결을 시도함 } catch (error) { console.log(error); } }; 원하는 주소로 구독 및 메세지 올 때 처리하기 subscribeChat이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. stompClient.connect를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 header, body를 넣을 수 있고 현재는 header만 보낸 상황입니다. const subscribeChat = ({ onReceive, chatroomId, chatroomIds, }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // 서버와 협의된 구독 URL stompClient.subscribe(subscribeURL, onReceive, headers); // Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함 }; // id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정 if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; 현재 앱의 특성상 id값을 하나만 받는 경우(채팅 상세에 들어갈 시), id값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다. subscribeURL을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다. 구독 끊기 const unsubscribe = () =&gt; { stompClient.unsubscribe("sub-0"); }; unsubscribe 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 해당 주소에 대한 구독만 끊어내는 개념으로 볼 수 있습니다. 연결 끊기 const disconnectChatroom = () =&gt; { try { // stompClient.debug = () =&gt; null; stompClient.disconnect(() =&gt; unsubscribe()); } catch (error) { console.log(error); } }; diconnect를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다. 추가적인 문제 (위에 반영되었습니다.) 아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다. const useChatAlarm = () =&gt; { const { state, contents } = useRecoilValueLoadable(chatroomIdsState); return () =&gt; { useEffect(() =&gt; { if (state !== "hasValue" || !contents) return; contents?.forEach(({ id }) =&gt; { const { connectChatroom } = chatSocket(); connectChatroom({ chatroomId: id }); }); }, [state]); }; }; const subscribeChat = ({ setter, chatroomId }: subscribeParamsType) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${chatroomId}`; // 하나의 id만 등록이 가능함 const headers = getAuthHeaders(); // 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨 stompClient.subscribe( subscribeURL, // 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함 (chatData) =&gt; { const newChat = JSON.parse(chatData.body); setter((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }, headers ); }; 사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다. 해결 방법 1. onSet 함수 및 주소 분리 type subscribeParamsType = { onSet: (chatData: StompJs.Message) =&gt; void; chatroomId?: string | number; chatroomIds?: string[] | number[]; }; const subscribeChat = ({ onSet, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정 stompClient.subscribe(subscribeURL, onSet, headers); // subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록 }; ... }; chatroomId의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 onSet이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다. const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }; // onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수 useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onSet: getNewChatMessage, chatroomId }); // 연결할 때 함수를 대입 return () =&gt; disconnectChatroom(); }, []); 2. id 개수에 따른 상황 분리 id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다. if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id));]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
-추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다.</p>
-
-<h1 id="1-비선형-구조">1. 비선형 구조</h1>
-
-<p>하나의 데이터 안에 여러 개의 자료가 존재할 수 있는 것을 말한다.</p>
-
-<h2 id="a-트리">A. 트리</h2>
-
-<p>정점과 선분을 이용해 <strong>사이클을 이루지 않도록 구성</strong>한 그래프 형태로, 방향성이 존재해 부모 ∙ 자식 계층 구조가 명확하다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/220110/자료구조.png" alt="" width="50%" height="" /> 
-</figure>
-
-<h2 id="b-그래프">B. 그래프</h2>
-
-<p>정점, 선분을 이용해 <strong>사이클을 이루도록 구성</strong>한 것으로, 순환이 가능하다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/220110/자료구조 1.png" alt="" width="50%" height="" /> 
-</figure>
-
-<hr />
-
-<h1 id="2-선형-구조">2. 선형 구조</h1>
-
-<p>자료를 구성하는 데이터를 순차적으로 나열한 형태를 말한다.<br />
-종류로는 배열(선형 리스트), 연결 리스트, 스택, 큐, 테크 등이 있다.<br />
-포인터 등을 사용해 자료를 연결하면 그 결과가 일직선 상에 표시되거나 하나의 원상에 표시된다.</p>
-
-<h2 id="a-배열-array">A. 배열 (Array)</h2>
-
-<p>인덱스를 갖고 있으며, 순차적으로 데이터가 삽입, 삭제될 수 있는 구조이다.<br />
-데이터의 순차적 삽입, 삭제 시 가장 효과적이다.<br />
-<strong>인덱스를 사용해 검색이 빠르다</strong>는 장점이 있지만, <strong>중간 삽입 ∙ 삭제가 어렵다</strong>는 단점이 있다.</p>
-
-<h2 id="b-연결리스트-linked-list"><a href="https://jinjeon.github.io/dev/2022/01/10/연결리스트/">B. 연결리스트 (Linked List)</a></h2>
-
-<p>자료 항목 순서에 따라 노드의 포인터 부분을 이용해 서로 연결한 구조이다.<br />
- 노드의 삽입, 삭제 작업이 용이하며, 기억 공간이 연속적으로 놓이지 않아도 저장이 가능하다.<br />
- <strong>중간 삽입 ∙ 삭제가 빠르고 용이하다</strong>는 장점이 있지만, <strong>접근 속도가 느리며 중간 노드 연결이 끊어질 시 다음 노드를 찾기 어렵다</strong>는 단점이 있다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/220110/자료구조 2.png" alt="" width="75%" height="" /> 
-</figure>
-
-<h2 id="c-스택-stack">C. 스택 (Stack)</h2>
-
-<p>리스트의 한 쪽 끝으로만 자료 삽입, 삭제 작업이 이루어지는 구조이다.<br />
-Last In, First Out / 인터럽트가 발생하여 복귀주소를 저장할 때 사용한다.<br />
-스택의 용도로 7가지가 있다.</p>
-
-<ol>
-  <li>부 프로그램 호출 시 복귀주소 저장</li>
-  <li>함수 호출 순서 제어</li>
-  <li>인터럽트가 발생해 복귀 주소 저장 시</li>
-  <li>후위 표기법으로 표현된 산술식 연산</li>
-  <li>0 주소 지정방식 명령어 자료 저장소</li>
-  <li>재귀 프로그램 순서 제어</li>
-  <li>컴파일러를 이용한 언어 번역</li>
-</ol>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/220110/자료구조 3.png" alt="" width="60%" height="" /> 
-</figure>
-
-<h2 id="d-큐-queue">D. 큐 (Queue)</h2>
-
-<p>한 쪽에서는 삽입, 다른 쪽에서는 삭제가 이루어지는 구조이다.<br />
-시작과 끝을 표시하는 두 개의 포인터가 존재한다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/220110/자료구조 4.png" alt="" width="75%" height="" /> 
-</figure>
-
-<h2 id="e-데크-deq--double-ended-queue">E. 데크 (DEQ : Double Ended Queue)</h2>
-
-<p>스택, 큐의 장점만을 갖고 만든 것으로, <strong>삽입과 삭제가 리스트 양쪽에서 모두 발생하는 구조</strong>이다.<br />
-입력이 한쪽, 출력이 양쪽에서 일어나는 <strong>입력제한</strong>과 입력이 양쪽, 출력이 한쪽에서 일어나는 <strong>출력제한</strong>이 있다.</p>
-
-<hr />
-
-<h1 id="링크">링크</h1>
-
-<ul>
-  <li>데이터 구조 안내<br />
-<a href="https://dnf-lover.tistory.com/entry/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%9D%98-%EC%84%A0%ED%98%95-%EB%B9%84%EC%84%A0%ED%98%95-%EB%B6%84%EB%A5%98%EC%97%90-%EB%94%B0%EB%A5%B8-%EA%B0%81-%EC%A2%85%EB%A5%98%EC%99%80-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%B3%84-%ED%8A%B9%EC%A7%95-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC">https://dnf-lover.tistory.com/entry/자료구조-자료구조의-선형-비선형-분류에-따른-각-종류와-자료구조별-특징-간단-정리</a><br />
-<a href="https://server-engineer.tistory.com/130">https://server-engineer.tistory.com/130</a></li>
-  <li>생활코딩 : 자료구조 안내<br />
-<a href="https://opentutorials.org/module/1335/8821">https://opentutorials.org/module/1335/8821</a></li>
-</ul>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다. 추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다. 1. 비선형 구조 하나의 데이터 안에 여러 개의 자료가 존재할 수 있는 것을 말한다. A. 트리 정점과 선분을 이용해 사이클을 이루지 않도록 구성한 그래프 형태로, 방향성이 존재해 부모 ∙ 자식 계층 구조가 명확하다. B. 그래프 정점, 선분을 이용해 사이클을 이루도록 구성한 것으로, 순환이 가능하다. 2. 선형 구조 자료를 구성하는 데이터를 순차적으로 나열한 형태를 말한다. 종류로는 배열(선형 리스트), 연결 리스트, 스택, 큐, 테크 등이 있다. 포인터 등을 사용해 자료를 연결하면 그 결과가 일직선 상에 표시되거나 하나의 원상에 표시된다. A. 배열 (Array) 인덱스를 갖고 있으며, 순차적으로 데이터가 삽입, 삭제될 수 있는 구조이다. 데이터의 순차적 삽입, 삭제 시 가장 효과적이다. 인덱스를 사용해 검색이 빠르다는 장점이 있지만, 중간 삽입 ∙ 삭제가 어렵다는 단점이 있다. B. 연결리스트 (Linked List) 자료 항목 순서에 따라 노드의 포인터 부분을 이용해 서로 연결한 구조이다. 노드의 삽입, 삭제 작업이 용이하며, 기억 공간이 연속적으로 놓이지 않아도 저장이 가능하다. 중간 삽입 ∙ 삭제가 빠르고 용이하다는 장점이 있지만, 접근 속도가 느리며 중간 노드 연결이 끊어질 시 다음 노드를 찾기 어렵다는 단점이 있다. C. 스택 (Stack) 리스트의 한 쪽 끝으로만 자료 삽입, 삭제 작업이 이루어지는 구조이다. Last In, First Out / 인터럽트가 발생하여 복귀주소를 저장할 때 사용한다. 스택의 용도로 7가지가 있다. 부 프로그램 호출 시 복귀주소 저장 함수 호출 순서 제어 인터럽트가 발생해 복귀 주소 저장 시 후위 표기법으로 표현된 산술식 연산 0 주소 지정방식 명령어 자료 저장소 재귀 프로그램 순서 제어 컴파일러를 이용한 언어 번역 D. 큐 (Queue) 한 쪽에서는 삽입, 다른 쪽에서는 삭제가 이루어지는 구조이다. 시작과 끝을 표시하는 두 개의 포인터가 존재한다. E. 데크 (DEQ : Double Ended Queue) 스택, 큐의 장점만을 갖고 만든 것으로, 삽입과 삭제가 리스트 양쪽에서 모두 발생하는 구조이다. 입력이 한쪽, 출력이 양쪽에서 일어나는 입력제한과 입력이 양쪽, 출력이 한쪽에서 일어나는 출력제한이 있다. 링크 데이터 구조 안내 https://dnf-lover.tistory.com/entry/자료구조-자료구조의-선형-비선형-분류에-따른-각-종류와-자료구조별-특징-간단-정리 https://server-engineer.tistory.com/130 생활코딩 : 자료구조 안내 https://opentutorials.org/module/1335/8821]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">LINKED LIST</title><link href="http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="LINKED LIST" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><![CDATA[<h1 id="1-배열과-연결리스트의-장단점-비교">1. 배열과 연결리스트의 장단점 비교</h1>
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[채팅과 관련된 기능들을 구현하면서 백엔드와의 협의 후 Sock.JS와 Stomp.JS를 사용하게 됐습니다. 이 두 가지를 사용하기에 앞서 두 가지가 어떠한 역할을 하는지, 왜 이것들을 써야하는지 간단하게 살펴보고 어떻게 사용하는 지 적어보고자 합니다. Web Socket TCP 연결에 완전 이중 통신 채널을 제공하는 컴퓨터 프로토콜입니다. 일반적인 서버 - 클라이언트의 관계가 stateless인 것에 반해, Web Socket은 stateful한 방식을 사용해, 지속적인 연결이 이루어지게 됩니다. 서버 - 클라이언트간 웹소켓 연결은 HTTP 프로토콜을 통해 이루어지며, 연결의 시작은 클라이언트가 서버로 random key를 보냅니다. 이후 서버에서 random key를 통해 토큰을 만든 뒤, 클라이언트에 response를 보내고, 이를 통해 handshake 과정이 이루어져서 양방향 통신이 진행됩니다. 서버 - 클라이언트간 웹소켓 연결(TCP/IP)이 이루어지고 일정 시간이 지나면 HTTP 연결은 자동으로 끊어지게 됩니다. SockJS (큰 도움을 주신 사이트) 브라우저에서 web socket을 지원하지 않는 경우에도 web socket을 사용 가능하게 해주는 WebSocket Emulation으로서 사용되는 라이브러리입니다. 브라우저와 서버 사이의 짧은 지연시간, 크로스 브라우징의 지원이 장점입니다. (현재 서버에서는 Spring을 사용하고 있어, Sock JS를 사용했으며, 서버에서 Node.js를 사용할 경우, Socket.io를 사용합니다.) 구성과 전송타입은 아래와 같고 추후에 아래 내용들을 자세히 정리할 예정입니다! 구성 SockJS Protocol SockJS Javascript Client: 브라우저용 클라이언트 라이브러리 SockJS Server: Spring-websocket 모듈로 제공 SockJS Java Client: Spring-websocket 모듈로 제공 전송 타입 WebSocket HTTP Streaming HTTP Long Polling StompJS (추후 참고할 만한 링크) 웹소켓의 서브 프로토콜로서, 프로토콜 연결, 메세지 전송, 상대방 구독 기능을 제공하는 텍스트 기반 메세지 프로토콜입니다. stomp를 이용하면 여러 개의 채팅방 개설이 가능하다는 장점이 있습니다. 서버가 Spring을 사용할 경우, 보통 SockJS, StompJS 이 두 가지를 통해 소켓 연결을 진행하게 됩니다. 사용 설치 아래 코드를 통해서 기본적인 sockjs, stompjs를 설치할 수 있습니다. npm install --save-dev sockjs-client stompjs SockJS, StompJS 연결 이후 주소를 설정하고 Sock을 새로 만든 뒤, 이를 Stomp Client 위에서 작동할 수 있도록 설정합니다. import SockJs from "sockjs-client"; import StompJs from "stompjs"; // 들어갈 주소 설정 const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); Stomp Client로 서버에 연결 요청 Stomp Client에 연결을 요청하고, 해당 요청이 성공적일 시 구독으로 진행할 작업을 적어줍니다. const connectChatroom = (subscribeParams: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); // 현재 서버에서 확인을 위해 필요로 하는 헤더 try { // stompClient.debug = () =&gt; null; // console 창에 나오게 되는 내용들이 보이지 않도록 함 stompClient.connect(headers, () =&gt; subscribeChat(subscribeParams)); // 연결을 시도함 } catch (error) { console.log(error); } }; 원하는 주소로 구독 및 메세지 올 때 처리하기 subscribeChat이라는 함수를 따로 만들어, Stomp Client가 연결에 성공할 시 진행할 작업을 따로 빼내어 정리해주었습니다. stompClient.connect를 통해서 연결이 이루어지게 되는데, 이는 서버에 connect 프레임을 전송하는 것으로, 이 프레임에 header, body를 넣을 수 있고 현재는 header만 보낸 상황입니다. const subscribeChat = ({ onReceive, chatroomId, chatroomIds, }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // 서버와 협의된 구독 URL stompClient.subscribe(subscribeURL, onReceive, headers); // Stomp Client에서 구독 후, 이후 메세지가 올 시 처리할 값을 onReceive 함수로 처리함 }; // id값이 한 개일 때, 여러 개일 때를 구분해서 구독을 진행하도록 설정 if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; 현재 앱의 특성상 id값을 하나만 받는 경우(채팅 상세에 들어갈 시), id값을 여러 개 받는 경우(모든 채팅의 알림을 받을 시)에 대해 같은 형식의 처리가 이루어지기 때문에 아래와 같이 같은 함수 내에서 구분해 처리하도록 했습니다. subscribeURL을 통해서 구독할 주소를 설정하게 되고, 이후 그 주소를 통해 등록한 곳으로부터 메세지가 오면 onReceive 함수를 통해 처리를 할 수 있게 됩니다. 구독 끊기 const unsubscribe = () =&gt; { stompClient.unsubscribe("sub-0"); }; unsubscribe 함수를 통해 구독을 끊을 수 있으며, 서버와의 연결 해제가 아닌 해당 주소에 대한 구독만 끊어내는 개념으로 볼 수 있습니다. 연결 끊기 const disconnectChatroom = () =&gt; { try { // stompClient.debug = () =&gt; null; stompClient.disconnect(() =&gt; unsubscribe()); } catch (error) { console.log(error); } }; diconnect를 통해서 서버와의 연결을 해제할 수 있으며, 이 때에도 콜백 함수를 통해 특정 작업을 진행할 수 있습니다. 추가적인 문제 (위에 반영되었습니다.) 아래의 코드로 호출 시 하나의 구독 주소에 여러번 접근하는 형식이 적용되어, 문제가 발생합니다. const useChatAlarm = () =&gt; { const { state, contents } = useRecoilValueLoadable(chatroomIdsState); return () =&gt; { useEffect(() =&gt; { if (state !== "hasValue" || !contents) return; contents?.forEach(({ id }) =&gt; { const { connectChatroom } = chatSocket(); connectChatroom({ chatroomId: id }); }); }, [state]); }; }; const subscribeChat = ({ setter, chatroomId }: subscribeParamsType) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${chatroomId}`; // 하나의 id만 등록이 가능함 const headers = getAuthHeaders(); // 이 부분을 forEach로 반복하기 때문에, 같은 주소(subscribeURL)에 반복적인 요청이 들어가게 됨 stompClient.subscribe( subscribeURL, // 콜백 함수가 직접적으로 들어가 있어, 다른 작업이 필요한 경우, 이 곳을 직접적으로 고쳐야 함 (chatData) =&gt; { const newChat = JSON.parse(chatData.body); setter((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }, headers ); }; 사진과 같이 같은 주소에 대한 여러 번의 호출로 인해 연결이 끊겨버린다는 문제가 발생합니다. 해결 방법 1. onSet 함수 및 주소 분리 type subscribeParamsType = { onSet: (chatData: StompJs.Message) =&gt; void; chatroomId?: string | number; chatroomIds?: string[] | number[]; }; const subscribeChat = ({ onSet, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; // id 값에 따라 주소가 나뉠 수 있도록 공통 함수를 설정 stompClient.subscribe(subscribeURL, onSet, headers); // subscribe 내에서 콜백(onSet)을 만드는 것이 아니라 이를 분리해 외부에서 적용하도록 }; ... }; chatroomId의 개수가 늘어나는 경우에 대해서 이전 코드에서는 제대로 된 해결책이 없어 우선 이 사항부터 해결하기 위해 onSet이라는 set이 발생했을 때의 함수를 먼저 따로 빼냈습니다. 이로 인해 set이 발생했을 때의 사항에 대해서는 직접적으로 사용하는 곳에서 처리를 하도록 빼낼 수 있었고, 아래 코드와 같이 사용하는 곳에서 set 상황을 컨트롤 할 수 있게 됐습니다. const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); }; // onSet 함수로, 들어온 값에 대해 새로운 채팅에 추가하는 함수 useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onSet: getNewChatMessage, chatroomId }); // 연결할 때 함수를 대입 return () =&gt; disconnectChatroom(); }, []); 2. id 개수에 따른 상황 분리 id가 하나인 경우와 여러개인 경우에 대해서 구독하는 방식이 약간의 차이가 존재하는데, 이를 해결하기 위해 상황별로 구독하는 방법을 바꾸도록 설정해 문제를 해결했습니다. if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id));]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">LINKED LIST</title><link href="http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="LINKED LIST" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><![CDATA[<h1 id="1-배열과-연결리스트의-장단점-비교">1. 배열과 연결리스트의 장단점 비교</h1>
 
 <h2 id="1-1-배열">1-1. 배열</h2>
 
@@ -1163,203 +1156,95 @@ Last In, First Out / 인터럽트가 발생하여 복귀주소를 저장할 때 
 <ul>
   <li>연결리스트 안내<br />
 <a href="https://sycho-lego.tistory.com/17">https://sycho-lego.tistory.com/17</a></li>
-</ul>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 배열과 연결리스트의 장단점 비교 1-1. 배열 장점 : 랜덤 엑세스가 빠르다. 단점 : 메모리 사용이 비효율적이다. 배열 내 데이터 이동 및 재구성이 어렵다. 1-2. 연결리스트 장점 : 동적 메모리 사용이 가능하다. 메모리 사용이 효율적이다. 대용량 데이터 처리에 적합하다. 단점 : 특정 위치 데이터 검색 시 느리다. 메모리의 추가적인 사용이 필요하다. 2. 노드 연결리스트는 ‘노드’라는 객체로 이루어져 있다. 노드는 저장할 공간과 다음 주소를 가리킬 공간으로 나뉘게 된다. 입력 정보를 위의 DATA 영역에 담고 노드가 추가될 때 NEXT ADDRESS를 이용해 다음 노드와 연결하게 된다. 각 노드는 연속된 공간이 아닌 메모리의 여러 부분에 분포되어 있다. 노드마다 NEXT ADDRESS를 저장해 다음 노드로 갈 수 있다. 마지막 노드는 다음 주소가 NULL로 표시된다. 3. 연결리스트 구현 ‘초기화(init)’, ‘삽입(insert)’, ‘삭제(remove)’를 진행할 수 있는 함수가 필요하다. 3-1. 초기화 처음에 노드를 생성하는 과정을 말한다. 노드에 접근하기 위해서 맨 처음 노드 주소를 가리킬 노드가 필요하다.(HEAD) 3-2. 삽입 A. 앞에 삽입하는 경우 HEAD의 뒤에서 처리가 이루어지게 된다. ’새로운 노드의 NEXT → 현재 HEAD의 NEXT’ ’HEAD의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어지게 되며 아래의 그림과 같은 방식이 된다. B. 뒤에 삽입하는 경우 앞의 과정과 반대로, HEAD대신 TAIL을 사용한다. ’새로운 노드의 NEXT → NULL’, ’TAIL의 NEXT의 NEXT’ → ‘새로운 노드의 DATA’, ’TAIL의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어지며, 아래의 그림과 같이 된다. C. 원하는 위치에 삽입하는 경우 특정 위치에 삽입할 경우(여기서는 FIRST와 SECOND사이), 삽입할 위치를 찾는 노드(LOCATION)가 먼저 필요하다. 이전에는 HEAD, TAIL과 같은 위치가 있는 노드가 있었지만, 지금은 없는 경우이므로 직접적인 설정이 필요하다. ’LOCATION의 NEXT → FIRST의 DATA’, ’새로운 노드의 NEXT → SECOND의 DATA’, ’FIRST의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어진다. 3-3. 삭제 원하는 위치에 삽입하는 경우와 비슷하다. 그러나, 삭제할 노드(DELETE)의 전 ∙ 후를 연결해야 하기에 새로운 노드(PRE)가 필요하다. ’LOCATION의 NEXT → DELETE의 DATA’, ’PRE의 NEXT의 NEXT → DELETE의 NEXT’, ’DELETE를 삭제’ 의 순서로 이루어지며 아래 그림의 형태와 같다. 링크 연결리스트 안내 https://sycho-lego.tistory.com/17]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Shell Script</title><link href="http://localhost:4000/dev/2022/01/09/%EC%89%98/" rel="alternate" type="text/html" title="Shell Script" /><published>2022-01-09T00:00:00+09:00</published><updated>2022-01-09T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/09/%EC%89%98</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/09/%EC%89%98/"><![CDATA[<h1 id="shell">Shell</h1>
+</ul>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[1. 배열과 연결리스트의 장단점 비교 1-1. 배열 장점 : 랜덤 엑세스가 빠르다. 단점 : 메모리 사용이 비효율적이다. 배열 내 데이터 이동 및 재구성이 어렵다. 1-2. 연결리스트 장점 : 동적 메모리 사용이 가능하다. 메모리 사용이 효율적이다. 대용량 데이터 처리에 적합하다. 단점 : 특정 위치 데이터 검색 시 느리다. 메모리의 추가적인 사용이 필요하다. 2. 노드 연결리스트는 ‘노드’라는 객체로 이루어져 있다. 노드는 저장할 공간과 다음 주소를 가리킬 공간으로 나뉘게 된다. 입력 정보를 위의 DATA 영역에 담고 노드가 추가될 때 NEXT ADDRESS를 이용해 다음 노드와 연결하게 된다. 각 노드는 연속된 공간이 아닌 메모리의 여러 부분에 분포되어 있다. 노드마다 NEXT ADDRESS를 저장해 다음 노드로 갈 수 있다. 마지막 노드는 다음 주소가 NULL로 표시된다. 3. 연결리스트 구현 ‘초기화(init)’, ‘삽입(insert)’, ‘삭제(remove)’를 진행할 수 있는 함수가 필요하다. 3-1. 초기화 처음에 노드를 생성하는 과정을 말한다. 노드에 접근하기 위해서 맨 처음 노드 주소를 가리킬 노드가 필요하다.(HEAD) 3-2. 삽입 A. 앞에 삽입하는 경우 HEAD의 뒤에서 처리가 이루어지게 된다. ’새로운 노드의 NEXT → 현재 HEAD의 NEXT’ ’HEAD의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어지게 되며 아래의 그림과 같은 방식이 된다. B. 뒤에 삽입하는 경우 앞의 과정과 반대로, HEAD대신 TAIL을 사용한다. ’새로운 노드의 NEXT → NULL’, ’TAIL의 NEXT의 NEXT’ → ‘새로운 노드의 DATA’, ’TAIL의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어지며, 아래의 그림과 같이 된다. C. 원하는 위치에 삽입하는 경우 특정 위치에 삽입할 경우(여기서는 FIRST와 SECOND사이), 삽입할 위치를 찾는 노드(LOCATION)가 먼저 필요하다. 이전에는 HEAD, TAIL과 같은 위치가 있는 노드가 있었지만, 지금은 없는 경우이므로 직접적인 설정이 필요하다. ’LOCATION의 NEXT → FIRST의 DATA’, ’새로운 노드의 NEXT → SECOND의 DATA’, ’FIRST의 NEXT → 새로운 노드의 DATA’ 의 형태로 이루어진다. 3-3. 삭제 원하는 위치에 삽입하는 경우와 비슷하다. 그러나, 삭제할 노드(DELETE)의 전 ∙ 후를 연결해야 하기에 새로운 노드(PRE)가 필요하다. ’LOCATION의 NEXT → DELETE의 DATA’, ’PRE의 NEXT의 NEXT → DELETE의 NEXT’, ’DELETE를 삭제’ 의 순서로 이루어지며 아래 그림의 형태와 같다. 링크 연결리스트 안내 https://sycho-lego.tistory.com/17]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">DATA CONSTRUCTOR</title><link href="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="alternate" type="text/html" title="DATA CONSTRUCTOR" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0</id><content type="html" xml:base="http://localhost:4000/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><![CDATA[<p>여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다.<br />
+추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다.</p>
 
-<blockquote>
-  <p>OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다.</p>
-</blockquote>
+<h1 id="1-비선형-구조">1. 비선형 구조</h1>
 
-<h2 id="1-shell-script">1. Shell Script?</h2>
+<p>하나의 데이터 안에 여러 개의 자료가 존재할 수 있는 것을 말한다.</p>
 
-<p>Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다.<br />
-Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다.<br />
-zsh는 z셸 스크립을 위한 명령 인터프리터이다.<br />
-Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다.<br />
-자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다.</p>
+<h2 id="a-트리">A. 트리</h2>
 
-<h2 id="2-shell-script-파일-생성-작성-실행">2. Shell Script 파일 생성, 작성, 실행</h2>
+<p>정점과 선분을 이용해 <strong>사이클을 이루지 않도록 구성</strong>한 그래프 형태로, 방향성이 존재해 부모 ∙ 자식 계층 구조가 명확하다.</p>
 
-<ul>
-  <li>생성 : <code class="language-plaintext highlighter-rouge">vi (filename).sh</code>을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다.</li>
-  <li>입력 : <code class="language-plaintext highlighter-rouge">i</code>키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다.</li>
-  <li>저장 : <code class="language-plaintext highlighter-rouge">esc</code>키를 누른 뒤, <code class="language-plaintext highlighter-rouge">:wq</code>키를 입력해 나오면 된다.</li>
-  <li>실행 : <code class="language-plaintext highlighter-rouge">sh (filename).sh</code>를 입력하면 저장된 내용이 실행된다.</li>
-</ul>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220110/자료구조.png" alt="" width="50%" height="" /> 
+</figure>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
-echo "HIHIHI!"
-pwd
-ls
-</code></pre></div></div>
+<h2 id="b-그래프">B. 그래프</h2>
 
-<p>위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다.<br />
-입력값 불러오기(<code class="language-plaintext highlighter-rouge">echo</code>), 현재 위치 경로 출력(<code class="language-plaintext highlighter-rouge">pwd</code>), 현재 위치 디렉토리 파일 출력(<code class="language-plaintext highlighter-rouge">ls</code>)의 순서대로 나온 것을 볼 수 있다.</p>
+<p>정점, 선분을 이용해 <strong>사이클을 이루도록 구성</strong>한 것으로, 순환이 가능하다.</p>
 
-<p><img src="/image/220109/12.png" alt="drawing" width="100%" /></p>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220110/자료구조 1.png" alt="" width="50%" height="" /> 
+</figure>
 
-<h2 id="3-shell-script내-간단한-문법들">3. Shell Script내 간단한 문법들</h2>
+<hr />
 
-<h3 id="3-1-반복문---for">3-1. 반복문 - for</h3>
+<h1 id="2-선형-구조">2. 선형 구조</h1>
 
-<p>기본적으로 사용하는 반복문으로 for가 있다. <code class="language-plaintext highlighter-rouge">for in - do - done</code>의 형태로 이루어지며, 코드로 보면 다음과 같다.</p>
+<p>자료를 구성하는 데이터를 순차적으로 나열한 형태를 말한다.<br />
+종류로는 배열(선형 리스트), 연결 리스트, 스택, 큐, 테크 등이 있다.<br />
+포인터 등을 사용해 자료를 연결하면 그 결과가 일직선 상에 표시되거나 하나의 원상에 표시된다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>file <span class="k">in</span> <span class="nv">$files</span>
-<span class="k">do
-	</span><span class="nv">filename</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$file</span><span class="sb">`</span>
-<span class="k">done</span>
-</code></pre></div></div>
+<h2 id="a-배열-array">A. 배열 (Array)</h2>
 
-<p>변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다.</p>
+<p>인덱스를 갖고 있으며, 순차적으로 데이터가 삽입, 삭제될 수 있는 구조이다.<br />
+데이터의 순차적 삽입, 삭제 시 가장 효과적이다.<br />
+<strong>인덱스를 사용해 검색이 빠르다</strong>는 장점이 있지만, <strong>중간 삽입 ∙ 삭제가 어렵다</strong>는 단점이 있다.</p>
 
-<h3 id="3-2-파일-디렉토리-찾기---find">3-2. 파일, 디렉토리 찾기 - find</h3>
+<h2 id="b-연결리스트-linked-list"><a href="https://jinjeon.github.io/dev/2022/01/10/연결리스트/">B. 연결리스트 (Linked List)</a></h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span>
+<p>자료 항목 순서에 따라 노드의 포인터 부분을 이용해 서로 연결한 구조이다.<br />
+ 노드의 삽입, 삭제 작업이 용이하며, 기억 공간이 연속적으로 놓이지 않아도 저장이 가능하다.<br />
+ <strong>중간 삽입 ∙ 삭제가 빠르고 용이하다</strong>는 장점이 있지만, <strong>접근 속도가 느리며 중간 노드 연결이 끊어질 시 다음 노드를 찾기 어렵다</strong>는 단점이 있다.</p>
 
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> d
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> f
-</code></pre></div></div>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220110/자료구조 2.png" alt="" width="75%" height="" /> 
+</figure>
 
-<p><code class="language-plaintext highlighter-rouge">‘.’</code>은 현재 디렉토리 내의 모든 파일, <code class="language-plaintext highlighter-rouge">-name</code>은 이름으로 찾는 것, <code class="language-plaintext highlighter-rouge">“DAY*”</code>는 DAY라는 형식으로 이루어진 모든 파일임을 말한다.<br />
-<code class="language-plaintext highlighter-rouge">-type d</code>는 디렉토리로, <code class="language-plaintext highlighter-rouge">-type f</code>는 파일로 찾는다는 것을 말한다.</p>
+<h2 id="c-스택-stack">C. 스택 (Stack)</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-empty</span>
-</code></pre></div></div>
+<p>리스트의 한 쪽 끝으로만 자료 삽입, 삭제 작업이 이루어지는 구조이다.<br />
+Last In, First Out / 인터럽트가 발생하여 복귀주소를 저장할 때 사용한다.<br />
+스택의 용도로 7가지가 있다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">-empty</code>를 이용해 빈 파일을 찾는 데에 사용할 수 있다.</p>
+<ol>
+  <li>부 프로그램 호출 시 복귀주소 저장</li>
+  <li>함수 호출 순서 제어</li>
+  <li>인터럽트가 발생해 복귀 주소 저장 시</li>
+  <li>후위 표기법으로 표현된 산술식 연산</li>
+  <li>0 주소 지정방식 명령어 자료 저장소</li>
+  <li>재귀 프로그램 순서 제어</li>
+  <li>컴파일러를 이용한 언어 번역</li>
+</ol>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-size</span> +100M
-</code></pre></div></div>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220110/자료구조 3.png" alt="" width="60%" height="" /> 
+</figure>
 
-<p><code class="language-plaintext highlighter-rouge">-size</code>를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다.</p>
+<h2 id="d-큐-queue">D. 큐 (Queue)</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-exec</span> <span class="nb">ls</span> <span class="nt">-l</span> <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div></div>
+<p>한 쪽에서는 삽입, 다른 쪽에서는 삭제가 이루어지는 구조이다.<br />
+시작과 끝을 표시하는 두 개의 포인터가 존재한다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">-exec</code>를 이용해 부가적인 작업의 수행이 가능하다.<br />
-검색된 파일이 <code class="language-plaintext highlighter-rouge">{}</code> 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다.</p>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/220110/자료구조 4.png" alt="" width="75%" height="" /> 
+</figure>
 
-<h3 id="3-3-디렉토리-생성--삭제">3-3. 디렉토리 생성 ∙ 삭제</h3>
+<h2 id="e-데크-deq--double-ended-queue">E. 데크 (DEQ : Double Ended Queue)</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>ABC
-<span class="nb">rm</span> <span class="nt">-rf</span> ABC
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">mkdir</code>를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다.<br />
-<code class="language-plaintext highlighter-rouge">rm</code>을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 <code class="language-plaintext highlighter-rouge">-r</code>이라는 옵션이 들어가야하고, <code class="language-plaintext highlighter-rouge">-f</code>라는 옵션을 함께 사용하면, 경고 없이 <strong>모두 강제로 삭제된다.</strong></p>
-
-<h3 id="3-4-경로에서-파일명-가져오기">3-4. 경로에서 파일명 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dirname</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$dir</span><span class="sb">`</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">basename</code>을 이용하면 특정 경로를 나타내는 값들의 마지막 부분,<br />
-예를 들면, <code class="language-plaintext highlighter-rouge">home/ABC/backup/test.txt</code>와 같은 상황에서 <code class="language-plaintext highlighter-rouge">test.txt</code>만 나오도록 할 수 있다.<br />
-위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우,  <code class="language-plaintext highlighter-rouge">dirname</code>이라는 변수가 만들어지고, <code class="language-plaintext highlighter-rouge">$dirname</code>로 활용할 수 있다.</p>
-
-<h3 id="3-5-문자열-일부-가져오기">3-5. 문자열 일부 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">dirnum</span><span class="o">=</span><span class="k">${</span><span class="nv">dirname</span>:3<span class="k">}</span>
-
-<span class="c"># dirname : "HELLO WORLD"</span>
-<span class="c"># dirnum : LO WORLD</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">dirname</code>의 값으로 나오는 문자열 중, 네 번째<code class="language-plaintext highlighter-rouge">(3+1)</code>의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다.</p>
-
-<h3 id="3-6-조건문-사용하기---if">3-6. 조건문 사용하기 - if</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$filename</span> <span class="o">]</span>
-<span class="k">then</span>
-  ...
-<span class="k">else</span>
-	...
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">if</code> 의 내부에 값이 true일 경우, <code class="language-plaintext highlighter-rouge">then</code>의 다음에 오는 과정들을 처리하고, 아닐경우 <code class="language-plaintext highlighter-rouge">else</code>의 뒤에 오는 과정들을 처리한다. 이 과정을 <code class="language-plaintext highlighter-rouge">fi</code>가 나올 때까지 진행한다.<br />
-조건문의 여러 상황에 대해 정리된 <a href="https://hand-over.tistory.com/32">자료 링크</a>가 있어 아래에 추가적으로 적는다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># if 여러 상황에 대해서</span>
-<span class="o">[</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이면 TRUE
-<span class="o">[</span> <span class="nt">-n</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이 아니면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-eq</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ne</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 다르면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-gt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ge</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크거나 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-lt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-le</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작거나 같으면 TRUE
-
-<span class="o">[</span> 조건식A <span class="nt">-a</span> 조건식B <span class="o">]</span> : 조건식 A와 B가 모두 TRUE이면 TRUE <span class="o">(&amp;&amp;</span> 와 동일<span class="o">)</span>
-<span class="o">[</span> 조건식A <span class="nt">-o</span> 조건식B <span class="o">]</span> : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE <span class="o">(||</span> 와 동일<span class="o">)</span>
-
-파일관련
-<span class="o">[</span> <span class="nt">-d</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리면 TRUE
-<span class="o">[</span> <span class="nt">-e</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이<span class="o">(</span>노드, 디렉토리, 소켓 등등 모두<span class="o">)</span> 존재하면 TRUE
-<span class="o">[</span> <span class="nt">-L</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 심볼릭 링크면 TRUE
-<span class="o">[</span> <span class="nt">-r</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 읽기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-s</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일의 크기가 0 보다 크면 TRUE
-<span class="o">[</span> <span class="nt">-w</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 쓰기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-x</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 실행 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-c</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 Special character file 이면 TRUE
-<span class="o">[</span> <span class="nt">-f</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE
-<span class="o">[</span> <span class="nt">-S</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 소켓이면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-nt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일 B 파일보다 최신파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ot</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span>  : A 파일이 B 파일보다 이전파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ef</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일과 B 파일이 같은 파일이면 참
-</code></pre></div></div>
-
-<h3 id="3-7-결과값-표시---echo">3-7. 결과값 표시 - echo</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>text or 변수명
-</code></pre></div></div>
-
-<p>적혀진 텍스트, 혹은 변수의 값을 표현해준다.<br />
-JavaScript의 <code class="language-plaintext highlighter-rouge">console.log</code>와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다.</p>
-
-<h3 id="3-8-시간-구하기---date">3-8. 시간 구하기 - date</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date
-
-</span><span class="nv">day</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%Y%m%d<span class="sb">`</span>
-</code></pre></div></div>
-
-<p>date라고 작성할 시 <code class="language-plaintext highlighter-rouge">2022년 1월 10일 월요일 01시 51분 38초 KST</code> 와 같이 결과값이 나오게 된다.<br />
-위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. <a href="https://iamfreeman.tistory.com/entry/리눅스-date-명령어를-이용한-시간-확인-및-설정하기">세세한 여러 표현 방법을 알려주는 링크</a>를 참고하면 좋을 듯 하다.</p>
-
-<h3 id="3-9-파일-압축하기---zip">3-9. 파일 압축하기 - zip</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip BACKUP_<span class="nv">$day</span>.zip ./BEFORE_ZIP
-
-zip AAA.zip <span class="nt">-r</span> ./<span class="k">*</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">zip “파일이름” “압축할 디렉토리”</code> 의 순서로 작성하면 된다.<br />
-두 번째와 같이 <code class="language-plaintext highlighter-rouge">-r</code>을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다.</p>
-
-<h3 id="3-10-다른-서버로의-파일-전송---scp">3-10. 다른 서버로의 파일 전송 - scp</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 로컬에서 원격</span>
-scp <span class="o">[</span>전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-
-<span class="c"># 원격에서 로컬</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>받을 경로]
-
-<span class="c"># 원격에서 원격</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-</code></pre></div></div>
-
-<p>scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다.</p>
+<p>스택, 큐의 장점만을 갖고 만든 것으로, <strong>삽입과 삭제가 리스트 양쪽에서 모두 발생하는 구조</strong>이다.<br />
+입력이 한쪽, 출력이 양쪽에서 일어나는 <strong>입력제한</strong>과 입력이 양쪽, 출력이 한쪽에서 일어나는 <strong>출력제한</strong>이 있다.</p>
 
 <hr />
 
 <h1 id="링크">링크</h1>
 
 <ul>
-  <li>쉘 스크립트 생성<br />
-<a href="https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%8B%A4%ED%96%89">https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행</a><br />
-<a href="https://rrecoder.tistory.com/62">https://rrecoder.tistory.com/62</a></li>
-  <li>쉘 스크립트 scp 간단 사용법<br />
-<a href="https://doheejin.github.io/linux/2021/03/03/linux-scp.html">https://doheejin.github.io/linux/2021/03/03/linux-scp.html</a></li>
-  <li>터미널 디렉토리, 파일 삭제 방법<br />
-<a href="https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/">https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/</a></li>
-</ul>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo "HIHIHI!" pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name "DAY*" find . -name "DAY*" -type d find . -name "DAY*" -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name "DAY*" -exec ls -l {} \; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : "HELLO WORLD" # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+  <li>데이터 구조 안내<br />
+<a href="https://dnf-lover.tistory.com/entry/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%9D%98-%EC%84%A0%ED%98%95-%EB%B9%84%EC%84%A0%ED%98%95-%EB%B6%84%EB%A5%98%EC%97%90-%EB%94%B0%EB%A5%B8-%EA%B0%81-%EC%A2%85%EB%A5%98%EC%99%80-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%B3%84-%ED%8A%B9%EC%A7%95-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC">https://dnf-lover.tistory.com/entry/자료구조-자료구조의-선형-비선형-분류에-따른-각-종류와-자료구조별-특징-간단-정리</a><br />
+<a href="https://server-engineer.tistory.com/130">https://server-engineer.tistory.com/130</a></li>
+  <li>생활코딩 : 자료구조 안내<br />
+<a href="https://opentutorials.org/module/1335/8821">https://opentutorials.org/module/1335/8821</a></li>
+</ul>]]></content><author><name>JinJeon</name></author><category term="DEV" /><summary type="html"><![CDATA[여기서는 간략하게 비선형 구조, 선형 구조로 나누어 살펴본다. 추후에 더 자세한 정리가 이루어지면 링크를 걸어놓을 예정이다. 1. 비선형 구조 하나의 데이터 안에 여러 개의 자료가 존재할 수 있는 것을 말한다. A. 트리 정점과 선분을 이용해 사이클을 이루지 않도록 구성한 그래프 형태로, 방향성이 존재해 부모 ∙ 자식 계층 구조가 명확하다. B. 그래프 정점, 선분을 이용해 사이클을 이루도록 구성한 것으로, 순환이 가능하다. 2. 선형 구조 자료를 구성하는 데이터를 순차적으로 나열한 형태를 말한다. 종류로는 배열(선형 리스트), 연결 리스트, 스택, 큐, 테크 등이 있다. 포인터 등을 사용해 자료를 연결하면 그 결과가 일직선 상에 표시되거나 하나의 원상에 표시된다. A. 배열 (Array) 인덱스를 갖고 있으며, 순차적으로 데이터가 삽입, 삭제될 수 있는 구조이다. 데이터의 순차적 삽입, 삭제 시 가장 효과적이다. 인덱스를 사용해 검색이 빠르다는 장점이 있지만, 중간 삽입 ∙ 삭제가 어렵다는 단점이 있다. B. 연결리스트 (Linked List) 자료 항목 순서에 따라 노드의 포인터 부분을 이용해 서로 연결한 구조이다. 노드의 삽입, 삭제 작업이 용이하며, 기억 공간이 연속적으로 놓이지 않아도 저장이 가능하다. 중간 삽입 ∙ 삭제가 빠르고 용이하다는 장점이 있지만, 접근 속도가 느리며 중간 노드 연결이 끊어질 시 다음 노드를 찾기 어렵다는 단점이 있다. C. 스택 (Stack) 리스트의 한 쪽 끝으로만 자료 삽입, 삭제 작업이 이루어지는 구조이다. Last In, First Out / 인터럽트가 발생하여 복귀주소를 저장할 때 사용한다. 스택의 용도로 7가지가 있다. 부 프로그램 호출 시 복귀주소 저장 함수 호출 순서 제어 인터럽트가 발생해 복귀 주소 저장 시 후위 표기법으로 표현된 산술식 연산 0 주소 지정방식 명령어 자료 저장소 재귀 프로그램 순서 제어 컴파일러를 이용한 언어 번역 D. 큐 (Queue) 한 쪽에서는 삽입, 다른 쪽에서는 삭제가 이루어지는 구조이다. 시작과 끝을 표시하는 두 개의 포인터가 존재한다. E. 데크 (DEQ : Double Ended Queue) 스택, 큐의 장점만을 갖고 만든 것으로, 삽입과 삭제가 리스트 양쪽에서 모두 발생하는 구조이다. 입력이 한쪽, 출력이 양쪽에서 일어나는 입력제한과 입력이 양쪽, 출력이 한쪽에서 일어나는 출력제한이 있다. 링크 데이터 구조 안내 https://dnf-lover.tistory.com/entry/자료구조-자료구조의-선형-비선형-분류에-따른-각-종류와-자료구조별-특징-간단-정리 https://server-engineer.tistory.com/130 생활코딩 : 자료구조 안내 https://opentutorials.org/module/1335/8821]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

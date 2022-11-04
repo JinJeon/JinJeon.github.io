@@ -1,8 +1,8 @@
-const version = '20221104121426';
+const version = '20221104122425';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","/http/2022/10/24/PORT-DNS-URI/","/http/2022/10/23/IP_TCP_UDP/","/react/2022/10/11/react_datepicker/","/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/","/react/2022/09/25/CallBackRef-copy/","/javascript/2022/08/16/socket/","/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/","/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/","/dev/2022/01/09/%EC%89%98/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/","/http/2022/10/24/PORT-DNS-URI/","/http/2022/10/23/IP_TCP_UDP/","/react/2022/10/11/react_datepicker/","/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/","/react/2022/09/25/CallBackRef-copy/","/javascript/2022/08/16/socket/","/dev/2022/01/10/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/","/dev/2022/01/10/%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
