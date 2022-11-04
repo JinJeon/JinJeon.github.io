@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-11-04T18:13:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">textarea 줄바꿈 시 자동 스크롤</title><link href="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" rel="alternate" type="text/html" title="textarea 줄바꿈 시 자동 스크롤" /><published>2022-10-26T00:00:00+09:00</published><updated>2022-10-26T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/26/textarea%20%EC%A4%84%EB%B0%94%EA%BF%88%20%EC%8B%9C%20%EC%9E%90%EB%8F%99%20%EC%8A%A4%ED%81%AC%EB%A1%A4</id><content type="html" xml:base="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"><![CDATA[<h2 id="textarea-태그-내-줄바꿈-시-문제점">textarea 태그 내 줄바꿈 시 문제점</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2022-11-04T18:30:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">textarea 줄바꿈 시 자동 스크롤</title><link href="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" rel="alternate" type="text/html" title="textarea 줄바꿈 시 자동 스크롤" /><published>2022-10-26T00:00:00+09:00</published><updated>2022-10-26T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/26/textarea%20%EC%A4%84%EB%B0%94%EA%BF%88%20%EC%8B%9C%20%EC%9E%90%EB%8F%99%20%EC%8A%A4%ED%81%AC%EB%A1%A4</id><content type="html" xml:base="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"><![CDATA[<h2 id="textarea-태그-내-줄바꿈-시-문제점">textarea 태그 내 줄바꿈 시 문제점</h2>
 
 <p><code class="language-plaintext highlighter-rouge">textarea</code> 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 <code class="language-plaintext highlighter-rouge">input</code> 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. <code class="language-plaintext highlighter-rouge">input</code> 태그는 한 줄로만 이어져 줄바꿈이 없었지만, <code class="language-plaintext highlighter-rouge">textarea</code>는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다.</p>
 
@@ -875,349 +875,288 @@ URL은 리소스가 있는 위치를 지정하고, URN은 리소스에 자체적
 
 <figure class="figure  figure--center">
   <img class="image" src="/image/221021/5.png" alt="" width="" height="" /> 
-</figure>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[현재 소켓을 통해 채팅 연결을 지속하고 있었습니다. 이러한 상황에서 특정 채팅방을 나가는 경우, 해당 채팅방에 대한 알림은 더 이상 받을 필요가 없기 때문에 소켓을 유지한 상태에서 특정 소켓만 해제하는 작업이 필요했습니다. 같은 id가 반복되는 문제 소켓 연결 해제를 하기에 앞서, 연결 해제를 위해서는 id값이 필요한데, 소켓 연결 시 현재 같은 id 값으로만 연결을 해주는 상황입니다. 구독하는 상황에서 이는 headers를 직접 넣어주는 경우 해결이 됩니다. const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; stompClient.subscribe(subscribeURL, onReceive, headers); }; 처음에는 stompClient.unsubscribe를 사용하기 위해 필요한 id값을 빼내는 데에 필요하다고 판단해 이와 같은 상황을 먼저 만들었으나, 구독을 하는 동시에 생성되는 값에서 id,unsubscribe()가 존재한다는 것을 발견했습니다. 현재 의문점으로 갖고 있는 것은, 같은 id를 갖고 있는 상황에서도, 저 unsubscribe() 함수를 쓰는 상황에서는 각각을 분리해 구독을 끊는 것인지, 아니면 같은 id를 갖고 있는 것들에 대해 모두 구독을 끊는 것인지 입니다. 이에 대한 제대로 된 문서를 찾기 어려워 직접 적용을 해보게 됐습니다. ‘sub-0’ id들로만 이루어진 곳에 구독을 끊을 시 ‘sub-0’ id로만 이루어진 소켓에 연결을 끊는 작업을 진행할 시, 이후 들어오는 메세지에 대해 위 사진과 같은 결과를 알려주게 됩니다. ‘sub-0’라는 id를 통해 들어온 또 다른 메세지가 있으며, 이 메세지에 대해 핸들링이 이루어지지 않았음을 알려주게 되어, 원하는 기능을 위해서는 정확하게 id값이 분리되어야 한다는 것을 알 수 있었습니다. 앞서 나와있던 unsubscribe() 함수 역시 결국 해당 id값에 대해서 구독 해제를 하는 것이라 판단했고, id를 저장해 필요한 id를 꺼내 쓰기로 결정했습니다. id를 직접적으로 넣어주어 구독 끊기 위의 방법이 안 된다는 것을 알고난 뒤, 소켓의 연결을 끊기 위해 사용할 방법들을 찾아봤습니다. 현재 연결된 stomp(소켓)내에서 연결이 이루어지는 경우(stompClient.subscribe)에 리턴하게 되는 id값들을 가지고 있어야하는데, 이 값들을 담아두고, 필요할 때 바로 꺼내서 사용하기 위해 JS의 Map을 사용해 이 값들을 정리해주게 됐습니다. export const chatMap = new Map&lt;number, string&gt;(); // id에 맞는 stompId값을 바로 빼내게 위해 map을 사용 const subscribeToStomp = (id: number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; const headers = getAuthHeaders(); const { id: stompId } = stompClient.subscribe(subscribeURL, onReceiveChat, headers); // 구독이 완료될 시 나오는 stomp id값을 꺼냄 chatMap.set(id, stompId); // 채팅방의 id값에 stomp id값을 대입시켜서 저장함 }; 위와 같은 방법을 통해 채팅방의 id를 알고 있으면 stomp에 연결된 stomp id를 빼낼 수 있게 되고, 그 stomp id를 통해 stomp 연결을 해제할 수 있게 됩니다. const handleClickSelectOkBtn = async () =&gt; { // 채팅을 나갈 때 사용하는 함수 if (!deletedId) return; const { id, chatRoomMemberId } = deletedId; // 필요한 id값들을 받아옴 const response = await deleteChatroomData(id); if (response.status === 200) { // 서버에서 채팅을 나갔다는 응답이 올 경우 const stompId = chatMap.get(chatRoomMemberId); // 해당 stompId를 받아옴 unsubscribeStomp(stompId); // id를 통해 구독 해제 setChatroomsTrigger((trigger) =&gt; trigger + 1); setDeletedId(null); } setIsSelectModal(false); };]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REACT DATEPICKER</title><link href="http://localhost:4000/react/2022/10/11/react_datepicker/" rel="alternate" type="text/html" title="REACT DATEPICKER" /><published>2022-10-11T00:00:00+09:00</published><updated>2022-10-11T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/11/react_datepicker</id><content type="html" xml:base="http://localhost:4000/react/2022/10/11/react_datepicker/"><![CDATA[<p>날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다.</p>
+</figure>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[현재 소켓을 통해 채팅 연결을 지속하고 있었습니다. 이러한 상황에서 특정 채팅방을 나가는 경우, 해당 채팅방에 대한 알림은 더 이상 받을 필요가 없기 때문에 소켓을 유지한 상태에서 특정 소켓만 해제하는 작업이 필요했습니다. 같은 id가 반복되는 문제 소켓 연결 해제를 하기에 앞서, 연결 해제를 위해서는 id값이 필요한데, 소켓 연결 시 현재 같은 id 값으로만 연결을 해주는 상황입니다. 구독하는 상황에서 이는 headers를 직접 넣어주는 경우 해결이 됩니다. const subscribeToStomp = (id: string | number) =&gt; { const headers = getAuthHeaders(); const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; stompClient.subscribe(subscribeURL, onReceive, headers); }; 처음에는 stompClient.unsubscribe를 사용하기 위해 필요한 id값을 빼내는 데에 필요하다고 판단해 이와 같은 상황을 먼저 만들었으나, 구독을 하는 동시에 생성되는 값에서 id,unsubscribe()가 존재한다는 것을 발견했습니다. 현재 의문점으로 갖고 있는 것은, 같은 id를 갖고 있는 상황에서도, 저 unsubscribe() 함수를 쓰는 상황에서는 각각을 분리해 구독을 끊는 것인지, 아니면 같은 id를 갖고 있는 것들에 대해 모두 구독을 끊는 것인지 입니다. 이에 대한 제대로 된 문서를 찾기 어려워 직접 적용을 해보게 됐습니다. ‘sub-0’ id들로만 이루어진 곳에 구독을 끊을 시 ‘sub-0’ id로만 이루어진 소켓에 연결을 끊는 작업을 진행할 시, 이후 들어오는 메세지에 대해 위 사진과 같은 결과를 알려주게 됩니다. ‘sub-0’라는 id를 통해 들어온 또 다른 메세지가 있으며, 이 메세지에 대해 핸들링이 이루어지지 않았음을 알려주게 되어, 원하는 기능을 위해서는 정확하게 id값이 분리되어야 한다는 것을 알 수 있었습니다. 앞서 나와있던 unsubscribe() 함수 역시 결국 해당 id값에 대해서 구독 해제를 하는 것이라 판단했고, id를 저장해 필요한 id를 꺼내 쓰기로 결정했습니다. id를 직접적으로 넣어주어 구독 끊기 위의 방법이 안 된다는 것을 알고난 뒤, 소켓의 연결을 끊기 위해 사용할 방법들을 찾아봤습니다. 현재 연결된 stomp(소켓)내에서 연결이 이루어지는 경우(stompClient.subscribe)에 리턴하게 되는 id값들을 가지고 있어야하는데, 이 값들을 담아두고, 필요할 때 바로 꺼내서 사용하기 위해 JS의 Map을 사용해 이 값들을 정리해주게 됐습니다. export const chatMap = new Map&lt;number, string&gt;(); // id에 맞는 stompId값을 바로 빼내게 위해 map을 사용 const subscribeToStomp = (id: number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; const headers = getAuthHeaders(); const { id: stompId } = stompClient.subscribe(subscribeURL, onReceiveChat, headers); // 구독이 완료될 시 나오는 stomp id값을 꺼냄 chatMap.set(id, stompId); // 채팅방의 id값에 stomp id값을 대입시켜서 저장함 }; 위와 같은 방법을 통해 채팅방의 id를 알고 있으면 stomp에 연결된 stomp id를 빼낼 수 있게 되고, 그 stomp id를 통해 stomp 연결을 해제할 수 있게 됩니다. const handleClickSelectOkBtn = async () =&gt; { // 채팅을 나갈 때 사용하는 함수 if (!deletedId) return; const { id, chatRoomMemberId } = deletedId; // 필요한 id값들을 받아옴 const response = await deleteChatroomData(id); if (response.status === 200) { // 서버에서 채팅을 나갔다는 응답이 올 경우 const stompId = chatMap.get(chatRoomMemberId); // 해당 stompId를 받아옴 unsubscribeStomp(stompId); // id를 통해 구독 해제 setChatroomsTrigger((trigger) =&gt; trigger + 1); setDeletedId(null); } setIsSelectModal(false); };]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">stomp(socket) 동시 연결하기</title><link href="http://localhost:4000/react/2022/10/21/stomp(socket)-%EB%8F%99%EC%8B%9C-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="stomp(socket) 동시 연결하기" /><published>2022-10-21T00:00:00+09:00</published><updated>2022-10-21T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/10/21/stomp(socket)%20%EB%8F%99%EC%8B%9C%20%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/react/2022/10/21/stomp(socket)-%EB%8F%99%EC%8B%9C-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0/"><![CDATA[<h3 id="이전-코드의-문제점">이전 코드의 문제점</h3>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'date'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentDateTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDateTime</span><span class="si">}</span> <span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">DateInputForm</span> <span class="na">type</span><span class="p">=</span><span class="s">'time'</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeTime</span><span class="si">}</span> <span class="p">/&gt;</span>
+<p>기존에 <code class="language-plaintext highlighter-rouge">stomp</code>를 통한 socket 연결 시, socket에 연결되는 것들의 종류에 따라 나누어 <code class="language-plaintext highlighter-rouge">stompClient</code>를 직접 만들어 적용하는 방식을 사용하고 있었습니다.</p>
+
+<p>그로 인해 아래 사진과 같이 socket 연결을 두 번 진행하게 됐고, 이는 불필요한 연결을 반복하는 결과가 나오게 했습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221021/6.png" alt="" width="" height="" /> 
+</figure>
+
+<p>코드로는 아래와 같은 형태가 나오게 되며, 아래의 함수들을 각각 호출해 적용하는 형식이었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">chatroomSocket</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sockServer</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_BASE_URL</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">WEBSOCKET</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="c1">// 들어갈 주소 설정</span>
+  <span class="kd">const</span> <span class="nx">sock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SockJs</span><span class="p">(</span><span class="nx">sockServer</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">stompClient</span> <span class="o">=</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">over</span><span class="p">(</span><span class="nx">sock</span><span class="p">);</span>
+	<span class="c1">// 해당 부분에서 stompClient를 계속해서 새로 생성하게 됨</span>
+
+  <span class="kd">const</span> <span class="nx">subscribeChat</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">onReceive</span><span class="p">,</span> <span class="nx">chatroomId</span><span class="p">,</span> <span class="nx">chatroomIds</span> <span class="p">}:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">subscribeToStomp</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">TOPIC</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOM_MEMBERS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+      <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscribeURL</span><span class="p">,</span> <span class="nx">onReceive</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span><span class="p">)</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomIds</span><span class="p">)</span> <span class="nx">chatroomIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">subscribeToStomp</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+  <span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">noticeSocket</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sockServer</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_BASE_URL</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">WEBSOCKET</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="c1">// 들어갈 주소 설정</span>
+  <span class="kd">const</span> <span class="nx">sock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SockJs</span><span class="p">(</span><span class="nx">sockServer</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">stompClient</span> <span class="o">=</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">over</span><span class="p">(</span><span class="nx">sock</span><span class="p">);</span>
+	<span class="c1">// 해당 부분에서 stompClient를 계속해서 새로 생성하게 됨</span>
+
+  <span class="kd">const</span> <span class="nx">subscribeNotice</span> <span class="o">=</span> <span class="p">({</span>
+    <span class="nx">entryIds</span><span class="p">,</span>
+    <span class="nx">keywordIds</span><span class="p">,</span>
+    <span class="nx">onSubscribeEntries</span><span class="p">,</span>
+    <span class="nx">onSubscribeKeywords</span><span class="p">,</span>
+  <span class="p">}:</span> <span class="nx">subscribeParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">QUEUE</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">NOTIFICATIONS</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!!</span><span class="nx">entryIds</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">entryIds</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscribeURL</span> <span class="o">+</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">ENTRIES</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">onSubscribeEntries</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
 </code></pre></div></div>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221011/first.gif" alt="" width="35%" height="" /> 
+  <img class="image" src="/image/221021/7.png" alt="" width="" height="" /> 
 </figure>
 
-<p>하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다.<br />
-(링크 : <a href="https://reactdatepicker.com/">React Datepicker crafted by HackerOne</a>)</p>
+<h3 id="stompclient-하나만-사용하기">‘stompClient’ 하나만 사용하기</h3>
 
-<p>설치는 아래 코드들로 진행했습니다.</p>
+<p>이 부분에서 <code class="language-plaintext highlighter-rouge">stompClient</code>를 하나만 호출하고, 이를 전체 <code class="language-plaintext highlighter-rouge">App</code>에서 연결, 구독, 연결 해제 등의 작업을 해야했습니다. 이를 위해 <code class="language-plaintext highlighter-rouge">stompClient</code>가 호출되는 위치를 상단으로 바꾸고, 이를 <code class="language-plaintext highlighter-rouge">export</code>하는 작업부터 진행했습니다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install react-datepicker --save
-npm install @types/react-datepicker
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sockServer</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_BASE_URL</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">WEBSOCKET</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="c1">// 들어갈 주소 설정</span>
+<span class="kd">const</span> <span class="nx">sock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SockJs</span><span class="p">(</span><span class="nx">sockServer</span><span class="p">);</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">stompClient</span> <span class="o">=</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">over</span><span class="p">(</span><span class="nx">sock</span><span class="p">);</span>
 </code></pre></div></div>
 
-<hr />
+<p>위와 같이 하나의 <code class="language-plaintext highlighter-rouge">stompClient</code>만을 생성하고, 이를 <code class="language-plaintext highlighter-rouge">export</code>해, 이 <code class="language-plaintext highlighter-rouge">stompClient</code>만을 이용해 소켓 연결을 할 수 있도록 했습니다. 그 다음 <code class="language-plaintext highlighter-rouge">stompClient</code>를 갖고 바로 구독을 하거나 연결을 하는 등의 행위를 할 수 있었습니다.</p>
 
-<h3 id="날짜-설정">날짜 설정</h3>
-
-<p>사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="dl">"</span><span class="s2">react-datepicker/dist/react-datepicker.css</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="nx">ReactDatePicker</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-datepicker</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledDatePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
-  border: none;
-  background-color: transparent;
-  padding: 0;
-`</span><span class="p">;</span>
-</code></pre></div></div>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
-  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
-  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
-  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
-  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
-<span class="p">/&gt;</span>
-</code></pre></div></div>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221011/date default.png" alt="" width="50%" height="" /> 
-</figure>
-
-<p>이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">react</span><span class="o">-</span><span class="nx">datepicker</span> <span class="p">{</span>
-	<span class="o">&amp;</span><span class="nx">__day</span> <span class="p">{</span>
-	  <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
-	  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
-	  <span class="nl">width</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="sr">/ 10</span><span class="se">)</span><span class="err">;
-</span>	  <span class="nx">aspect</span><span class="o">-</span><span class="nx">ratio</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-	  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="p">:</span> <span class="nx">initial</span><span class="p">;</span>
-	  <span class="nl">display</span><span class="p">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">flex</span><span class="p">;</span>
-	  <span class="nx">align</span><span class="o">-</span><span class="nx">items</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
-	  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
-	  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-
-	  <span class="p">:</span><span class="nx">hover</span> <span class="p">{</span>
-	    <span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">10</span><span class="nx">rem</span><span class="p">;</span>
-	  <span class="p">}</span>
-
-	  <span class="o">&amp;-</span><span class="nx">name</span> <span class="p">{</span>
-	    <span class="nx">$</span><span class="p">{</span><span class="nx">fonts</span><span class="p">.</span><span class="nx">xSmall</span><span class="p">};</span>
-
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">subscribeChat</span> <span class="o">=</span> <span class="p">({</span>
+  <span class="nx">onReceiveChat</span><span class="p">,</span>
+  <span class="nx">chatroomId</span><span class="p">,</span>
+  <span class="nx">chatroomIds</span><span class="p">,</span>
+<span class="p">}:</span> <span class="nx">subscribeChatParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">subscribeToStomp</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">subscribeURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">TOPIC</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOM_MEMBERS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">stompId</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">stompClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscribeURL</span><span class="p">,</span> <span class="nx">onReceiveChat</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+		<span class="c1">// stompClient를 바로 가져다 쓰도록 설정</span>
 		<span class="p">...</span>
 
-	  <span class="o">&amp;--</span><span class="nx">disabled</span> <span class="p">{</span>
-	    <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="p">:</span> <span class="nx">line</span><span class="o">-</span><span class="nx">through</span><span class="p">;</span>
-	    <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey3</span><span class="p">};</span>
-	  <span class="p">}</span>
-	<span class="p">}</span>
-
-
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">connectStomp</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">noticeParams</span><span class="p">,</span> <span class="nx">chatParams</span> <span class="p">}:</span> <span class="nx">ConnectStompParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// stompClient.debug = () =&gt; null; 이후 console로 나오는 stomp 관련 내용 제거에 사용</span>
+    <span class="nx">stompClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">headers</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// stompClient에 바로 연결</span>
+      <span class="nx">subscribeNotice</span><span class="p">(</span><span class="nx">noticeParams</span><span class="p">);</span>
+      <span class="nx">subscribeChat</span><span class="p">(</span><span class="nx">chatParams</span><span class="p">);</span>
+			<span class="c1">// 연결이 완료될 시, 바로 Notice, Chat의 구독 시 행위를 지정함</span>
+			<span class="p">...</span>
 </code></pre></div></div>
 
-<p>날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(<code class="language-plaintext highlighter-rouge">react-datepicker__current-month</code>)와 같은 선상에 있으면서 <code class="language-plaintext highlighter-rouge">position: absolute</code>로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 <code class="language-plaintext highlighter-rouge">top</code>으로 직접 받아 처리하도록 우선 구성했습니다.</p>
+<p>이 작업을 통해서 위 그림과 달리 아래처럼 하나의 <code class="language-plaintext highlighter-rouge">stompClient</code>만을 갖고 원하는 모든 알림, 채팅을 구독할 수 있었습니다.</p>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&amp;</span><span class="nx">__current</span> <span class="p">{</span>
-  <span class="o">&amp;-</span><span class="nx">month</span> <span class="p">{</span>
-    <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
-    <span class="nx">padding</span><span class="o">-</span><span class="nx">left</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">/</span> <span class="mi">80</span> <span class="o">-</span> <span class="mi">5</span><span class="nx">px</span><span class="p">);</span>
-    <span class="nx">padding</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mf">0.5</span><span class="nx">rem</span><span class="p">;</span>
-    <span class="nx">padding</span><span class="o">-</span><span class="nx">top</span><span class="p">:</span> <span class="mf">0.75</span><span class="nx">rem</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221021/8.png" alt="" width="" height="" /> 
+</figure>
 
-<span class="o">&amp;</span><span class="nx">__navigation</span> <span class="p">{</span>
-	  <span class="o">&amp;--</span><span class="nx">previous</span> <span class="p">{</span>
-	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
-	    <span class="nl">left</span><span class="p">:</span> <span class="nx">unset</span><span class="p">;</span>
-	    <span class="nl">right</span><span class="p">:</span> <span class="nx">calc</span><span class="p">(</span><span class="mi">32</span><span class="nx">px</span><span class="p">);</span>
-	  <span class="p">}</span>
-	  <span class="o">&amp;--</span><span class="nx">next</span> <span class="p">{</span>
-	    <span class="nl">top</span><span class="p">:</span> <span class="mi">5</span><span class="nx">px</span><span class="p">;</span>
-	    <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span><span class="nx">px</span><span class="p">;</span>
-	  <span class="p">}</span>
-	  <span class="o">&amp;-</span><span class="nx">icon</span> <span class="p">{</span>
-	    <span class="p">::</span><span class="nx">before</span> <span class="p">{</span>
-	      <span class="nl">border</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
-	    <span class="p">}</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h3 id="새로운-채팅의-내용-가져오기">새로운 채팅의 내용 가져오기</h3>
 
-<p>datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다.</p>
+<p>기존에 채팅을 사용할 때에는, 채팅 상세 페이지에서 직접 소켓에 다시 한 번 연결하는 과정을 거치며, 그 과정에서 채팅 데이터 목록을 업데이트하는 코드를 직접 주입하는 방식으로 이루어졌었습니다.</p>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledDatePicker</span>
-  <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">appointmentDateTime</span><span class="p">)</span><span class="si">}</span>
-  <span class="c1">// 선택된 날짜를 지정</span>
-  <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
-  <span class="c1">// 기존 input과 동일</span>
-  <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsDateFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
-  <span class="c1">// 기존 input과 동일</span>
-  <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handelChangeDate</span><span class="si">}</span>
-  <span class="c1">// 기존 input과 동일</span>
-  <span class="na">dateFormat</span><span class="p">=</span><span class="s">"yyyy.MM.dd"</span>
-  <span class="c1">// input에 보이는 날짜 형식 설정</span>
-  <span class="na">minDate</span><span class="p">=</span><span class="si">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><span class="si">}</span>
-  <span class="c1">// 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨</span>
-  <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
-  <span class="c1">// 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정</span>
-  <span class="na">formatWeekDay</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">nameOfDay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">nameOfDay</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span>
-  <span class="c1">// 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경</span>
-  <span class="na">nextMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronRight"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
-  <span class="c1">// 다음 달 보기 버튼 표현방식 변경</span>
-  <span class="na">previousMonthButtonLabel</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronLeft"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.75</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
-  <span class="c1">// 이전 달 보기 버튼 표현방식 변경</span>
-<span class="p">/&gt;</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 채팅 상세 페이지 내 새로운 채팅을 받는 함수</span>
+<span class="kd">const</span> <span class="nx">getNewChatMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">chatData</span><span class="p">:</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">newChat</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">chatData</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="c1">// 새로운 채팅을 소켓으로부터 직접 받아(StompJs.Message), 기존 리스트에 업데이트 해주는 방식으로 되어 있음</span>
+  <span class="nx">setCurChats</span><span class="p">((</span><span class="nx">chats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newChats</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">chats</span><span class="p">,</span> <span class="nx">newChat</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="nx">newChats</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">scrollToBottom</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">disconnectChatroom</span><span class="p">,</span> <span class="nx">connectChatroom</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">chatroomSocket</span><span class="p">();</span>
+  <span class="nx">connectChatroom</span><span class="p">({</span> <span class="na">onReceive</span><span class="p">:</span> <span class="nx">getNewChatMessage</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">});</span>
+  <span class="c1">// 소켓에 직접 연결 및 채팅 받을 시 실행할 함수를 적용</span>
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">disconnectChatroom</span><span class="p">();</span>
+  <span class="c1">// 채팅방 나갈 시 소켓 연결 제거</span>
+<span class="p">},</span> <span class="p">[]);</span>
 </code></pre></div></div>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221011/date finish.gif" alt="" width="50%" height="" /> 
+  <img class="image" src="/image/221021/9.png" alt="" width="" height="" /> 
 </figure>
 
-<h3 id="시간-설정">시간 설정</h3>
+<p>하지만, 소켓을 한 번 연결하고, 채팅방에 들어올 때 별도의 소켓 연결을 더 하지 않으려면, 기존의 연결을 통해 바뀌는 값을 따로 저장해줄 필요가 있었습니다. 이를 처리하기 위해 기존에 사용하던 recoil의 <code class="language-plaintext highlighter-rouge">atom</code>을 통해서 값을 저장하는 store를 만들었습니다.</p>
 
-<p>시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다.</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">type</span> <span class="nx">ChatroomsUpdate</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">chat</span><span class="p">?:</span> <span class="nx">ChatroomDetailChatType</span><span class="p">;</span>
+  <span class="nl">trigger</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="c1">// 같은 chat이 들어온 경우에 대한 구분이 필요해, trigger를 통한 구분을 하도록 설정</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">chatUpdateState</span> <span class="o">=</span> <span class="nx">atom</span><span class="o">&lt;</span><span class="nx">ChatroomsUpdate</span><span class="o">&gt;</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">chatUpdate</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">default</span><span class="p">:</span> <span class="p">{</span> <span class="na">trigger</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// stomp 연결 시, 새로운 채팅이 들어오면 실행할 콜백함수의 hooks</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">useOnReceiveChat</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">setChatsUnreadTrigger</span> <span class="o">=</span> <span class="nx">useSetRecoilState</span><span class="p">(</span><span class="nx">chatsUnreadTrigger</span><span class="p">);</span>
+  <span class="c1">// 읽지 않은 채팅 개수를 다시 구할 때 쓰는 trigger</span>
+  <span class="kd">const</span> <span class="nx">setChatUpdate</span> <span class="o">=</span> <span class="nx">useSetRecoilState</span><span class="p">(</span><span class="nx">chatUpdateState</span><span class="p">);</span>
+  <span class="c1">// chat update를 다시 설정해주는 함수</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="na">chatDate</span><span class="p">:</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">headers</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">chatDate</span><span class="p">;</span>
+    <span class="c1">// 새로운 stomp message에서 필요한 정보들을 파싱</span>
+    <span class="kd">const</span> <span class="nx">chat</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">headers</span><span class="p">.</span><span class="nx">destination</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">).</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+    <span class="nx">setChatsUnreadTrigger</span><span class="p">((</span><span class="nx">prev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="c1">// 채팅 개수가 변하므로 읽지 않은 채팅 개수 다시 불러오기</span>
+    <span class="nx">setChatUpdate</span><span class="p">(({</span> <span class="nx">trigger</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">chat</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="na">trigger</span><span class="p">:</span> <span class="nx">trigger</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}));</span>
+    <span class="c1">// chat update를 stomp를 통해 들어온 값들로 변경</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>그리고 이 <code class="language-plaintext highlighter-rouge">chatUpdate</code>라는 store의 값이 바뀔 시, 이를 인지하고 자신의 정보인지를 확인한 뒤, 자신의 채팅 정보에 넣어주는 함수를 구성했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
+  <span class="na">id</span><span class="p">:</span> <span class="nx">updatedId</span><span class="p">,</span>
+  <span class="na">chat</span><span class="p">:</span> <span class="nx">updatedChat</span><span class="p">,</span>
+  <span class="na">trigger</span><span class="p">:</span> <span class="nx">chatUpdateTrigger</span><span class="p">,</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nx">useRecoilValue</span><span class="p">(</span><span class="nx">chatUpdateState</span><span class="p">);</span>
+<span class="c1">// store 정보를 불러옴</span>
+
+<span class="p">...</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">chatroomId</span> <span class="o">!==</span> <span class="nx">updatedId</span> <span class="o">||</span> <span class="o">!</span><span class="nx">updatedChat</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+	<span class="c1">// id값이 일치하지 않거나 정보가 없을 시 바로 리턴</span>
+  <span class="nx">setCurChats</span><span class="p">((</span><span class="nx">chats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">[...</span><span class="nx">chats</span><span class="p">,</span> <span class="nx">updatedChat</span><span class="p">]);</span>
+	<span class="c1">// 새로 받은 채팅 정보를 기존 채팅 정보에 추가</span>
+  <span class="nx">scrollToBottom</span><span class="p">();</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">chatUpdateTrigger</span><span class="p">]);</span>
+<span class="c1">// 메세지를 받을 때마다 trigger를 통해 확인이 가능함</span>
+</code></pre></div></div>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221021/10.png" alt="" width="" height="" /> 
+</figure>
+
+<h3 id="채팅-보내기">채팅 보내기</h3>
+
+<p>기존 코드에서는 채팅을 보내는 상황에 대해서도 먼저 소켓을 새로 만들어 그 곳에서 채팅을 보내는 방법을 사용했었습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sockServer</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_BASE_URL</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">WEBSOCKET</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="c1">// 들어갈 주소 설정</span>
+<span class="kd">const</span> <span class="nx">sock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SockJs</span><span class="p">(</span><span class="nx">sockServer</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">stompClient</span> <span class="o">=</span> <span class="nx">StompJs</span><span class="p">.</span><span class="nx">over</span><span class="p">(</span><span class="nx">sock</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">sendChat</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">contents</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">}:</span> <span class="nx">SendChatParamsType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">getAuthHeaders</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">sendingURL</span> <span class="o">=</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">APP</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHATROOMS</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">chatroomId</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">CHAT</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+  <span class="nx">stompClient</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">sendingURL</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">contents</span> <span class="p">}));</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>하지만, 위에서 살펴본 바와 같이, 한 번의 소켓 연결을 통해 문제를 해결했기 때문에, 현재 새롭게 사용될 <code class="language-plaintext highlighter-rouge">sendChat</code> 또한 이전 코드와 동일하지만, 같은 <code class="language-plaintext highlighter-rouge">stompClient</code>를 사용하게 됩니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221021/11.png" alt="" width="" height="" /> 
+</figure>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleSubmit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">FormEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="p">...</span>
+  <span class="nx">sendChat</span><span class="p">({</span> <span class="na">contents</span><span class="p">:</span> <span class="nx">chatValue</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">submit</code>을 통해 채팅 입력을 완료하는 경우, 원하는 값과 <code class="language-plaintext highlighter-rouge">id</code>를 넣어 메세지를 보낼 수 있습니다.</p>
+
+<h3 id="새로운-채팅-생성-후-바로-들어갈-때">새로운 채팅 생성 후 바로 들어갈 때</h3>
+
+<p>이 경우, 소켓에 해당 채팅에 대한 아이디가 구독되어 있지 않은 상황이라 채팅을 입력해도 바로 정보를 가져오지 못했습니다. 이를 해결하기 위해서 새로운 채팅에 들어가는 순간, 해당 채팅에 대한 stomp id를 찾고, 해당 값이 없는 경우 이전에 설정해둔 <code class="language-plaintext highlighter-rouge">chatMap</code>에서 값을 가져와 구독을 해주도록 했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">chatMap</span><span class="p">,</span> <span class="nx">subscribeChat</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@socket/stomp</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useOnReceiveChat</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@socket/useConnectSocket</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="kd">const</span> <span class="nx">stompId</span> <span class="o">=</span> <span class="nx">chatMap</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">chatroomId</span><span class="p">);</span>
+<span class="c1">// 해당 채팅 아이디에 대한 stomp id 값을 구함</span>
+<span class="p">...</span>
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// when use question chat in share detail page</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">stompId</span><span class="p">)</span> <span class="nx">subscribeChat</span><span class="p">({</span> <span class="nx">onReceiveChat</span><span class="p">,</span> <span class="nx">chatroomId</span> <span class="p">});</span>
+	<span class="c1">// stomp id가 없을 시, 기존에 만든 onReceiveChat과 현재 채팅 아이디를 갖고 stomp에 구독</span>
+	<span class="p">...</span>
+  <span class="p">};</span>
+<span class="p">},</span> <span class="p">[]);</span>
+</code></pre></div></div>
+
+<p>이를 통해 새로운 채팅이 생성될 경우에 대해서도 채팅이 바로 이루어질 수 있도록 처리했습니다.</p>
 
 <div style="display: flex">
-  <figure class="figure  figure--center">
-  <img class="image" src="/image/221011/time design.png" alt="" width="65%" height="" /> 
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221021/12.gif" alt="" width="55%" height="" /> 
 </figure>
-
-  <figure class="figure  figure--center">
-  <img class="image" src="/image/221011/time default.png" alt="" width="100%" height="" /> 
-</figure>
-
-</div>
-
-<p>왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다.</p>
-
-<p>시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">StyledTimePicker</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">(</span><span class="nx">ReactDatePicker</span><span class="p">)</span><span class="s2">`
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-
-  :focus {
-    outline: none;
-  }
-`</span><span class="p">;</span>
-
-<span class="p">...</span>
-
-<span class="o">&amp;</span><span class="nx">__header</span> <span class="p">{</span>
-  <span class="nl">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="o">&amp;--</span><span class="nx">time</span> <span class="p">{</span>
-    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="p">:</span> <span class="nx">transparent</span><span class="p">;</span>
-    <span class="nx">border</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="o">&amp;-</span><span class="nx">time__header</span> <span class="p">{</span>
-  <span class="nx">$</span><span class="p">{</span><span class="nx">flexCenter</span><span class="p">};</span>
-
-  <span class="nx">justify</span><span class="o">-</span><span class="nx">content</span><span class="p">:</span> <span class="nx">left</span><span class="p">;</span>
-  <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
-  <span class="nx">word</span><span class="o">-</span><span class="nx">spacing</span><span class="p">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
-  <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
-  <span class="nx">white</span><span class="o">-</span><span class="nx">space</span><span class="p">:</span> <span class="nx">pre</span><span class="p">;</span>
-  <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">8</span><span class="nx">px</span><span class="p">;</span>
-  <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">400</span><span class="p">;</span>
-  <span class="nl">height</span><span class="p">:</span> <span class="mi">25</span><span class="nx">px</span><span class="p">;</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">colors</span><span class="p">.</span><span class="nx">grey4</span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="p">...</span>
-</code></pre></div></div>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span> <span class="na">isTimeFocused</span><span class="p">=</span><span class="si">{</span><span class="nx">isTimeFocused</span><span class="si">}</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">StyledTimePicker</span>
-    <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChangeTimeTest</span><span class="si">}</span>
-    <span class="c1">// 기존 input과 동일</span>
-    <span class="na">timeIntervals</span><span class="p">=</span><span class="si">{</span><span class="nx">timeIntervals</span><span class="si">}</span>
-    <span class="c1">// 시간 설정의 간격을 조절함</span>
-    <span class="na">showTimeSelect</span>
-    <span class="na">showTimeSelectOnly</span>
-    <span class="c1">// 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함</span>
-    <span class="na">selected</span><span class="p">=</span><span class="si">{</span><span class="nx">currentTimeDateType</span><span class="si">}</span>
-    <span class="c1">// 선택된 시간에 selected 클래스를 지정함</span>
-    <span class="na">showPopperArrow</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
-    <span class="na">timeFormat</span><span class="p">=</span><span class="s">"HH mm aa"</span>
-    <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">appointmentTime</span><span class="si">}</span>
-    <span class="na">timeCaption</span><span class="p">=</span><span class="s">"HOUR MINUTE"</span>
-    <span class="na">onFocus</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span>
-    <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIsTimeFocused</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
-  <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nc">Icon</span> <span class="na">iconName</span><span class="p">=</span><span class="s">"ChevronDown"</span> <span class="na">iconSize</span><span class="p">=</span><span class="si">{</span><span class="mf">0.9</span><span class="si">}</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nc">S</span><span class="p">.</span><span class="nc">TimeInputWrapper</span><span class="p">&gt;</span>
-</code></pre></div></div>
-
-<p>날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다.</p>
-
-<p>단, 시간 설정을 할 때에는 <code class="language-plaintext highlighter-rouge">showTimeSelect</code>, <code class="language-plaintext highlighter-rouge">showTimeSelectOnly</code> 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다.</p>
-
-<p>시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다.</p>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221011/time finish.gif" alt="" width="45%" height="" /> 
+  <img class="image" src="/image/221021/13.gif" alt="" width="55%" height="" /> 
 </figure>
 
-<h3 id="특이-사항">특이 사항</h3>
+</div>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[이전 코드의 문제점 기존에 stomp를 통한 socket 연결 시, socket에 연결되는 것들의 종류에 따라 나누어 stompClient를 직접 만들어 적용하는 방식을 사용하고 있었습니다. 그로 인해 아래 사진과 같이 socket 연결을 두 번 진행하게 됐고, 이는 불필요한 연결을 반복하는 결과가 나오게 했습니다. 코드로는 아래와 같은 형태가 나오게 되며, 아래의 함수들을 각각 호출해 적용하는 형식이었습니다. export const chatroomSocket = () =&gt; { const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; // 들어갈 주소 설정 const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); // 해당 부분에서 stompClient를 계속해서 새로 생성하게 됨 const subscribeChat = ({ onReceive, chatroomId, chatroomIds }: subscribeParamsType) =&gt; { const headers = getAuthHeaders(); const subscribeToStomp = (id: string | number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; stompClient.subscribe(subscribeURL, onReceive, headers); }; if (chatroomId) subscribeToStomp(chatroomId); if (chatroomIds) chatroomIds.forEach((id) =&gt; subscribeToStomp(id)); }; export const noticeSocket = () =&gt; { const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; // 들어갈 주소 설정 const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); // 해당 부분에서 stompClient를 계속해서 새로 생성하게 됨 const subscribeNotice = ({ entryIds, keywordIds, onSubscribeEntries, onSubscribeKeywords, }: subscribeParamsType) =&gt; { const subscribeURL = `/${QUEUE}/${NOTIFICATIONS}`; const headers = getAuthHeaders(); if (!!entryIds.length) { entryIds.forEach((id) =&gt; { stompClient.subscribe(subscribeURL + `/${ENTRIES}/${id}`, onSubscribeEntries, headers); }); } ‘stompClient’ 하나만 사용하기 이 부분에서 stompClient를 하나만 호출하고, 이를 전체 App에서 연결, 구독, 연결 해제 등의 작업을 해야했습니다. 이를 위해 stompClient가 호출되는 위치를 상단으로 바꾸고, 이를 export하는 작업부터 진행했습니다. const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; // 들어갈 주소 설정 const sock = new SockJs(sockServer); export const stompClient = StompJs.over(sock); 위와 같이 하나의 stompClient만을 생성하고, 이를 export해, 이 stompClient만을 이용해 소켓 연결을 할 수 있도록 했습니다. 그 다음 stompClient를 갖고 바로 구독을 하거나 연결을 하는 등의 행위를 할 수 있었습니다. export const subscribeChat = ({ onReceiveChat, chatroomId, chatroomIds, }: subscribeChatParamsType) =&gt; { const subscribeToStomp = (id: number) =&gt; { const subscribeURL = `/${TOPIC}/${CHATROOM_MEMBERS}/${id}`; const headers = getAuthHeaders(); const { id: stompId } = stompClient.subscribe(subscribeURL, onReceiveChat, headers); // stompClient를 바로 가져다 쓰도록 설정 ... export const connectStomp = ({ noticeParams, chatParams }: ConnectStompParamsType) =&gt; { const headers = getAuthHeaders(); try { // stompClient.debug = () =&gt; null; 이후 console로 나오는 stomp 관련 내용 제거에 사용 stompClient.connect(headers, () =&gt; { // stompClient에 바로 연결 subscribeNotice(noticeParams); subscribeChat(chatParams); // 연결이 완료될 시, 바로 Notice, Chat의 구독 시 행위를 지정함 ... 이 작업을 통해서 위 그림과 달리 아래처럼 하나의 stompClient만을 갖고 원하는 모든 알림, 채팅을 구독할 수 있었습니다. 새로운 채팅의 내용 가져오기 기존에 채팅을 사용할 때에는, 채팅 상세 페이지에서 직접 소켓에 다시 한 번 연결하는 과정을 거치며, 그 과정에서 채팅 데이터 목록을 업데이트하는 코드를 직접 주입하는 방식으로 이루어졌었습니다. // 채팅 상세 페이지 내 새로운 채팅을 받는 함수 const getNewChatMessage = (chatData: StompJs.Message) =&gt; { const newChat = JSON.parse(chatData.body); // 새로운 채팅을 소켓으로부터 직접 받아(StompJs.Message), 기존 리스트에 업데이트 해주는 방식으로 되어 있음 setCurChats((chats) =&gt; { const newChats = [...chats, newChat]; return newChats; }); scrollToBottom(); }; useEffect(() =&gt; { const { disconnectChatroom, connectChatroom } = chatroomSocket(); connectChatroom({ onReceive: getNewChatMessage, chatroomId }); // 소켓에 직접 연결 및 채팅 받을 시 실행할 함수를 적용 return () =&gt; disconnectChatroom(); // 채팅방 나갈 시 소켓 연결 제거 }, []); 하지만, 소켓을 한 번 연결하고, 채팅방에 들어올 때 별도의 소켓 연결을 더 하지 않으려면, 기존의 연결을 통해 바뀌는 값을 따로 저장해줄 필요가 있었습니다. 이를 처리하기 위해 기존에 사용하던 recoil의 atom을 통해서 값을 저장하는 store를 만들었습니다. export type ChatroomsUpdate = { id?: number; chat?: ChatroomDetailChatType; trigger: number; // 같은 chat이 들어온 경우에 대한 구분이 필요해, trigger를 통한 구분을 하도록 설정 }; export const chatUpdateState = atom&lt;ChatroomsUpdate&gt;({ key: "chatUpdate", default: { trigger: 0 }, }); // stomp 연결 시, 새로운 채팅이 들어오면 실행할 콜백함수의 hooks export const useOnReceiveChat = () =&gt; { const setChatsUnreadTrigger = useSetRecoilState(chatsUnreadTrigger); // 읽지 않은 채팅 개수를 다시 구할 때 쓰는 trigger const setChatUpdate = useSetRecoilState(chatUpdateState); // chat update를 다시 설정해주는 함수 return (chatDate: StompJs.Message) =&gt; { const { body, headers } = chatDate; // 새로운 stomp message에서 필요한 정보들을 파싱 const chat = JSON.parse(body); const id = Number(headers.destination.split("/").at(-1)); setChatsUnreadTrigger((prev) =&gt; prev + 1); // 채팅 개수가 변하므로 읽지 않은 채팅 개수 다시 불러오기 setChatUpdate(({ trigger }) =&gt; ({ chat, id, trigger: trigger + 1 })); // chat update를 stomp를 통해 들어온 값들로 변경 }; }; 그리고 이 chatUpdate라는 store의 값이 바뀔 시, 이를 인지하고 자신의 정보인지를 확인한 뒤, 자신의 채팅 정보에 넣어주는 함수를 구성했습니다. const { id: updatedId, chat: updatedChat, trigger: chatUpdateTrigger, } = useRecoilValue(chatUpdateState); // store 정보를 불러옴 ... useEffect(() =&gt; { if (chatroomId !== updatedId || !updatedChat) return; // id값이 일치하지 않거나 정보가 없을 시 바로 리턴 setCurChats((chats) =&gt; [...chats, updatedChat]); // 새로 받은 채팅 정보를 기존 채팅 정보에 추가 scrollToBottom(); }, [chatUpdateTrigger]); // 메세지를 받을 때마다 trigger를 통해 확인이 가능함 채팅 보내기 기존 코드에서는 채팅을 보내는 상황에 대해서도 먼저 소켓을 새로 만들어 그 곳에서 채팅을 보내는 방법을 사용했었습니다. const sockServer = `${process.env.REACT_APP_BASE_URL}/${WEBSOCKET}`; // 들어갈 주소 설정 const sock = new SockJs(sockServer); const stompClient = StompJs.over(sock); export const sendChat = ({ contents, chatroomId }: SendChatParamsType) =&gt; { const headers = getAuthHeaders(); const sendingURL = `/${APP}/${CHATROOMS}/${chatroomId}/${CHAT}`; stompClient.send(sendingURL, headers, JSON.stringify({ contents })); }; 하지만, 위에서 살펴본 바와 같이, 한 번의 소켓 연결을 통해 문제를 해결했기 때문에, 현재 새롭게 사용될 sendChat 또한 이전 코드와 동일하지만, 같은 stompClient를 사용하게 됩니다. const handleSubmit = (event: FormEvent) =&gt; { ... sendChat({ contents: chatValue, chatroomId }); }; submit을 통해 채팅 입력을 완료하는 경우, 원하는 값과 id를 넣어 메세지를 보낼 수 있습니다. 새로운 채팅 생성 후 바로 들어갈 때 이 경우, 소켓에 해당 채팅에 대한 아이디가 구독되어 있지 않은 상황이라 채팅을 입력해도 바로 정보를 가져오지 못했습니다. 이를 해결하기 위해서 새로운 채팅에 들어가는 순간, 해당 채팅에 대한 stomp id를 찾고, 해당 값이 없는 경우 이전에 설정해둔 chatMap에서 값을 가져와 구독을 해주도록 했습니다. import { chatMap, subscribeChat } from '@socket/stomp'; import { useOnReceiveChat } from '@socket/useConnectSocket'; ... const stompId = chatMap.get(chatroomId); // 해당 채팅 아이디에 대한 stomp id 값을 구함 ... useEffect(() =&gt; { // when use question chat in share detail page if (!stompId) subscribeChat({ onReceiveChat, chatroomId }); // stomp id가 없을 시, 기존에 만든 onReceiveChat과 현재 채팅 아이디를 갖고 stomp에 구독 ... }; }, []); 이를 통해 새로운 채팅이 생성될 경우에 대해서도 채팅이 바로 이루어질 수 있도록 처리했습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">mouse click event 자동 발생 문제</title><link href="http://localhost:4000/javascript/2022/10/17/mouse-click-event-%EC%9E%90%EB%8F%99-%EB%B0%9C%EC%83%9D-%EB%AC%B8%EC%A0%9C/" rel="alternate" type="text/html" title="mouse click event 자동 발생 문제" /><published>2022-10-17T00:00:00+09:00</published><updated>2022-10-17T00:00:00+09:00</updated><id>http://localhost:4000/javascript/2022/10/17/mouse%20click%20event%20%EC%9E%90%EB%8F%99%20%EB%B0%9C%EC%83%9D%20%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="http://localhost:4000/javascript/2022/10/17/mouse-click-event-%EC%9E%90%EB%8F%99-%EB%B0%9C%EC%83%9D-%EB%AC%B8%EC%A0%9C/"><![CDATA[<figure class="figure  figure--center">
+  <img class="image" src="/image/221017/1.gif" alt="" width="75%" height="" /> 
+</figure>
 
-<p>스타일 관련 작업들을 진행하면서, <code class="language-plaintext highlighter-rouge">!important</code>를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. <code class="language-plaintext highlighter-rouge">!important</code>를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.</p>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[날짜와 시간을 설정하는 부분에서, 기존에는 input 자체의 내장 기능으로 date와 time을 사용해 시간을 설정할 수 있도록 했었습니다. &lt;S.DateInputForm type='date' value={appointmentDateTime} onChange={handelChangeDateTime} /&gt; &lt;S.DateInputForm type='time' value={appointmentTime} onChange={handelChangeTime} /&gt; 하지만, 이렇게 설정할 경우, 브라우저 내의 date와 time 설정 방식을 사용해야 하기 때문에 추가적인 디자인 변경이 어렵다는 것을 알게 됐고, 직접 디자인이 변경한 관련 라이브러리를 찾아보니 react datepicker라는 것이 있다는 것을 알게 됐습니다. (링크 : React Datepicker crafted by HackerOne) 설치는 아래 코드들로 진행했습니다. npm install react-datepicker --save npm install @types/react-datepicker 날짜 설정 사용하는 방법 자체는 간단한데, 아래의 코드와 같이 datepicker를 불러와 css와 함께 삽입해주면 기본적인 datepicker의 달력이 나오게 됩니다. import "react-datepicker/dist/react-datepicker.css"; import ReactDatePicker from "react-datepicker"; export const StyledDatePicker = styled(ReactDatePicker)` border: none; background-color: transparent; padding: 0; `; &lt;S.StyledDatePicker onFocus={() =&gt; setIsDateFocused(true)} onBlur={() =&gt; setIsDateFocused(false)} onChange={handelChangeDate} dateFormat="yyyy.MM.dd" /&gt; 이 달력 내의 각각의 요소마다 클래스로 지정이 되어 있어, 스타일을 변경하고자 하는 부분의 클래스를 따라 들어가 원하는 스타일로 CSS 작업을 진행하면 됩니다. .react-datepicker { &amp;__day { ${fonts.xSmall}; color: ${colors.grey4}; width: calc(100% / 10); aspect-ratio: 1; line-height: initial; display: inline-flex; align-items: center; justify-content: center; margin: 0; :hover { border-radius: 10rem; } &amp;-name { ${fonts.xSmall}; ... &amp;--disabled { text-decoration: line-through; color: ${colors.grey3}; } } 날짜 설정과 관련된 스타일 작업을 하면서 약간의 어려움을 느꼈던 부분은 이전 ∙ 다음 달로 넘어가는 화살표의 디자인을 설정하는 것이었는데, 현재 설정 월을 표시해주는 헤더(react-datepicker__current-month)와 같은 선상에 있으면서 position: absolute로 포지셔닝이 되어 있어, 이는 헤더와 같은 값을 top으로 직접 받아 처리하도록 우선 구성했습니다. &amp;__current { &amp;-month { text-align: left; padding-left: calc(100% * 7 / 80 - 5px); padding-bottom: 0.5rem; padding-top: 0.75rem; } } &amp;__navigation { &amp;--previous { top: 5px; left: unset; right: calc(32px); } &amp;--next { top: 5px; right: 0px; } &amp;-icon { ::before { border: none; } } } } datepicker의 기능을 위한 설정도 필요했는데, 대표적으로 선택된 날짜 지정, 날짜 표현 형식 변경, 주 단위 변경 등이 있었습니다. 다행히 datepicker 내에 이와 관련된 기능들이 포함되어 있어, 이를 찾아 적용해주었습니다. &lt;S.StyledDatePicker selected={new Date(appointmentDateTime)} // 선택된 날짜를 지정 onFocus={() =&gt; setIsDateFocused(true)} // 기존 input과 동일 onBlur={() =&gt; setIsDateFocused(false)} // 기존 input과 동일 onChange={handelChangeDate} // 기존 input과 동일 dateFormat="yyyy.MM.dd" // input에 보이는 날짜 형식 설정 minDate={new Date()} // 최소 선택 가능 날짜 지정. 이전 날짜는 선택이 안 됨 showPopperArrow={false} // 말풍선처럼 꼬리가 붙어있는 것을 보여줄지 여부를 결정 formatWeekDay={(nameOfDay) =&gt; nameOfDay.substring(0, 1)} // 주 단위를 어떤 식으로 보여줄지 결정. 여기서는 Wed =&gt; W로 변경 nextMonthButtonLabel={&lt;Icon iconName="ChevronRight" iconSize={0.75} /&gt;} // 다음 달 보기 버튼 표현방식 변경 previousMonthButtonLabel={&lt;Icon iconName="ChevronLeft" iconSize={0.75} /&gt;} // 이전 달 보기 버튼 표현방식 변경 /&gt; 시간 설정 시간을 설정하는 부분도 동일한 방식으로 적용하려 했으나, 가장 큰 문제점은 기본적인 datepicker 내의 시간 디자인과 우리의 디자인이 시간 설정 방식 면에서 다르다는 점이었습니다. 왼쪽이 디자인 상의 시간 설정이고, 오른쪽이 datepicker에서 제공하는 시간 설정입니다. 이 경우, 디자인을 바꾼다고 해도 좌측과 같은 설정 방법을 만들 수가 없어, 시간 설정과 관련된 라이브러리를 한 번 더 찾아 적용해야 한다는 부담이 생겼습니다. 시간 설정과 관련된 여러 라이브러리들을 찾아봤지만, 좌측과 같은 시간 설정 방식을 제공하는 라이브러리를 찾는 데에는 한계가 있었습니다. 또한, 현재 진행해야 할 다른 부분들이 많이 남아 있어, 시간 설정 부분에만 더 많은 시간을 할애하기에 어려움이 많아 datepicker의 시간 설정을 최대한 비슷한 디자인으로 수정하는 것으로 방법을 바꾸었습니다. export const StyledTimePicker = styled(ReactDatePicker)` width: 100%; border: none; background-color: transparent; padding: 0; :focus { outline: none; } `; ... &amp;__header { padding: 0; &amp;--time { background-color: transparent; border-bottom: none; } } &amp;-time__header { ${flexCenter}; justify-content: left; width: 100px; word-spacing: 10px; margin: 0 auto; white-space: pre; font-size: 8px; font-weight: 400; height: 25px; color: ${colors.grey4}; } ... &lt;S.TimeInputWrapper isTimeFocused={isTimeFocused}&gt; &lt;S.StyledTimePicker onChange={handleChangeTimeTest} // 기존 input과 동일 timeIntervals={timeIntervals} // 시간 설정의 간격을 조절함 showTimeSelect showTimeSelectOnly // 시간 설정만 보여주도록 설정. 위 두 가지를 모두 입력해야 함 selected={currentTimeDateType} // 선택된 시간에 selected 클래스를 지정함 showPopperArrow={false} timeFormat="HH mm aa" value={appointmentTime} timeCaption="HOUR MINUTE" onFocus={() =&gt; setIsTimeFocused(true)} onBlur={() =&gt; setIsTimeFocused(false)} /&gt; &lt;Icon iconName="ChevronDown" iconSize={0.9} /&gt; &lt;/S.TimeInputWrapper&gt; 날짜 설정을 할 때와 동일한 방식으로 스타일을 구성했으며, 이로 인한 어려움은 크게 없었습니다. 단, 시간 설정을 할 때에는 showTimeSelect, showTimeSelectOnly 이 두 가지 설정을 넣어주어야 시간 설정에 대한 창만 나오게 되므로 이를 주의할 필요가 있었습니다. 시간 설정도 같은 방식의 스타일을 적용해 문제를 해결했으며 이 라이브러리 덕분에 input과 관련된 디자인 설정 시 드는 어려움을 줄일 수 있었습니다. 특이 사항 스타일 관련 작업들을 진행하면서, !important를 사용해야 할 상황이 종종 생겼습니다. 이는 datepicker 내에서 디자인 설정을 하며 우선 적용된 부분들이 있어, 이를 건드리기 위한 것이었습니다. !important를 사용할 경우 추후 수정 작업 때 문제가 될 수 있어 사용을 피해야하지만, 이 부분에 대한 특별한 해결책은 아직 찾아내지 못했습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">깊이 우선 그래프 순회</title><link href="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/" rel="alternate" type="text/html" title="깊이 우선 그래프 순회" /><published>2022-10-10T00:00:00+09:00</published><updated>2022-10-10T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C%20copy</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/10/10/%EA%B9%8A%EC%9D%B4_%EC%9A%B0%EC%84%A0_%EA%B7%B8%EB%9E%98%ED%94%84_%EC%88%9C%ED%9A%8C-copy/"><![CDATA[<p>트리는 그래프의 일종으로, 그래프 자체는 한 노드에서 다른 노드로 갈 수 있는 경로가 트리에 비해 더 많아집니다.</p>
-
-<p>여러 갈래로 연결된 그래프에서 최단 거리를 찾는 것과 같은 작업에서 ‘그래프 순회’의 방법을 사용하게 되며, 예시는 아래와 같습니다.</p>
-
-<ul>
-  <li>위키피디아의 링크 내 이동 시 최단 거리 찾기</li>
-  <li>페이스북의 친구 추천 시 최단 거리의 다른 친구 추천하기 기능</li>
-  <li>GPS 네비게이션</li>
-  <li>미로 문제 풀기</li>
-</ul>
-
-<h3 id="dfs-순회">DFS 순회?</h3>
-
-<p>그래프에서의 형제는 트리와 조금 다른 형태로 이루어지게 되고, 이 형제들은 트리와 달리 반드시 같은 래벨은 아닙니다. 이러한 그래프 순회에서 가지를 따라가는 것이 순회의 가장 기본이 됩니다.</p>
-
-<p>핵심은 각 노드마다 있는 가지 중 <strong>방문하지 않은 곳을 방문하는</strong> 형식으로 이루어집니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="na">A</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">C</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">B</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">C</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">E</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">D</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">E</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">F</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">E</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">C</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">F</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">F</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">E</span><span class="dl">'</span> <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p>슬라이딩 애니메이션을 구현하며, 위와 같이 슬라이딩을 할 때 클릭이 되지 않도록 기능을 적용했습니다. 하지만 이는 모바일에서만 적용이 되었는데, 컴퓨터 브라우저에서는 아래와 같이 <code class="language-plaintext highlighter-rouge">mouseclick</code> 이벤트가 동작해, 다른 링크로 넘어가게 되는 문제가 발생했습니다.</p>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221010/graph.png" alt="" width="35%" height="" /> 
+  <img class="image" src="/image/221017/2.gif" alt="" width="75%" height="" /> 
 </figure>
 
-<h3 id="재귀형-dfs-순회">재귀형 DFS 순회</h3>
+<p>위 그림과 같이 클릭 이벤트를 처리해야하는 상황에서 슬라이딩 되는 요소에 <code class="language-plaintext highlighter-rouge">mouseclick</code> 이벤트와 <code class="language-plaintext highlighter-rouge">mouseup</code> 이벤트가 모두 적용될 시, <code class="language-plaintext highlighter-rouge">mouseclick</code> 이벤트가 실행되는 것이 문제점이었습니다. 원인은 <code class="language-plaintext highlighter-rouge">mouseclick</code>이 <code class="language-plaintext highlighter-rouge">**mousedown</code>, <code class="language-plaintext highlighter-rouge">mouseup</code>이 같은 요소에 대해 이루어질 시 나타나는 이벤트**이기 때문이었습니다.</p>
 
-<p>재귀 함수를 사용하는 방법으로 DFS를 구현하고, 이를 통해 그래프를 순환하게 됩니다. 그래프를 순환하는 함수는 아래 코드와 같습니다.</p>
+<p>이로 인해, <code class="language-plaintext highlighter-rouge">mouseclick</code> 이벤트 핸들러에 이러한 상황을 구분할 수 있는 구분점(여기서는 움직임의 유무)을 두는 것으로서 처리를 해줄 수 있었습니다. 현재 <code class="language-plaintext highlighter-rouge">mouseup</code> 이벤트가 실행되고 나면 애니메이션이 그 다음으로 실행되고, 이 애니메이션이 종료되는 것을 통해 움직임과 관련된 옵션이 끝났다는 것을 알려주도록 했습니다.</p>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">depthFirstRecursive</span><span class="p">(</span><span class="nx">vertex</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="c1">// 결과를 담을 배열</span>
-  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="c1">// 방문한 곳을 나타내는 객체</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">graph</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="c1">// 해당 함수가 사용되는 전체 그래프</span>
-  <span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">point</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">point</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="c1">// 값이 없을경우에 대한 예외 처리</span>
-    <span class="nx">visited</span><span class="p">[</span><span class="nx">point</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="c1">// dfs가 사용되었으므로 방문했음을 표기</span>
-    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">point</span><span class="p">);</span>
-    <span class="c1">// 결과에 해당 포인트에 대한 결과 입력</span>
-    <span class="nx">graph</span><span class="p">[</span><span class="nx">point</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">nextPoint</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// 해당 포인트와 연결된 다음 포인트에 대해서 처리</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">nextPoint</span><span class="p">])</span> <span class="nx">dfs</span><span class="p">(</span><span class="nx">nextPoint</span><span class="p">);</span>
-      <span class="c1">// 다음 포인트가 방문되지 않았을 경우, 해당 포인트를 방문하여 함수를 처리</span>
-    <span class="p">});</span>
-  <span class="p">};</span>
-  <span class="nx">dfs</span><span class="p">(</span><span class="nx">vertex</span><span class="p">);</span>
-	<span class="c1">// 시작 지점에서 처리 시작</span>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleAnimationEnd</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">moving</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">right</span><span class="dl">'</span><span class="p">)</span> <span class="nx">setMoving</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="c1">// 애니메이션이 종료되는 시점에 움직이는 작업이 끝나, 작업이 없다는 것을 설정해줍니다.</span>
 
-  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">depthFirstRecursive</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">));</span>
-<span class="c1">// [ 'A', 'B', 'D', 'E', 'C', 'F' ]</span>
+<span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">InnerWrapper</span>
+  <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">wrapperRef</span><span class="si">}</span>
+  <span class="err">...</span>
+  <span class="na">onAnimationEnd</span><span class="p">=</span><span class="si">{</span><span class="nx">handleAnimationEnd</span><span class="si">}</span>
+	<span class="c1">// 애니메이션이 끝나면 해당 함수가 실행되도록 합니다.</span>
+<span class="p">&gt;</span>
 </code></pre></div></div>
 
-<p>재귀형으로 그래프를 탐색하는 경우 크게 ‘방문관련 객체’, ‘결과 배열’, ‘각 포인트의 방문 여부에 따른 재귀 처리’의 세 가지 특징이 있습니다.</p>
+<p>그리고 클릭 이벤트 내에는, 움직이는 작업이 없는 경우에만 클릭 이벤트로 다른 작업을 할 수 있도록 설정했습니다.</p>
 
-<p>여기서는 A라는 포인트로 시작을 했으나, 이는 꼭 A에서만 진행할 필요가 없으며, 어떠한 포인트에서 돌든 결국 모든 포인트를 거쳤다는 사실이 중요합니다.</p>
-
-<h3 id="반복형-dfs-순회">반복형 DFS 순회</h3>
-
-<p><code class="language-plaintext highlighter-rouge">while</code>을 이용한 반복문 처리를 통해 DFS 순회를 하게 됩니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">depthFirstIterative</span><span class="p">(</span><span class="nx">vertex</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="c1">// 결과 배열</span>
-  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="c1">// 방문 확인 배열</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">graph</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="c1">// 현재 그래프</span>
-  <span class="kd">const</span> <span class="nx">stack</span> <span class="o">=</span> <span class="p">[</span><span class="nx">vertex</span><span class="p">];</span>
-  <span class="c1">// 처리해야할 stack 배열. 처음에는 설정된 값 하나만 들어옴</span>
-
-  <span class="kd">let</span> <span class="nx">curVertex</span><span class="p">;</span>
-  <span class="nx">visited</span><span class="p">[</span><span class="nx">vertex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="c1">// while문을 돌면서 현재의 위치를 나타내는 변수</span>
-  <span class="k">while</span> <span class="p">(</span><span class="nx">stack</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">curVertex</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-    <span class="c1">// DFS를 실행하기 위해, 뒤에 있는 값부터 처리하는 것이 중요!</span>
-    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">curVertex</span><span class="p">);</span>
-    <span class="c1">// 결과에 방문에 대한 결과값 처리</span>
-    <span class="nx">graph</span><span class="p">[</span><span class="nx">curVertex</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">nextVertex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// 현재 위치의 다음 위치들에 대해서 방문 여부 확인</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">visited</span><span class="p">[</span><span class="nx">nextVertex</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
-      <span class="c1">// 방문하지 않았을 시 stack에 추가</span>
-      <span class="nx">visited</span><span class="p">[</span><span class="nx">nextVertex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="c1">// 방문을 했으므로 true처리 =&gt; stack에 들어오는 것으로 실질적인 계산을 하기 때문에,</span>
-      <span class="c1">// stack에 넣기 바로 전에 처리를 해주어야 에러가 발생하지 않음</span>
-      <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nextVertex</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleClickItem</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">moving</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// 움직임이 남아있을 경우 다음 작업을 하지 않습니다.</span>
+  <span class="nx">navigate</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">pathName</span><span class="p">.</span><span class="nx">chatroomDetail</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span> <span class="na">state</span><span class="p">:</span> <span class="p">{</span> <span class="nx">chatRoomMemberId</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">};</span>
 </code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">mouseclick</code>과 <code class="language-plaintext highlighter-rouge">mouseup</code>을 함께 사용할 때에는 위와 같이 click만이 구분되어 실행될 수 있도록 하는 옵션을 주어, 처리를 해야 원하는 처리가 가능하다는 것을 알 수 있었습니다.</p>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221010/graph order.png" alt="" width="35%" height="" /> 
-</figure>
-
-<p>반복을 사용하는 경우 <code class="language-plaintext highlighter-rouge">while</code>문을 쓰게 됩니다. 그리고 ‘결과’, ‘방문’, ‘처리할 값들’을 나타내는 배열이나 객체가 필요합니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">while</code>을 돌면서 처리를 하게 되는데, 이 때 현재 위치에 대해서 필요한 처리(여기서는 결과 배열에 추가)를 하게 되며, 이후 다음 위치들에 대해서 방문 여부를 확인 후 stack에 넣어주는 방식으로 진행합니다.</p>
-
-<p>그래프의 형태가 같아도, 다른 결과가 나올 수 있게 되는데, 이는 배열에 주입된 순서에 따라 B와 C 중 어느 것이든 먼저 갈 수 있고, 이에 따라 깊이 우선의 순서가 바뀌기 때문입니다. 하지만, 모든 곳을 깊이 우선으로 탐색한다는 데에는 변함이 없습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[트리는 그래프의 일종으로, 그래프 자체는 한 노드에서 다른 노드로 갈 수 있는 경로가 트리에 비해 더 많아집니다. 여러 갈래로 연결된 그래프에서 최단 거리를 찾는 것과 같은 작업에서 ‘그래프 순회’의 방법을 사용하게 되며, 예시는 아래와 같습니다. 위키피디아의 링크 내 이동 시 최단 거리 찾기 페이스북의 친구 추천 시 최단 거리의 다른 친구 추천하기 기능 GPS 네비게이션 미로 문제 풀기 DFS 순회? 그래프에서의 형제는 트리와 조금 다른 형태로 이루어지게 되고, 이 형제들은 트리와 달리 반드시 같은 래벨은 아닙니다. 이러한 그래프 순회에서 가지를 따라가는 것이 순회의 가장 기본이 됩니다. 핵심은 각 노드마다 있는 가지 중 방문하지 않은 곳을 방문하는 형식으로 이루어집니다. { A: [ 'B', 'C' ], B: [ 'A', 'D' ], C: [ 'A', 'E' ], D: [ 'B', 'E', 'F' ], E: [ 'C', 'D', 'F' ], F: [ 'D', 'E' ] } 재귀형 DFS 순회 재귀 함수를 사용하는 방법으로 DFS를 구현하고, 이를 통해 그래프를 순환하게 됩니다. 그래프를 순환하는 함수는 아래 코드와 같습니다. depthFirstRecursive(vertex) { const result = []; // 결과를 담을 배열 const visited = {}; // 방문한 곳을 나타내는 객체 const { graph } = this; // 해당 함수가 사용되는 전체 그래프 const dfs = (point) =&gt; { if (!point) return null; // 값이 없을경우에 대한 예외 처리 visited[point] = true; // dfs가 사용되었으므로 방문했음을 표기 result.push(point); // 결과에 해당 포인트에 대한 결과 입력 graph[point].forEach((nextPoint) =&gt; { // 해당 포인트와 연결된 다음 포인트에 대해서 처리 if (!visited[nextPoint]) dfs(nextPoint); // 다음 포인트가 방문되지 않았을 경우, 해당 포인트를 방문하여 함수를 처리 }); }; dfs(vertex); // 시작 지점에서 처리 시작 return result; } console.log(g.depthFirstRecursive("A")); // [ 'A', 'B', 'D', 'E', 'C', 'F' ] 재귀형으로 그래프를 탐색하는 경우 크게 ‘방문관련 객체’, ‘결과 배열’, ‘각 포인트의 방문 여부에 따른 재귀 처리’의 세 가지 특징이 있습니다. 여기서는 A라는 포인트로 시작을 했으나, 이는 꼭 A에서만 진행할 필요가 없으며, 어떠한 포인트에서 돌든 결국 모든 포인트를 거쳤다는 사실이 중요합니다. 반복형 DFS 순회 while을 이용한 반복문 처리를 통해 DFS 순회를 하게 됩니다. depthFirstIterative(vertex) { const result = []; // 결과 배열 const visited = {}; // 방문 확인 배열 const { graph } = this; // 현재 그래프 const stack = [vertex]; // 처리해야할 stack 배열. 처음에는 설정된 값 하나만 들어옴 let curVertex; visited[vertex] = true; // while문을 돌면서 현재의 위치를 나타내는 변수 while (stack.length) { curVertex = stack.pop(); // DFS를 실행하기 위해, 뒤에 있는 값부터 처리하는 것이 중요! result.push(curVertex); // 결과에 방문에 대한 결과값 처리 graph[curVertex].forEach((nextVertex) =&gt; { // 현재 위치의 다음 위치들에 대해서 방문 여부 확인 if (visited[nextVertex]) return; // 방문하지 않았을 시 stack에 추가 visited[nextVertex] = true; // 방문을 했으므로 true처리 =&gt; stack에 들어오는 것으로 실질적인 계산을 하기 때문에, // stack에 넣기 바로 전에 처리를 해주어야 에러가 발생하지 않음 stack.push(nextVertex); }); } return result; } 반복을 사용하는 경우 while문을 쓰게 됩니다. 그리고 ‘결과’, ‘방문’, ‘처리할 값들’을 나타내는 배열이나 객체가 필요합니다. while을 돌면서 처리를 하게 되는데, 이 때 현재 위치에 대해서 필요한 처리(여기서는 결과 배열에 추가)를 하게 되며, 이후 다음 위치들에 대해서 방문 여부를 확인 후 stack에 넣어주는 방식으로 진행합니다. 그래프의 형태가 같아도, 다른 결과가 나올 수 있게 되는데, 이는 배열에 주입된 순서에 따라 B와 C 중 어느 것이든 먼저 갈 수 있고, 이에 따라 깊이 우선의 순서가 바뀌기 때문입니다. 하지만, 모든 곳을 깊이 우선으로 탐색한다는 데에는 변함이 없습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+  <img class="image" src="/image/221017/3.gif" alt="" width="75%" height="" /> 
+</figure>]]></content><author><name>JinJeon</name></author><category term="JAVASCRIPT" /><summary type="html"><![CDATA[슬라이딩 애니메이션을 구현하며, 위와 같이 슬라이딩을 할 때 클릭이 되지 않도록 기능을 적용했습니다. 하지만 이는 모바일에서만 적용이 되었는데, 컴퓨터 브라우저에서는 아래와 같이 mouseclick 이벤트가 동작해, 다른 링크로 넘어가게 되는 문제가 발생했습니다. 위 그림과 같이 클릭 이벤트를 처리해야하는 상황에서 슬라이딩 되는 요소에 mouseclick 이벤트와 mouseup 이벤트가 모두 적용될 시, mouseclick 이벤트가 실행되는 것이 문제점이었습니다. 원인은 mouseclick이 **mousedown, mouseup이 같은 요소에 대해 이루어질 시 나타나는 이벤트**이기 때문이었습니다. 이로 인해, mouseclick 이벤트 핸들러에 이러한 상황을 구분할 수 있는 구분점(여기서는 움직임의 유무)을 두는 것으로서 처리를 해줄 수 있었습니다. 현재 mouseup 이벤트가 실행되고 나면 애니메이션이 그 다음으로 실행되고, 이 애니메이션이 종료되는 것을 통해 움직임과 관련된 옵션이 끝났다는 것을 알려주도록 했습니다. const handleAnimationEnd = () =&gt; { if (moving === 'right') setMoving(null); }; // 애니메이션이 종료되는 시점에 움직이는 작업이 끝나, 작업이 없다는 것을 설정해줍니다. &lt;S.InnerWrapper ref={wrapperRef} ... onAnimationEnd={handleAnimationEnd} // 애니메이션이 끝나면 해당 함수가 실행되도록 합니다. &gt; 그리고 클릭 이벤트 내에는, 움직이는 작업이 없는 경우에만 클릭 이벤트로 다른 작업을 할 수 있도록 설정했습니다. const handleClickItem = () =&gt; { if (moving) return; // 움직임이 남아있을 경우 다음 작업을 하지 않습니다. navigate(`${pathName.chatroomDetail}/${id}`, { state: { chatRoomMemberId } }); }; mouseclick과 mouseup을 함께 사용할 때에는 위와 같이 click만이 구분되어 실행될 수 있도록 하는 옵션을 주어, 처리를 해야 원하는 처리가 가능하다는 것을 알 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
