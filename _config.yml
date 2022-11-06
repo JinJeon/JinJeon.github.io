@@ -98,7 +98,7 @@ defaults:
 
 # 7. Site settings
 encoding: utf-8 # Make sure the encoding is right
-lang: en-GB # Set the site language
+lang: en-US # Set the site language
 title: "JINJEONIMUM" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
 description: "" # Site description and default description, also used in jekyll-seo-tag
@@ -106,6 +106,7 @@ url: "https://JinJeon.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/daviddarnes/alembic"
 email: "nanyong01@gmail.com"
+google_site_verification: "7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs"
 # disqus: "alembic-1" # Blog post comments, uncomment the option and set the site ID from your Disqus account
 # date_format: "%-d %B %Y" # Blog post date formatting using placeholder formatting
 # google_analytics: ""
@@ -143,17 +144,15 @@ navigation_footer:
     url: https://jinjeon.github.io
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
-  Twitter: https://twitter.com/
-  LinkedIn: https://www.linkedin.com/in/
   GitHub: https://github.com/JinJeon
-  link:
-  RSS: /feed.xml
+  Nav: https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796
 
 sharing_links: # Appear at the bottom of single blog posts, add as desired. The value can be 'true' or the desired button colour
-  facebook: "#3B5998"
   Email: "#498f64"
-  Reddit: "#bd8444"
-  Pinterest: "#8a4b43"
+  Github: "#444545"
+  # facebook: "#3B5998"
+  # Reddit: "#bd8444"
+  # Pinterest: "#8a4b43"
 
 # Load custom fonts from fonts.google.com etc
 #

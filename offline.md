@@ -1,9 +1,9 @@
 ---
-title: Looks like you're offline
+title: LOOKS LIKE YOU'RE OFFLINE
 indexing: false
 sitemap: false
 ---
 
-It appears that you've lost your network connection and this document doesn't exist on your device.
+IT APPERS THAT YOU'VE LOST YOUR NETWORK CONNECTION!
 
-Try either returning to the previous page, using the navigation to find your way back, or restore your network connection.
+TRY EITHER RETURNING TO THER PREVIOUS PAGE OR RESTORE YOUR NETWORK CONNECTION!

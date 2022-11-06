@@ -373,7 +373,7 @@ select {
   border-radius: 0;
   -webkit-appearance: none;
   .icon {
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.25rem;
   }
 }
 
@@ -420,8 +420,8 @@ textarea,
 select {
   &:focus,
   &:hover:focus {
-    outline: solid 0.12rem $focusColour;
-    outline-offset: -0.12rem;
+    outline: solid 0.1rem $focusColour;
+    outline-offset: -0.1rem;
   }
 }
 
