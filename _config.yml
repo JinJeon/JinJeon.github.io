@@ -148,8 +148,9 @@ social_links: # Appears in sidebar. Set the urls then uncomment and comment out 
   Nav: https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796
 
 sharing_links: # Appear at the bottom of single blog posts, add as desired. The value can be 'true' or the desired button colour
-  Email: "#498f64"
-  Github: "#444545"
+  GITHUB: "#444545"
+  EMAIL: "#498f64"
+  RESUME: "#D8C455"
   # facebook: "#3B5998"
   # Reddit: "#bd8444"
   # Pinterest: "#8a4b43"
