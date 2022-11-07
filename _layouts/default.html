@@ -28,7 +28,10 @@
     {% endif %}
 
     <link rel="manifest" href="{{ "/manifest.json" | relative_url }}">
-    <meta name="theme-color" content="{{ site.manifest.theme_color | default: '#242e2b' }}"/>
+    <meta name="theme-color" content="{{ site.manifest.theme_color | default: '#74692E' }}"/>
+    <meta name="msapplication-navbutton-color" content="#74692E" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#74692E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     {% if site.css_inline == true %}
       {% include site-styles.html %}
