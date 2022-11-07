@@ -10,27 +10,27 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>textarea 줄바꿈 시 자동 스크롤 | JINJEONIMUM</title>
+<title>HTTP의 특징 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="textarea 줄바꿈 시 자동 스크롤" />
+<meta property="og:title" content="HTTP의 특징" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder=&quot;메시지를 입력하세요.&quot; /&gt;; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === &#39;insertLineBreak&#39;) return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type &#39;Enter&#39; key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // &#39;keyCode&#39; is deprecated but error occurs when just use &#39;key&#39; in korean if (key !== &#39;Enter&#39; || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + &#39;\n&#39;); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder=&#39;메시지를 입력하세요.&#39; /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다." />
-<meta property="og:description" content="textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder=&quot;메시지를 입력하세요.&quot; /&gt;; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === &#39;insertLineBreak&#39;) return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type &#39;Enter&#39; key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // &#39;keyCode&#39; is deprecated but error occurs when just use &#39;key&#39; in korean if (key !== &#39;Enter&#39; || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + &#39;\n&#39;); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder=&#39;메시지를 입력하세요.&#39; /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다." />
-<link rel="canonical" href="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" />
-<meta property="og:url" content="http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" />
+<meta name="description" content="HTTP? HTTP는 Hypertext Transfer Protocol의 약자로, 문서 간의 링크를 통해서 연결할 수 있는 프로토콜을 의미합니다. 현재 대부분의 것들(HTML, IMAGE, JSON, XML 등)을 HTTP 메시지에 담아서 전송하고 있습니다. 또한, 서버 간 데이터를 주고 받을 때도 HTTP를 사용합니다. HTTP는 버전이 여러번 향상되었는데, HTTP/1.1가 현재 가장 많이 사용하며 중요한 버전이고, 이후 나온 HTTP/2, HTTP/3은 성능 개선 위주로 나왔습니다. 기반 프로토콜로서, ‘HTTP/1.1, HTTP’에서는 TCP ‘HTTP/3’에서는 UDP를 주로 사용하고 있습니다. 앞서 말했듯, 현재 HTTP/1.1을 주로 사용하며, 2, 3도 점점 사용량이 증가하고 있습니다. 크롬 내에서 개발자 도구 → 네트워크 → 프로토콜을 보면 h2, h3 등이 적힌 것을 통해 어떤 프로토콜을 쓰는지 알 수 있습니다. HTTP의 특징 클라이언트 - 서버 구조 무상태 프로토콜, 비연결성 HTTP 메시지로 작동 단순하며 확장 가능 클라이언트 - 서버 구조 클라이언트가 서버에게 요청을 보내고 기다리고, 이후 서버가 요청을 받고 응답을 보냅니다. 클라이언트와 서버의 개념이 분리되어 있습니다. 이로 인해, ‘비즈니스 로직, 데이터’는 서버에 넣어두고 클라이언트는 UI와 사용성에 집중했습니다. 덕분에 클라이언트, 서버가 독립적으로 성장할 수 있었습니다. Request, Response 구조로 이루어집니다. 무상태 프로토콜(stateless) Stateful 예를 들어, 물건을 구매해야하는 상황에서 구매자의 원하는 각각의 옵션을 계속 갖고 있는 것은 ‘상태를 보존하는 것’입니다. 이 상황에서 점원이 바뀌는 경우, 상태를 갖고 있다가 없어지기 때문에 상태 중 일부만 넘겨주는 것에 대해 처리를 할 수가 없습니다. Stateless 서버가 클라이언트의 상태를 보존하지 않습니다. 위 예시와 같이, 물건을 구매하는 경우, 상태를 갖고 있는 것이 아니라 모든 상태 값들을 처음부터 다시 구매자가 넘기기 때문에 중간에 점원이 바뀌어도 문제없이 처리할 수 있습니다. 이러한 형식은 갑작스러운 클라이언트 요청의 증가가 있어도 서버를 대거 투입하는 것을 통해 문제를 해결할 수 있습니다. 하지만, stateless도 한계점이 존재합니다. 단순 소개 화면의 경우 stateless로 하나, 로그인한 사용자의 경우 브라우저 쿠키 ∙ 서버 세션으로 상태를 유지하게 되며 이로 인해 서버에 로그인 상태를 저장해야 합니다. 또한, 데이터의 양이 stateful보다 늘어나게 됩니다. 비연결성(connectionless) 클라이언트 - 서버의 연결을 만든 뒤에 다른 클라이언트와 서버가 연결이 되는 경우, 이전의 연결을 끊지 않게 되면 서버의 자원을 계속 낭비하게 됩니다. 이를 해결하기 위해 서버에서 정보를 전달한 뒤에는 바로 연결을 끊습니다. 비연결성에 따른 특징 일반적으로 초 단위 이하의 빠른 속도로 전송 실제로 수천명이 서비스를 사용해도 동시처리를 하는 개수는 수십개 이하 서버 자원을 효율적으로 관리할 수 있음 한계점 새로운 TCP/IP 연결이 필요해, handshake 시간이 추가 웹 브라우저로 요청을 하는 경우 HTML, CSS, JS와 같은 많은 자원을 받아야해서 계속 많은 양의 자료가 다시 넘어옴 해결법 문제 해결을 위한 HTTP 지속 연결 사용 → 연결을 일정 시간 유지, 필요 데이터들을 다 받은 다음에 종료하도록 설정 HTTP3 에서는 UDP 프로토콜을 사용해 연결 시간 자체 감소 이를 위해 최대한 stateless하게 설계를 하는 것이 중요합니다." />
+<meta property="og:description" content="HTTP? HTTP는 Hypertext Transfer Protocol의 약자로, 문서 간의 링크를 통해서 연결할 수 있는 프로토콜을 의미합니다. 현재 대부분의 것들(HTML, IMAGE, JSON, XML 등)을 HTTP 메시지에 담아서 전송하고 있습니다. 또한, 서버 간 데이터를 주고 받을 때도 HTTP를 사용합니다. HTTP는 버전이 여러번 향상되었는데, HTTP/1.1가 현재 가장 많이 사용하며 중요한 버전이고, 이후 나온 HTTP/2, HTTP/3은 성능 개선 위주로 나왔습니다. 기반 프로토콜로서, ‘HTTP/1.1, HTTP’에서는 TCP ‘HTTP/3’에서는 UDP를 주로 사용하고 있습니다. 앞서 말했듯, 현재 HTTP/1.1을 주로 사용하며, 2, 3도 점점 사용량이 증가하고 있습니다. 크롬 내에서 개발자 도구 → 네트워크 → 프로토콜을 보면 h2, h3 등이 적힌 것을 통해 어떤 프로토콜을 쓰는지 알 수 있습니다. HTTP의 특징 클라이언트 - 서버 구조 무상태 프로토콜, 비연결성 HTTP 메시지로 작동 단순하며 확장 가능 클라이언트 - 서버 구조 클라이언트가 서버에게 요청을 보내고 기다리고, 이후 서버가 요청을 받고 응답을 보냅니다. 클라이언트와 서버의 개념이 분리되어 있습니다. 이로 인해, ‘비즈니스 로직, 데이터’는 서버에 넣어두고 클라이언트는 UI와 사용성에 집중했습니다. 덕분에 클라이언트, 서버가 독립적으로 성장할 수 있었습니다. Request, Response 구조로 이루어집니다. 무상태 프로토콜(stateless) Stateful 예를 들어, 물건을 구매해야하는 상황에서 구매자의 원하는 각각의 옵션을 계속 갖고 있는 것은 ‘상태를 보존하는 것’입니다. 이 상황에서 점원이 바뀌는 경우, 상태를 갖고 있다가 없어지기 때문에 상태 중 일부만 넘겨주는 것에 대해 처리를 할 수가 없습니다. Stateless 서버가 클라이언트의 상태를 보존하지 않습니다. 위 예시와 같이, 물건을 구매하는 경우, 상태를 갖고 있는 것이 아니라 모든 상태 값들을 처음부터 다시 구매자가 넘기기 때문에 중간에 점원이 바뀌어도 문제없이 처리할 수 있습니다. 이러한 형식은 갑작스러운 클라이언트 요청의 증가가 있어도 서버를 대거 투입하는 것을 통해 문제를 해결할 수 있습니다. 하지만, stateless도 한계점이 존재합니다. 단순 소개 화면의 경우 stateless로 하나, 로그인한 사용자의 경우 브라우저 쿠키 ∙ 서버 세션으로 상태를 유지하게 되며 이로 인해 서버에 로그인 상태를 저장해야 합니다. 또한, 데이터의 양이 stateful보다 늘어나게 됩니다. 비연결성(connectionless) 클라이언트 - 서버의 연결을 만든 뒤에 다른 클라이언트와 서버가 연결이 되는 경우, 이전의 연결을 끊지 않게 되면 서버의 자원을 계속 낭비하게 됩니다. 이를 해결하기 위해 서버에서 정보를 전달한 뒤에는 바로 연결을 끊습니다. 비연결성에 따른 특징 일반적으로 초 단위 이하의 빠른 속도로 전송 실제로 수천명이 서비스를 사용해도 동시처리를 하는 개수는 수십개 이하 서버 자원을 효율적으로 관리할 수 있음 한계점 새로운 TCP/IP 연결이 필요해, handshake 시간이 추가 웹 브라우저로 요청을 하는 경우 HTML, CSS, JS와 같은 많은 자원을 받아야해서 계속 많은 양의 자료가 다시 넘어옴 해결법 문제 해결을 위한 HTTP 지속 연결 사용 → 연결을 일정 시간 유지, 필요 데이터들을 다 받은 다음에 종료하도록 설정 HTTP3 에서는 UDP 프로토콜을 사용해 연결 시간 자체 감소 이를 위해 최대한 stateless하게 설계를 하는 것이 중요합니다." />
+<link rel="canonical" href="http://localhost:4000/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/" />
+<meta property="og:url" content="http://localhost:4000/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-10-26T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="textarea 줄바꿈 시 자동 스크롤" />
+<meta property="twitter:title" content="HTTP의 특징" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"textarea 줄바꿈 시 자동 스크롤","dateModified":"2022-10-26T00:00:00+09:00","datePublished":"2022-10-26T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder=&quot;메시지를 입력하세요.&quot; /&gt;; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === &#39;insertLineBreak&#39;) return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type &#39;Enter&#39; key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // &#39;keyCode&#39; is deprecated but error occurs when just use &#39;key&#39; in korean if (key !== &#39;Enter&#39; || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + &#39;\\n&#39;); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder=&#39;메시지를 입력하세요.&#39; /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.","url":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"HTTP의 특징","dateModified":"2022-10-26T00:00:00+09:00","datePublished":"2022-10-26T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"HTTP? HTTP는 Hypertext Transfer Protocol의 약자로, 문서 간의 링크를 통해서 연결할 수 있는 프로토콜을 의미합니다. 현재 대부분의 것들(HTML, IMAGE, JSON, XML 등)을 HTTP 메시지에 담아서 전송하고 있습니다. 또한, 서버 간 데이터를 주고 받을 때도 HTTP를 사용합니다. HTTP는 버전이 여러번 향상되었는데, HTTP/1.1가 현재 가장 많이 사용하며 중요한 버전이고, 이후 나온 HTTP/2, HTTP/3은 성능 개선 위주로 나왔습니다. 기반 프로토콜로서, ‘HTTP/1.1, HTTP’에서는 TCP ‘HTTP/3’에서는 UDP를 주로 사용하고 있습니다. 앞서 말했듯, 현재 HTTP/1.1을 주로 사용하며, 2, 3도 점점 사용량이 증가하고 있습니다. 크롬 내에서 개발자 도구 → 네트워크 → 프로토콜을 보면 h2, h3 등이 적힌 것을 통해 어떤 프로토콜을 쓰는지 알 수 있습니다. HTTP의 특징 클라이언트 - 서버 구조 무상태 프로토콜, 비연결성 HTTP 메시지로 작동 단순하며 확장 가능 클라이언트 - 서버 구조 클라이언트가 서버에게 요청을 보내고 기다리고, 이후 서버가 요청을 받고 응답을 보냅니다. 클라이언트와 서버의 개념이 분리되어 있습니다. 이로 인해, ‘비즈니스 로직, 데이터’는 서버에 넣어두고 클라이언트는 UI와 사용성에 집중했습니다. 덕분에 클라이언트, 서버가 독립적으로 성장할 수 있었습니다. Request, Response 구조로 이루어집니다. 무상태 프로토콜(stateless) Stateful 예를 들어, 물건을 구매해야하는 상황에서 구매자의 원하는 각각의 옵션을 계속 갖고 있는 것은 ‘상태를 보존하는 것’입니다. 이 상황에서 점원이 바뀌는 경우, 상태를 갖고 있다가 없어지기 때문에 상태 중 일부만 넘겨주는 것에 대해 처리를 할 수가 없습니다. Stateless 서버가 클라이언트의 상태를 보존하지 않습니다. 위 예시와 같이, 물건을 구매하는 경우, 상태를 갖고 있는 것이 아니라 모든 상태 값들을 처음부터 다시 구매자가 넘기기 때문에 중간에 점원이 바뀌어도 문제없이 처리할 수 있습니다. 이러한 형식은 갑작스러운 클라이언트 요청의 증가가 있어도 서버를 대거 투입하는 것을 통해 문제를 해결할 수 있습니다. 하지만, stateless도 한계점이 존재합니다. 단순 소개 화면의 경우 stateless로 하나, 로그인한 사용자의 경우 브라우저 쿠키 ∙ 서버 세션으로 상태를 유지하게 되며 이로 인해 서버에 로그인 상태를 저장해야 합니다. 또한, 데이터의 양이 stateful보다 늘어나게 됩니다. 비연결성(connectionless) 클라이언트 - 서버의 연결을 만든 뒤에 다른 클라이언트와 서버가 연결이 되는 경우, 이전의 연결을 끊지 않게 되면 서버의 자원을 계속 낭비하게 됩니다. 이를 해결하기 위해 서버에서 정보를 전달한 뒤에는 바로 연결을 끊습니다. 비연결성에 따른 특징 일반적으로 초 단위 이하의 빠른 속도로 전송 실제로 수천명이 서비스를 사용해도 동시처리를 하는 개수는 수십개 이하 서버 자원을 효율적으로 관리할 수 있음 한계점 새로운 TCP/IP 연결이 필요해, handshake 시간이 추가 웹 브라우저로 요청을 하는 경우 HTML, CSS, JS와 같은 많은 자원을 받아야해서 계속 많은 양의 자료가 다시 넘어옴 해결법 문제 해결을 위한 HTTP 지속 연결 사용 → 연결을 일정 시간 유지, 필요 데이터들을 다 받은 다음에 종료하도록 설정 HTTP3 에서는 UDP 프로토콜을 사용해 연결 시간 자체 감소 이를 위해 최대한 stateless하게 설계를 하는 것이 중요합니다.","url":"http://localhost:4000/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -101,7 +101,7 @@
 
   </head>
 
-  <body class="layout-post  textarea-줄바꿈-시-자동-스크롤">
+  <body class="layout-post  http의-특징">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -214,7 +214,7 @@
 
   <div class="feature" style="background-image: url()">
     <div class="container  typeset">
-      <p>React에서 textarea 줄바꿈 시 자동 스크롤이 되도록 만들기</p>
+      <p>HTTP의 특징 및 그와 관련된 문제, 해결</p>
 
     </div>
   </div>
@@ -225,140 +225,110 @@
 <main class="main container">
   <article class="article article--post content typeset">
     <div class="article--title">
-      <h1>textarea 줄바꿈 시 자동 스크롤</h1>
+      <h1>HTTP의 특징</h1>
       
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
+      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
     
   &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
 </small>
 
     </div>
 
-    <h2 id="textarea-태그-내-줄바꿈-시-문제점">textarea 태그 내 줄바꿈 시 문제점</h2>
+    <h2 id="http">HTTP?</h2>
 
-<p><code class="language-plaintext highlighter-rouge">textarea</code> 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 <code class="language-plaintext highlighter-rouge">input</code> 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. <code class="language-plaintext highlighter-rouge">input</code> 태그는 한 줄로만 이어져 줄바꿈이 없었지만, <code class="language-plaintext highlighter-rouge">textarea</code>는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다.</p>
+<p>HTTP는 Hypertext Transfer Protocol의 약자로, 문서 간의 링크를 통해서 연결할 수 있는 프로토콜을 의미합니다. 현재 대부분의 것들(HTML, IMAGE, JSON, XML 등)을 HTTP 메시지에 담아서 전송하고 있습니다. 또한, 서버 간 데이터를 주고 받을 때도 HTTP를 사용합니다.</p>
 
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221026/1.png" alt="" width="75%" height="" /> 
-</figure>
+<p>HTTP는 버전이 여러번 향상되었는데, <strong>HTTP/1.1</strong>가 현재 가장 많이 사용하며 중요한 버전이고, 이후 나온 HTTP/2, HTTP/3은 성능 개선 위주로 나왔습니다.</p>
 
-<p>이러한 문제를 해결하기 위한 방법으로 처음에는 <code class="language-plaintext highlighter-rouge">line-height</code>를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다.</p>
-
-<h2 id="스크롤을-최하단으로-내리기">스크롤을 최하단으로 내리기</h2>
-
-<p>이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다.</p>
-
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">textareaRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-<span class="c1">// textarea 태그를 받아오기 위한 ref</span>
-
-<span class="kd">const</span> <span class="nx">handleScrollTextarea</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// scroll이 발생하는 상황 시</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">;</span>
-  <span class="c1">// 스크롤의 위치를 textarea의 최하단으로 옮김</span>
-<span class="p">};</span>
-
-<span class="p">&lt;</span><span class="nc">S</span><span class="p">.</span><span class="nc">ChatTextarea</span>
-  <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">textareaRef</span><span class="si">}</span>
-  <span class="na">onScroll</span><span class="p">=</span><span class="si">{</span><span class="nx">handleScrollTextarea</span><span class="si">}</span>
-  <span class="c1">// 스크롤 발생 시 함수 적용</span>
-  <span class="na">placeholder</span><span class="p">=</span><span class="s">"메시지를 입력하세요."</span>
-<span class="p">/&gt;;</span>
-</code></pre></div></div>
-
-<p>하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다.</p>
+<p>기반 프로토콜로서, ‘HTTP/1.1, HTTP’에서는 TCP ‘HTTP/3’에서는 UDP를 주로 사용하고 있습니다. 앞서 말했듯, 현재 HTTP/1.1을 주로 사용하며, 2, 3도 점점 사용량이 증가하고 있습니다. 크롬 내에서 개발자 도구 → 네트워크 → 프로토콜을 보면 h2, h3 등이 적힌 것을 통해 어떤 프로토콜을 쓰는지 알 수 있습니다.</p>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221026/2.gif" alt="" width="75%" height="" /> 
+  <img class="image" src="/image/221026/9.png" alt="" width="100%" height="" /> 
 </figure>
 
-<h2 id="특정-상황에서만-스크롤을-강제로-내리기">특정 상황에서만 스크롤을 강제로 내리기</h2>
+<h3 id="http의-특징">HTTP의 특징</h3>
 
-<p>위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다.</p>
+<ul>
+  <li>클라이언트 - 서버 구조</li>
+  <li>무상태 프로토콜, 비연결성</li>
+  <li>HTTP 메시지로 작동</li>
+  <li>단순하며 확장 가능</li>
+</ul>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">textareaRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">scrollWithTypingRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="c1">// 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref</span>
-<span class="kd">const</span> <span class="nx">typingTimeoutRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">NodeJS</span><span class="p">.</span><span class="nx">Timeout</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="c1">// 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref</span>
+<hr />
 
-<span class="cm">/** handler for type key */</span>
-<span class="kd">const</span> <span class="nx">handleChangeChatValue</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">ChangeEvent</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">inputType</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span> <span class="k">as</span> <span class="kr">any</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">inputType</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">insertLineBreak</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="nx">setChatValue</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<h2 id="클라이언트---서버-구조">클라이언트 - 서버 구조</h2>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">typingTimeoutRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">typingTimeoutRef</span><span class="p">.</span><span class="nx">current</span><span class="p">);</span>
-  <span class="c1">// 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce)</span>
-  <span class="nx">scrollWithTypingRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="c1">// 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정</span>
-  <span class="nx">typingTimeoutRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">scrollWithTypingRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="kc">false</span><span class="p">),</span> <span class="mi">500</span><span class="p">);</span>
-  <span class="c1">// 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정</span>
-<span class="p">};</span>
+<ul>
+  <li>클라이언트가 서버에게 요청을 보내고 기다리고, 이후 서버가 요청을 받고 응답을 보냅니다.</li>
+  <li>클라이언트와 서버의 개념이 분리되어 있습니다. 이로 인해, ‘비즈니스 로직, 데이터’는 서버에 넣어두고 클라이언트는 UI와 사용성에 집중했습니다. 덕분에 클라이언트, 서버가 독립적으로 성장할 수 있었습니다.</li>
+  <li>Request, Response 구조로 이루어집니다.</li>
+</ul>
 
-<span class="cm">/** handler for type 'Enter' key */</span>
-<span class="kd">const</span> <span class="nx">handleKeyDownChat</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">KeyboardEvent</span><span class="o">&lt;</span><span class="nx">HTMLTextAreaElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">shiftKey</span><span class="p">,</span> <span class="nx">keyCode</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
-  <span class="c1">// 'keyCode' is deprecated but error occurs when just use 'key' in korean</span>
+<hr />
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">Enter</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">keyCode</span> <span class="o">!==</span> <span class="mi">13</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shiftKey</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">sendCurChat</span><span class="p">();</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">scrollWithTypingRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="c1">// Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정</span>
-    <span class="nx">setChatValue</span><span class="p">(</span><span class="nx">chatValue</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
-    <span class="c1">// 줄바꿈 추가를 통해 스크롤을 발생시킴</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+<h2 id="무상태-프로토콜stateless">무상태 프로토콜(stateless)</h2>
 
-<span class="cm">/** handler for auto scroll during typing */</span>
-<span class="kd">const</span> <span class="nx">handleScrollTextarea</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">||</span> <span class="o">!</span><span class="nx">scrollWithTypingRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">textareaRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">;</span>
-  <span class="nx">scrollWithTypingRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="c1">// 스크롤이 발생했으므로, 다시 false로 설정</span>
-<span class="p">};</span>
+<h3 id="stateful">Stateful</h3>
 
-<span class="k">return</span> <span class="p">(</span>
-  <span class="p">...</span>
-  <span class="o">&lt;</span><span class="nx">S</span><span class="p">.</span><span class="nx">ChatTextarea</span>
-    <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">textareaRef</span><span class="p">}</span>
-    <span class="nx">rows</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
-    <span class="nx">spellCheck</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
-    <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">chatValue</span><span class="p">}</span>
-    <span class="nx">onKeyDown</span><span class="o">=</span><span class="p">{</span><span class="nx">handleKeyDownChat</span><span class="p">}</span>
-    <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">handleChangeChatValue</span><span class="p">}</span>
-    <span class="nx">onScroll</span><span class="o">=</span><span class="p">{</span><span class="nx">handleScrollTextarea</span><span class="p">}</span>
-    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">메시지를 입력하세요.</span><span class="dl">'</span>
-  <span class="o">/&gt;</span>
-  <span class="p">...</span>
-<span class="p">)</span>
-</code></pre></div></div>
-
-<p>위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다.</p>
-
-<ol>
-  <li>‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생</li>
-  <li>줄바꿈 이전에 실행된 입력으로 인해 <code class="language-plaintext highlighter-rouge">scrollWithTypingRef.current = true;</code> 설정</li>
-  <li><code class="language-plaintext highlighter-rouge">onScroll</code>에서 <code class="language-plaintext highlighter-rouge">scrollWithTypingRef.current = true;</code>여부 확인</li>
-  <li><code class="language-plaintext highlighter-rouge">true</code>일 시 자동 스크롤 발생</li>
-  <li><code class="language-plaintext highlighter-rouge">scrollWithTypingRef.current = false;</code>로 설정</li>
-</ol>
-
-<h2 id="결과">결과</h2>
-
-<p>위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.</p>
+<p>예를 들어, 물건을 구매해야하는 상황에서 구매자의 원하는 각각의 옵션을 계속 갖고 있는 것은 ‘상태를 보존하는 것’입니다. 이 상황에서 점원이 바뀌는 경우, 상태를 갖고 있다가 없어지기 때문에 상태 중 일부만 넘겨주는 것에 대해 처리를 할 수가 없습니다.</p>
 
 <figure class="figure  figure--center">
-  <img class="image" src="/image/221026/3.gif" alt="" width="75%" height="" /> 
+  <img class="image" src="/image/221026/10.png" alt="" width="100%" height="" /> 
 </figure>
 
+<h3 id="stateless">Stateless</h3>
+
+<p>서버가 클라이언트의 상태를 보존하지 않습니다. 위 예시와 같이, 물건을 구매하는 경우, 상태를 갖고 있는 것이 아니라 모든 상태 값들을 처음부터 다시 구매자가 넘기기 때문에 중간에 점원이 바뀌어도 문제없이 처리할 수 있습니다. 이러한 형식은 갑작스러운 클라이언트 요청의 증가가 있어도 서버를 대거 투입하는 것을 통해 문제를 해결할 수 있습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221026/11.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>하지만, stateless도 <strong>한계점</strong>이 존재합니다. 단순 소개 화면의 경우 stateless로 하나, 로그인한 사용자의 경우 브라우저 쿠키 ∙ 서버 세션으로 상태를 유지하게 되며 이로 인해 <strong>서버에 로그인 상태를 저장</strong>해야 합니다. 또한, <strong>데이터의 양</strong>이 stateful보다 늘어나게 됩니다.</p>
+
+<hr />
+
+<h2 id="비연결성connectionless">비연결성(connectionless)</h2>
+
+<p>클라이언트 - 서버의 연결을 만든 뒤에 다른 클라이언트와 서버가 연결이 되는 경우, 이전의 연결을 끊지 않게 되면 <strong>서버의 자원을 계속 낭비</strong>하게 됩니다. 이를 해결하기 위해 서버에서 정보를 전달한 뒤에는 바로 연결을 끊습니다.</p>
+
+<h3 id="비연결성에-따른-특징">비연결성에 따른 특징</h3>
+
+<ul>
+  <li>일반적으로 초 단위 이하의 빠른 속도로 전송</li>
+  <li>실제로 수천명이 서비스를 사용해도 동시처리를 하는 개수는 수십개 이하</li>
+  <li>서버 자원을 효율적으로 관리할 수 있음</li>
+</ul>
+
+<h3 id="한계점">한계점</h3>
+
+<ul>
+  <li>새로운 TCP/IP 연결이 필요해, handshake 시간이 추가</li>
+  <li>웹 브라우저로 요청을 하는 경우 HTML, CSS, JS와 같은 많은 자원을 받아야해서 계속 많은 양의 자료가 다시 넘어옴</li>
+</ul>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221026/12.png" alt="" width="100%" height="" /> 
+</figure>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221026/13.png" alt="" width="100%" height="" /> 
+</figure>
+
+<h3 id="해결법">해결법</h3>
+
+<ul>
+  <li>문제 해결을 위한 <strong>HTTP 지속 연결</strong> 사용 → 연결을 일정 시간 유지, 필요 데이터들을 다 받은 다음에 종료하도록 설정</li>
+  <li>HTTP3 에서는 UDP 프로토콜을 사용해 연결 시간 자체 감소</li>
+</ul>
+
+<p>이를 위해 <strong>최대한 stateless하게 설계</strong>를 하는 것이 중요합니다.</p>
  <!-- prettier-ignore -->
 <div class="share">
   
@@ -385,7 +355,7 @@
       
 
       <a class="button" href="
-      <!---->mailto:nanyong01@gmail.com?subject=textarea 줄바꿈 시 자동 스크롤&body=CHECK OUT THIS : http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+      <!---->mailto:nanyong01@gmail.com?subject=HTTP의 특징&body=CHECK OUT THIS : http://localhost:4000/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
 </a>
 
     
@@ -408,6 +378,27 @@
     <li class="item  item--post">
       <article class="article  article--post  typeset">
 
+        <h4><a href="/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/">textarea 줄바꿈 시 자동 스크롤</a></h4>
+        
+
+<small class="small  post-meta">
+  
+  
+    
+      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
+    
+  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
+</small>
+
+        <p>React에서 textarea 줄바꿈 시 자동 스크롤이 되도록 만들기</p>
+
+      </article>
+    </li>
+  
+    
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
         <h4><a href="/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/">textarea 높이 조절하기</a></h4>
         
 
@@ -421,27 +412,6 @@
 </small>
 
         <p>React에서 textarea 높이 조절하기</p>
-
-      </article>
-    </li>
-  
-    
-    <li class="item  item--post">
-      <article class="article  article--post  typeset">
-
-        <h4><a href="/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/">HTTP의 특징</a></h4>
-        
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-        <p>HTTP의 특징 및 그와 관련된 문제, 해결</p>
 
       </article>
     </li>
