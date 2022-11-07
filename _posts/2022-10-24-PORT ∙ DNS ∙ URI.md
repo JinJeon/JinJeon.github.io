@@ -7,6 +7,8 @@ feature_text: |
   HTTP의 기본적인 PORT ∙ DNS ∙ URI 알아보기
 ---
 
+> 해당 내용은 [모든 개발자를 위한 HTTP 웹 기본 지식](https://www.inflearn.com/course/http-웹-네트워크/dashboard) 강의를 수강하여 작성했습니다.
+
 ## PORT
 
 PORT란 IP 내 프로세스 구분을 위해 사용하는 번호입니다. 보통 한 번에 둘 이상의 애플리케이션을 연결해야하는 상황에서 사용합니다.  
