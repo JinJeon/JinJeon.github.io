@@ -30,7 +30,7 @@
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"image":"http://localhost:4000/assets/default-social-image.png","headline":"textarea 줄바꿈 시 자동 스크롤","dateModified":"2022-10-26T00:00:00+09:00","description":"textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder=&quot;메시지를 입력하세요.&quot; /&gt;; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === &#39;insertLineBreak&#39;) return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type &#39;Enter&#39; key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // &#39;keyCode&#39; is deprecated but error occurs when just use &#39;key&#39; in korean if (key !== &#39;Enter&#39; || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + &#39;\\n&#39;); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder=&#39;메시지를 입력하세요.&#39; /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.","datePublished":"2022-10-26T00:00:00+09:00","url":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"textarea 줄바꿈 시 자동 스크롤","dateModified":"2022-10-26T00:00:00+09:00","datePublished":"2022-10-26T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"textarea 태그 내 줄바꿈 시 문제점 textarea 태그를 적용하면서, 줄바꿈이 발생하는 경우 기존에 input 태그를 쓸 때에는 겪지 못했던 문제가 있었습니다. input 태그는 한 줄로만 이어져 줄바꿈이 없었지만, textarea는 줄바꿈을 할 때 아래 사진과 같이 아래로 뻗쳐지는 글자(’j’, ‘g’)가 아래로 튀어나와 다음 영역을 간섭했습니다. 이는 스크롤이 최하단까지 내려가지 않는 것에서 문제가 비롯되었습니다. 이러한 문제를 해결하기 위한 방법으로 처음에는 line-height를 적용해봤으나, 이 방법을 적용해도 위와 같은 상황이 바뀌지는 않았습니다. 스크롤을 최하단으로 내리기 이를 해결하기 위해서 ‘글자가 하단으로 내려가는 상황’을 가려낼 필요가 있었습니다. 현재 적용된 textarea에서는 ‘Shift + Enter를 누를 때’, ‘글자가 일정 너비를 넘어갈 때’ 총 두 가지 경우에서 줄 바꿈이 발생했습니다. 그리고 이 줄 바꿈이 발생할 시, 스크롤이 자동적으로 내려가게 되었습니다. 그래서 스크롤을 강제적으로 최하단까지 내리면 간섭이 사라지게 되므로, 줄바꿈 상황 시 스크롤을 내리는 기능을 우선 만들어주었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); // textarea 태그를 받아오기 위한 ref const handleScrollTextarea = () =&gt; { // scroll이 발생하는 상황 시 if (!textareaRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; // 스크롤의 위치를 textarea의 최하단으로 옮김 }; &lt;S.ChatTextarea ref={textareaRef} onScroll={handleScrollTextarea} // 스크롤 발생 시 함수 적용 placeholder=&quot;메시지를 입력하세요.&quot; /&gt;; 하지만, 이렇게 진행할 경우, 한 가지 문제가 발생하게 되는데, 스크롤 하는 상황에서 강제로 높이 지정을 하다보니 작성할 채팅을 스크롤로 올려보고 싶을 때 이 상황이 불가능했습니다. 특정 상황에서만 스크롤을 강제로 내리기 위 문제를 해결하기 위해서, 스크롤을 강제로 내리는 상황을 지정해주어야 했습니다. 스크롤이 강제로 내려가야되는 상황은 ‘타이핑을 통해 줄이 바뀔 때’와 ‘Enter + Shift 키를 누를 때’ 뿐이므로, 이 두 상황이 발생한 뒤에는 다시 스크롤이 가능하도록 지정해주면 되었습니다. const textareaRef = useRef&lt;HTMLTextAreaElement&gt;(null); const scrollWithTypingRef = useRef(false); // 스크롤이 타이핑으로 인해 발생할 시 true가 될 ref const typingTimeoutRef = useRef&lt;NodeJS.Timeout&gt;(); // 타이핑이 연속으로 발생할 시, 이전 set timeout을 삭제하기 위한 ref /** handler for type key */ const handleChangeChatValue = (event: ChangeEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { inputType } = event.nativeEvent as any; if (inputType === &#39;insertLineBreak&#39;) return; setChatValue(event.target.value); if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current); // 타이핑이 연속적으로 발생할 경우, 이전 set timeout을 제거 (Debounce) scrollWithTypingRef.current = true; // 타이핑으로 스크롤이 발생할 수 있으므로 true로 설정 typingTimeoutRef.current = setTimeout(() =&gt; (scrollWithTypingRef.current = false), 500); // 0.5초 내에 타이핑이 다시 발생하지 않을 경우, 타이핑으로 스크롤이 발생하지 않을 것이므로 false로 설정 }; /** handler for type &#39;Enter&#39; key */ const handleKeyDownChat = (event: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; { const { key, shiftKey, keyCode } = event; // &#39;keyCode&#39; is deprecated but error occurs when just use &#39;key&#39; in korean if (key !== &#39;Enter&#39; || keyCode !== 13) return; if (!shiftKey) { sendCurChat(); } else { scrollWithTypingRef.current = true; // Enter + Shift 키가 적용된 상황에서 스크롤이 발생할 것이므로 true로 미리 설정 setChatValue(chatValue + &#39;\\n&#39;); // 줄바꿈 추가를 통해 스크롤을 발생시킴 } }; /** handler for auto scroll during typing */ const handleScrollTextarea = () =&gt; { if (!textareaRef.current || !scrollWithTypingRef.current) return; textareaRef.current.scrollTop = textareaRef.current.scrollHeight; scrollWithTypingRef.current = false; // 스크롤이 발생했으므로, 다시 false로 설정 }; return ( ... &lt;S.ChatTextarea ref={textareaRef} rows={1} spellCheck={false} value={chatValue} onKeyDown={handleKeyDownChat} onChange={handleChangeChatValue} onScroll={handleScrollTextarea} placeholder=&#39;메시지를 입력하세요.&#39; /&gt; ... ) 위 코드로 인해 자동 스크롤이 발생하는 순서는 아래와 같습니다. ‘Enter + Shift’ 또는 타이핑으로 인해 줄바꿈이 발생 줄바꿈 이전에 실행된 입력으로 인해 scrollWithTypingRef.current = true; 설정 onScroll에서 scrollWithTypingRef.current = true;여부 확인 true일 시 자동 스크롤 발생 scrollWithTypingRef.current = false;로 설정 결과 위 설정들을 통해서 스크롤을 발생시킬 수 있었고, 아래 그림과 같이 줄바꿈이 발생할 때 자동 스크롤로 채팅을 간섭없이 보여줄 수 있었습니다.","url":"http://localhost:4000/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -408,6 +408,48 @@
     <li class="item  item--post">
       <article class="article  article--post  typeset">
 
+        <h4><a href="/algorithm/2022/11/08/16918/">백준 16918번</a></h4>
+        
+
+<small class="small  post-meta">
+  
+  
+    
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
+    
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-08T00:00:00+09:00" class="time">08 Nov 2022</time>
+</small>
+
+        <p>그래프 순회를 활용한 알고리즘 풀이</p>
+
+      </article>
+    </li>
+  
+    
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
+        <h4><a href="/algorithm/2022/11/08/1325/">백준 1325번 (시간 초과)</a></h4>
+        
+
+<small class="small  post-meta">
+  
+  
+    
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
+    
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-08T00:00:00+09:00" class="time">08 Nov 2022</time>
+</small>
+
+        <p>DFS 그래프 순회를 이용한 알고리즘 풀이</p>
+
+      </article>
+    </li>
+  
+    
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
         <h4><a href="/algorithm/2022/11/07/BFS/">BFS (너비 우선 그래프 순회)</a></h4>
         
 
@@ -421,48 +463,6 @@
 </small>
 
         <p>너비 우선 그래프 순회를 위한 코드 작성</p>
-
-      </article>
-    </li>
-  
-    
-    <li class="item  item--post">
-      <article class="article  article--post  typeset">
-
-        <h4><a href="/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/">textarea 높이 조절하기</a></h4>
-        
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-        <p>React에서 textarea 높이 조절하기</p>
-
-      </article>
-    </li>
-  
-    
-    <li class="item  item--post">
-      <article class="article  article--post  typeset">
-
-        <h4><a href="/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/">HTTP의 특징</a></h4>
-        
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-        <p>HTTP의 특징 및 그와 관련된 문제, 해결</p>
 
       </article>
     </li>

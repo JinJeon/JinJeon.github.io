@@ -10,27 +10,27 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>IP, TCP ∙ UDP | JINJEONIMUM</title>
+<title>백준 1325번 (시간 초과) | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="IP, TCP ∙ UDP" />
+<meta property="og:title" content="백준 1325번 (시간 초과)" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. IP(Internet Protocol) IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다. 클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 ‘패킷’이라는 단위를 사용합니다. 클라이언트 주소, 서버 주소, 보낼 내용 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다. 문제점 비연결성 : 패킷 대상이 없거나 불능이어도 보내게 됩니다. 비신뢰성 : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다. 중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다. 1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다. 프로그램 구분 : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다. TCP/UDP 인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다. 애플리케이션 계층 - HTTP, FTP 전송 계층 - TDP, UDP (IP 보완) 인터넷 계층 - IP 네트워크 인터페이스 계층 - LAN 드라이버 등 순서 일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달 OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함 이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄 서버로 전송 IP, TCP 패킷 정보 패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다. TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다. TCP의 특징 TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다. 먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake) 데이터가 상대에게 제대로 보내졌는지를 확인하는 데이터 전달 보증이 이루어집니다. 데이터가 보낸 순서대로 도착하도록 하는 순서 보증의 역할을 합니다. 위와 같은 기능들을 갖고 있어 신뢰가능한 프로토콜입니다. TCP 3 way handshake 클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다. 클라이언트가 서버에게 요청 서버가 요청을 수락하고 다시 클라이언트에게 요청 클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송) 데이터 전송 TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다. 장점 전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다. 순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.) UDP 사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다. UDP의 특징 하얀 도화지에 비유되며 기능이 거의 없습니다. 연결 지향성을 띄며 3-way handshake가 없습니다. 데이터 전달 보증이나 순서 보증이 없습니다. IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, 각 패킷의 용도를 구분하기 위해 PORT를 사용하며. 체크섬은 메세지가 제대로 된 것인지 확인하는 용도로 사용됩니다. UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다. 주목받는 이유로 아래와 같은 사항들이 있습니다. TCP의 단점인 3 way handshake로 인한 시간 여러 데이터들로 인한 데이터 양 증가 → 속도 감소 TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움 무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음 UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다." />
-<meta property="og:description" content="해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. IP(Internet Protocol) IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다. 클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 ‘패킷’이라는 단위를 사용합니다. 클라이언트 주소, 서버 주소, 보낼 내용 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다. 문제점 비연결성 : 패킷 대상이 없거나 불능이어도 보내게 됩니다. 비신뢰성 : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다. 중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다. 1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다. 프로그램 구분 : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다. TCP/UDP 인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다. 애플리케이션 계층 - HTTP, FTP 전송 계층 - TDP, UDP (IP 보완) 인터넷 계층 - IP 네트워크 인터페이스 계층 - LAN 드라이버 등 순서 일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달 OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함 이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄 서버로 전송 IP, TCP 패킷 정보 패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다. TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다. TCP의 특징 TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다. 먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake) 데이터가 상대에게 제대로 보내졌는지를 확인하는 데이터 전달 보증이 이루어집니다. 데이터가 보낸 순서대로 도착하도록 하는 순서 보증의 역할을 합니다. 위와 같은 기능들을 갖고 있어 신뢰가능한 프로토콜입니다. TCP 3 way handshake 클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다. 클라이언트가 서버에게 요청 서버가 요청을 수락하고 다시 클라이언트에게 요청 클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송) 데이터 전송 TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다. 장점 전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다. 순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.) UDP 사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다. UDP의 특징 하얀 도화지에 비유되며 기능이 거의 없습니다. 연결 지향성을 띄며 3-way handshake가 없습니다. 데이터 전달 보증이나 순서 보증이 없습니다. IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, 각 패킷의 용도를 구분하기 위해 PORT를 사용하며. 체크섬은 메세지가 제대로 된 것인지 확인하는 용도로 사용됩니다. UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다. 주목받는 이유로 아래와 같은 사항들이 있습니다. TCP의 단점인 3 way handshake로 인한 시간 여러 데이터들로 인한 데이터 양 증가 → 속도 감소 TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움 무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음 UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다." />
-<link rel="canonical" href="http://localhost:4000/http/2022/10/23/IP_TCP_UDP/" />
-<meta property="og:url" content="http://localhost:4000/http/2022/10/23/IP_TCP_UDP/" />
+<meta name="description" content="QUESTION LINK 그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다. 그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다. const graph = { 1: [&quot;3&quot;], 2: [&quot;3&quot;], 3: [&quot;4&quot;, &quot;5&quot;], 4: [&quot;5&quot;], }; 이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다. const dfs = (start) =&gt; { const queue = [start]; // 방문할 노드를 담아두는 배열 const visited = {}; // 방문한 노드를 적어두는 곳 let count = 0; // 총 방문한 노드 수 let node; // 현재 노드 설정 visited[start] = true; // 시작점의 노드는 방문한 것으로 처리 while (queue.length) { node = queue.pop(); // 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림 count += 1; if (!graph[node]) graph[node] = []; // 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함 graph[node].forEach((nextNode) =&gt; { if (!visited[nextNode]) { // 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함 visited[nextNode] = true; queue.push(nextNode); } }); } return count; }; 이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다. let resultArray = []; // 결과 배열 let curMax = 0; // 초기 최대값 설정 const graphKeys = Object.keys(graph); graphKeys.forEach((index) =&gt; { const curCount = dfs(index); if (curMax &gt; curCount) return; // 최대값보다 작은 값이 나올 경우 취소 if (curMax === curCount) resultArray.push(index); // 최대값과 일치할 경우 기존 배열에 삽입 if (curMax &lt; curCount) { // 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경 curMax = curCount; resultArray = [index]; } }); 하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다." />
+<meta property="og:description" content="QUESTION LINK 그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다. 그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다. const graph = { 1: [&quot;3&quot;], 2: [&quot;3&quot;], 3: [&quot;4&quot;, &quot;5&quot;], 4: [&quot;5&quot;], }; 이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다. const dfs = (start) =&gt; { const queue = [start]; // 방문할 노드를 담아두는 배열 const visited = {}; // 방문한 노드를 적어두는 곳 let count = 0; // 총 방문한 노드 수 let node; // 현재 노드 설정 visited[start] = true; // 시작점의 노드는 방문한 것으로 처리 while (queue.length) { node = queue.pop(); // 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림 count += 1; if (!graph[node]) graph[node] = []; // 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함 graph[node].forEach((nextNode) =&gt; { if (!visited[nextNode]) { // 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함 visited[nextNode] = true; queue.push(nextNode); } }); } return count; }; 이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다. let resultArray = []; // 결과 배열 let curMax = 0; // 초기 최대값 설정 const graphKeys = Object.keys(graph); graphKeys.forEach((index) =&gt; { const curCount = dfs(index); if (curMax &gt; curCount) return; // 최대값보다 작은 값이 나올 경우 취소 if (curMax === curCount) resultArray.push(index); // 최대값과 일치할 경우 기존 배열에 삽입 if (curMax &lt; curCount) { // 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경 curMax = curCount; resultArray = [index]; } }); 하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다." />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/11/08/1325/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/11/08/1325/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-10-23T00:00:00+09:00" />
+<meta property="article:published_time" content="2022-11-08T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="IP, TCP ∙ UDP" />
+<meta property="twitter:title" content="백준 1325번 (시간 초과)" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"IP, TCP ∙ UDP","dateModified":"2022-10-23T00:00:00+09:00","datePublished":"2022-10-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http/2022/10/23/IP_TCP_UDP/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. IP(Internet Protocol) IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다. 클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 ‘패킷’이라는 단위를 사용합니다. 클라이언트 주소, 서버 주소, 보낼 내용 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다. 문제점 비연결성 : 패킷 대상이 없거나 불능이어도 보내게 됩니다. 비신뢰성 : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다. 중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다. 1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다. 프로그램 구분 : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다. TCP/UDP 인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다. 애플리케이션 계층 - HTTP, FTP 전송 계층 - TDP, UDP (IP 보완) 인터넷 계층 - IP 네트워크 인터페이스 계층 - LAN 드라이버 등 순서 일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달 OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함 이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄 서버로 전송 IP, TCP 패킷 정보 패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다. TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다. TCP의 특징 TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다. 먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake) 데이터가 상대에게 제대로 보내졌는지를 확인하는 데이터 전달 보증이 이루어집니다. 데이터가 보낸 순서대로 도착하도록 하는 순서 보증의 역할을 합니다. 위와 같은 기능들을 갖고 있어 신뢰가능한 프로토콜입니다. TCP 3 way handshake 클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다. 클라이언트가 서버에게 요청 서버가 요청을 수락하고 다시 클라이언트에게 요청 클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송) 데이터 전송 TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다. 장점 전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다. 순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.) UDP 사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다. UDP의 특징 하얀 도화지에 비유되며 기능이 거의 없습니다. 연결 지향성을 띄며 3-way handshake가 없습니다. 데이터 전달 보증이나 순서 보증이 없습니다. IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, 각 패킷의 용도를 구분하기 위해 PORT를 사용하며. 체크섬은 메세지가 제대로 된 것인지 확인하는 용도로 사용됩니다. UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다. 주목받는 이유로 아래와 같은 사항들이 있습니다. TCP의 단점인 3 way handshake로 인한 시간 여러 데이터들로 인한 데이터 양 증가 → 속도 감소 TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움 무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음 UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.","url":"http://localhost:4000/http/2022/10/23/IP_TCP_UDP/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"백준 1325번 (시간 초과)","dateModified":"2022-11-08T00:00:00+09:00","datePublished":"2022-11-08T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/11/08/1325/"},"author":{"@type":"Person","name":"JinJeon"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"description":"QUESTION LINK 그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다. 그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다. const graph = { 1: [&quot;3&quot;], 2: [&quot;3&quot;], 3: [&quot;4&quot;, &quot;5&quot;], 4: [&quot;5&quot;], }; 이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다. const dfs = (start) =&gt; { const queue = [start]; // 방문할 노드를 담아두는 배열 const visited = {}; // 방문한 노드를 적어두는 곳 let count = 0; // 총 방문한 노드 수 let node; // 현재 노드 설정 visited[start] = true; // 시작점의 노드는 방문한 것으로 처리 while (queue.length) { node = queue.pop(); // 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림 count += 1; if (!graph[node]) graph[node] = []; // 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함 graph[node].forEach((nextNode) =&gt; { if (!visited[nextNode]) { // 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함 visited[nextNode] = true; queue.push(nextNode); } }); } return count; }; 이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다. let resultArray = []; // 결과 배열 let curMax = 0; // 초기 최대값 설정 const graphKeys = Object.keys(graph); graphKeys.forEach((index) =&gt; { const curCount = dfs(index); if (curMax &gt; curCount) return; // 최대값보다 작은 값이 나올 경우 취소 if (curMax === curCount) resultArray.push(index); // 최대값과 일치할 경우 기존 배열에 삽입 if (curMax &lt; curCount) { // 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경 curMax = curCount; resultArray = [index]; } }); 하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.","url":"http://localhost:4000/algorithm/2022/11/08/1325/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -101,7 +101,7 @@
 
   </head>
 
-  <body class="layout-post  ip-tcp-udp">
+  <body class="layout-post  백준-1325번-시간-초과">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -214,7 +214,7 @@
 
   <div class="feature" style="background-image: url()">
     <div class="container  typeset">
-      <p>HTTP의 기본적인 IP, TCP ∙ UDP 알아보기</p>
+      <p>DFS 그래프 순회를 이용한 알고리즘 풀이</p>
 
     </div>
   </div>
@@ -225,147 +225,93 @@
 <main class="main container">
   <article class="article article--post content typeset">
     <div class="article--title">
-      <h1>IP, TCP ∙ UDP</h1>
+      <h1>백준 1325번 (시간 초과)</h1>
       
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-23T00:00:00+09:00" class="time">23 Oct 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-08T00:00:00+09:00" class="time">08 Nov 2022</time>
 </small>
 
     </div>
 
-    <blockquote>
-  <p>해당 내용은 <a href="https://www.inflearn.com/course/http-웹-네트워크/dashboard">모든 개발자를 위한 HTTP 웹 기본 지식</a> 강의를 수강하여 작성했습니다.</p>
+    <p><strong><a href="https://www.acmicpc.net/problem/1325">QUESTION LINK</a></strong></p>
+
+<p>그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다.<br />
+그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">graph</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">start</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">start</span><span class="p">];</span>
+  <span class="c1">// 방문할 노드를 담아두는 배열</span>
+  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="c1">// 방문한 노드를 적어두는 곳</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 총 방문한 노드 수</span>
+  <span class="kd">let</span> <span class="nx">node</span><span class="p">;</span>
+  <span class="c1">// 현재 노드 설정</span>
+  <span class="nx">visited</span><span class="p">[</span><span class="nx">start</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="c1">// 시작점의 노드는 방문한 것으로 처리</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="c1">// 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림</span>
+    <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">])</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="c1">// 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함</span>
+
+    <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">nextNode</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">])</span> <span class="p">{</span>
+        <span class="c1">// 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함</span>
+        <span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nextNode</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 결과 배열</span>
+<span class="kd">let</span> <span class="nx">curMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="c1">// 초기 최대값 설정</span>
+<span class="kd">const</span> <span class="nx">graphKeys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">graph</span><span class="p">);</span>
+
+<span class="nx">graphKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">curCount</span> <span class="o">=</span> <span class="nx">dfs</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&gt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// 최대값보다 작은 값이 나올 경우 취소</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">===</span> <span class="nx">curCount</span><span class="p">)</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="c1">// 최대값과 일치할 경우 기존 배열에 삽입</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&lt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경</span>
+    <span class="nx">curMax</span> <span class="o">=</span> <span class="nx">curCount</span><span class="p">;</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.</p>
 </blockquote>
-
-<h2 id="ipinternet-protocol">IP(Internet Protocol)</h2>
-
-<p>IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다.</p>
-
-<p>클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 <strong>‘패킷’</strong>이라는 단위를 사용합니다.</p>
-
-<p><strong>클라이언트 주소, 서버 주소, 보낼 내용</strong> 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-8.png" alt="" width="" height="" /> 
-</figure>
-
-<h3 id="문제점">문제점</h3>
-
-<ol>
-  <li><strong>비연결성</strong> : 패킷 대상이 없거나 불능이어도 보내게 됩니다.</li>
-  <li><strong>비신뢰성</strong> : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다.
-    <ul>
-      <li>중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다.</li>
-      <li>1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다.</li>
-    </ul>
-  </li>
-  <li><strong>프로그램 구분</strong> : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다.</li>
-</ol>
-
-<hr />
-
-<h2 id="tcpudp">TCP/UDP</h2>
-
-<p>인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다.</p>
-
-<ol>
-  <li>애플리케이션 계층 - HTTP, FTP</li>
-  <li>전송 계층 - TDP, UDP (IP 보완)</li>
-  <li>인터넷 계층 - IP</li>
-  <li>네트워크 인터페이스 계층 - LAN 드라이버 등</li>
-</ol>
-
-<h3 id="순서">순서</h3>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-9.png" alt="" width="" height="" /> 
-</figure>
-
-<ol>
-  <li>일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달</li>
-  <li>OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함</li>
-  <li>이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄</li>
-  <li>서버로 전송</li>
-</ol>
-
-<h3 id="ip-tcp-패킷-정보">IP, TCP 패킷 정보</h3>
-
-<p>패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다.</p>
-
-<p>TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-10.png" alt="" width="" height="" /> 
-</figure>
-
-<h3 id="tcp의-특징">TCP의 특징</h3>
-
-<ol>
-  <li>TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다.</li>
-  <li>먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake)</li>
-  <li>데이터가 상대에게 제대로 보내졌는지를 확인하는 <strong>데이터 전달 보증</strong>이 이루어집니다.</li>
-  <li>데이터가 보낸 순서대로 도착하도록 하는 <strong>순서 보증</strong>의 역할을 합니다.</li>
-  <li>위와 같은 기능들을 갖고 있어 <strong>신뢰가능</strong>한 프로토콜입니다.</li>
-</ol>
-
-<h3 id="tcp-3-way-handshake">TCP 3 way handshake</h3>
-
-<p>클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다.</p>
-
-<ol>
-  <li>클라이언트가 서버에게 요청</li>
-  <li>서버가 요청을 수락하고 다시 클라이언트에게 요청</li>
-  <li>클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송)</li>
-  <li>데이터 전송</li>
-</ol>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-11.png" alt="" width="" height="" /> 
-</figure>
-
-<p>TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 <strong>클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미</strong>합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다.</p>
-
-<h3 id="장점">장점</h3>
-
-<ul>
-  <li>전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다.</li>
-  <li>순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.)</li>
-</ul>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-12.png" alt="" width="" height="" /> 
-</figure>
-
-<hr />
-
-<h3 id="udp">UDP</h3>
-
-<p>사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다.</p>
-
-<h3 id="udp의-특징">UDP의 특징</h3>
-
-<ul>
-  <li>하얀 도화지에 비유되며 기능이 거의 없습니다.</li>
-  <li>연결 지향성을 띄며 3-way handshake가 없습니다.</li>
-  <li>데이터 전달 보증이나 순서 보증이 없습니다.</li>
-  <li>IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, <strong>각 패킷의 용도를 구분하기 위해 PORT를 사용</strong>하며. <strong>체크섬은 메세지가 제대로 된 것인지 확인하는 용도</strong>로 사용됩니다.</li>
-  <li>UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다.</li>
-  <li>주목받는 이유로 아래와 같은 사항들이 있습니다.
-    <ol>
-      <li>TCP의 단점인 3 way handshake로 인한 시간</li>
-      <li>여러 데이터들로 인한 데이터 양 증가 → 속도 감소</li>
-      <li>TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움</li>
-      <li>무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음</li>
-    </ol>
-  </li>
-  <li>UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.</li>
-</ul>
  <!-- prettier-ignore -->
 <div class="share">
   
@@ -392,7 +338,7 @@
       
 
       <a class="button" href="
-      <!---->mailto:nanyong01@gmail.com?subject=IP, TCP ∙ UDP&body=CHECK OUT THIS : http://localhost:4000/http/2022/10/23/IP_TCP_UDP/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+      <!---->mailto:nanyong01@gmail.com?subject=백준 1325번 (시간 초과)&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/11/08/1325/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
 </a>
 
     
