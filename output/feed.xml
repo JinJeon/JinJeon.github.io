@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-11-09T11:52:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 16918번</title><link href="http://localhost:4000/algorithm/2022/11/08/16918/" rel="alternate" type="text/html" title="백준 16918번" /><published>2022-11-08T00:00:00+09:00</published><updated>2022-11-08T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/08/16918</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/08/16918/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/16918">QEUSTION LINK</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-11-09T14:49:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2667번</title><link href="http://localhost:4000/algorithm/2022/11/09/2667/" rel="alternate" type="text/html" title="백준 2667번" /><published>2022-11-09T00:00:00+09:00</published><updated>2022-11-09T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/09/2667</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/09/2667/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2667">QUESTION LINK</a></strong></p>
+
+<p>그래프 순회를 이용해 해결해야하는 문제였습니다. 문제를 해결하기 위해 일종의 흐름을 짜는 과정이 필요했는데 그 과정은 아래와 같았습니다.</p>
+
+<ol>
+  <li>그래프의 각 부분들(여기서는 <code class="language-plaintext highlighter-rouge">box</code>라는 이름으로 설정)을 순회하면서 그 값이 0인지 1인지를 확인</li>
+  <li><code class="language-plaintext highlighter-rouge">box</code>의 값이 1인 경우, 해당 <code class="language-plaintext highlighter-rouge">box</code>의 방문 여부를 <code class="language-plaintext highlighter-rouge">true</code>로 설정함</li>
+  <li>상하좌우의 <code class="language-plaintext highlighter-rouge">box</code>들을 따라 들어가, 2번과 같은 과정을 반복함</li>
+</ol>
+
+<p>위 순서를 따르기 위해 가장 먼저 필요한 것은 해당 그래프를 순회하는 과정을 만드는 것이었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">N</span><span class="p">,</span> <span class="p">...</span><span class="nx">graph</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">graphBoxes</span> <span class="o">=</span> <span class="nx">graph</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">countArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 각 단지의 개수를 담아두기 위한 배열</span>
+<span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="c1">// 방문여부를 확인하기 위한 객체</span>
+
+<span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">,</span> <span class="nx">lineIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 그래프의 각 라인마다 박스들을 확인함</span>
+  <span class="nx">line</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">box</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">checkBox</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">);</span>
+    <span class="c1">// 각 박스마다 그 박스의 값과 방문여부를 확인하는 함수 생성 필요!</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// graphBoxes의 형태</span>
+<span class="p">[</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>위 코드에서 보시다시피, 순회를 돌면서 각 위치(<code class="language-plaintext highlighter-rouge">lineIndex</code>, <code class="language-plaintext highlighter-rouge">boxIndex</code>)와 값(<code class="language-plaintext highlighter-rouge">box</code>)에 따라 처리를 해 줄 함수 <code class="language-plaintext highlighter-rouge">checkBox</code>가 필요했습니다. 이 함수는 각 박스의 순회 여부를 결정하고, 순회를 해야하는 경우 상하좌우를 DFS를 통해 순회하도록 설정해야 했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getMarker</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">,</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="c1">// visited 객체의 key값을 만들기 위해 필요한 함수</span>
+
+<span class="kd">const</span> <span class="nx">checkBox</span> <span class="o">=</span> <span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// y(lineIndex), x(boxIndex), box 값을 받아옴</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// box가 0인 경우 아파트가 없으므로 작업을 종료</span>
+  <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">getMarker</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">);</span>
+  <span class="c1">// key값으로 사용될 marker 생성</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">visited</span><span class="p">[</span><span class="nx">marker</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// 이미 방문했을 경우 작업을 종료</span>
+  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">marker</span><span class="p">];</span>
+  <span class="c1">// 첫 값으로 만들어진 marker를 담은 queue 생성</span>
+  <span class="kd">let</span> <span class="nx">curMarker</span><span class="p">;</span>
+  <span class="c1">// 반복문을 돌면서 목표 지점이 될 marker</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 해당 함수의 시작지점으로부터 얼마나 아파트를 돌았는지 확인하기 위한 변수</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">curMarker</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="c1">// 목표지점으로 사용될 marker를 설정</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">]</span> <span class="o">=</span> <span class="nx">curMarker</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+    <span class="c1">// 몇 번째 줄, 몇 번째 box인지를 알아냄</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">]</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 방문하지 않은 값이 "1"인 box들일 경우에만 작업을 진행함</span>
+      <span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="c1">// 방문을 하는 상황으로 설정</span>
+      <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="c1">// 상하좌우를 돌면서 queue에 넣어줌</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="nx">countArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>위 함수를 통해서 반복 작업 시 <code class="language-plaintext highlighter-rouge">box</code>가 <strong>방문하지 않은 ‘1’인 경우에만</strong> 그래프 순회를 통해 개수 세기를 진행하도록 할 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 그래프 순회를 이용해 해결해야하는 문제였습니다. 문제를 해결하기 위해 일종의 흐름을 짜는 과정이 필요했는데 그 과정은 아래와 같았습니다. 그래프의 각 부분들(여기서는 box라는 이름으로 설정)을 순회하면서 그 값이 0인지 1인지를 확인 box의 값이 1인 경우, 해당 box의 방문 여부를 true로 설정함 상하좌우의 box들을 따라 들어가, 2번과 같은 과정을 반복함 위 순서를 따르기 위해 가장 먼저 필요한 것은 해당 그래프를 순회하는 과정을 만드는 것이었습니다. const [N, ...graph] = input; const graphBoxes = graph.map((line) =&gt; line.split("")); const countArray = []; // 각 단지의 개수를 담아두기 위한 배열 const visited = {}; // 방문여부를 확인하기 위한 객체 graphBoxes.forEach((line, lineIndex) =&gt; { // 그래프의 각 라인마다 박스들을 확인함 line.forEach((box, boxIndex) =&gt; { checkBox(lineIndex, boxIndex, box); // 각 박스마다 그 박스의 값과 방문여부를 확인하는 함수 생성 필요! }); }); // graphBoxes의 형태 [ ["0", "1", "1", "0", "1", "0", "0"], ["0", "1", "1", "0", "1", "0", "1"], ["1", "1", "1", "0", "1", "0", "1"], ["0", "0", "0", "0", "1", "1", "1"], ["0", "1", "0", "0", "0", "0", "0"], ["0", "1", "1", "1", "1", "1", "0"], ["0", "1", "1", "1", "0", "0", "0"], ]; 위 코드에서 보시다시피, 순회를 돌면서 각 위치(lineIndex, boxIndex)와 값(box)에 따라 처리를 해 줄 함수 checkBox가 필요했습니다. 이 함수는 각 박스의 순회 여부를 결정하고, 순회를 해야하는 경우 상하좌우를 DFS를 통해 순회하도록 설정해야 했습니다. const getMarker = (y, x) =&gt; `${y},${x}`; // visited 객체의 key값을 만들기 위해 필요한 함수 const checkBox = (lineIndex, boxIndex, box) =&gt; { // y(lineIndex), x(boxIndex), box 값을 받아옴 if (box === "0") return; // box가 0인 경우 아파트가 없으므로 작업을 종료 const marker = getMarker(lineIndex, boxIndex); // key값으로 사용될 marker 생성 if (visited[marker]) return; // 이미 방문했을 경우 작업을 종료 const queue = [marker]; // 첫 값으로 만들어진 marker를 담은 queue 생성 let curMarker; // 반복문을 돌면서 목표 지점이 될 marker let count = 0; // 해당 함수의 시작지점으로부터 얼마나 아파트를 돌았는지 확인하기 위한 변수 while (queue.length) { curMarker = queue.pop(); // 목표지점으로 사용될 marker를 설정 const [y, x] = curMarker.split(",").map((value) =&gt; Number(value)); // 몇 번째 줄, 몇 번째 box인지를 알아냄 if (!visited[curMarker] &amp;&amp; graphBoxes[y][x] === "1") { // 방문하지 않은 값이 "1"인 box들일 경우에만 작업을 진행함 visited[curMarker] = true; // 방문을 하는 상황으로 설정 count += 1; // 상하좌우를 돌면서 queue에 넣어줌 if (y - 1 &gt;= 0) queue.push(getMarker(y - 1, x)); if (x - 1 &gt;= 0) queue.push(getMarker(y, x - 1)); if (y + 1 &lt; N) queue.push(getMarker(y + 1, x)); if (x + 1 &lt; N) queue.push(getMarker(y, x + 1)); } } if (count) countArray.push(count); }; 위 함수를 통해서 반복 작업 시 box가 방문하지 않은 ‘1’인 경우에만 그래프 순회를 통해 개수 세기를 진행하도록 할 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 1325번 (시간 초과)</title><link href="http://localhost:4000/algorithm/2022/11/08/1325/" rel="alternate" type="text/html" title="백준 1325번 (시간 초과)" /><published>2022-11-08T00:00:00+09:00</published><updated>2022-11-08T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/08/1325</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/08/1325/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/1325">QUESTION LINK</a></strong></p>
+
+<p>그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다.<br />
+그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">graph</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">start</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">start</span><span class="p">];</span>
+  <span class="c1">// 방문할 노드를 담아두는 배열</span>
+  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="c1">// 방문한 노드를 적어두는 곳</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 총 방문한 노드 수</span>
+  <span class="kd">let</span> <span class="nx">node</span><span class="p">;</span>
+  <span class="c1">// 현재 노드 설정</span>
+  <span class="nx">visited</span><span class="p">[</span><span class="nx">start</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="c1">// 시작점의 노드는 방문한 것으로 처리</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="c1">// 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림</span>
+    <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">])</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="c1">// 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함</span>
+
+    <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">nextNode</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">])</span> <span class="p">{</span>
+        <span class="c1">// 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함</span>
+        <span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nextNode</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 결과 배열</span>
+<span class="kd">let</span> <span class="nx">curMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="c1">// 초기 최대값 설정</span>
+<span class="kd">const</span> <span class="nx">graphKeys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">graph</span><span class="p">);</span>
+
+<span class="nx">graphKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">curCount</span> <span class="o">=</span> <span class="nx">dfs</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&gt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// 최대값보다 작은 값이 나올 경우 취소</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">===</span> <span class="nx">curCount</span><span class="p">)</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="c1">// 최대값과 일치할 경우 기존 배열에 삽입</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&lt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경</span>
+    <span class="nx">curMax</span> <span class="o">=</span> <span class="nx">curCount</span><span class="p">;</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.</p>
+</blockquote>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다. 그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다. const graph = { 1: ["3"], 2: ["3"], 3: ["4", "5"], 4: ["5"], }; 이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다. const dfs = (start) =&gt; { const queue = [start]; // 방문할 노드를 담아두는 배열 const visited = {}; // 방문한 노드를 적어두는 곳 let count = 0; // 총 방문한 노드 수 let node; // 현재 노드 설정 visited[start] = true; // 시작점의 노드는 방문한 것으로 처리 while (queue.length) { node = queue.pop(); // 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림 count += 1; if (!graph[node]) graph[node] = []; // 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함 graph[node].forEach((nextNode) =&gt; { if (!visited[nextNode]) { // 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함 visited[nextNode] = true; queue.push(nextNode); } }); } return count; }; 이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다. let resultArray = []; // 결과 배열 let curMax = 0; // 초기 최대값 설정 const graphKeys = Object.keys(graph); graphKeys.forEach((index) =&gt; { const curCount = dfs(index); if (curMax &gt; curCount) return; // 최대값보다 작은 값이 나올 경우 취소 if (curMax === curCount) resultArray.push(index); // 최대값과 일치할 경우 기존 배열에 삽입 if (curMax &lt; curCount) { // 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경 curMax = curCount; resultArray = [index]; } }); 하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 16918번</title><link href="http://localhost:4000/algorithm/2022/11/08/16918/" rel="alternate" type="text/html" title="백준 16918번" /><published>2022-11-08T00:00:00+09:00</published><updated>2022-11-08T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/08/16918</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/08/16918/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/16918">QEUSTION LINK</a></strong></p>
 
 <h3 id="1-첫-풀이-방식--규칙-사용하기-실패">1. 첫 풀이 방식 : 규칙 사용하기 (실패)</h3>
 
@@ -205,79 +359,7 @@
 
 <hr />
 
-<p>🔎 현재 사용한 방식은 그래프 순회를 하는 방식을 적극적으로 사용하지는 않은 것이라 다른 방법에 대한 고민이 더 필요하기는 합니다!</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QEUSTION LINK 1. 첫 풀이 방식 : 규칙 사용하기 (실패) 문제에서 일종의 규칙을 찾은 뒤, 이후 문제가 되는 부분에 대해서만 처리를 해주고자 했습니다. 가장 처음에 한 것은 상황을 구분 짓는 것이었는데, 해당 문제의 경우 총 세 가지 경우의 수가 반복되고 있었습니다. 처음에 주어진 폭탄의 상황 모든 위치에 폭탄이 들어간 상황 처음 위치와 반대로 폭탄이 설치된 상황 이 상황들 중 3번에 대한 처리만 하면 될 것이라는 생각으로, 처음에 주어진 폭탄의 상황을 먼저 만드는 것으로 시작했습니다. 이를 위해 주어진 값들에 대해서 그래프 형식으로 바꾸는 작업부터 해주었습니다. const [R, C, time] = input[0].split(" "); // R x C 의 그래프에서 time을 가져옴 const graph = input.splice(1).map((line) =&gt; line.split("")); // 그래프 각각의 값을 나누어줌 const visited = {}; // 방문한 곳을 처리하기 위한 객체 위 코드를 통해 아래와 같은 형식의 그래프를 가져올 수 있었습니다. const graph = [ [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", "O", ".", "."], [".", ".", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ]; 그 후, 각 초마다의 상황을 처리해야했는데, 이는 아래와 같은 규칙성을 가지고 있었습니다. 0초 : 처음 주어진 상황 1초 : 처음 주어진 상황 2초 : 모든 위치에 폭탄 3초 : 처음과 뒤바뀐 상황 4초 : 모든 위치에 폭탄 5초 : 처음 주어진 상황 6초 : 모든 위치에 폭탄 ... 즉, 시간이 주어진 상황에서, 4로 나눌 때, 아래와 같은 결과가 됩니다.. 나머지 1 = 첫 상황 나머지 2, 나머지 4 = 모든 위치에 폭탄 나머지 3 = 첫 상황과 반대 이렇게 상황을 설정한 뒤에는 ‘첫 상황과 반대’인 경우에 대해 처리를 해주어야 했습니다. 이 부분에 대한 처리는 그래프를 순회하며 폭탄(”0”)을 만날 때마다 그 주위의 값들을 터짐(”.”)으로 바꿔주도록 설정했습니다. 그리고 만약, 그 주위에 다른 폭탄이 있는 경우에는 이후에 그 폭탄이 터지는 것으로 처리했습니다. const getResult = () =&gt; { const remain = time % 4; if (remain === 1) { // 처음과 같은 상태 유지 return graph.map((line) =&gt; line.join("")).join("\n"); } if (remain === 0 || remain === 2) { // 모두 폭탄이 위치한 것으로 설정 return graph.map(() =&gt; "O".repeat(C)).join("\n"); } if (remain === 3) { // 처음 폭탄과 반대 상황 설정 graph.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "O") { checkMark(lineIndex, boxIndex, true); // 처음 위치에 폭탄이 터지고, 이후 주변 폭탄도 터지도록 설정 if (lineIndex - 1 &gt;= 0) checkMark(lineIndex - 1, boxIndex); if (boxIndex - 1 &gt;= 0) checkMark(lineIndex, boxIndex - 1); if (boxIndex + 1 &lt;= C - 1) checkMark(lineIndex, boxIndex + 1); if (lineIndex + 1 &lt;= R - 1) checkMark(lineIndex + 1, boxIndex); } if (box === ".") { // 폭탄이 아닌 곳을 지날 시, 폭탄으로 바뀌도록 설정 const mark = `${lineIndex},${boxIndex}`; if (!visited[mark]) { visited[mark] = true; graph[lineIndex][boxIndex] = "O"; } } }); }); return graph.map((line) =&gt; line.join("")).join("\n"); } }; 그리고, 폭탄에 도착할 시, 폭탄이 터지는 상황에 대한 함수는 따로 구분해서 생성해주었습니다. 이 때, 폭탄이 터지는 상황은 현재 위치가 폭탄일 때, 주변 위치가 폭탄이 아닐 때로 설정했습니다. const checkMark = (lineIndex, boxIndex, isSelf = false) =&gt; { const mark = `${lineIndex},${boxIndex}`; // 폭탄이 터질 위치 if (graph[lineIndex][boxIndex] === "O" &amp;&amp; !visited[mark] &amp;&amp; !isSelf) return; // 폭탄 자체의 위치가 아닌 상황에서 방문한 적 없는 주변 폭탄인 경우에는 넘어감 visited[mark] = true; graph[lineIndex][boxIndex] = "."; }; 이를 통해 예제의 상황에 대해서는 제대로 결과가 호출되는 것을 볼 수 있었습니다. 하지만, 백준을 통해 채점을 했을 때 틀렸다는 결과가 나와서 문제점을 파악하는 데에 시간을 꽤 소요됐습니다. 2. 두 번째 방식 : 직접 반복하기 (성공) 이전에 규칙을 찾아 적용하는 방식을 할 경우, 규칙이 무조건 반복되지 않을 수도 있다는 문제가 있다는 것을 발견했습니다. 그래서, 이를 해결하기 위해서는 직접 폭탄이 터지는 상황을 반복하는 것이 안전하다고 판단해, 직접 진행하는 것으로 방법을 변경했습니다. 문제를 풀기 위해 진행한 순서는 아래와 같습니다. 1초만 진행된 상황에 대해 처리하기 짝수초 만큼 진행된 상황에 대해 처리하기 1,2번 이외의 상황 처리하기 가장 먼저 진행한 것은 첫 번째 방식과 동일하게 그래프를 만들어주는 것이었습니다. const [R, C, N] = input[0].split(" "); const time = Number(N); const graph = input.slice(1).map((line) =&gt; line.split("")); [ [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", "O", ".", "."], [".", ".", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ]; // 생성된 그래프 배열 그리고 폭탄이 터지는 상황에서 사용하기 위한 폭탄으로만 가득찬 배열을 만드는 함수를 생성했습니다. 이 함수의 경우, 앞서 말한 바와 같이 짝수초 만큼 지나간 상황에서는 폭탄으로만 가득한 배열이 나오기 때문에 그 상황에서도 활용이 가능합니다. const getNewGraph = () =&gt; [...Array(Number(R))].map(() =&gt; [...Array(Number(C))].map(() =&gt; "O")); 그리고 1, 2번의 상황을 처리하기 위한 함수를 먼저 생성했습니다. const getResult = () =&gt; { // 1초만 지나간 경우 원래의 그래프를 보여줌 if (time === 1) { return input.slice(1).join("\n"); } // 짝수초만큼 지나간 경우 폭탄으로 가득한 그래프를 보여줌 if (!(time % 2)) { return getNewGraph() .map((line) =&gt; line.join("")) .join("\n"); } ... }; 이후 폭탄이 터진 뒤의 상황을 보여주는 그래프를 생성해야 했습니다. 이를 해결하기 위해 생각한 것은 우선 폭탄으로 가득찬 그래프를 먼저 만든 뒤, 이전 그래프에서 폭탄이 위치한 곳과 상하좌우를 폭탄이 터지도록 하여 다음에 터져야할 폭탄들이 보이는 그래프가 나오도록 설정을 해주었습니다. 그리고 2초가 더 지나간 상황에서는 새롭게 만들어진 그래프에서 폭탄이 터지는 상황을 만들도록 하여 앞서 진행한 것과 같은 방식으로 진행하도록 했습니다. const getResult = () =&gt; { ... let curTime = Number(time) - 2; // 시간이 이미 2초 지나간 뒤의 상황부터 시작하기 때문에 2를 뺌 let curGraph = graph; // 폭탄의 위치를 나타내는 그래프 while (curTime &gt; 0) { // 2초씩 지나간 뒤, 0초 이하일 경우 멈춤 curTime -= 2; // 2초가 지나간 뒤의 상황을 보여줄 것이므로 뺌 const newGraph = getNewGraph(); // 새롭게 만들어질 폭탄으로 가득찬 그래프 curGraph.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { // 폭탄 위치를 나타내는 그래프에서 좌표를 빼내어 폭탄과 그 상하좌우가 터지도록 설정 if (box !== "O") return; newGraph[lineIndex][boxIndex] = "."; if (lineIndex - 1 &gt;= 0) newGraph[lineIndex - 1][boxIndex] = "."; if (boxIndex - 1 &gt;= 0) newGraph[lineIndex][boxIndex - 1] = "."; if (boxIndex + 1 &lt;= C - 1) newGraph[lineIndex][boxIndex + 1] = "."; if (lineIndex + 1 &lt;= R - 1) newGraph[lineIndex + 1][boxIndex] = "."; }); }); curGraph = newGraph; // 새롭게 만들어진 폭탄 위치 그래프로 설정 } return curGraph.map((line) =&gt; line.join("")).join("\n"); }; 이런 식으로 폭탄이 터지는 위치에 대한 값을 지속적으로 확인해 처리해주는 방식으로 문제를 해결할 수 있었습니다. 🔎 현재 사용한 방식은 그래프 순회를 하는 방식을 적극적으로 사용하지는 않은 것이라 다른 방법에 대한 고민이 더 필요하기는 합니다!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 1325번 (시간 초과)</title><link href="http://localhost:4000/algorithm/2022/11/08/1325/" rel="alternate" type="text/html" title="백준 1325번 (시간 초과)" /><published>2022-11-08T00:00:00+09:00</published><updated>2022-11-08T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/08/1325</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/08/1325/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/1325">QUESTION LINK</a></strong></p>
-
-<p>그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다.<br />
-그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">graph</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
-  <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">],</span>
-  <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
-  <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">],</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
-<p>이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">start</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">start</span><span class="p">];</span>
-  <span class="c1">// 방문할 노드를 담아두는 배열</span>
-  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="c1">// 방문한 노드를 적어두는 곳</span>
-  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="c1">// 총 방문한 노드 수</span>
-  <span class="kd">let</span> <span class="nx">node</span><span class="p">;</span>
-  <span class="c1">// 현재 노드 설정</span>
-  <span class="nx">visited</span><span class="p">[</span><span class="nx">start</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="c1">// 시작점의 노드는 방문한 것으로 처리</span>
-
-  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">node</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-    <span class="c1">// 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림</span>
-    <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">])</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="c1">// 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함</span>
-
-    <span class="nx">graph</span><span class="p">[</span><span class="nx">node</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">nextNode</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">])</span> <span class="p">{</span>
-        <span class="c1">// 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함</span>
-        <span class="nx">visited</span><span class="p">[</span><span class="nx">nextNode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nextNode</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
-<p>이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="c1">// 결과 배열</span>
-<span class="kd">let</span> <span class="nx">curMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="c1">// 초기 최대값 설정</span>
-<span class="kd">const</span> <span class="nx">graphKeys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">graph</span><span class="p">);</span>
-
-<span class="nx">graphKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">curCount</span> <span class="o">=</span> <span class="nx">dfs</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&gt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="c1">// 최대값보다 작은 값이 나올 경우 취소</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">===</span> <span class="nx">curCount</span><span class="p">)</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
-  <span class="c1">// 최대값과 일치할 경우 기존 배열에 삽입</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">curMax</span> <span class="o">&lt;</span> <span class="nx">curCount</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경</span>
-    <span class="nx">curMax</span> <span class="o">=</span> <span class="nx">curCount</span><span class="p">;</span>
-    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">index</span><span class="p">];</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.</p>
-</blockquote>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 그래프 순회를 이용해 해결하는 문제입니다. 문제를 해결하기 위해 일단 주어진 값들에 대해서 그래프로 만들어주는 작업이 먼저 필요했습니다. 그래프를 그리기에 앞서 문제에 대한 파악이 먼저 필요했는데, 여기서 예를 들어 A가 B를 신뢰하는 경우는 그래프 상으로는 ‘B → A’와 같은 형태가 나온다고 볼 수 있습니다. 이를 이용해 그래프를 만들면 아래와 같은 형태의 그래프가 나오게 됩니다. const graph = { 1: ["3"], 2: ["3"], 3: ["4", "5"], 4: ["5"], }; 이후 DFS를 통해서 해당 그래프를 순회하며 연결된 노드들이 지나갈 때마다 횟수를 1회 더해주어 총 지나간 횟수를 구하는 함수를 만들었습니다. const dfs = (start) =&gt; { const queue = [start]; // 방문할 노드를 담아두는 배열 const visited = {}; // 방문한 노드를 적어두는 곳 let count = 0; // 총 방문한 노드 수 let node; // 현재 노드 설정 visited[start] = true; // 시작점의 노드는 방문한 것으로 처리 while (queue.length) { node = queue.pop(); // 배열의 가장 마지막 요소를 빼내고, 이를 확인했다는 의미로 count의 숫자를 올림 count += 1; if (!graph[node]) graph[node] = []; // 해당 노드를 통해 접근가능한 값이 없는 경우에 대해 빈 배열로 처리함 graph[node].forEach((nextNode) =&gt; { if (!visited[nextNode]) { // 인접 노드에 대해서도 방문하지 않았을 시 같은 방법으로 순회하도록 함 visited[nextNode] = true; queue.push(nextNode); } }); } return count; }; 이후 그래프의 key값들을 통해 그래프 순회를 시작합니다. 이 때 최대값과 결과 배열을 설정해두어, 최대값을 갖고 있는 값들의 배열을 구합니다. let resultArray = []; // 결과 배열 let curMax = 0; // 초기 최대값 설정 const graphKeys = Object.keys(graph); graphKeys.forEach((index) =&gt; { const curCount = dfs(index); if (curMax &gt; curCount) return; // 최대값보다 작은 값이 나올 경우 취소 if (curMax === curCount) resultArray.push(index); // 최대값과 일치할 경우 기존 배열에 삽입 if (curMax &lt; curCount) { // 최대값보다 클 경우 새롭게 최대값 설정 후 결과 배열을 변경 curMax = curCount; resultArray = [index]; } }); 하지만, 현재 이렇게 값을 구할 경우, 예제로 나온 부분에 대해서는 처리가 가능하나, 이후 백준을 통해서 채점을 진행할 경우 지속적으로 시간 초과가 나오는 상태입니다. 해당 부분을 처리하기 위한 작업을 추가적으로 진행해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BFS (너비 우선 그래프 순회)</title><link href="http://localhost:4000/algorithm/2022/11/07/BFS/" rel="alternate" type="text/html" title="BFS (너비 우선 그래프 순회)" /><published>2022-11-07T00:00:00+09:00</published><updated>2022-11-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/07/BFS</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/07/BFS/"><![CDATA[<p><strong>너비 우선</strong>은 주어진 노드의 인접점을 모두 방문하고 아래로 내려가거나 인접점의 인접점을 보는 형식을 의미합니다.</p>
+<p>🔎 현재 사용한 방식은 그래프 순회를 하는 방식을 적극적으로 사용하지는 않은 것이라 다른 방법에 대한 고민이 더 필요하기는 합니다!</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QEUSTION LINK 1. 첫 풀이 방식 : 규칙 사용하기 (실패) 문제에서 일종의 규칙을 찾은 뒤, 이후 문제가 되는 부분에 대해서만 처리를 해주고자 했습니다. 가장 처음에 한 것은 상황을 구분 짓는 것이었는데, 해당 문제의 경우 총 세 가지 경우의 수가 반복되고 있었습니다. 처음에 주어진 폭탄의 상황 모든 위치에 폭탄이 들어간 상황 처음 위치와 반대로 폭탄이 설치된 상황 이 상황들 중 3번에 대한 처리만 하면 될 것이라는 생각으로, 처음에 주어진 폭탄의 상황을 먼저 만드는 것으로 시작했습니다. 이를 위해 주어진 값들에 대해서 그래프 형식으로 바꾸는 작업부터 해주었습니다. const [R, C, time] = input[0].split(" "); // R x C 의 그래프에서 time을 가져옴 const graph = input.splice(1).map((line) =&gt; line.split("")); // 그래프 각각의 값을 나누어줌 const visited = {}; // 방문한 곳을 처리하기 위한 객체 위 코드를 통해 아래와 같은 형식의 그래프를 가져올 수 있었습니다. const graph = [ [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", "O", ".", "."], [".", ".", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ]; 그 후, 각 초마다의 상황을 처리해야했는데, 이는 아래와 같은 규칙성을 가지고 있었습니다. 0초 : 처음 주어진 상황 1초 : 처음 주어진 상황 2초 : 모든 위치에 폭탄 3초 : 처음과 뒤바뀐 상황 4초 : 모든 위치에 폭탄 5초 : 처음 주어진 상황 6초 : 모든 위치에 폭탄 ... 즉, 시간이 주어진 상황에서, 4로 나눌 때, 아래와 같은 결과가 됩니다.. 나머지 1 = 첫 상황 나머지 2, 나머지 4 = 모든 위치에 폭탄 나머지 3 = 첫 상황과 반대 이렇게 상황을 설정한 뒤에는 ‘첫 상황과 반대’인 경우에 대해 처리를 해주어야 했습니다. 이 부분에 대한 처리는 그래프를 순회하며 폭탄(”0”)을 만날 때마다 그 주위의 값들을 터짐(”.”)으로 바꿔주도록 설정했습니다. 그리고 만약, 그 주위에 다른 폭탄이 있는 경우에는 이후에 그 폭탄이 터지는 것으로 처리했습니다. const getResult = () =&gt; { const remain = time % 4; if (remain === 1) { // 처음과 같은 상태 유지 return graph.map((line) =&gt; line.join("")).join("\n"); } if (remain === 0 || remain === 2) { // 모두 폭탄이 위치한 것으로 설정 return graph.map(() =&gt; "O".repeat(C)).join("\n"); } if (remain === 3) { // 처음 폭탄과 반대 상황 설정 graph.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "O") { checkMark(lineIndex, boxIndex, true); // 처음 위치에 폭탄이 터지고, 이후 주변 폭탄도 터지도록 설정 if (lineIndex - 1 &gt;= 0) checkMark(lineIndex - 1, boxIndex); if (boxIndex - 1 &gt;= 0) checkMark(lineIndex, boxIndex - 1); if (boxIndex + 1 &lt;= C - 1) checkMark(lineIndex, boxIndex + 1); if (lineIndex + 1 &lt;= R - 1) checkMark(lineIndex + 1, boxIndex); } if (box === ".") { // 폭탄이 아닌 곳을 지날 시, 폭탄으로 바뀌도록 설정 const mark = `${lineIndex},${boxIndex}`; if (!visited[mark]) { visited[mark] = true; graph[lineIndex][boxIndex] = "O"; } } }); }); return graph.map((line) =&gt; line.join("")).join("\n"); } }; 그리고, 폭탄에 도착할 시, 폭탄이 터지는 상황에 대한 함수는 따로 구분해서 생성해주었습니다. 이 때, 폭탄이 터지는 상황은 현재 위치가 폭탄일 때, 주변 위치가 폭탄이 아닐 때로 설정했습니다. const checkMark = (lineIndex, boxIndex, isSelf = false) =&gt; { const mark = `${lineIndex},${boxIndex}`; // 폭탄이 터질 위치 if (graph[lineIndex][boxIndex] === "O" &amp;&amp; !visited[mark] &amp;&amp; !isSelf) return; // 폭탄 자체의 위치가 아닌 상황에서 방문한 적 없는 주변 폭탄인 경우에는 넘어감 visited[mark] = true; graph[lineIndex][boxIndex] = "."; }; 이를 통해 예제의 상황에 대해서는 제대로 결과가 호출되는 것을 볼 수 있었습니다. 하지만, 백준을 통해 채점을 했을 때 틀렸다는 결과가 나와서 문제점을 파악하는 데에 시간을 꽤 소요됐습니다. 2. 두 번째 방식 : 직접 반복하기 (성공) 이전에 규칙을 찾아 적용하는 방식을 할 경우, 규칙이 무조건 반복되지 않을 수도 있다는 문제가 있다는 것을 발견했습니다. 그래서, 이를 해결하기 위해서는 직접 폭탄이 터지는 상황을 반복하는 것이 안전하다고 판단해, 직접 진행하는 것으로 방법을 변경했습니다. 문제를 풀기 위해 진행한 순서는 아래와 같습니다. 1초만 진행된 상황에 대해 처리하기 짝수초 만큼 진행된 상황에 대해 처리하기 1,2번 이외의 상황 처리하기 가장 먼저 진행한 것은 첫 번째 방식과 동일하게 그래프를 만들어주는 것이었습니다. const [R, C, N] = input[0].split(" "); const time = Number(N); const graph = input.slice(1).map((line) =&gt; line.split("")); [ [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", "O", ".", ".", "."], [".", ".", ".", ".", "O", ".", "."], [".", ".", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ["O", "O", ".", ".", ".", ".", "."], ]; // 생성된 그래프 배열 그리고 폭탄이 터지는 상황에서 사용하기 위한 폭탄으로만 가득찬 배열을 만드는 함수를 생성했습니다. 이 함수의 경우, 앞서 말한 바와 같이 짝수초 만큼 지나간 상황에서는 폭탄으로만 가득한 배열이 나오기 때문에 그 상황에서도 활용이 가능합니다. const getNewGraph = () =&gt; [...Array(Number(R))].map(() =&gt; [...Array(Number(C))].map(() =&gt; "O")); 그리고 1, 2번의 상황을 처리하기 위한 함수를 먼저 생성했습니다. const getResult = () =&gt; { // 1초만 지나간 경우 원래의 그래프를 보여줌 if (time === 1) { return input.slice(1).join("\n"); } // 짝수초만큼 지나간 경우 폭탄으로 가득한 그래프를 보여줌 if (!(time % 2)) { return getNewGraph() .map((line) =&gt; line.join("")) .join("\n"); } ... }; 이후 폭탄이 터진 뒤의 상황을 보여주는 그래프를 생성해야 했습니다. 이를 해결하기 위해 생각한 것은 우선 폭탄으로 가득찬 그래프를 먼저 만든 뒤, 이전 그래프에서 폭탄이 위치한 곳과 상하좌우를 폭탄이 터지도록 하여 다음에 터져야할 폭탄들이 보이는 그래프가 나오도록 설정을 해주었습니다. 그리고 2초가 더 지나간 상황에서는 새롭게 만들어진 그래프에서 폭탄이 터지는 상황을 만들도록 하여 앞서 진행한 것과 같은 방식으로 진행하도록 했습니다. const getResult = () =&gt; { ... let curTime = Number(time) - 2; // 시간이 이미 2초 지나간 뒤의 상황부터 시작하기 때문에 2를 뺌 let curGraph = graph; // 폭탄의 위치를 나타내는 그래프 while (curTime &gt; 0) { // 2초씩 지나간 뒤, 0초 이하일 경우 멈춤 curTime -= 2; // 2초가 지나간 뒤의 상황을 보여줄 것이므로 뺌 const newGraph = getNewGraph(); // 새롭게 만들어질 폭탄으로 가득찬 그래프 curGraph.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { // 폭탄 위치를 나타내는 그래프에서 좌표를 빼내어 폭탄과 그 상하좌우가 터지도록 설정 if (box !== "O") return; newGraph[lineIndex][boxIndex] = "."; if (lineIndex - 1 &gt;= 0) newGraph[lineIndex - 1][boxIndex] = "."; if (boxIndex - 1 &gt;= 0) newGraph[lineIndex][boxIndex - 1] = "."; if (boxIndex + 1 &lt;= C - 1) newGraph[lineIndex][boxIndex + 1] = "."; if (lineIndex + 1 &lt;= R - 1) newGraph[lineIndex + 1][boxIndex] = "."; }); }); curGraph = newGraph; // 새롭게 만들어진 폭탄 위치 그래프로 설정 } return curGraph.map((line) =&gt; line.join("")).join("\n"); }; 이런 식으로 폭탄이 터지는 위치에 대한 값을 지속적으로 확인해 처리해주는 방식으로 문제를 해결할 수 있었습니다. 🔎 현재 사용한 방식은 그래프 순회를 하는 방식을 적극적으로 사용하지는 않은 것이라 다른 방법에 대한 고민이 더 필요하기는 합니다!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BFS (너비 우선 그래프 순회)</title><link href="http://localhost:4000/algorithm/2022/11/07/BFS/" rel="alternate" type="text/html" title="BFS (너비 우선 그래프 순회)" /><published>2022-11-07T00:00:00+09:00</published><updated>2022-11-07T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/07/BFS</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/07/BFS/"><![CDATA[<p><strong>너비 우선</strong>은 주어진 노드의 인접점을 모두 방문하고 아래로 내려가거나 인접점의 인접점을 보는 형식을 의미합니다.</p>
 
 <p>너비 우선에서 가장 중요한 점은 <strong>‘주어진 점에 대해 모든 인접점을 우선적으로 처리하는 것’</strong>입니다.</p>
 
@@ -956,130 +1038,4 @@ URL은 리소스가 있는 위치를 지정하고, URN은 리소스에 자체적
   <li>서버가 HTTP 응답 메시지 생성</li>
   <li>응답 패킷이 클라이언트에 도착</li>
   <li>클라이언트에서 해당 내용으로 렌더링</li>
-</ol>]]></content><author><name>JinJeon</name></author><category term="HTTP" /><summary type="html"><![CDATA[해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. PORT PORT란 IP 내 프로세스 구분을 위해 사용하는 번호입니다. 보통 한 번에 둘 이상의 애플리케이션을 연결해야하는 상황에서 사용합니다. 통신을 주고 받으면서 패킷이 오는 경우, 해당 패킷이 어느 곳에서 오는 패킷인지를 구분해야하는 문제가 발생합니다. 이 상황에서 데이터를 전송할 목적지 서버를 찾는 것이 IP, 서버 내에서 구분된 애플리케이션을 찾는 것이 PORT라고 볼 수 있습니다. PORT의 특징 같은 IP 내 프로세스 구분 아래 예시와 같이, 80포트로 클라이언트가 메세지를 보내고, 서버에서는 10010번 포트로 응답을 보내게 되면, 포트를 뒤에 붙여서 같이 보내게 됩니다. 이 상황에서 IP는 아파트, PORT는 몇 동 ∙ 몇 호라고 생각할 수 있습니다. 0 - 65535가 할당 가능 1023까지는 잘 알려져서 일반적으로 사용하지 않음 FTP : 20,21 TELNET : 23 HTTP : 80 HTTPS : 443 DNS DNS는 Domain Name System의 줄임말로, 호스트 도메인 이름을 호스트의 네트워크 주소로 바꾸거나 그 반대의 변환을 수행하기 위해 개발되었습니다. 일종의 전화번호부와 같은 역할을 수행하며, IP가 숫자로만 이루어져 기억하기 어려운 것과 달리 특정 이름을 갖고 있어 기억을 하기에 용이합니다. 접근을 원하는 경우 도메인 명으로 DNS 서버에 먼저 접근한 뒤, 해당 IP를 받아올 수 있습니다. URI URI는 Uniform Resource Identifier의 줄임말로, 특정 리소스를 식별하는 역할을 수행합니다. URI, URL, URN의 차이 URI 내에 URL(로케이터 : locator), URN(이름 : name) 두 가지가 존재합니다. URL은 리소스가 있는 위치를 지정하고, URN은 리소스에 자체적인 이름을 부여하는데, 이로 인해 URN 이름만으로 실제 리소스를 받는 방법이 보편화 되지 않아 URL을 주로 사용하게 됩니다. URL의 특징 전체 문법 : scheme://[userInfo@]host:[:port]/[/path][?query][#fragment] scheme 주로 프로토콜이 사용되며 자원 접근 규칙으로서, http, https 등이 존재합니다. http는 80, https는 443 포트를 주로 사용하며 이들은 생략이 가능합니다. (https는 http에 보안이 추가된 형태) userInfo : URL에 사용자 정보를 포함해서 인증할 때 사용하나, 거의 사용되지 않습니다. host : 도메인명, IP 주소를 직접 넣어서 사용합니다. port : 접속 포트로, 일반적으로 웹 브라우저에서 생략이 가능합니다. path : 리소스 경로를 나타내며 계층적 구조로 이루어지며, ‘profile/1223’ 과 같은 형태를 띕니다. query : key=value의 형태로 이루어지며, ?로 시작하고 &amp;으로 추가가 가능합니다. query parameter, query string(모두 문자로 넘어가기 때문에) 등으로 불립니다. fragment : html 내부 북마크 등에 사용합니다. 서버로 전송되지는 않습니다. URI 접속 흐름 DNS 조회, PORT 조회 HTTP 요청 메시지 생성 Socket Library에서 handshake 과정을 통해 서버와 연결 데이터 전송 서버가 HTTP 응답 메시지 생성 응답 패킷이 클라이언트에 도착 클라이언트에서 해당 내용으로 렌더링]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">IP, TCP ∙ UDP</title><link href="http://localhost:4000/http/2022/10/23/IP_TCP_UDP/" rel="alternate" type="text/html" title="IP, TCP ∙ UDP" /><published>2022-10-23T00:00:00+09:00</published><updated>2022-10-23T00:00:00+09:00</updated><id>http://localhost:4000/http/2022/10/23/IP_TCP_UDP</id><content type="html" xml:base="http://localhost:4000/http/2022/10/23/IP_TCP_UDP/"><![CDATA[<blockquote>
-  <p>해당 내용은 <a href="https://www.inflearn.com/course/http-웹-네트워크/dashboard">모든 개발자를 위한 HTTP 웹 기본 지식</a> 강의를 수강하여 작성했습니다.</p>
-</blockquote>
-
-<h2 id="ipinternet-protocol">IP(Internet Protocol)</h2>
-
-<p>IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다.</p>
-
-<p>클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 <strong>‘패킷’</strong>이라는 단위를 사용합니다.</p>
-
-<p><strong>클라이언트 주소, 서버 주소, 보낼 내용</strong> 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-8.png" alt="" width="" height="" /> 
-</figure>
-
-<h3 id="문제점">문제점</h3>
-
-<ol>
-  <li><strong>비연결성</strong> : 패킷 대상이 없거나 불능이어도 보내게 됩니다.</li>
-  <li><strong>비신뢰성</strong> : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다.
-    <ul>
-      <li>중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다.</li>
-      <li>1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다.</li>
-    </ul>
-  </li>
-  <li><strong>프로그램 구분</strong> : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다.</li>
-</ol>
-
-<hr />
-
-<h2 id="tcpudp">TCP/UDP</h2>
-
-<p>인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다.</p>
-
-<ol>
-  <li>애플리케이션 계층 - HTTP, FTP</li>
-  <li>전송 계층 - TDP, UDP (IP 보완)</li>
-  <li>인터넷 계층 - IP</li>
-  <li>네트워크 인터페이스 계층 - LAN 드라이버 등</li>
-</ol>
-
-<h3 id="순서">순서</h3>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-9.png" alt="" width="" height="" /> 
-</figure>
-
-<ol>
-  <li>일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달</li>
-  <li>OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함</li>
-  <li>이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄</li>
-  <li>서버로 전송</li>
-</ol>
-
-<h3 id="ip-tcp-패킷-정보">IP, TCP 패킷 정보</h3>
-
-<p>패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다.</p>
-
-<p>TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-10.png" alt="" width="" height="" /> 
-</figure>
-
-<h3 id="tcp의-특징">TCP의 특징</h3>
-
-<ol>
-  <li>TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다.</li>
-  <li>먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake)</li>
-  <li>데이터가 상대에게 제대로 보내졌는지를 확인하는 <strong>데이터 전달 보증</strong>이 이루어집니다.</li>
-  <li>데이터가 보낸 순서대로 도착하도록 하는 <strong>순서 보증</strong>의 역할을 합니다.</li>
-  <li>위와 같은 기능들을 갖고 있어 <strong>신뢰가능</strong>한 프로토콜입니다.</li>
-</ol>
-
-<h3 id="tcp-3-way-handshake">TCP 3 way handshake</h3>
-
-<p>클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다.</p>
-
-<ol>
-  <li>클라이언트가 서버에게 요청</li>
-  <li>서버가 요청을 수락하고 다시 클라이언트에게 요청</li>
-  <li>클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송)</li>
-  <li>데이터 전송</li>
-</ol>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-11.png" alt="" width="" height="" /> 
-</figure>
-
-<p>TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 <strong>클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미</strong>합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다.</p>
-
-<h3 id="장점">장점</h3>
-
-<ul>
-  <li>전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다.</li>
-  <li>순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.)</li>
-</ul>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221023/Untitled-12.png" alt="" width="" height="" /> 
-</figure>
-
-<hr />
-
-<h3 id="udp">UDP</h3>
-
-<p>사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다.</p>
-
-<h3 id="udp의-특징">UDP의 특징</h3>
-
-<ul>
-  <li>하얀 도화지에 비유되며 기능이 거의 없습니다.</li>
-  <li>연결 지향성을 띄며 3-way handshake가 없습니다.</li>
-  <li>데이터 전달 보증이나 순서 보증이 없습니다.</li>
-  <li>IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, <strong>각 패킷의 용도를 구분하기 위해 PORT를 사용</strong>하며. <strong>체크섬은 메세지가 제대로 된 것인지 확인하는 용도</strong>로 사용됩니다.</li>
-  <li>UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다.</li>
-  <li>주목받는 이유로 아래와 같은 사항들이 있습니다.
-    <ol>
-      <li>TCP의 단점인 3 way handshake로 인한 시간</li>
-      <li>여러 데이터들로 인한 데이터 양 증가 → 속도 감소</li>
-      <li>TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움</li>
-      <li>무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음</li>
-    </ol>
-  </li>
-  <li>UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.</li>
-</ul>]]></content><author><name>JinJeon</name></author><category term="HTTP" /><summary type="html"><![CDATA[해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. IP(Internet Protocol) IP는 인터넷 프로토콜의 약자로, 인터넷이 가능한 네트워크 상에서 정보를 송 ∙ 수신하는 통신에 대한 규약을 의미합니다. 클라이언트와 서버는 각각의 IP를 갖고 있습니다. 클라이언트와 서버는 각각의 지정된 IP 주소에 데이터를 전달하며, 데이터를 전달할 때에는 ‘패킷’이라는 단위를 사용합니다. 클라이언트 주소, 서버 주소, 보낼 내용 이 세 가지를 적어서 인터넷으로 보내게 되면, 인터넷에서 자체적으로 서버에 보낼 수 있는 주소를 찾아가면서 나아갑니다. 문제점 비연결성 : 패킷 대상이 없거나 불능이어도 보내게 됩니다. 비신뢰성 : 중간에 패킷이 없어지거나 순서대로 도착하지 않는 문제가 발생합니다. 중간에 케이블이 끊어지는 것과 같은 불가피한 하는 문제가 발생하면 결국 패킷이 없어집니다. 1500byte가 넘어가는 경우, 보통 끊어서 보내게 되는데, 이 때 순서를 지켜서 보내야 합니다. 하지만, 여러 패킷이 가는 경우, 중간에 패킷이 다른 순서로 더 먼저 갈 수도 있다는 문제가 발생합니다. 이를 해결하기 위해 TCP, UDP를 사용합니다. 프로그램 구분 : 같은 IP를 사용하는 서버에서 여러 애플리케이션이 통신될 경우 문제가 발생할 수 있습니다. TCP/UDP 인터넷 프로토콜 스택은 4계층으로 이루어져 있습니다. 애플리케이션 계층 - HTTP, FTP 전송 계층 - TDP, UDP (IP 보완) 인터넷 계층 - IP 네트워크 인터페이스 계층 - LAN 드라이버 등 순서 일반적으로 사용하는 애플리케이션에서 socket library를 통해 메시지를 전달 OS에서 TCP 정보를 메세지에 포함 → IP 패킷을 그 TCP 정보에 포함 이더넷 프레임(MAC 주소 등이 포함)을 LAN 드라이버에서 포함 시켜서 인터넷으로 보냄 서버로 전송 IP, TCP 패킷 정보 패킷은 package(수하물)와 bugget(덩어리)의 합성어입니다. IP 패킷에는 출발지 IP, 목적지 IP가 들어갑니다. TCP 패킷에는 출발지 PORT, 목적지 PORT, 전송 제어 ∙ 순서 ∙ 검증 등과 관련된 정보 등이 들어옵니다. TCP의 특징 TCP는 전송 제어 프로토콜(Transmission Control Protocol)입니다. 먼저 서로 연결이 되었는지를 확인하는 연결 지향성을 띕니다. (3 way handshake) 데이터가 상대에게 제대로 보내졌는지를 확인하는 데이터 전달 보증이 이루어집니다. 데이터가 보낸 순서대로 도착하도록 하는 순서 보증의 역할을 합니다. 위와 같은 기능들을 갖고 있어 신뢰가능한 프로토콜입니다. TCP 3 way handshake 클라이언트와 서버가 서로 연결을 진행하는 과정으로, SYN, SYN + ACK, ACK의 과정으로 이루어집니다. 클라이언트가 서버에게 요청 서버가 요청을 수락하고 다시 클라이언트에게 요청 클라이언트가 요청을 수락 (현재는 발전되어 요청 수락과 동시에 데이터 전송) 데이터 전송 TCP의 연결은 옛날 전화선처럼 연결된 것이 아닙니다. 그저 클라이언트와 서버간 3-way handshake 과정이 성공했다는 것(논리적으로만 연결)을 의미합니다. 즉, 클라이언트와 서버 사이에 수 많은 서버들을 거치는 것은 달라지지 않습니다. 장점 전달 보증 : 클라이언트가 서버에게 메세지를 보낼 때, 이에 대한 응답 유무를 확인해, 제대로 메세지가 보내졌는지를 확인할 수 있습니다. 순서 보장 : 패킷을 1, 2, 3 순서로 보냈는데 1, 3, 2의 순서로 도착하는 경우, 패킷 2부터 다시 보내도록 서버가 응답을 보냅니다. (서버가 최적화를 통해 해결을 할 수도 있습니다.) UDP 사용자 데이터그램 프로토콜(User Datagram Protocol)의 약자로, 데이터 통신을 위한 규약의 일종입니다. UDP의 특징 하얀 도화지에 비유되며 기능이 거의 없습니다. 연결 지향성을 띄며 3-way handshake가 없습니다. 데이터 전달 보증이나 순서 보증이 없습니다. IP와 비슷하나 다른 점으로 PORT와 체크섬이 있습니다. 특정 IP로 여러 패킷이 오는 경우, 각 패킷의 용도를 구분하기 위해 PORT를 사용하며. 체크섬은 메세지가 제대로 된 것인지 확인하는 용도로 사용됩니다. UDP를 사용하기 위해서는 애플리케이션에서 추가 작업이 필요합니다. 주목받는 이유로 아래와 같은 사항들이 있습니다. TCP의 단점인 3 way handshake로 인한 시간 여러 데이터들로 인한 데이터 양 증가 → 속도 감소 TCP가 이미 인터넷에서 많이 사용되고 있어 TCP는 추가 작업을 하기 어려움 무언가 추가적인 작업을 할 때 UDP 위에서 진행할 수 있음 UDP의 활용도가 올라가기 시작했는데, 이는 HTTP3 스팩에서 TCP/IP의 3 way 과정을 줄이기 위한 최적화 방법으로써 UDP 프로토콜을 활용하기 시작했기 때문입니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</ol>]]></content><author><name>JinJeon</name></author><category term="HTTP" /><summary type="html"><![CDATA[해당 내용은 모든 개발자를 위한 HTTP 웹 기본 지식 강의를 수강하여 작성했습니다. PORT PORT란 IP 내 프로세스 구분을 위해 사용하는 번호입니다. 보통 한 번에 둘 이상의 애플리케이션을 연결해야하는 상황에서 사용합니다. 통신을 주고 받으면서 패킷이 오는 경우, 해당 패킷이 어느 곳에서 오는 패킷인지를 구분해야하는 문제가 발생합니다. 이 상황에서 데이터를 전송할 목적지 서버를 찾는 것이 IP, 서버 내에서 구분된 애플리케이션을 찾는 것이 PORT라고 볼 수 있습니다. PORT의 특징 같은 IP 내 프로세스 구분 아래 예시와 같이, 80포트로 클라이언트가 메세지를 보내고, 서버에서는 10010번 포트로 응답을 보내게 되면, 포트를 뒤에 붙여서 같이 보내게 됩니다. 이 상황에서 IP는 아파트, PORT는 몇 동 ∙ 몇 호라고 생각할 수 있습니다. 0 - 65535가 할당 가능 1023까지는 잘 알려져서 일반적으로 사용하지 않음 FTP : 20,21 TELNET : 23 HTTP : 80 HTTPS : 443 DNS DNS는 Domain Name System의 줄임말로, 호스트 도메인 이름을 호스트의 네트워크 주소로 바꾸거나 그 반대의 변환을 수행하기 위해 개발되었습니다. 일종의 전화번호부와 같은 역할을 수행하며, IP가 숫자로만 이루어져 기억하기 어려운 것과 달리 특정 이름을 갖고 있어 기억을 하기에 용이합니다. 접근을 원하는 경우 도메인 명으로 DNS 서버에 먼저 접근한 뒤, 해당 IP를 받아올 수 있습니다. URI URI는 Uniform Resource Identifier의 줄임말로, 특정 리소스를 식별하는 역할을 수행합니다. URI, URL, URN의 차이 URI 내에 URL(로케이터 : locator), URN(이름 : name) 두 가지가 존재합니다. URL은 리소스가 있는 위치를 지정하고, URN은 리소스에 자체적인 이름을 부여하는데, 이로 인해 URN 이름만으로 실제 리소스를 받는 방법이 보편화 되지 않아 URL을 주로 사용하게 됩니다. URL의 특징 전체 문법 : scheme://[userInfo@]host:[:port]/[/path][?query][#fragment] scheme 주로 프로토콜이 사용되며 자원 접근 규칙으로서, http, https 등이 존재합니다. http는 80, https는 443 포트를 주로 사용하며 이들은 생략이 가능합니다. (https는 http에 보안이 추가된 형태) userInfo : URL에 사용자 정보를 포함해서 인증할 때 사용하나, 거의 사용되지 않습니다. host : 도메인명, IP 주소를 직접 넣어서 사용합니다. port : 접속 포트로, 일반적으로 웹 브라우저에서 생략이 가능합니다. path : 리소스 경로를 나타내며 계층적 구조로 이루어지며, ‘profile/1223’ 과 같은 형태를 띕니다. query : key=value의 형태로 이루어지며, ?로 시작하고 &amp;으로 추가가 가능합니다. query parameter, query string(모두 문자로 넘어가기 때문에) 등으로 불립니다. fragment : html 내부 북마크 등에 사용합니다. 서버로 전송되지는 않습니다. URI 접속 흐름 DNS 조회, PORT 조회 HTTP 요청 메시지 생성 Socket Library에서 handshake 과정을 통해 서버와 연결 데이터 전송 서버가 HTTP 응답 메시지 생성 응답 패킷이 클라이언트에 도착 클라이언트에서 해당 내용으로 렌더링]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
