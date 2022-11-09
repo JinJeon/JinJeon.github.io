@@ -36,5 +36,10 @@
 }
 
 code {
-  word-spacing: 0.4rem;
+  display: inline-block;
+  word-spacing: 0.25rem;
+
+  > span {
+    line-height: 1.75rem;
+  }
 }
