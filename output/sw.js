@@ -1,8 +1,8 @@
-const version = '20221113103749';
+const version = '20221115181749';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/algorithm/2022/11/10/5547/","/algorithm/2022/11/09/7576/","/algorithm/2022/11/09/2667/","/algorithm/2022/11/09/14940/","/algorithm/2022/11/08/16918/","/algorithm/2022/11/08/1325/","/algorithm/2022/11/07/BFS/","/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/","/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/blog/page5/","/blog/page6/","/blog/page7/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/algorithm/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/","/algorithm/2022/11/10/5547/","/algorithm/2022/11/09/7576/","/algorithm/2022/11/09/2667/","/algorithm/2022/11/09/14940/","/algorithm/2022/11/08/16918/","/algorithm/2022/11/08/1325/","/algorithm/2022/11/07/BFS/","/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4/","/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/blog/page5/","/blog/page6/","/blog/page7/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
