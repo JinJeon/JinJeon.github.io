@@ -10,32 +10,29 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>백준 10994번 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="JINJEONIMUM" />
+<meta property="og:title" content="백준 10994번" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/blog/page3/" />
-<meta property="og:url" content="http://localhost:4000/blog/page3/" />
+<meta name="description" content="QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [[&quot;*&quot;, &quot; &quot;, &quot;*&quot;][(&quot;*&quot;, &quot; &quot;, &quot;*&quot;)]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = &quot;*&quot;; newLine[totalLength - 1 - j] = &quot;*&quot;; } else { const marker = j &lt; i ? &quot; &quot; : &quot;*&quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? &quot;*&quot; : &quot; &quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = &quot; &quot;; newLine[totalLength - 1 - j] = &quot; &quot;; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join(&quot;&quot;)).join(&quot;\n&quot;); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다." />
+<meta property="og:description" content="QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [[&quot;*&quot;, &quot; &quot;, &quot;*&quot;][(&quot;*&quot;, &quot; &quot;, &quot;*&quot;)]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = &quot;*&quot;; newLine[totalLength - 1 - j] = &quot;*&quot;; } else { const marker = j &lt; i ? &quot; &quot; : &quot;*&quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? &quot;*&quot; : &quot; &quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = &quot; &quot;; newLine[totalLength - 1 - j] = &quot; &quot;; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join(&quot;&quot;)).join(&quot;\n&quot;); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다." />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/11/19/10994/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/11/19/10994/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
-<link rel="prev" href="http://localhost:4000/blog/page2" />
-<link rel="next" href="http://localhost:4000/blog/page4" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-19T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="JINJEONIMUM" />
+<meta property="twitter:title" content="백준 10994번" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","headline":"JINJEONIMUM","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"url":"http://localhost:4000/blog/page3/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"백준 10994번","dateModified":"2022-11-19T00:00:00+09:00","datePublished":"2022-11-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/11/19/10994/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [[&quot;*&quot;, &quot; &quot;, &quot;*&quot;][(&quot;*&quot;, &quot; &quot;, &quot;*&quot;)]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = &quot;*&quot;; newLine[totalLength - 1 - j] = &quot;*&quot;; } else { const marker = j &lt; i ? &quot; &quot; : &quot;*&quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? &quot;*&quot; : &quot; &quot;; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = &quot; &quot;; newLine[totalLength - 1 - j] = &quot; &quot;; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join(&quot;&quot;)).join(&quot;\\n&quot;); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.","url":"http://localhost:4000/algorithm/2022/11/19/10994/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-      
-      <title>POSTS - JINJEONIMUM</title>
-      <meta property="og:title" content="POSTS">
-      <meta name="description" content="">
-      <meta property="og:description" content="">
     
     
       
@@ -104,7 +101,7 @@
 
   </head>
 
-  <body class="layout-blog">
+  <body class="layout-post  백준-10994번">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -215,196 +212,149 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>규칙성을 통한 별찍기</p>
+
+    </div>
+  </div>
+
 </header>
 
 
-<main class="main  container">
-
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
+<main class="main container">
+  <article class="article article--post content typeset">
+    <div class="article--title">
+      <h1>백준 10994번</h1>
       
-        
-        <h1>POSTS</h1>
-        
-
-
-      
-
-    </article>
-
-    
-  <section class="section  typeset">
-    <ul class="list  list--posts">
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4-copy/">textarea 줄바꿈 시 자동 스크롤</a></h3>
-              
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-19T00:00:00+09:00" class="time">19 Nov 2022</time>
 </small>
 
-            </div>
-            <p>React에서 textarea 줄바꿈 시 자동 스크롤이 되도록 만들기</p>
+    </div>
 
+    <p><strong><a href="https://www.acmicpc.net/problem/10994">QUESTION LINK</a></strong></p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/">textarea 높이 조절하기</a></h3>
-              
+<p>예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다.</p>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*********
+*       *
+* ***** *
+* *   * *
+* * * * *
+* *   * *
+* ***** *
+*       *
+*********
+</code></pre></div></div>
 
-            </div>
-            <p>React에서 textarea 높이 조절하기</p>
+<p>첫 번째는 <strong>반복을 최대한 줄이는 방법</strong>이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다.</p>
 
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="c1">// 처음에 주어진 값</span>
+<span class="kd">const</span> <span class="nx">halfLength</span> <span class="o">=</span> <span class="nx">count</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 절반의 값</span>
+<span class="kd">const</span> <span class="nx">totalLength</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
+<span class="c1">// 전체 길이의 값</span>
+</code></pre></div></div>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/">HTTP의 특징</a></h3>
-              
+<p>두 번째 어려웠던 점은 <strong>규칙성을 적용하는 방식</strong>이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다.</p>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">][(</span><span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)]];</span>
+<span class="c1">// 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함</span>
+</code></pre></div></div>
 
-            </div>
-            <p>HTTP의 특징 및 그와 관련된 문제, 해결</p>
+<p>그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다.</p>
 
+<p>이를 통해, 아래와 같은 코드를 짤 수 있었습니다.</p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/javascript/2022/10/25/%EC%8A%A4%ED%81%AC%EB%A1%A4-%EC%8B%9C-header%EC%97%90-%EA%B7%B8%EB%A6%BC%EC%9E%90-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0/">스크롤 시 header에 그림자 보여주기</a></h3>
-              
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 결과가 모두 들어오는 배열</span>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#javascript">JAVASCRIPT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-25T00:00:00+09:00" class="time">25 Oct 2022</time>
-</small>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌</span>
+  <span class="kd">const</span> <span class="nx">newLine</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="c1">// 현재 방문한 줄의 배열</span>
 
-            </div>
-            <p>스크롤 시 header에 그림자 보여주기</p>
+  <span class="c1">// 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용</span>
+  <span class="c1">// totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌</span>
+  <span class="c1">// i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">j</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">i</span> <span class="p">?</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">j</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">i</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
+  <span class="nx">resultArray</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">newLine</span><span class="p">;</span>
+  <span class="nx">resultArray</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">newLine</span><span class="p">;</span>
+<span class="p">}</span>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/">textarea 태그 Enter 처리 문제</a></h3>
-              
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-25T00:00:00+09:00" class="time">25 Oct 2022</time>
-</small>
-
-            </div>
-            <p>input과 textarea 차이로 인해 발생한 Enter 처리 문제</p>
-
-
-          </article>
-        </li>
-      
-    </ul>
-    <nav class="nav  nav--paginator">
-
-  
-    <a href="/blog/page2" class="pagination  pagination--previous">&larr; NEWER</a>
-  
-
-  <span class="pagination  pagination--counter">PAGE : 3 OF 8</span>
-
-  
-    <a href="/blog/page4" class="pagination  pagination--next">OLDER &rarr;</a>
-  
-
-</nav>
-
-  </section>
-
-
-
-  </div>
-
-  <!-- prettier-ignore -->
-
-<aside class="aside  typeset  aside--right">
-
-  
-    <section class="section  section--description">
-      <h4>ABOUT ME</h4>
-      <!-- <p></p> -->
-      <!-- prettier-ignore -->
-<nav class="nav  nav--social">
+<p>이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 <strong>필요한 값과 규칙성</strong>을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.</p>
+ <!-- prettier-ignore -->
+<div class="share">
   
     
       
-      <a href="https://github.com/JinJeon">
-        <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->https://github.com/JinJeon" style="background: #444545">GITHUB&nbsp; <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+</a>
+
     
   
     
       
-      <a href="https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796">
-        <svg width="16" height="16" class="icon  icon--nav" role="img" alt="nav"><title>nav</title><use xlink:href="#nav" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->mailto:nanyong01@gmail.com?subject=백준 10994번&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/11/19/10994/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
     
   
-</nav>
+</div>
+ 
 
-    </section>
+  </article>
 
   
-
-</aside>
-
-
 </main>
 
 <footer class="footer">
