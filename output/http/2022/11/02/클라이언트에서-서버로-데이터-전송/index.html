@@ -10,27 +10,27 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Shell Script | JINJEONIMUM</title>
+<title>클라이언트에서 서버로 데이터 전송 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Shell Script" />
+<meta property="og:title" content="클라이언트에서 서버로 데이터 전송" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/" />
-<meta property="og:description" content="Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/" />
-<link rel="canonical" href="http://localhost:4000/dev/2022/01/09/%EC%89%98/" />
-<meta property="og:url" content="http://localhost:4000/dev/2022/01/09/%EC%89%98/" />
+<meta name="description" content="‘클라이언트 → 서버’ 데이터 전송 방법 클라이언트에서 서버로 데이터를 전송하는 데에는 크게 두 가지 방법으로 나뉩니다. 쿼리 파라미터를 통해 데이터 전송 : GET을 사용하며, 정렬 필터(검색어)를 만들 때 사용합니다. 메시지 바디를 통한 데이터 전송 : POST, PUT, PATCH를 사용하며, 회원 가입, 상품 주문, 리소스 등록 등을 만들 때 사용합니다. 정적 데이터 조회 이미지, 문자 전송과 같은 정적 데이터는 일반적으로 쿼리 파라미터 없이 리소스 경로를 통해 단순하게 조회합니다. 이 때 GET을 사용하게 됩니다. 동적 데이터 조회 GET, 쿼리 파라미터를 사용하여 데이터를 전달하고 조회를 하는 방법입니다. 검색, 게시판 목록에서 정렬 필터, 조회 조건을 줄여주는 필터 등에 사용됩니다. 메시지 바디를 쓸 수 있지만 지원하는 곳이 많지 않아 권장되지는 않습니다. HTML Form으로 전송하기 HTML에 자체적으로 내장된 Form이라는 태그를 이용하여 데이터를 전송할 수 있습니다. 이 때, content-type의 default는 application/x-www-form-urlencoded로 설정이 되어 있습니다. HTML Form 전송은 GET, POST 만을 지원합니다. HTML Form을 통한 데이터 전송 위 그림과 같이 Form을 만들어 메시지를 보낼 시, HTTP body에 쿼리 파라미터와 동일한 방식으로 적어서 서버에 전송하게 됩니다. 여기서form-urlencoded라는 것이 쓰이는 이유는 한글같은 다른 언어가 들어올 시 “?” 같은 문자들을 같이 작성해 넘기기 때문입니다. method = “get”으로 보낼 시, 쿼리 파라미터에 담아서 보내게 되는데, 이 때 ‘get’은 조회의 용도로만 사용해야 하며, 저장을 하는 데에는 사용할 수 없습니다. HTML Form으로 파일 전송 파일 전송 시 multipart/form-data를 사용하게 됩니다. 이 때, boundary라는 것(여기서는 —-XXX)을 브라우저가 자체적으로 만들며, 아래에 name에 따라 구분된 상태로 요청을 보내게 됩니다. 위 그림과 같이 multipart 즉 여러 부분들의 형태로 데이터를 보내는 데에 multipart/form-data를 사용합니다. HTTP API 데이터 전송 주로 서버끼리 통신할 때 사용하는 형태로, 위 예시와 같이 정보들을 직접 작성해서 서버에 넘기게 됩니다. POST, PUT, PATCH는 메시지 바디를 통해 데이터를 전송합니다. Content-type: application/json을 주로 사용하고, XML을 이전에 많이 사용했으나 요즘에는 JSON 위주로 사용하고 있습니다. 이러한 형태는 아이폰, 안드로이드 앱 클라이언트에서 넘길 때, HTML에서 Form 전송 대신 자바스크립트로 통신할 때(React, Vue와 같은 웹 클라이언트 통신) 같은 상황에서도 사용됩니다." />
+<meta property="og:description" content="‘클라이언트 → 서버’ 데이터 전송 방법 클라이언트에서 서버로 데이터를 전송하는 데에는 크게 두 가지 방법으로 나뉩니다. 쿼리 파라미터를 통해 데이터 전송 : GET을 사용하며, 정렬 필터(검색어)를 만들 때 사용합니다. 메시지 바디를 통한 데이터 전송 : POST, PUT, PATCH를 사용하며, 회원 가입, 상품 주문, 리소스 등록 등을 만들 때 사용합니다. 정적 데이터 조회 이미지, 문자 전송과 같은 정적 데이터는 일반적으로 쿼리 파라미터 없이 리소스 경로를 통해 단순하게 조회합니다. 이 때 GET을 사용하게 됩니다. 동적 데이터 조회 GET, 쿼리 파라미터를 사용하여 데이터를 전달하고 조회를 하는 방법입니다. 검색, 게시판 목록에서 정렬 필터, 조회 조건을 줄여주는 필터 등에 사용됩니다. 메시지 바디를 쓸 수 있지만 지원하는 곳이 많지 않아 권장되지는 않습니다. HTML Form으로 전송하기 HTML에 자체적으로 내장된 Form이라는 태그를 이용하여 데이터를 전송할 수 있습니다. 이 때, content-type의 default는 application/x-www-form-urlencoded로 설정이 되어 있습니다. HTML Form 전송은 GET, POST 만을 지원합니다. HTML Form을 통한 데이터 전송 위 그림과 같이 Form을 만들어 메시지를 보낼 시, HTTP body에 쿼리 파라미터와 동일한 방식으로 적어서 서버에 전송하게 됩니다. 여기서form-urlencoded라는 것이 쓰이는 이유는 한글같은 다른 언어가 들어올 시 “?” 같은 문자들을 같이 작성해 넘기기 때문입니다. method = “get”으로 보낼 시, 쿼리 파라미터에 담아서 보내게 되는데, 이 때 ‘get’은 조회의 용도로만 사용해야 하며, 저장을 하는 데에는 사용할 수 없습니다. HTML Form으로 파일 전송 파일 전송 시 multipart/form-data를 사용하게 됩니다. 이 때, boundary라는 것(여기서는 —-XXX)을 브라우저가 자체적으로 만들며, 아래에 name에 따라 구분된 상태로 요청을 보내게 됩니다. 위 그림과 같이 multipart 즉 여러 부분들의 형태로 데이터를 보내는 데에 multipart/form-data를 사용합니다. HTTP API 데이터 전송 주로 서버끼리 통신할 때 사용하는 형태로, 위 예시와 같이 정보들을 직접 작성해서 서버에 넘기게 됩니다. POST, PUT, PATCH는 메시지 바디를 통해 데이터를 전송합니다. Content-type: application/json을 주로 사용하고, XML을 이전에 많이 사용했으나 요즘에는 JSON 위주로 사용하고 있습니다. 이러한 형태는 아이폰, 안드로이드 앱 클라이언트에서 넘길 때, HTML에서 Form 전송 대신 자바스크립트로 통신할 때(React, Vue와 같은 웹 클라이언트 통신) 같은 상황에서도 사용됩니다." />
+<link rel="canonical" href="http://localhost:4000/http/2022/11/02/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1/" />
+<meta property="og:url" content="http://localhost:4000/http/2022/11/02/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-01-09T00:00:00+09:00" />
+<meta property="article:published_time" content="2022-11-02T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="Shell Script" />
+<meta property="twitter:title" content="클라이언트에서 서버로 데이터 전송" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"Shell Script","dateModified":"2022-01-09T00:00:00+09:00","datePublished":"2022-01-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dev/2022/01/09/%EC%89%98/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"Shell OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다. 1. Shell Script? Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다. Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다. zsh는 z셸 스크립을 위한 명령 인터프리터이다. Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다. 자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다. 2. Shell Script 파일 생성, 작성, 실행 생성 : vi (filename).sh을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다. 입력 : i키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다. 저장 : esc키를 누른 뒤, :wq키를 입력해 나오면 된다. 실행 : sh (filename).sh를 입력하면 저장된 내용이 실행된다. #!/bin/bash echo &quot;HIHIHI!&quot; pwd ls 위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다. 입력값 불러오기(echo), 현재 위치 경로 출력(pwd), 현재 위치 디렉토리 파일 출력(ls)의 순서대로 나온 것을 볼 수 있다. 3. Shell Script내 간단한 문법들 3-1. 반복문 - for 기본적으로 사용하는 반복문으로 for가 있다. for in - do - done의 형태로 이루어지며, 코드로 보면 다음과 같다. for file in $files do filename=`basename $file` done 변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다. 3-2. 파일, 디렉토리 찾기 - find find . -name &quot;DAY*&quot; find . -name &quot;DAY*&quot; -type d find . -name &quot;DAY*&quot; -type f ‘.’은 현재 디렉토리 내의 모든 파일, -name은 이름으로 찾는 것, “DAY*”는 DAY라는 형식으로 이루어진 모든 파일임을 말한다. -type d는 디렉토리로, -type f는 파일로 찾는다는 것을 말한다. find . -empty -empty를 이용해 빈 파일을 찾는 데에 사용할 수 있다. find . -size +100M -size를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다. find . -name &quot;DAY*&quot; -exec ls -l {} \\; -exec를 이용해 부가적인 작업의 수행이 가능하다. 검색된 파일이 {} 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다. 3-3. 디렉토리 생성 ∙ 삭제 mkdir ABC rm -rf ABC mkdir를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다. rm을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 -r이라는 옵션이 들어가야하고, -f라는 옵션을 함께 사용하면, 경고 없이 모두 강제로 삭제된다. 3-4. 경로에서 파일명 가져오기 dirname=`basename $dir` basename을 이용하면 특정 경로를 나타내는 값들의 마지막 부분, 예를 들면, home/ABC/backup/test.txt와 같은 상황에서 test.txt만 나오도록 할 수 있다. 위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우, dirname이라는 변수가 만들어지고, $dirname로 활용할 수 있다. 3-5. 문자열 일부 가져오기 dirnum=${dirname:3} # dirname : &quot;HELLO WORLD&quot; # dirnum : LO WORLD dirname의 값으로 나오는 문자열 중, 네 번째(3+1)의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다. 3-6. 조건문 사용하기 - if if [ -f $filename ] then ... else ... fi if 의 내부에 값이 true일 경우, then의 다음에 오는 과정들을 처리하고, 아닐경우 else의 뒤에 오는 과정들을 처리한다. 이 과정을 fi가 나올 때까지 진행한다. 조건문의 여러 상황에 대해 정리된 자료 링크가 있어 아래에 추가적으로 적는다. # if 여러 상황에 대해서 [ -z ${A} ] : A 문자열의 길이가 0이면 TRUE [ -n ${A} ] : A 문자열의 길이가 0이 아니면 TRUE [ ${A} -eq ${B} ] : A와 B값이 같으면 TRUE [ ${A} -ne ${B} ] : A와 B값이 다르면 TRUE [ ${A} -gt ${B} ] : A가 B보다 크면 TRUE [ ${A} -ge ${B} ] : A가 B보다 크거나 같으면 TRUE [ ${A} -lt ${B} ] : A가 B보다 작으면 TRUE [ ${A} -le ${B} ] : A가 B보다 작거나 같으면 TRUE [ 조건식A -a 조건식B ] : 조건식 A와 B가 모두 TRUE이면 TRUE (&amp;&amp; 와 동일) [ 조건식A -o 조건식B ] : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE (|| 와 동일) 파일관련 [ -d ${A} ] : A 파일이 디렉토리면 TRUE [ -e ${A} ] : A 파일이(노드, 디렉토리, 소켓 등등 모두) 존재하면 TRUE [ -L ${A} ] : A 파일이 심볼릭 링크면 TRUE [ -r ${A} ] : A 파일이 읽기 가능하면 TRUE [ -s ${A} ] : A 파일의 크기가 0 보다 크면 TRUE [ -w ${A} ] : A 파일이 쓰기 가능하면 TRUE [ -x ${A} ] : A 파일이 실행 가능하면 TRUE [ -c ${A} ] : A 파일이 Special character file 이면 TRUE [ -f ${A} ] : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE [ -S ${A} ] : A 파일이 소켓이면 TRUE [ ${A} -nt ${B} ] : A 파일 B 파일보다 최신파일이면 참 [ ${A} -ot ${B} ] : A 파일이 B 파일보다 이전파일이면 참 [ ${A} -ef ${B} ] : A 파일과 B 파일이 같은 파일이면 참 3-7. 결과값 표시 - echo echo text or 변수명 적혀진 텍스트, 혹은 변수의 값을 표현해준다. JavaScript의 console.log와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다. 3-8. 시간 구하기 - date date day=`date +%Y%m%d` date라고 작성할 시 2022년 1월 10일 월요일 01시 51분 38초 KST 와 같이 결과값이 나오게 된다. 위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. 세세한 여러 표현 방법을 알려주는 링크를 참고하면 좋을 듯 하다. 3-9. 파일 압축하기 - zip zip BACKUP_$day.zip ./BEFORE_ZIP zip AAA.zip -r ./* zip “파일이름” “압축할 디렉토리” 의 순서로 작성하면 된다. 두 번째와 같이 -r을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다. 3-10. 다른 서버로의 파일 전송 - scp # 로컬에서 원격 scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] # 원격에서 로컬 scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로] # 원격에서 원격 scp [유저명]@[IP주소]:[전송할 파일 경로] [유저명]@[IP주소]:[받을 경로] scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다. 링크 쉘 스크립트 생성 https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행 https://rrecoder.tistory.com/62 쉘 스크립트 scp 간단 사용법 https://doheejin.github.io/linux/2021/03/03/linux-scp.html 터미널 디렉토리, 파일 삭제 방법 https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/","url":"http://localhost:4000/dev/2022/01/09/%EC%89%98/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"클라이언트에서 서버로 데이터 전송","dateModified":"2022-11-02T00:00:00+09:00","datePublished":"2022-11-02T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http/2022/11/02/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"‘클라이언트 → 서버’ 데이터 전송 방법 클라이언트에서 서버로 데이터를 전송하는 데에는 크게 두 가지 방법으로 나뉩니다. 쿼리 파라미터를 통해 데이터 전송 : GET을 사용하며, 정렬 필터(검색어)를 만들 때 사용합니다. 메시지 바디를 통한 데이터 전송 : POST, PUT, PATCH를 사용하며, 회원 가입, 상품 주문, 리소스 등록 등을 만들 때 사용합니다. 정적 데이터 조회 이미지, 문자 전송과 같은 정적 데이터는 일반적으로 쿼리 파라미터 없이 리소스 경로를 통해 단순하게 조회합니다. 이 때 GET을 사용하게 됩니다. 동적 데이터 조회 GET, 쿼리 파라미터를 사용하여 데이터를 전달하고 조회를 하는 방법입니다. 검색, 게시판 목록에서 정렬 필터, 조회 조건을 줄여주는 필터 등에 사용됩니다. 메시지 바디를 쓸 수 있지만 지원하는 곳이 많지 않아 권장되지는 않습니다. HTML Form으로 전송하기 HTML에 자체적으로 내장된 Form이라는 태그를 이용하여 데이터를 전송할 수 있습니다. 이 때, content-type의 default는 application/x-www-form-urlencoded로 설정이 되어 있습니다. HTML Form 전송은 GET, POST 만을 지원합니다. HTML Form을 통한 데이터 전송 위 그림과 같이 Form을 만들어 메시지를 보낼 시, HTTP body에 쿼리 파라미터와 동일한 방식으로 적어서 서버에 전송하게 됩니다. 여기서form-urlencoded라는 것이 쓰이는 이유는 한글같은 다른 언어가 들어올 시 “?” 같은 문자들을 같이 작성해 넘기기 때문입니다. method = “get”으로 보낼 시, 쿼리 파라미터에 담아서 보내게 되는데, 이 때 ‘get’은 조회의 용도로만 사용해야 하며, 저장을 하는 데에는 사용할 수 없습니다. HTML Form으로 파일 전송 파일 전송 시 multipart/form-data를 사용하게 됩니다. 이 때, boundary라는 것(여기서는 —-XXX)을 브라우저가 자체적으로 만들며, 아래에 name에 따라 구분된 상태로 요청을 보내게 됩니다. 위 그림과 같이 multipart 즉 여러 부분들의 형태로 데이터를 보내는 데에 multipart/form-data를 사용합니다. HTTP API 데이터 전송 주로 서버끼리 통신할 때 사용하는 형태로, 위 예시와 같이 정보들을 직접 작성해서 서버에 넘기게 됩니다. POST, PUT, PATCH는 메시지 바디를 통해 데이터를 전송합니다. Content-type: application/json을 주로 사용하고, XML을 이전에 많이 사용했으나 요즘에는 JSON 위주로 사용하고 있습니다. 이러한 형태는 아이폰, 안드로이드 앱 클라이언트에서 넘길 때, HTML에서 Form 전송 대신 자바스크립트로 통신할 때(React, Vue와 같은 웹 클라이언트 통신) 같은 상황에서도 사용됩니다.","url":"http://localhost:4000/http/2022/11/02/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -101,7 +101,7 @@
 
   </head>
 
-  <body class="layout-post  shell-script">
+  <body class="layout-post  클라이언트에서-서버로-데이터-전송">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -214,7 +214,7 @@
 
   <div class="feature" style="background-image: url()">
     <div class="container  typeset">
-      <p>Shell Script에 대한 설명 및 사용 방법</p>
+      <p>HTTP 내에서 클라이언트가 서버로 데이터를 전송하는 방법들</p>
 
     </div>
   </div>
@@ -225,220 +225,70 @@
 <main class="main container">
   <article class="article article--post content typeset">
     <div class="article--title">
-      <h1>Shell Script</h1>
+      <h1>클라이언트에서 서버로 데이터 전송</h1>
       
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#dev">DEV</a></span>
+      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-01-09T00:00:00+09:00" class="time">09 Jan 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-02T00:00:00+09:00" class="time">02 Nov 2022</time>
 </small>
 
     </div>
 
-    <h1 id="shell">Shell</h1>
+    <h3 id="클라이언트--서버-데이터-전송-방법">‘클라이언트 → 서버’ 데이터 전송 방법</h3>
 
-<blockquote>
-  <p>OS와 대화하는 프로그램으로, 여러 종류가 있으며 그 예시로 ‘bash, zsh’가 있다.</p>
-</blockquote>
+<p>클라이언트에서 서버로 데이터를 전송하는 데에는 크게 두 가지 방법으로 나뉩니다.</p>
 
-<h2 id="1-shell-script">1. Shell Script?</h2>
+<ol>
+  <li><strong>쿼리 파라미터</strong>를 통해 데이터 전송 : GET을 사용하며, 정렬 필터(검색어)를 만들 때 사용합니다.</li>
+  <li><strong>메시지 바디</strong>를 통한 데이터 전송 : POST, PUT, PATCH를 사용하며, 회원 가입, 상품 주문, 리소스 등록 등을 만들 때 사용합니다.</li>
+</ol>
 
-<p>Shell의 종류는 Bourne Shell, Bash, ksh, zsh가 있다.<br />
-Bash는 Bourne-Agin Shell의 약자로 명령형 편집 기능을 제공하며 리눅스에서 가장 많이 사용된다.<br />
-zsh는 z셸 스크립을 위한 명령 인터프리터이다.<br />
-Shell Script(sh file)를 사용하게 되며, 이는 txt 형식으로 저장되는 프로그램으로, shell이 실행할 수 있는 명령들의 집합이라고 볼 수 있다.<br />
-자동화 작업들을 shell script로 만들어 편리한 사용이 가능하다.</p>
+<h3 id="정적-데이터-조회">정적 데이터 조회</h3>
 
-<h2 id="2-shell-script-파일-생성-작성-실행">2. Shell Script 파일 생성, 작성, 실행</h2>
+<p>이미지, 문자 전송과 같은 정적 데이터는 일반적으로 쿼리 파라미터 없이 <strong>리소스 경로</strong>를 통해 단순하게 조회합니다. 이 때 GET을 사용하게 됩니다.</p>
 
-<ul>
-  <li>생성 : <code class="language-plaintext highlighter-rouge">vi (filename).sh</code>을 입력해 파일을 생성할 수 있으며, 이 곳에서 shell script를 작성하게 된다.</li>
-  <li>입력 : <code class="language-plaintext highlighter-rouge">i</code>키를 누르면 입력이 가능한 상태가 되며, 한 줄 씩 작성을 진행하면 된다.</li>
-  <li>저장 : <code class="language-plaintext highlighter-rouge">esc</code>키를 누른 뒤, <code class="language-plaintext highlighter-rouge">:wq</code>키를 입력해 나오면 된다.</li>
-  <li>실행 : <code class="language-plaintext highlighter-rouge">sh (filename).sh</code>를 입력하면 저장된 내용이 실행된다.</li>
-</ul>
+<h3 id="동적-데이터-조회">동적 데이터 조회</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
-echo "HIHIHI!"
-pwd
-ls
-</code></pre></div></div>
-
-<p>위와 같이 작성을 한 뒤, 실행하면 아래의 사진과 같은 결과가 나온다.<br />
-입력값 불러오기(<code class="language-plaintext highlighter-rouge">echo</code>), 현재 위치 경로 출력(<code class="language-plaintext highlighter-rouge">pwd</code>), 현재 위치 디렉토리 파일 출력(<code class="language-plaintext highlighter-rouge">ls</code>)의 순서대로 나온 것을 볼 수 있다.</p>
-
-<p><img src="/image/220109/12.png" alt="drawing" width="100%" /></p>
-
-<h2 id="3-shell-script내-간단한-문법들">3. Shell Script내 간단한 문법들</h2>
-
-<h3 id="3-1-반복문---for">3-1. 반복문 - for</h3>
-
-<p>기본적으로 사용하는 반복문으로 for가 있다. <code class="language-plaintext highlighter-rouge">for in - do - done</code>의 형태로 이루어지며, 코드로 보면 다음과 같다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>file <span class="k">in</span> <span class="nv">$files</span>
-<span class="k">do
-	</span><span class="nv">filename</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$file</span><span class="sb">`</span>
-<span class="k">done</span>
-</code></pre></div></div>
-
-<p>변수로 지정해준 $files내의 각 요소들을 변수명 file로 지정해주었고, do - done 사이에 이와 관련된 내용들을 작성해주면 된다.</p>
-
-<h3 id="3-2-파일-디렉토리-찾기---find">3-2. 파일, 디렉토리 찾기 - find</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span>
-
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> d
-find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-type</span> f
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">‘.’</code>은 현재 디렉토리 내의 모든 파일, <code class="language-plaintext highlighter-rouge">-name</code>은 이름으로 찾는 것, <code class="language-plaintext highlighter-rouge">“DAY*”</code>는 DAY라는 형식으로 이루어진 모든 파일임을 말한다.<br />
-<code class="language-plaintext highlighter-rouge">-type d</code>는 디렉토리로, <code class="language-plaintext highlighter-rouge">-type f</code>는 파일로 찾는다는 것을 말한다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-empty</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-empty</code>를 이용해 빈 파일을 찾는 데에 사용할 수 있다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-size</span> +100M
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-size</code>를 이용해 특정 크기 이상, 이하의 파일을 찾는 데에 사용할 수 있다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"DAY*"</span> <span class="nt">-exec</span> <span class="nb">ls</span> <span class="nt">-l</span> <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-exec</code>를 이용해 부가적인 작업의 수행이 가능하다.<br />
-검색된 파일이 <code class="language-plaintext highlighter-rouge">{}</code> 위치에 들어오게 되고, 추가적인 작업을 이어나가면 된다.</p>
-
-<h3 id="3-3-디렉토리-생성--삭제">3-3. 디렉토리 생성 ∙ 삭제</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>ABC
-<span class="nb">rm</span> <span class="nt">-rf</span> ABC
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">mkdir</code>를 이용해 뒤에 나오는 단어의 이름으로 디렉토리를 생성할 수 있다.<br />
-<code class="language-plaintext highlighter-rouge">rm</code>을 이용해 파일 및 디렉토리의 삭제가 가능하다. 단, 디렉토리의 삭제를 위해서는 <code class="language-plaintext highlighter-rouge">-r</code>이라는 옵션이 들어가야하고, <code class="language-plaintext highlighter-rouge">-f</code>라는 옵션을 함께 사용하면, 경고 없이 <strong>모두 강제로 삭제된다.</strong></p>
-
-<h3 id="3-4-경로에서-파일명-가져오기">3-4. 경로에서 파일명 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dirname</span><span class="o">=</span><span class="sb">`</span><span class="nb">basename</span> <span class="nv">$dir</span><span class="sb">`</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">basename</code>을 이용하면 특정 경로를 나타내는 값들의 마지막 부분,<br />
-예를 들면, <code class="language-plaintext highlighter-rouge">home/ABC/backup/test.txt</code>와 같은 상황에서 <code class="language-plaintext highlighter-rouge">test.txt</code>만 나오도록 할 수 있다.<br />
-위 코드의 경우, ` dirname=```의 형태를 갖고 있는데, 이렇게 할 경우,  <code class="language-plaintext highlighter-rouge">dirname</code>이라는 변수가 만들어지고, <code class="language-plaintext highlighter-rouge">$dirname</code>로 활용할 수 있다.</p>
-
-<h3 id="3-5-문자열-일부-가져오기">3-5. 문자열 일부 가져오기</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">dirnum</span><span class="o">=</span><span class="k">${</span><span class="nv">dirname</span>:3<span class="k">}</span>
-
-<span class="c"># dirname : "HELLO WORLD"</span>
-<span class="c"># dirnum : LO WORLD</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">dirname</code>의 값으로 나오는 문자열 중, 네 번째<code class="language-plaintext highlighter-rouge">(3+1)</code>의 값부터 문자열을 잘라 표현해준다. 즉, 뒤에 나오는 숫자에 맞는 순서의 문자부터 그 뒤의 값들을 보여준다.</p>
-
-<h3 id="3-6-조건문-사용하기---if">3-6. 조건문 사용하기 - if</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$filename</span> <span class="o">]</span>
-<span class="k">then</span>
-  ...
-<span class="k">else</span>
-	...
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">if</code> 의 내부에 값이 true일 경우, <code class="language-plaintext highlighter-rouge">then</code>의 다음에 오는 과정들을 처리하고, 아닐경우 <code class="language-plaintext highlighter-rouge">else</code>의 뒤에 오는 과정들을 처리한다. 이 과정을 <code class="language-plaintext highlighter-rouge">fi</code>가 나올 때까지 진행한다.<br />
-조건문의 여러 상황에 대해 정리된 <a href="https://hand-over.tistory.com/32">자료 링크</a>가 있어 아래에 추가적으로 적는다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># if 여러 상황에 대해서</span>
-<span class="o">[</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이면 TRUE
-<span class="o">[</span> <span class="nt">-n</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 문자열의 길이가 0이 아니면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-eq</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ne</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A와 B값이 다르면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-gt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ge</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 크거나 같으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-lt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작으면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-le</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A가 B보다 작거나 같으면 TRUE
-
-<span class="o">[</span> 조건식A <span class="nt">-a</span> 조건식B <span class="o">]</span> : 조건식 A와 B가 모두 TRUE이면 TRUE <span class="o">(&amp;&amp;</span> 와 동일<span class="o">)</span>
-<span class="o">[</span> 조건식A <span class="nt">-o</span> 조건식B <span class="o">]</span> : 조건식 A가 TRUE거나 조건식B가 TRUE면 TRUE <span class="o">(||</span> 와 동일<span class="o">)</span>
-
-파일관련
-<span class="o">[</span> <span class="nt">-d</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리면 TRUE
-<span class="o">[</span> <span class="nt">-e</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이<span class="o">(</span>노드, 디렉토리, 소켓 등등 모두<span class="o">)</span> 존재하면 TRUE
-<span class="o">[</span> <span class="nt">-L</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 심볼릭 링크면 TRUE
-<span class="o">[</span> <span class="nt">-r</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 읽기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-s</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일의 크기가 0 보다 크면 TRUE
-<span class="o">[</span> <span class="nt">-w</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 쓰기 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-x</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 실행 가능하면 TRUE
-<span class="o">[</span> <span class="nt">-c</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 Special character file 이면 TRUE
-<span class="o">[</span> <span class="nt">-f</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 디렉토리가 아닌 일반 regular 파일이면 TRUE
-<span class="o">[</span> <span class="nt">-S</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="o">]</span> : A 파일이 소켓이면 TRUE
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-nt</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일 B 파일보다 최신파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ot</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span>  : A 파일이 B 파일보다 이전파일이면 참
-<span class="o">[</span> <span class="k">${</span><span class="nv">A</span><span class="k">}</span> <span class="nt">-ef</span> <span class="k">${</span><span class="nv">B</span><span class="k">}</span> <span class="o">]</span> : A 파일과 B 파일이 같은 파일이면 참
-</code></pre></div></div>
-
-<h3 id="3-7-결과값-표시---echo">3-7. 결과값 표시 - echo</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>text or 변수명
-</code></pre></div></div>
-
-<p>적혀진 텍스트, 혹은 변수의 값을 표현해준다.<br />
-JavaScript의 <code class="language-plaintext highlighter-rouge">console.log</code>와 같은 역할을 한다고 볼 수 있어, Shell Script 사용 시 사용자에게 보여주어야 할 메세지가 있을 때에도 사용할 수 있다.</p>
-
-<h3 id="3-8-시간-구하기---date">3-8. 시간 구하기 - date</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date
-
-</span><span class="nv">day</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%Y%m%d<span class="sb">`</span>
-</code></pre></div></div>
-
-<p>date라고 작성할 시 <code class="language-plaintext highlighter-rouge">2022년 1월 10일 월요일 01시 51분 38초 KST</code> 와 같이 결과값이 나오게 된다.<br />
-위의 코드같은 경우, 결과 값으로 20220110가 나오게 되며, 이를 활용해 다양한 날짜의 표현이 가능하다. <a href="https://iamfreeman.tistory.com/entry/리눅스-date-명령어를-이용한-시간-확인-및-설정하기">세세한 여러 표현 방법을 알려주는 링크</a>를 참고하면 좋을 듯 하다.</p>
-
-<h3 id="3-9-파일-압축하기---zip">3-9. 파일 압축하기 - zip</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip BACKUP_<span class="nv">$day</span>.zip ./BEFORE_ZIP
-
-zip AAA.zip <span class="nt">-r</span> ./<span class="k">*</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">zip “파일이름” “압축할 디렉토리”</code> 의 순서로 작성하면 된다.<br />
-두 번째와 같이 <code class="language-plaintext highlighter-rouge">-r</code>을 작성하면 현재폴더의 모든 것 및 하위 폴더들도 모두 압축하게 된다.</p>
-
-<h3 id="3-10-다른-서버로의-파일-전송---scp">3-10. 다른 서버로의 파일 전송 - scp</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 로컬에서 원격</span>
-scp <span class="o">[</span>전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-
-<span class="c"># 원격에서 로컬</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>받을 경로]
-
-<span class="c"># 원격에서 원격</span>
-scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <span class="o">[</span>유저명]@[IP주소]:[받을 경로]
-</code></pre></div></div>
-
-<p>scp ./BACKUP_$day.zip $ubuntuserver:backup와 같이 작성하면, 내 서버내의 특정 파일을 다른 원격으로 보내는 경우로, 첫 번째 예시의 사례와 같다.</p>
+<p>GET, <strong>쿼리 파라미터</strong>를 사용하여 데이터를 전달하고 조회를 하는 방법입니다. 검색, 게시판 목록에서 정렬 필터, 조회 조건을 줄여주는 필터 등에 사용됩니다. 메시지 바디를 쓸 수 있지만 지원하는 곳이 많지 않아 권장되지는 않습니다.</p>
 
 <hr />
 
-<h1 id="링크">링크</h1>
+<h2 id="html-form으로-전송하기">HTML Form으로 전송하기</h2>
 
-<ul>
-  <li>쉘 스크립트 생성<br />
-<a href="https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%8B%A4%ED%96%89">https://jaynamm.tistory.com/entry/Shell-Script-Shell-Script-생성-및-실행</a><br />
-<a href="https://rrecoder.tistory.com/62">https://rrecoder.tistory.com/62</a></li>
-  <li>쉘 스크립트 scp 간단 사용법<br />
-<a href="https://doheejin.github.io/linux/2021/03/03/linux-scp.html">https://doheejin.github.io/linux/2021/03/03/linux-scp.html</a></li>
-  <li>터미널 디렉토리, 파일 삭제 방법<br />
-<a href="https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/">https://www.delftstack.com/ko/howto/linux/how-to-delete-files-and-directories-in-linux-terminal/</a></li>
-</ul>
+<p>HTML에 자체적으로 내장된 Form이라는 태그를 이용하여 데이터를 전송할 수 있습니다. 이 때, <code class="language-plaintext highlighter-rouge">content-type</code>의 default는 <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code>로 설정이 되어 있습니다. <strong>HTML Form 전송은 GET, POST 만을 지원합니다.</strong></p>
+
+<h3 id="html-form을-통한-데이터-전송">HTML Form을 통한 데이터 전송</h3>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221102/0.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>위 그림과 같이 Form을 만들어 메시지를 보낼 시, HTTP body에 쿼리 파라미터와 동일한 방식으로 적어서 서버에 전송하게 됩니다. 여기서<code class="language-plaintext highlighter-rouge">form-urlencoded</code>라는 것이 쓰이는 이유는 한글같은 다른 언어가 들어올 시 “?” 같은 문자들을 같이 작성해 넘기기 때문입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">method = “get”</code>으로 보낼 시, 쿼리 파라미터에 담아서 보내게 되는데, 이 때 ‘get’은 조회의 용도로만 사용해야 하며, <strong>저장을 하는 데에는 사용할 수 없습니다.</strong></p>
+
+<h3 id="html-form으로-파일-전송">HTML Form으로 파일 전송</h3>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221102/1.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>파일 전송 시 <code class="language-plaintext highlighter-rouge">multipart/form-data</code>를 사용하게 됩니다. 이 때, <code class="language-plaintext highlighter-rouge">boundary</code>라는 것(여기서는 <code class="language-plaintext highlighter-rouge">—-XXX</code>)을 브라우저가 자체적으로 만들며, 아래에 <code class="language-plaintext highlighter-rouge">name</code>에 따라 구분된 상태로 요청을 보내게 됩니다. 위 그림과 같이 <code class="language-plaintext highlighter-rouge">multipart</code> 즉 <strong>여러 부분들의 형태</strong>로 데이터를 보내는 데에 <code class="language-plaintext highlighter-rouge">multipart/form-data</code>를 사용합니다.</p>
+
+<h3 id="http-api-데이터-전송">HTTP API 데이터 전송</h3>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221102/2.png" alt="" width="100%" height="" /> 
+</figure>
+
+<p>주로 서버끼리 통신할 때 사용하는 형태로, 위 예시와 같이 <strong>정보들을 직접 작성</strong>해서 서버에 넘기게 됩니다. POST, PUT, PATCH는 <strong>메시지 바디</strong>를 통해 데이터를 전송합니다. <code class="language-plaintext highlighter-rouge">Content-type: application/json</code>을 주로 사용하고, XML을 이전에 많이 사용했으나 요즘에는 JSON 위주로 사용하고 있습니다.</p>
+
+<p>이러한 형태는 아이폰, 안드로이드 앱 클라이언트에서 넘길 때, HTML에서 Form 전송 대신 자바스크립트로 통신할 때(React, Vue와 같은 웹 클라이언트 통신) 같은 상황에서도 사용됩니다.</p>
  <!-- prettier-ignore -->
 <div class="share">
   
@@ -465,7 +315,7 @@ scp <span class="o">[</span>유저명]@[IP주소]:[전송할 파일 경로] <spa
       
 
       <a class="button" href="
-      <!---->mailto:nanyong01@gmail.com?subject=Shell Script&body=CHECK OUT THIS : http://localhost:4000/dev/2022/01/09/%EC%89%98/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+      <!---->mailto:nanyong01@gmail.com?subject=클라이언트에서 서버로 데이터 전송&body=CHECK OUT THIS : http://localhost:4000/http/2022/11/02/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
 </a>
 
     
