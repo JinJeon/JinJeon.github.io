@@ -1,8 +1,8 @@
-const version = '20221122143710';
+const version = '20221122213919';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/html/2022/11/21/http-to-https/","/algorithm/2022/11/20/20207/","/algorithm/2022/11/19/10994/","/algorithm/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/","/algorithm/2022/11/10/5547/","/algorithm/2022/11/09/7576/","/algorithm/2022/11/09/2667/","/algorithm/2022/11/09/14940/","/algorithm/2022/11/08/16918/","/algorithm/2022/11/08/1325/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/blog/page5/","/blog/page6/","/blog/page7/","/blog/page8/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/javascript/2022/11/22/socket-%EC%97%B0%EA%B2%B0-%ED%95%B4%EC%A0%9C-%EC%8B%9C-%EC%9E%AC%EC%97%B0%EA%B2%B0-%EC%8B%9C%EB%8F%84/","/html/2022/11/21/https-%EB%82%B4-http-%EC%9A%94%EC%B2%AD-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%A0%84%ED%99%98/","/algorithm/2022/11/20/20207/","/algorithm/2022/11/19/10994/","/react/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/","/algorithm/2022/11/10/5547/","/algorithm/2022/11/09/7576/","/algorithm/2022/11/09/2667/","/algorithm/2022/11/09/14940/","/algorithm/2022/11/08/16918/","/categories/","/blog/","/","/manifest.json","/offline/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/sitemap.xml","/robots.txt","/blog/page2/","/blog/page3/","/blog/page4/","/blog/page5/","/blog/page6/","/blog/page7/","/blog/page8/","/blog/page9/","/feed.xml","/assets/styles.css.map","/assets/logos/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 

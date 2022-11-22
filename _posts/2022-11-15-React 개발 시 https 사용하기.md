@@ -1,7 +1,7 @@
 ---
 title: React 개발 시 https 사용하기
 categories:
-  - ALGORITHM
+  - REACT
 feature_image: ""
 feature_text: |
   React 개발 시 https 사용하기
