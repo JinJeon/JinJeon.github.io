@@ -1,4 +1,311 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-11-23T17:14:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2800번</title><link href="http://localhost:4000/algorithm/2022/11/23/2800/" rel="alternate" type="text/html" title="백준 2800번" /><published>2022-11-23T00:00:00+09:00</published><updated>2022-11-23T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/23/2800</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/23/2800/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2800">QUESTION LINK</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-11-24T19:49:06+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2504번</title><link href="http://localhost:4000/algorithm/2022/11/24/2504/" rel="alternate" type="text/html" title="백준 2504번" /><published>2022-11-24T00:00:00+09:00</published><updated>2022-11-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/24/2504</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/24/2504/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2504">QEUSTION LINK</a></strong></p>
+
+<p>문제에서 주어진 괄호 각각의 형태에 따라 조건을 나누어 풀어야 하는 문제였습니다. stack 자료구조를 사용해서 풀어야 했는데, 처음에 풀 때에는 어떤 식으로 계산을 풀어나가야 할 지에 대해 의문이 들었습니다. 우선 다음과 같은 순서에 따라 문제를 풀고자 했습니다.</p>
+
+<ul>
+  <li>열린 괄호일 때 <code class="language-plaintext highlighter-rouge">stack</code>에 담아주기</li>
+  <li>닫힌 괄호일 때 <code class="language-plaintext highlighter-rouge">stack.pop()</code>의 값이 열린 괄호와 일치하는지 확인하기</li>
+  <li>일치할 경우 해당 값으로 <code class="language-plaintext highlighter-rouge">stack</code>에 다시 넣어주기</li>
+</ul>
+
+<p>stack을 통해서 괄호가 일치하는 경우에 대해서만 처리해야한다는 사실은 인지했으나, 이미 계산이 된 숫자들을 어떤 식으로 담고, 처리를 진행해야할 지에 대해서는 어려움이 남았었습니다. 예를 들어, 아래와 같은 상황이 발생했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// '(()[][]' 여기까지 진행된 상태일 때, '])' 부분을 어떻게 처리할 지</span>
+<span class="kd">const</span> <span class="nx">stack</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// 여기서 "]"가 나오면 3을 어떤 식으로 처리하고 넘어가야 할 지를 파악하지 못함</span>
+</code></pre></div></div>
+
+<p>이 부분에서 어려움이 있었으나, 이후, stack에서 하나씩 pop을 할 때, 숫자가 나오면 해당 숫자들을 더하고, 다시 여는 괄호(”[”, “(”)가 나오면 해당 괄호에 관한 값을 곱해주면 된다는 것을 알 수 있었습니다.</p>
+
+<ul>
+  <li>닫힌 괄호일 때 <code class="language-plaintext highlighter-rouge">stack.pop()</code>의 값이 숫자일 경우 기존 내부값에 더하기</li>
+  <li>닫힌 괄호일 때 <code class="language-plaintext highlighter-rouge">stack.pop()</code>의 값이 일치하는 열린 괄호일 경우 해당 값으로 내부값 곱하기</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="c1">// 괄호가 올바른 지에 대한 boolean 값</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 현재 닫는 괄호의 내부에 있는 값들의 합</span>
+  <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 여는 괄호가 나오면 기존에 더해두었던 값에 괄호에 해당하는 값을 곱해주고,</span>
+    <span class="c1">// 값이 없는 경우(비어있는 경우) 2를 stack에 담아줌</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="c1">// 숫자가 나오면 해당 숫자를 기존에 있던 값에 더해주고, 다시 stack에서 pop</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
+      <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+      <span class="c1">// 숫자나 일치하는 여는 괄호가 아닐 시, 잘못된 괄호가 들어온 것이므로 결과가 틀렸음을 설정</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이러한 흐름으로 관련된 괄호들에 대한 모든 조건식을 만들어주면 아래와 같은 전체 코드가 나오게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">stringArray</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+<span class="c1">// 입력값을 모두 쪼개둔 값</span>
+<span class="kd">const</span> <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">let</span> <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">stringArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isResult</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
+        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">||</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
+        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>위 코드를 통해 <code class="language-plaintext highlighter-rouge">stack</code> 결과값을 가져올 때 올바른 괄호 배치가 이루어졌을 시에는 숫자만 담긴 배열이 나오게 됩니다. 하지만, 서로 일치하지 않는 괄호를 가진 경우에는 배열이 비어있거나, 괄호값이 남아있는 채로 <code class="language-plaintext highlighter-rouge">stack</code> 배열이 나오게 됩니다. 즉, 배열 내의 요소들이 숫자로만 이루어진 경우에만 해당 숫자값을 결과로 리턴하고 나머지는 0으로 리턴하면 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">isResult</span> <span class="p">?</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="p">?</span> <span class="nx">result</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QEUSTION LINK 문제에서 주어진 괄호 각각의 형태에 따라 조건을 나누어 풀어야 하는 문제였습니다. stack 자료구조를 사용해서 풀어야 했는데, 처음에 풀 때에는 어떤 식으로 계산을 풀어나가야 할 지에 대해 의문이 들었습니다. 우선 다음과 같은 순서에 따라 문제를 풀고자 했습니다. 열린 괄호일 때 stack에 담아주기 닫힌 괄호일 때 stack.pop()의 값이 열린 괄호와 일치하는지 확인하기 일치할 경우 해당 값으로 stack에 다시 넣어주기 stack을 통해서 괄호가 일치하는 경우에 대해서만 처리해야한다는 사실은 인지했으나, 이미 계산이 된 숫자들을 어떤 식으로 담고, 처리를 진행해야할 지에 대해서는 어려움이 남았었습니다. 예를 들어, 아래와 같은 상황이 발생했습니다. // '(()[][]' 여기까지 진행된 상태일 때, '])' 부분을 어떻게 처리할 지 const stack = ["(", 2, "[", 3, 3]; // 여기서 "]"가 나오면 3을 어떤 식으로 처리하고 넘어가야 할 지를 파악하지 못함 이 부분에서 어려움이 있었으나, 이후, stack에서 하나씩 pop을 할 때, 숫자가 나오면 해당 숫자들을 더하고, 다시 여는 괄호(”[”, “(”)가 나오면 해당 괄호에 관한 값을 곱해주면 된다는 것을 알 수 있었습니다. 닫힌 괄호일 때 stack.pop()의 값이 숫자일 경우 기존 내부값에 더하기 닫힌 괄호일 때 stack.pop()의 값이 일치하는 열린 괄호일 경우 해당 값으로 내부값 곱하기 let isResult = true; // 괄호가 올바른 지에 대한 boolean 값 if (string === ")") { let insideValue = 0; // 현재 닫는 괄호의 내부에 있는 값들의 합 let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { // 여는 괄호가 나오면 기존에 더해두었던 값에 괄호에 해당하는 값을 곱해주고, // 값이 없는 경우(비어있는 경우) 2를 stack에 담아줌 if (prevString === "(") { stack.push(insideValue * 2 || 2); stop = true; // 숫자가 나오면 해당 숫자를 기존에 있던 값에 더해주고, 다시 stack에서 pop } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); // 숫자나 일치하는 여는 괄호가 아닐 시, 잘못된 괄호가 들어온 것이므로 결과가 틀렸음을 설정 } else { isResult = false; } } } 이러한 흐름으로 관련된 괄호들에 대한 모든 조건식을 만들어주면 아래와 같은 전체 코드가 나오게 됩니다. const stringArray = input[0].split(""); // 입력값을 모두 쪼개둔 값 const stack = []; let isResult = true; stringArray.forEach((string) =&gt; { if (!isResult) return; if (string === "(") { stack.push(string); } if (string === ")") { let insideValue = 0; let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { if (prevString === "(") { stack.push(insideValue * 2 || 2); stop = true; } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); } else { isResult = false; } } } if (string === "[") { stack.push(string); } if (string === "]") { let insideValue = 0; let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { if (prevString === "[") { stack.push(insideValue * 3 || 3); stop = true; } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); } else { isResult = false; } } } }); 위 코드를 통해 stack 결과값을 가져올 때 올바른 괄호 배치가 이루어졌을 시에는 숫자만 담긴 배열이 나오게 됩니다. 하지만, 서로 일치하지 않는 괄호를 가진 경우에는 배열이 비어있거나, 괄호값이 남아있는 채로 stack 배열이 나오게 됩니다. 즉, 배열 내의 요소들이 숫자로만 이루어진 경우에만 해당 숫자값을 결과로 리턴하고 나머지는 0으로 리턴하면 됩니다. const result = isResult ? stack.reduce((a, b) =&gt; a + b, 0) : 0; console.log(typeof result === "number" ? result : 0);]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 18115번</title><link href="http://localhost:4000/algorithm/2022/11/24/18115/" rel="alternate" type="text/html" title="백준 18115번" /><published>2022-11-24T00:00:00+09:00</published><updated>2022-11-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/24/18115</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/24/18115/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/18115">QUESTION LINK</a></strong></p>
+
+<p>카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span>
+<span class="mi">2</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">// [2, 3, 3, 2, 1]</span>
+<span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="c1">// 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨</span>
+</code></pre></div></div>
+
+<p>이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 실제 카드의 숫자</span>
+<span class="kd">let</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 결과 배열. index가 클 수록 아래에 있는 것으로 가정</span>
+
+<span class="c1">// 카드 숫자가 실제 카드의 개수보다 많아지면 종료</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 카드의 정해져있던 명령</span>
+  <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
+
+  <span class="c1">// 1인 경우 배열의 가장 처음으로 옴</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="c1">// 2인 경우 배열의 두 번재 자리로 옴</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">resultArray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+  <span class="p">}</span>
+  <span class="c1">// 3인 경우 가장 아래에 배치</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">target</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다.</p>
+
+<p>여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다.</p>
+
+<p><strong>덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다.</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 덱에서 각 노드들의 특징을 담은 클래스</span>
+<span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 실제로 만들어질 덱의 클래스</span>
+<span class="kd">class</span> <span class="nx">Deque</span> <span class="p">{</span>
+  <span class="c1">// 처음에는 head, tail이 모두 비어있음</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// head에 값을 추가</span>
+  <span class="nx">putHead</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄</span>
+      <span class="kd">const</span> <span class="nx">prevHead</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">prevHead</span><span class="p">;</span>
+      <span class="nx">prevHead</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// tail에 값을 추가</span>
+  <span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄</span>
+      <span class="kd">const</span> <span class="nx">prevTail</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">;</span>
+      <span class="nx">prevTail</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">prevTail</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 이번 문제를 풀기 위해 만들어진 메서드</span>
+  <span class="nx">putSecond</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">head</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">head</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">second</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">head</span><span class="p">;</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">second</span><span class="p">;</span>
+        <span class="nx">head</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="nx">second</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// head를 제거하고 그 다음 값을 head로 설정</span>
+  <span class="nx">getHead</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">prevHead</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+    <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// tail을 제거하고 그 다음 값을 tail로 설정</span>
+  <span class="nx">getTail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">prevTail</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span><span class="p">;</span>
+    <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deque</span><span class="p">();</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putHead</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 가장 앞에 추가하므로 putHead 사용</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putSecond</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 두 번째 위치에 추가하므로 putSecond 사용</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 가장 마지막에 추가하므로 putTail 사용</span>
+  <span class="p">}</span>
+
+  <span class="nx">target</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">deque</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">curNode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">curNode</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">curNode</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// 처음에 만들어진 빈칸 제거</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. <strong>이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고</strong>, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다. 5 2 3 3 2 1 예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다. [5, 4, 3, 2, 1]; 여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다. const orders = ordersArray.split(" "); // [2, 3, 3, 2, 1] const ordersLength = orders.length; // 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨 이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다. const orders = ordersArray.split(" "); const ordersLength = orders.length; let target = 1; // 실제 카드의 숫자 let resultArray = []; // 결과 배열. index가 클 수록 아래에 있는 것으로 가정 // 카드 숫자가 실제 카드의 개수보다 많아지면 종료 while (target &lt;= orders.length) { // 카드의 정해져있던 명령 const order = orders[ordersLength - target]; // 1인 경우 배열의 가장 처음으로 옴 if (order === "1") { resultArray = [target, ...resultArray]; } // 2인 경우 배열의 두 번재 자리로 옴 if (order === "2") { resultArray = [resultArray[0], target, ...resultArray.slice(1)]; } // 3인 경우 가장 아래에 배치 if (order === "3") { resultArray.push(target); } target += 1; } const result = resultArray.join(" "); console.log(result); 위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다. 여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다. 덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다. // 덱에서 각 노드들의 특징을 담은 클래스 class Node { constructor(data) { this.data = data; this.prev = null; this.next = null; } } // 실제로 만들어질 덱의 클래스 class Deque { // 처음에는 head, tail이 모두 비어있음 constructor() { this.count = 0; this.head = null; this.tail = null; } // head에 값을 추가 putHead(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄 const prevHead = this.head; this.head = node; this.head.next = prevHead; prevHead.prev = node; } this.count += 1; } // tail에 값을 추가 putTail(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄 const prevTail = this.tail; prevTail.next = node; node.prev = prevTail; this.tail = node; } this.count += 1; } // 이번 문제를 풀기 위해 만들어진 메서드 putSecond(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정 const { head } = this; const second = head.next; if (!second) { this.putTail(data); } else { node.prev = head; node.next = second; head.next = node; second.prev = node; this.count += 1; } } } // head를 제거하고 그 다음 값을 head로 설정 getHead() { if (!this.head) return; const prevHead = this.head; this.head = prevHead.next; prevHead.next = null; this.count -= 1; return data; } // tail을 제거하고 그 다음 값을 tail로 설정 getTail() { if (!this.tail) return; const prevTail = this.head; this.tail = prevTail.prev; prevTail.prev = null; this.count -= 1; return data; } } 위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다. let target = 1; const deque = new Deque(); while (target &lt;= orders.length) { const order = orders[ordersLength - target]; if (order === "1") { deque.putHead(target); // 가장 앞에 추가하므로 putHead 사용 } if (order === "2") { deque.putSecond(target); // 두 번째 위치에 추가하므로 putSecond 사용 } if (order === "3") { deque.putTail(target); // 가장 마지막에 추가하므로 putTail 사용 } target += 1; } let result = ""; let curNode = deque.head; while (curNode) { result += ` ${curNode.data}`; curNode = curNode.next; } result = result.slice(1); // 처음에 만들어진 빈칸 제거 console.log(result); 위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. 이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 2800번</title><link href="http://localhost:4000/algorithm/2022/11/23/2800/" rel="alternate" type="text/html" title="백준 2800번" /><published>2022-11-23T00:00:00+09:00</published><updated>2022-11-23T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/23/2800</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/23/2800/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2800">QUESTION LINK</a></strong></p>
 
 <p>문자열 중에 괄호가 있는 곳을 찾고, 이 괄호들을 각자의 짝에 맞게 빼주어야 하는 문제였습니다. 각 괄호의 짝을 지어주는 부분이 중요했는데, 이는 왼쪽 괄호의 위치를 구하고, 오른쪽 괄호가 나올 때마다 마지막 왼쪽 괄호를 넣어주는 <strong>stack 구조</strong>를 활용하기로 했습니다. 문제를 푸는 순서는 다음과 같이 정했습니다.</p>
 
@@ -827,235 +1134,4 @@ mkcert -key-file ./.cert/key.pem -cert-file ./.cert/cert.pem "localhost"
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>🔎 <strong>위와 같이 수정을 하여, 백준에서 통과를 하기는 했습니다. 하지만, 이 코드의 경우에도 시간이 상당히 오래 걸려 통과가 됐기 때문에 가능하다면 자바스크립트에서 더 빠르게 처리하는 코드를 찾아보아야 합니다.</strong></p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 익은 토마토가 위치한 곳에서 한 번씩 BFS를 시행해, 하루가 지날 때마다 근처 토마토가 익은 것으로 만드는 형식을 적용하고자 했습니다. 즉, 이를 위해서 익은 토마토가 있는 위치 ‘1’ 좌표를 찾아내고, 이 곳에서 BFS가 순차적으로 발생하는 것으로 하고자 구상했습니다. 생각한 순서는 아래와 같습니다. 모든 익은 토마토(’1’)의 좌표 구하기 하루가 지날 때마다(day+=1;) 익은 토마토의 좌표로부터 근접한 덜 익은 토마토(’0’)의 값을 ‘1’로 바꾸기 다음 하루가 지날 때마다 2번과 같은 과정 반복하기 인접한 곳에 덜 익은 토마토(’0’)가 없을 시 과정 중단하기 성공은 했으나 시간 초과 이를 위해, 아래와 같은 코드를 구상했으며, 이를 통해 순차적으로 토마토가 익는 과정을 그려낼 수 있었습니다. 하지만, 시간 초과가 발생해, 추가적인 수정이 필요했습니다. const [numbers, ...graph] = input; const [m, n] = numbers.split(" ").map((value) =&gt; Number(value)); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const queue = []; // 첫 익은 토마토가 있는 위치를 받음 const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, day) =&gt; `${getMarker(y, x)},${day}`; // queue에 들어갈 형태를 만드는 함수 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "1") queue.push(getQueueItem(lineIndex, boxIndex, 0)); // 익은 토마토가 있을 경우, queue 배열에 담아줌 }); }); const visited = {}; // 방문 여부를 나타내는 객체 let day = 0; // 날짜를 나타냄. 하루가 지나는 것을 확인할 때마다 1씩 오름 let curItem; // 반복문에서 현재의 위치를 나타내는 값 while (queue.length) { curItem = queue.shift(); // queue에서 가장 처음 요소를 가져와, BFS로 순환하도록 함 const [y, x, curDay] = curItem.split(",").map((value) =&gt; Number(value)); // 좌표 및 날짜를 가져옴 const curValue = graphBoxes[y][x]; const curMarker = getMarker(y, x); if (!visited[curMarker] &amp;&amp; curValue !== "-1") { // 방문하지 않았고, 토마토가 있는 경우에만 추가 작업 시행함 visited[curMarker] = true; // 방문했음을 표기 graphBoxes[y][x] = "1"; // 토마토가 있었다는 표기 if (day &lt; curDay) day = curDay; // 현재 설정된 날짜보다 많은 날짜가 지나갔을 시, 그 날짜로 수정 if (y - 1 &gt;= 0) queue.push(getQueueItem(y - 1, x, curDay + 1)); if (x - 1 &gt;= 0) queue.push(getQueueItem(y, x - 1, curDay + 1)); if (y + 1 &lt; n) queue.push(getQueueItem(y + 1, x, curDay + 1)); if (x + 1 &lt; m) queue.push(getQueueItem(y, x + 1, curDay + 1)); // 주변 토마토들을 체크하기 위해 날짜가 하루 더해진 값(curDay + 1)을 대입함 } } const isFailed = !!graphBoxes.find((line) =&gt; line.find((box) =&gt; box === "0")); // 모든 토마토가 순환한 후, 방문하지 못한 곳이 존재할 시 -1로 변경 const result = isFailed ? -1 : day; console.log(result); 시간 초과 원인 제거하기 이 코드에서 시간 초과가 나오게 된 원인 중 하나로, queue.shift() 부분이 있으며, 이 부분은 index로 받아 처리하는 방법으로 해결이 가능했습니다. 그리고 다른 원인 중 하나는 위 코드에서 일단 방문한 적이 있는 지를 확인하고 추가적인 작업을 하는게 아니라, 우선 queue에 담은 뒤, 추가 작업에서 방문 여부를 확인하고 진행하도록 설정이 되어있었습니다. 이로 인해 불필요한 작업이 반복되는 경우가 많아져, 이 부분들을 모두 제외하고 코드를 수정했습니다. const input = fs.readFileSync(filePath).toString().trim().split("\n"); const [numbers, ...graph] = input; const [m, n] = numbers.split(" ").map((value) =&gt; +value); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const queue = []; const visited = {}; // 주변 좌표로 넘어가는 부분의 중복을 없애기 위해 만든 위치 변수들 const positionValue = [ [-1, 0], [1, 0], [0, -1], [0, 1], ]; const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, day) =&gt; `${getMarker(y, x)},${day}`; // 이전과 달라진 부분. 좌표와 날짜를 받고, 이상이 없을 시 queue에 들어가도록 설정함 const checkPosition = (y, x, day) =&gt; { if (x &lt; 0 || x &gt;= m || y &lt; 0 || y &gt;= n) return; const marker = getMarker(y, x); if (visited[marker]) return; visited[marker] = true; queue.push(getQueueItem(y, x, day + 1)); }; // 이전과 달리, queue에 들어가기 전 방문 여부를 체크해 중복 확인이 발생하지 않도록 함 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "1") { visited[getMarker(lineIndex, boxIndex)] = true; queue.push(getQueueItem(lineIndex, boxIndex, 0)); } }); }); let targetIdx = 0; let day = 0; let curItem; // 기존에 queue에서 직접 빼던 방식과 달리, queue내에서 index를 통해 빼낸 것과 동일한 효과로 필요한 값들을 꺼냄 while (queue[targetIdx]) { curItem = queue[targetIdx]; targetIdx += 1; const [y, x, curDay] = curItem.split(",").map((value) =&gt; +value); const curValue = graphBoxes[y][x]; if (curValue !== "-1") { graphBoxes[y][x] = "1"; if (day &lt; curDay) day = curDay; // 주변 위치로 이동하도록 설정하는 부분 positionValue.forEach(([dy, dx]) =&gt; checkPosition(y + dy, x + dx, curDay)); } } const isFailed = !!graphBoxes.some((line) =&gt; line.some((box) =&gt; box === "0")); const result = isFailed ? -1 : day; console.log(result); 🔎 위와 같이 수정을 하여, 백준에서 통과를 하기는 했습니다. 하지만, 이 코드의 경우에도 시간이 상당히 오래 걸려 통과가 됐기 때문에 가능하다면 자바스크립트에서 더 빠르게 처리하는 코드를 찾아보아야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 2667번</title><link href="http://localhost:4000/algorithm/2022/11/09/2667/" rel="alternate" type="text/html" title="백준 2667번" /><published>2022-11-09T00:00:00+09:00</published><updated>2022-11-09T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/09/2667</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/09/2667/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2667">QUESTION LINK</a></strong></p>
-
-<p>그래프 순회를 이용해 해결해야하는 문제였습니다. 문제를 해결하기 위해 일종의 흐름을 짜는 과정이 필요했는데 그 과정은 아래와 같았습니다.</p>
-
-<ol>
-  <li>그래프의 각 부분들(여기서는 <code class="language-plaintext highlighter-rouge">box</code>라는 이름으로 설정)을 순회하면서 그 값이 0인지 1인지를 확인</li>
-  <li><code class="language-plaintext highlighter-rouge">box</code>의 값이 1인 경우, 해당 <code class="language-plaintext highlighter-rouge">box</code>의 방문 여부를 <code class="language-plaintext highlighter-rouge">true</code>로 설정함</li>
-  <li>상하좌우의 <code class="language-plaintext highlighter-rouge">box</code>들을 따라 들어가, 2번과 같은 과정을 반복함</li>
-</ol>
-
-<p>위 순서를 따르기 위해 가장 먼저 필요한 것은 해당 그래프를 순회하는 과정을 만드는 것이었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">N</span><span class="p">,</span> <span class="p">...</span><span class="nx">graph</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">graphBoxes</span> <span class="o">=</span> <span class="nx">graph</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">));</span>
-<span class="kd">const</span> <span class="nx">countArray</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="c1">// 각 단지의 개수를 담아두기 위한 배열</span>
-<span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="c1">// 방문여부를 확인하기 위한 객체</span>
-
-<span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">,</span> <span class="nx">lineIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// 그래프의 각 라인마다 박스들을 확인함</span>
-  <span class="nx">line</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">box</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">checkBox</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">);</span>
-    <span class="c1">// 각 박스마다 그 박스의 값과 방문여부를 확인하는 함수 생성 필요!</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-
-<span class="c1">// graphBoxes의 형태</span>
-<span class="p">[</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
-  <span class="p">[</span><span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">],</span>
-<span class="p">];</span>
-</code></pre></div></div>
-
-<p>위 코드에서 보시다시피, 순회를 돌면서 각 위치(<code class="language-plaintext highlighter-rouge">lineIndex</code>, <code class="language-plaintext highlighter-rouge">boxIndex</code>)와 값(<code class="language-plaintext highlighter-rouge">box</code>)에 따라 처리를 해 줄 함수 <code class="language-plaintext highlighter-rouge">checkBox</code>가 필요했습니다. 이 함수는 각 박스의 순회 여부를 결정하고, 순회를 해야하는 경우 상하좌우를 DFS를 통해 순회하도록 설정해야 했습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getMarker</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">,</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="c1">// visited 객체의 key값을 만들기 위해 필요한 함수</span>
-
-<span class="kd">const</span> <span class="nx">checkBox</span> <span class="o">=</span> <span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// y(lineIndex), x(boxIndex), box 값을 받아옴</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="c1">// box가 0인 경우 아파트가 없으므로 작업을 종료</span>
-  <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">getMarker</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">);</span>
-  <span class="c1">// key값으로 사용될 marker 생성</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">visited</span><span class="p">[</span><span class="nx">marker</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
-  <span class="c1">// 이미 방문했을 경우 작업을 종료</span>
-  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">marker</span><span class="p">];</span>
-  <span class="c1">// 첫 값으로 만들어진 marker를 담은 queue 생성</span>
-  <span class="kd">let</span> <span class="nx">curMarker</span><span class="p">;</span>
-  <span class="c1">// 반복문을 돌면서 목표 지점이 될 marker</span>
-  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="c1">// 해당 함수의 시작지점으로부터 얼마나 아파트를 돌았는지 확인하기 위한 변수</span>
-
-  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">curMarker</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-    <span class="c1">// 목표지점으로 사용될 marker를 설정</span>
-    <span class="kd">const</span> <span class="p">[</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">]</span> <span class="o">=</span> <span class="nx">curMarker</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
-    <span class="c1">// 몇 번째 줄, 몇 번째 box인지를 알아냄</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">]</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 방문하지 않은 값이 "1"인 box들일 경우에만 작업을 진행함</span>
-      <span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="c1">// 방문을 하는 상황으로 설정</span>
-      <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-      <span class="c1">// 상하좌우를 돌면서 queue에 넣어줌</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="nx">countArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
-<p>위 함수를 통해서 반복 작업 시 <code class="language-plaintext highlighter-rouge">box</code>가 <strong>방문하지 않은 ‘1’인 경우에만</strong> 그래프 순회를 통해 개수 세기를 진행하도록 할 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 그래프 순회를 이용해 해결해야하는 문제였습니다. 문제를 해결하기 위해 일종의 흐름을 짜는 과정이 필요했는데 그 과정은 아래와 같았습니다. 그래프의 각 부분들(여기서는 box라는 이름으로 설정)을 순회하면서 그 값이 0인지 1인지를 확인 box의 값이 1인 경우, 해당 box의 방문 여부를 true로 설정함 상하좌우의 box들을 따라 들어가, 2번과 같은 과정을 반복함 위 순서를 따르기 위해 가장 먼저 필요한 것은 해당 그래프를 순회하는 과정을 만드는 것이었습니다. const [N, ...graph] = input; const graphBoxes = graph.map((line) =&gt; line.split("")); const countArray = []; // 각 단지의 개수를 담아두기 위한 배열 const visited = {}; // 방문여부를 확인하기 위한 객체 graphBoxes.forEach((line, lineIndex) =&gt; { // 그래프의 각 라인마다 박스들을 확인함 line.forEach((box, boxIndex) =&gt; { checkBox(lineIndex, boxIndex, box); // 각 박스마다 그 박스의 값과 방문여부를 확인하는 함수 생성 필요! }); }); // graphBoxes의 형태 [ ["0", "1", "1", "0", "1", "0", "0"], ["0", "1", "1", "0", "1", "0", "1"], ["1", "1", "1", "0", "1", "0", "1"], ["0", "0", "0", "0", "1", "1", "1"], ["0", "1", "0", "0", "0", "0", "0"], ["0", "1", "1", "1", "1", "1", "0"], ["0", "1", "1", "1", "0", "0", "0"], ]; 위 코드에서 보시다시피, 순회를 돌면서 각 위치(lineIndex, boxIndex)와 값(box)에 따라 처리를 해 줄 함수 checkBox가 필요했습니다. 이 함수는 각 박스의 순회 여부를 결정하고, 순회를 해야하는 경우 상하좌우를 DFS를 통해 순회하도록 설정해야 했습니다. const getMarker = (y, x) =&gt; `${y},${x}`; // visited 객체의 key값을 만들기 위해 필요한 함수 const checkBox = (lineIndex, boxIndex, box) =&gt; { // y(lineIndex), x(boxIndex), box 값을 받아옴 if (box === "0") return; // box가 0인 경우 아파트가 없으므로 작업을 종료 const marker = getMarker(lineIndex, boxIndex); // key값으로 사용될 marker 생성 if (visited[marker]) return; // 이미 방문했을 경우 작업을 종료 const queue = [marker]; // 첫 값으로 만들어진 marker를 담은 queue 생성 let curMarker; // 반복문을 돌면서 목표 지점이 될 marker let count = 0; // 해당 함수의 시작지점으로부터 얼마나 아파트를 돌았는지 확인하기 위한 변수 while (queue.length) { curMarker = queue.pop(); // 목표지점으로 사용될 marker를 설정 const [y, x] = curMarker.split(",").map((value) =&gt; Number(value)); // 몇 번째 줄, 몇 번째 box인지를 알아냄 if (!visited[curMarker] &amp;&amp; graphBoxes[y][x] === "1") { // 방문하지 않은 값이 "1"인 box들일 경우에만 작업을 진행함 visited[curMarker] = true; // 방문을 하는 상황으로 설정 count += 1; // 상하좌우를 돌면서 queue에 넣어줌 if (y - 1 &gt;= 0) queue.push(getMarker(y - 1, x)); if (x - 1 &gt;= 0) queue.push(getMarker(y, x - 1)); if (y + 1 &lt; N) queue.push(getMarker(y + 1, x)); if (x + 1 &lt; N) queue.push(getMarker(y, x + 1)); } } if (count) countArray.push(count); }; 위 함수를 통해서 반복 작업 시 box가 방문하지 않은 ‘1’인 경우에만 그래프 순회를 통해 개수 세기를 진행하도록 할 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 14940번</title><link href="http://localhost:4000/algorithm/2022/11/09/14940/" rel="alternate" type="text/html" title="백준 14940번" /><published>2022-11-09T00:00:00+09:00</published><updated>2022-11-09T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/09/14940</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/09/14940/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/14940">QUESTION LINK</a></strong></p>
-
-<p>그래프 순회를 하여 기준점으로부터의 거리값을 구하는 문제였습니다. 이 문제의 경우, BFS를 통해 한 점으로 부터 사방으로 이동할 때마다 이동거리를 한 칸 넓히는 방식을 통해 각 칸에서의 길이를 구하면 되었습니다.</p>
-
-<h3 id="잘못된-풀이--각-점으로-부터-2까지의-거리-구하기">잘못된 풀이 : 각 점으로 부터 ‘2’까지의 거리 구하기</h3>
-
-<p>하지만, 초반에 잘못된 방법으로 풀고자 하여, 기준점을 “2”에 두는 것이 아닌, 모든 각각의 점에 대해 기준점을 두고 2까지 가는 데에 필요한 길이를 구하는 방식으로 진행을 하여, 아래와 같은 코드가 나왔고, 이로 인해 <strong>‘시간 초과’</strong>가 계속해서 나오는 문제가 있었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">numbers</span><span class="p">,</span> <span class="p">...</span><span class="nx">graph</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
-<span class="kd">const</span> <span class="p">[</span><span class="nx">n</span><span class="p">,</span> <span class="nx">m</span><span class="p">]</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">N</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">M</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">graphBoxes</span> <span class="o">=</span> <span class="nx">graph</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">));</span>
-<span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[...</span><span class="nb">Array</span><span class="p">(</span><span class="nx">N</span><span class="p">)].</span><span class="nx">map</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">[...</span><span class="nb">Array</span><span class="p">(</span><span class="nx">M</span><span class="p">)]);</span>
-<span class="c1">// 결과를 담을 배열</span>
-
-<span class="kd">const</span> <span class="nx">getMarker</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">,</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">getQueueItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)}</span><span class="s2">,</span><span class="p">${</span><span class="nx">floor</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">checkBox</span> <span class="o">=</span> <span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 0일 때 그 위치의 값은 0으로 설정</span>
-    <span class="nx">resultArray</span><span class="p">[</span><span class="nx">lineIndex</span><span class="p">][</span><span class="nx">boxIndex</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 2일 때 그 위치의 값은 0으로 설정</span>
-    <span class="nx">resultArray</span><span class="p">[</span><span class="nx">lineIndex</span><span class="p">][</span><span class="nx">boxIndex</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">;</span>
-    <span class="k">return</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="c1">// 방문여부를 확인하는 객체</span>
-  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)];</span>
-  <span class="c1">// 최초 값은 함수를 통해 들어온 위치</span>
-  <span class="kd">let</span> <span class="nx">curItem</span><span class="p">;</span>
-
-  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">curItem</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-    <span class="kd">const</span> <span class="p">[</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span><span class="p">]</span> <span class="o">=</span> <span class="nx">curItem</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
-    <span class="c1">// 해당 박스의 좌표와 몇 번을 거쳐 왔는지 나타내는 floor 값</span>
-    <span class="kd">const</span> <span class="nx">curMarker</span> <span class="o">=</span> <span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">curValue</span> <span class="o">=</span> <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">curValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 2인 경우 추가적인 queue를 넣지 않고 거쳐온 정도를 넣어준 뒤 종료</span>
-      <span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="nx">resultArray</span><span class="p">[</span><span class="nx">lineIndex</span><span class="p">][</span><span class="nx">boxIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">floor</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">curValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 1인 경우 주변 요소도 확인하도록 queue에 push</span>
-      <span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">M</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// 문제가 되었던 곳. 모든 값을 돌아 길이를 구하려 해서 시간이 늘어남</span>
-<span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">,</span> <span class="nx">lineIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">line</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">box</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">checkBox</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">,</span> <span class="nx">box</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>위 코드로 작성해, 모든 값에 대한 길이를 구하다보니 시간이 늘어나게 되어 이를 해결하기 위한 다른 방법을 찾게 되었습니다.</p>
-
-<h3 id="2를-시작점으로-설정하고-주변-길이-구하기">‘2’를 시작점으로 설정하고 주변 길이 구하기</h3>
-
-<p>여러번의 BFS 순회를 하는 것이 아니라, 한 번의 BFS만을 통해 모든 위치의 값을 구하면 된다는 것을 알게 되었고, 이를 적용하고자 했습니다. 이 때, 문제의 사항 중 고려하지 못했던 부분이 하나 더 있었는데, <strong>‘1’로 된 곳 중, 방문을 아예 하지 못한 곳은 ‘-1’로 처리한다</strong>는 것입니다. 처음에는 이 사항에 대한 고려가 없어 계속 틀렸다는 결과가 나왔는데, 문제를 다시 파악해보니 이와 같은 조건이 같이 있었다는 것을 알았습니다. 문제를 꼼꼼하게 읽는 것이 풀이보다 더 중요하다는 걸 느끼는 순간이었습니다…</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="p">[</span><span class="nx">numbers</span><span class="p">,</span> <span class="p">...</span><span class="nx">graph</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
-<span class="kd">const</span> <span class="p">[</span><span class="nx">n</span><span class="p">,</span> <span class="nx">m</span><span class="p">]</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">N</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">M</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">graphBoxes</span> <span class="o">=</span> <span class="nx">graph</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">));</span>
-<span class="kd">const</span> <span class="nx">destination</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="c1">// '2'의 위치를 처음에 파악해 저장해둠</span>
-<span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">,</span> <span class="nx">lineIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">line</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">box</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="nx">destination</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">lineIndex</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-
-<span class="kd">const</span> <span class="nx">getMarker</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">,</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">getQueueItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)}</span><span class="s2">,</span><span class="p">${</span><span class="nx">floor</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="c1">// floor 값은 BFS로 탐색을 들어간 횟수를 나타냄</span>
-
-<span class="kd">const</span> <span class="nx">BFS</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">destY</span><span class="p">,</span> <span class="nx">destX</span><span class="p">]</span> <span class="o">=</span> <span class="nx">destination</span><span class="p">;</span>
-  <span class="c1">// '2'의 위치</span>
-  <span class="kd">const</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="c1">// 방문한 곳을 나타내는 객체</span>
-  <span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">destY</span><span class="p">,</span> <span class="nx">destX</span><span class="p">,</span> <span class="mi">0</span><span class="p">)];</span>
-  <span class="c1">// 최초값으로 '2'의 위치를 넣어줌. 2는 어느 곳에 대한 이동도 없으므로 floor값은 0</span>
-  <span class="kd">let</span> <span class="nx">curItem</span><span class="p">;</span>
-
-  <span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">curItem</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-    <span class="kd">const</span> <span class="p">[</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span><span class="p">]</span> <span class="o">=</span> <span class="nx">curItem</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
-    <span class="c1">// 방문한 곳의 좌표, 탐색 횟수</span>
-    <span class="kd">const</span> <span class="nx">curMarker</span> <span class="o">=</span> <span class="nx">getMarker</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">curValue</span> <span class="o">=</span> <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">curValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// 값이 0인 경우 0으로 설정</span>
-      <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">curValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">curValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
-      <span class="c1">// 값이 1, 2인 경우 해당 위치를 방문했음을 표기하고 주변 위치를 탐색</span>
-      <span class="nx">visited</span><span class="p">[</span><span class="nx">curMarker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="nx">graphBoxes</span><span class="p">[</span><span class="nx">y</span><span class="p">][</span><span class="nx">x</span><span class="p">]</span> <span class="o">=</span> <span class="nx">floor</span><span class="p">;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">N</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">M</span><span class="p">)</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getQueueItem</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">floor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="nx">BFS</span><span class="p">();</span>
-
-<span class="c1">// 0인 경우, -1인 경우를 표기함</span>
-<span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">line</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">box</span><span class="p">,</span> <span class="nx">boxIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span> <span class="nx">line</span><span class="p">[</span><span class="nx">boxIndex</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">box</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="nx">line</span><span class="p">[</span><span class="nx">boxIndex</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">graphBoxes</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">line</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>이번 문제를 풀면서 난이도가 쉬운 문제도 문제에 대한 해결 방향을 잘못 잡거나, 문제를 잘못 읽은 경우 문제 풀이에 큰 문제가 생길 수 있음을 다시 느낄 수 있었습니다! 문제 해결에 앞서서 문제 이해 및 풀이를 위한 설계를 조금 더 신경쓰기로 했습니다.</p>
-
-<p><strong>🔎 현재 코드의 경우, 상당히 긴 시간과 메모리를 소모하며 문제를 해결하게 됩니다. 추후 다시 문제를 풀면서 해당 부분에 대한 해결도 필요합니다.</strong></p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 그래프 순회를 하여 기준점으로부터의 거리값을 구하는 문제였습니다. 이 문제의 경우, BFS를 통해 한 점으로 부터 사방으로 이동할 때마다 이동거리를 한 칸 넓히는 방식을 통해 각 칸에서의 길이를 구하면 되었습니다. 잘못된 풀이 : 각 점으로 부터 ‘2’까지의 거리 구하기 하지만, 초반에 잘못된 방법으로 풀고자 하여, 기준점을 “2”에 두는 것이 아닌, 모든 각각의 점에 대해 기준점을 두고 2까지 가는 데에 필요한 길이를 구하는 방식으로 진행을 하여, 아래와 같은 코드가 나왔고, 이로 인해 ‘시간 초과’가 계속해서 나오는 문제가 있었습니다. const [numbers, ...graph] = input; const [n, m] = numbers.split(" "); const N = Number(n); const M = Number(m); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const resultArray = [...Array(N)].map(() =&gt; [...Array(M)]); // 결과를 담을 배열 const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, floor) =&gt; `${getMarker(y, x)},${floor}`; const checkBox = (lineIndex, boxIndex, box) =&gt; { if (box === "0") { // 0일 때 그 위치의 값은 0으로 설정 resultArray[lineIndex][boxIndex] = "0"; return; } if (box === "2") { // 2일 때 그 위치의 값은 0으로 설정 resultArray[lineIndex][boxIndex] = "0"; return; } const visited = {}; // 방문여부를 확인하는 객체 const queue = [getQueueItem(lineIndex, boxIndex, 0)]; // 최초 값은 함수를 통해 들어온 위치 let curItem; while (queue.length) { curItem = queue.shift(); const [y, x, floor] = curItem.split(",").map((value) =&gt; Number(value)); // 해당 박스의 좌표와 몇 번을 거쳐 왔는지 나타내는 floor 값 const curMarker = getMarker(y, x); const curValue = graphBoxes[y][x]; if (!visited[curMarker] &amp;&amp; curValue === "2") { // 2인 경우 추가적인 queue를 넣지 않고 거쳐온 정도를 넣어준 뒤 종료 visited[curMarker] = true; resultArray[lineIndex][boxIndex] = floor; } if (!visited[curMarker] &amp;&amp; curValue === "1") { // 1인 경우 주변 요소도 확인하도록 queue에 push visited[curMarker] = true; if (y - 1 &gt;= 0) queue.push(getQueueItem(y - 1, x, floor + 1)); if (x - 1 &gt;= 0) queue.push(getQueueItem(y, x - 1, floor + 1)); if (y + 1 &lt; N) queue.push(getQueueItem(y + 1, x, floor + 1)); if (x + 1 &lt; M) queue.push(getQueueItem(y, x + 1, floor + 1)); } } }; // 문제가 되었던 곳. 모든 값을 돌아 길이를 구하려 해서 시간이 늘어남 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { checkBox(lineIndex, boxIndex, box); }); }); const result = resultArray.map((line) =&gt; line.join(" ")).join("\n"); console.log(result); 위 코드로 작성해, 모든 값에 대한 길이를 구하다보니 시간이 늘어나게 되어 이를 해결하기 위한 다른 방법을 찾게 되었습니다. ‘2’를 시작점으로 설정하고 주변 길이 구하기 여러번의 BFS 순회를 하는 것이 아니라, 한 번의 BFS만을 통해 모든 위치의 값을 구하면 된다는 것을 알게 되었고, 이를 적용하고자 했습니다. 이 때, 문제의 사항 중 고려하지 못했던 부분이 하나 더 있었는데, ‘1’로 된 곳 중, 방문을 아예 하지 못한 곳은 ‘-1’로 처리한다는 것입니다. 처음에는 이 사항에 대한 고려가 없어 계속 틀렸다는 결과가 나왔는데, 문제를 다시 파악해보니 이와 같은 조건이 같이 있었다는 것을 알았습니다. 문제를 꼼꼼하게 읽는 것이 풀이보다 더 중요하다는 걸 느끼는 순간이었습니다… const input = fs.readFileSync(filePath).toString().trim().split("\n"); const [numbers, ...graph] = input; const [n, m] = numbers.split(" "); const N = Number(n); const M = Number(m); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const destination = []; // '2'의 위치를 처음에 파악해 저장해둠 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "2") destination.push(lineIndex, boxIndex); }); }); const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, floor) =&gt; `${getMarker(y, x)},${floor}`; // floor 값은 BFS로 탐색을 들어간 횟수를 나타냄 const BFS = () =&gt; { const [destY, destX] = destination; // '2'의 위치 const visited = {}; // 방문한 곳을 나타내는 객체 const queue = [getQueueItem(destY, destX, 0)]; // 최초값으로 '2'의 위치를 넣어줌. 2는 어느 곳에 대한 이동도 없으므로 floor값은 0 let curItem; while (queue.length) { curItem = queue.shift(); const [y, x, floor] = curItem.split(",").map((value) =&gt; Number(value)); // 방문한 곳의 좌표, 탐색 횟수 const curMarker = getMarker(y, x); const curValue = graphBoxes[y][x]; if (curValue === "0") { // 값이 0인 경우 0으로 설정 graphBoxes[y][x] = 0; } if (!visited[curMarker] &amp;&amp; (curValue === "1" || curValue === "2")) { // 값이 1, 2인 경우 해당 위치를 방문했음을 표기하고 주변 위치를 탐색 visited[curMarker] = true; graphBoxes[y][x] = floor; if (y - 1 &gt;= 0) queue.push(getQueueItem(y - 1, x, floor + 1)); if (x - 1 &gt;= 0) queue.push(getQueueItem(y, x - 1, floor + 1)); if (y + 1 &lt; N) queue.push(getQueueItem(y + 1, x, floor + 1)); if (x + 1 &lt; M) queue.push(getQueueItem(y, x + 1, floor + 1)); } } }; BFS(); // 0인 경우, -1인 경우를 표기함 graphBoxes.forEach((line) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "0") line[boxIndex] = 0; if (box === "1") line[boxIndex] = -1; }); }); const result = graphBoxes.map((line) =&gt; line.join(" ")).join("\n"); console.log(result); 이번 문제를 풀면서 난이도가 쉬운 문제도 문제에 대한 해결 방향을 잘못 잡거나, 문제를 잘못 읽은 경우 문제 풀이에 큰 문제가 생길 수 있음을 다시 느낄 수 있었습니다! 문제 해결에 앞서서 문제 이해 및 풀이를 위한 설계를 조금 더 신경쓰기로 했습니다. 🔎 현재 코드의 경우, 상당히 긴 시간과 메모리를 소모하며 문제를 해결하게 됩니다. 추후 다시 문제를 풀면서 해당 부분에 대한 해결도 필요합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>🔎 <strong>위와 같이 수정을 하여, 백준에서 통과를 하기는 했습니다. 하지만, 이 코드의 경우에도 시간이 상당히 오래 걸려 통과가 됐기 때문에 가능하다면 자바스크립트에서 더 빠르게 처리하는 코드를 찾아보아야 합니다.</strong></p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 익은 토마토가 위치한 곳에서 한 번씩 BFS를 시행해, 하루가 지날 때마다 근처 토마토가 익은 것으로 만드는 형식을 적용하고자 했습니다. 즉, 이를 위해서 익은 토마토가 있는 위치 ‘1’ 좌표를 찾아내고, 이 곳에서 BFS가 순차적으로 발생하는 것으로 하고자 구상했습니다. 생각한 순서는 아래와 같습니다. 모든 익은 토마토(’1’)의 좌표 구하기 하루가 지날 때마다(day+=1;) 익은 토마토의 좌표로부터 근접한 덜 익은 토마토(’0’)의 값을 ‘1’로 바꾸기 다음 하루가 지날 때마다 2번과 같은 과정 반복하기 인접한 곳에 덜 익은 토마토(’0’)가 없을 시 과정 중단하기 성공은 했으나 시간 초과 이를 위해, 아래와 같은 코드를 구상했으며, 이를 통해 순차적으로 토마토가 익는 과정을 그려낼 수 있었습니다. 하지만, 시간 초과가 발생해, 추가적인 수정이 필요했습니다. const [numbers, ...graph] = input; const [m, n] = numbers.split(" ").map((value) =&gt; Number(value)); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const queue = []; // 첫 익은 토마토가 있는 위치를 받음 const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, day) =&gt; `${getMarker(y, x)},${day}`; // queue에 들어갈 형태를 만드는 함수 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "1") queue.push(getQueueItem(lineIndex, boxIndex, 0)); // 익은 토마토가 있을 경우, queue 배열에 담아줌 }); }); const visited = {}; // 방문 여부를 나타내는 객체 let day = 0; // 날짜를 나타냄. 하루가 지나는 것을 확인할 때마다 1씩 오름 let curItem; // 반복문에서 현재의 위치를 나타내는 값 while (queue.length) { curItem = queue.shift(); // queue에서 가장 처음 요소를 가져와, BFS로 순환하도록 함 const [y, x, curDay] = curItem.split(",").map((value) =&gt; Number(value)); // 좌표 및 날짜를 가져옴 const curValue = graphBoxes[y][x]; const curMarker = getMarker(y, x); if (!visited[curMarker] &amp;&amp; curValue !== "-1") { // 방문하지 않았고, 토마토가 있는 경우에만 추가 작업 시행함 visited[curMarker] = true; // 방문했음을 표기 graphBoxes[y][x] = "1"; // 토마토가 있었다는 표기 if (day &lt; curDay) day = curDay; // 현재 설정된 날짜보다 많은 날짜가 지나갔을 시, 그 날짜로 수정 if (y - 1 &gt;= 0) queue.push(getQueueItem(y - 1, x, curDay + 1)); if (x - 1 &gt;= 0) queue.push(getQueueItem(y, x - 1, curDay + 1)); if (y + 1 &lt; n) queue.push(getQueueItem(y + 1, x, curDay + 1)); if (x + 1 &lt; m) queue.push(getQueueItem(y, x + 1, curDay + 1)); // 주변 토마토들을 체크하기 위해 날짜가 하루 더해진 값(curDay + 1)을 대입함 } } const isFailed = !!graphBoxes.find((line) =&gt; line.find((box) =&gt; box === "0")); // 모든 토마토가 순환한 후, 방문하지 못한 곳이 존재할 시 -1로 변경 const result = isFailed ? -1 : day; console.log(result); 시간 초과 원인 제거하기 이 코드에서 시간 초과가 나오게 된 원인 중 하나로, queue.shift() 부분이 있으며, 이 부분은 index로 받아 처리하는 방법으로 해결이 가능했습니다. 그리고 다른 원인 중 하나는 위 코드에서 일단 방문한 적이 있는 지를 확인하고 추가적인 작업을 하는게 아니라, 우선 queue에 담은 뒤, 추가 작업에서 방문 여부를 확인하고 진행하도록 설정이 되어있었습니다. 이로 인해 불필요한 작업이 반복되는 경우가 많아져, 이 부분들을 모두 제외하고 코드를 수정했습니다. const input = fs.readFileSync(filePath).toString().trim().split("\n"); const [numbers, ...graph] = input; const [m, n] = numbers.split(" ").map((value) =&gt; +value); const graphBoxes = graph.map((line) =&gt; line.split(" ")); const queue = []; const visited = {}; // 주변 좌표로 넘어가는 부분의 중복을 없애기 위해 만든 위치 변수들 const positionValue = [ [-1, 0], [1, 0], [0, -1], [0, 1], ]; const getMarker = (y, x) =&gt; `${y},${x}`; const getQueueItem = (y, x, day) =&gt; `${getMarker(y, x)},${day}`; // 이전과 달라진 부분. 좌표와 날짜를 받고, 이상이 없을 시 queue에 들어가도록 설정함 const checkPosition = (y, x, day) =&gt; { if (x &lt; 0 || x &gt;= m || y &lt; 0 || y &gt;= n) return; const marker = getMarker(y, x); if (visited[marker]) return; visited[marker] = true; queue.push(getQueueItem(y, x, day + 1)); }; // 이전과 달리, queue에 들어가기 전 방문 여부를 체크해 중복 확인이 발생하지 않도록 함 graphBoxes.forEach((line, lineIndex) =&gt; { line.forEach((box, boxIndex) =&gt; { if (box === "1") { visited[getMarker(lineIndex, boxIndex)] = true; queue.push(getQueueItem(lineIndex, boxIndex, 0)); } }); }); let targetIdx = 0; let day = 0; let curItem; // 기존에 queue에서 직접 빼던 방식과 달리, queue내에서 index를 통해 빼낸 것과 동일한 효과로 필요한 값들을 꺼냄 while (queue[targetIdx]) { curItem = queue[targetIdx]; targetIdx += 1; const [y, x, curDay] = curItem.split(",").map((value) =&gt; +value); const curValue = graphBoxes[y][x]; if (curValue !== "-1") { graphBoxes[y][x] = "1"; if (day &lt; curDay) day = curDay; // 주변 위치로 이동하도록 설정하는 부분 positionValue.forEach(([dy, dx]) =&gt; checkPosition(y + dy, x + dx, curDay)); } } const isFailed = !!graphBoxes.some((line) =&gt; line.some((box) =&gt; box === "0")); const result = isFailed ? -1 : day; console.log(result); 🔎 위와 같이 수정을 하여, 백준에서 통과를 하기는 했습니다. 하지만, 이 코드의 경우에도 시간이 상당히 오래 걸려 통과가 됐기 때문에 가능하다면 자바스크립트에서 더 빠르게 처리하는 코드를 찾아보아야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

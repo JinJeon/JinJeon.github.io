@@ -10,32 +10,29 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>백준 18115번 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="JINJEONIMUM" />
+<meta property="og:title" content="백준 18115번" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/blog/page2/" />
-<meta property="og:url" content="http://localhost:4000/blog/page2/" />
+<meta name="description" content="QUESTION LINK 카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다. 5 2 3 3 2 1 예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다. [5, 4, 3, 2, 1]; 여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다. const orders = ordersArray.split(&quot; &quot;); // [2, 3, 3, 2, 1] const ordersLength = orders.length; // 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨 이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다. const orders = ordersArray.split(&quot; &quot;); const ordersLength = orders.length; let target = 1; // 실제 카드의 숫자 let resultArray = []; // 결과 배열. index가 클 수록 아래에 있는 것으로 가정 // 카드 숫자가 실제 카드의 개수보다 많아지면 종료 while (target &lt;= orders.length) { // 카드의 정해져있던 명령 const order = orders[ordersLength - target]; // 1인 경우 배열의 가장 처음으로 옴 if (order === &quot;1&quot;) { resultArray = [target, ...resultArray]; } // 2인 경우 배열의 두 번재 자리로 옴 if (order === &quot;2&quot;) { resultArray = [resultArray[0], target, ...resultArray.slice(1)]; } // 3인 경우 가장 아래에 배치 if (order === &quot;3&quot;) { resultArray.push(target); } target += 1; } const result = resultArray.join(&quot; &quot;); console.log(result); 위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다. 여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다. 덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다. // 덱에서 각 노드들의 특징을 담은 클래스 class Node { constructor(data) { this.data = data; this.prev = null; this.next = null; } } // 실제로 만들어질 덱의 클래스 class Deque { // 처음에는 head, tail이 모두 비어있음 constructor() { this.count = 0; this.head = null; this.tail = null; } // head에 값을 추가 putHead(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄 const prevHead = this.head; this.head = node; this.head.next = prevHead; prevHead.prev = node; } this.count += 1; } // tail에 값을 추가 putTail(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄 const prevTail = this.tail; prevTail.next = node; node.prev = prevTail; this.tail = node; } this.count += 1; } // 이번 문제를 풀기 위해 만들어진 메서드 putSecond(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정 const { head } = this; const second = head.next; if (!second) { this.putTail(data); } else { node.prev = head; node.next = second; head.next = node; second.prev = node; this.count += 1; } } } // head를 제거하고 그 다음 값을 head로 설정 getHead() { if (!this.head) return; const prevHead = this.head; this.head = prevHead.next; prevHead.next = null; this.count -= 1; return data; } // tail을 제거하고 그 다음 값을 tail로 설정 getTail() { if (!this.tail) return; const prevTail = this.head; this.tail = prevTail.prev; prevTail.prev = null; this.count -= 1; return data; } } 위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다. let target = 1; const deque = new Deque(); while (target &lt;= orders.length) { const order = orders[ordersLength - target]; if (order === &quot;1&quot;) { deque.putHead(target); // 가장 앞에 추가하므로 putHead 사용 } if (order === &quot;2&quot;) { deque.putSecond(target); // 두 번째 위치에 추가하므로 putSecond 사용 } if (order === &quot;3&quot;) { deque.putTail(target); // 가장 마지막에 추가하므로 putTail 사용 } target += 1; } let result = &quot;&quot;; let curNode = deque.head; while (curNode) { result += ` ${curNode.data}`; curNode = curNode.next; } result = result.slice(1); // 처음에 만들어진 빈칸 제거 console.log(result); 위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. 이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다." />
+<meta property="og:description" content="QUESTION LINK 카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다. 5 2 3 3 2 1 예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다. [5, 4, 3, 2, 1]; 여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다. const orders = ordersArray.split(&quot; &quot;); // [2, 3, 3, 2, 1] const ordersLength = orders.length; // 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨 이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다. const orders = ordersArray.split(&quot; &quot;); const ordersLength = orders.length; let target = 1; // 실제 카드의 숫자 let resultArray = []; // 결과 배열. index가 클 수록 아래에 있는 것으로 가정 // 카드 숫자가 실제 카드의 개수보다 많아지면 종료 while (target &lt;= orders.length) { // 카드의 정해져있던 명령 const order = orders[ordersLength - target]; // 1인 경우 배열의 가장 처음으로 옴 if (order === &quot;1&quot;) { resultArray = [target, ...resultArray]; } // 2인 경우 배열의 두 번재 자리로 옴 if (order === &quot;2&quot;) { resultArray = [resultArray[0], target, ...resultArray.slice(1)]; } // 3인 경우 가장 아래에 배치 if (order === &quot;3&quot;) { resultArray.push(target); } target += 1; } const result = resultArray.join(&quot; &quot;); console.log(result); 위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다. 여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다. 덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다. // 덱에서 각 노드들의 특징을 담은 클래스 class Node { constructor(data) { this.data = data; this.prev = null; this.next = null; } } // 실제로 만들어질 덱의 클래스 class Deque { // 처음에는 head, tail이 모두 비어있음 constructor() { this.count = 0; this.head = null; this.tail = null; } // head에 값을 추가 putHead(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄 const prevHead = this.head; this.head = node; this.head.next = prevHead; prevHead.prev = node; } this.count += 1; } // tail에 값을 추가 putTail(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄 const prevTail = this.tail; prevTail.next = node; node.prev = prevTail; this.tail = node; } this.count += 1; } // 이번 문제를 풀기 위해 만들어진 메서드 putSecond(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정 const { head } = this; const second = head.next; if (!second) { this.putTail(data); } else { node.prev = head; node.next = second; head.next = node; second.prev = node; this.count += 1; } } } // head를 제거하고 그 다음 값을 head로 설정 getHead() { if (!this.head) return; const prevHead = this.head; this.head = prevHead.next; prevHead.next = null; this.count -= 1; return data; } // tail을 제거하고 그 다음 값을 tail로 설정 getTail() { if (!this.tail) return; const prevTail = this.head; this.tail = prevTail.prev; prevTail.prev = null; this.count -= 1; return data; } } 위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다. let target = 1; const deque = new Deque(); while (target &lt;= orders.length) { const order = orders[ordersLength - target]; if (order === &quot;1&quot;) { deque.putHead(target); // 가장 앞에 추가하므로 putHead 사용 } if (order === &quot;2&quot;) { deque.putSecond(target); // 두 번째 위치에 추가하므로 putSecond 사용 } if (order === &quot;3&quot;) { deque.putTail(target); // 가장 마지막에 추가하므로 putTail 사용 } target += 1; } let result = &quot;&quot;; let curNode = deque.head; while (curNode) { result += ` ${curNode.data}`; curNode = curNode.next; } result = result.slice(1); // 처음에 만들어진 빈칸 제거 console.log(result); 위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. 이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다." />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/11/24/18115/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/11/24/18115/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
-<link rel="prev" href="http://localhost:4000/blog/" />
-<link rel="next" href="http://localhost:4000/blog/page3" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-24T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="JINJEONIMUM" />
+<meta property="twitter:title" content="백준 18115번" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","headline":"JINJEONIMUM","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"url":"http://localhost:4000/blog/page2/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"백준 18115번","dateModified":"2022-11-24T00:00:00+09:00","datePublished":"2022-11-24T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/11/24/18115/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"QUESTION LINK 카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다. 5 2 3 3 2 1 예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다. [5, 4, 3, 2, 1]; 여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다. const orders = ordersArray.split(&quot; &quot;); // [2, 3, 3, 2, 1] const ordersLength = orders.length; // 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨 이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다. const orders = ordersArray.split(&quot; &quot;); const ordersLength = orders.length; let target = 1; // 실제 카드의 숫자 let resultArray = []; // 결과 배열. index가 클 수록 아래에 있는 것으로 가정 // 카드 숫자가 실제 카드의 개수보다 많아지면 종료 while (target &lt;= orders.length) { // 카드의 정해져있던 명령 const order = orders[ordersLength - target]; // 1인 경우 배열의 가장 처음으로 옴 if (order === &quot;1&quot;) { resultArray = [target, ...resultArray]; } // 2인 경우 배열의 두 번재 자리로 옴 if (order === &quot;2&quot;) { resultArray = [resultArray[0], target, ...resultArray.slice(1)]; } // 3인 경우 가장 아래에 배치 if (order === &quot;3&quot;) { resultArray.push(target); } target += 1; } const result = resultArray.join(&quot; &quot;); console.log(result); 위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다. 여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다. 덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다. // 덱에서 각 노드들의 특징을 담은 클래스 class Node { constructor(data) { this.data = data; this.prev = null; this.next = null; } } // 실제로 만들어질 덱의 클래스 class Deque { // 처음에는 head, tail이 모두 비어있음 constructor() { this.count = 0; this.head = null; this.tail = null; } // head에 값을 추가 putHead(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄 const prevHead = this.head; this.head = node; this.head.next = prevHead; prevHead.prev = node; } this.count += 1; } // tail에 값을 추가 putTail(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄 const prevTail = this.tail; prevTail.next = node; node.prev = prevTail; this.tail = node; } this.count += 1; } // 이번 문제를 풀기 위해 만들어진 메서드 putSecond(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정 const { head } = this; const second = head.next; if (!second) { this.putTail(data); } else { node.prev = head; node.next = second; head.next = node; second.prev = node; this.count += 1; } } } // head를 제거하고 그 다음 값을 head로 설정 getHead() { if (!this.head) return; const prevHead = this.head; this.head = prevHead.next; prevHead.next = null; this.count -= 1; return data; } // tail을 제거하고 그 다음 값을 tail로 설정 getTail() { if (!this.tail) return; const prevTail = this.head; this.tail = prevTail.prev; prevTail.prev = null; this.count -= 1; return data; } } 위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다. let target = 1; const deque = new Deque(); while (target &lt;= orders.length) { const order = orders[ordersLength - target]; if (order === &quot;1&quot;) { deque.putHead(target); // 가장 앞에 추가하므로 putHead 사용 } if (order === &quot;2&quot;) { deque.putSecond(target); // 두 번째 위치에 추가하므로 putSecond 사용 } if (order === &quot;3&quot;) { deque.putTail(target); // 가장 마지막에 추가하므로 putTail 사용 } target += 1; } let result = &quot;&quot;; let curNode = deque.head; while (curNode) { result += ` ${curNode.data}`; curNode = curNode.next; } result = result.slice(1); // 처음에 만들어진 빈칸 제거 console.log(result); 위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. 이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.","url":"http://localhost:4000/algorithm/2022/11/24/18115/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-      
-      <title>POSTS - JINJEONIMUM</title>
-      <meta property="og:title" content="POSTS">
-      <meta name="description" content="">
-      <meta property="og:description" content="">
     
     
       
@@ -104,7 +101,7 @@
 
   </head>
 
-  <body class="layout-blog">
+  <body class="layout-post  백준-18115번">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -215,34 +212,21 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>deque을 사용하는 알고리즘 문제 풀이</p>
+
+    </div>
+  </div>
+
 </header>
 
 
-<main class="main  container">
-
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
+<main class="main container">
+  <article class="article article--post content typeset">
+    <div class="article--title">
+      <h1>백준 18115번</h1>
       
-        
-        <h1>POSTS</h1>
-        
-
-
-      
-
-    </article>
-
-    
-  <section class="section  typeset">
-    <ul class="list  list--posts">
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/algorithm/2022/11/20/20207/">백준 20207번</a></h3>
-              
 
 <small class="small  post-meta">
   
@@ -250,161 +234,249 @@
     
       <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-20T00:00:00+09:00" class="time">20 Nov 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-24T00:00:00+09:00" class="time">24 Nov 2022</time>
 </small>
 
-            </div>
-            <p>규칙성과 예외를 찾아 문제 풀기</p>
+    </div>
 
+    <p><strong><a href="https://www.acmicpc.net/problem/18115">QUESTION LINK</a></strong></p>
 
-          </article>
-        </li>
+<p>카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">5</span>
+<span class="mi">2</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">// [2, 3, 3, 2, 1]</span>
+<span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="c1">// 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨</span>
+</code></pre></div></div>
+
+<p>이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 실제 카드의 숫자</span>
+<span class="kd">let</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">// 결과 배열. index가 클 수록 아래에 있는 것으로 가정</span>
+
+<span class="c1">// 카드 숫자가 실제 카드의 개수보다 많아지면 종료</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 카드의 정해져있던 명령</span>
+  <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
+
+  <span class="c1">// 1인 경우 배열의 가장 처음으로 옴</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="c1">// 2인 경우 배열의 두 번재 자리로 옴</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">resultArray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+  <span class="p">}</span>
+  <span class="c1">// 3인 경우 가장 아래에 배치</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">target</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다.</p>
+
+<p>여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다.</p>
+
+<p><strong>덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다.</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 덱에서 각 노드들의 특징을 담은 클래스</span>
+<span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 실제로 만들어질 덱의 클래스</span>
+<span class="kd">class</span> <span class="nx">Deque</span> <span class="p">{</span>
+  <span class="c1">// 처음에는 head, tail이 모두 비어있음</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// head에 값을 추가</span>
+  <span class="nx">putHead</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄</span>
+      <span class="kd">const</span> <span class="nx">prevHead</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">prevHead</span><span class="p">;</span>
+      <span class="nx">prevHead</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// tail에 값을 추가</span>
+  <span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄</span>
+      <span class="kd">const</span> <span class="nx">prevTail</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">;</span>
+      <span class="nx">prevTail</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">prevTail</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 이번 문제를 풀기 위해 만들어진 메서드</span>
+  <span class="nx">putSecond</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">head</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">head</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">second</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">head</span><span class="p">;</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">second</span><span class="p">;</span>
+        <span class="nx">head</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="nx">second</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// head를 제거하고 그 다음 값을 head로 설정</span>
+  <span class="nx">getHead</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">prevHead</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+    <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// tail을 제거하고 그 다음 값을 tail로 설정</span>
+  <span class="nx">getTail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">prevTail</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span><span class="p">;</span>
+    <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deque</span><span class="p">();</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putHead</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 가장 앞에 추가하므로 putHead 사용</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putSecond</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 두 번째 위치에 추가하므로 putSecond 사용</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="c1">// 가장 마지막에 추가하므로 putTail 사용</span>
+  <span class="p">}</span>
+
+  <span class="nx">target</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">deque</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">curNode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">curNode</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">curNode</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// 처음에 만들어진 빈칸 제거</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. <strong>이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고</strong>, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.</p>
+ <!-- prettier-ignore -->
+<div class="share">
+  
+    
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/algorithm/2022/11/19/10994/">백준 10994번</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-19T00:00:00+09:00" class="time">19 Nov 2022</time>
-</small>
-
-            </div>
-            <p>규칙성을 통한 별찍기</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">React 개발 시 https 사용하기</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-15T00:00:00+09:00" class="time">15 Nov 2022</time>
-</small>
-
-            </div>
-            <p>React 개발 시 https 사용하기</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/algorithm/2022/11/10/5547/">백준 5547번</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-10T00:00:00+09:00" class="time">10 Nov 2022</time>
-</small>
-
-            </div>
-            <p>BFS를 이용한 집 주변 둘레 구하기 (JAVASCRIPT)</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/algorithm/2022/11/09/7576/">백준 7576번</a></h3>
-              
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-09T00:00:00+09:00" class="time">09 Nov 2022</time>
-</small>
-
-            </div>
-            <p>BFS를 이용하여 점진적으로 범위 확장하기 (JAVASCRIPT)</p>
-
-
-          </article>
-        </li>
       
-    </ul>
-    <nav class="nav  nav--paginator">
 
-  
-    <a href="/blog/" class="pagination  pagination--previous">&larr; NEWER</a>
-  
+      <a class="button" href="
+      <!---->https://github.com/JinJeon" style="background: #444545">GITHUB&nbsp; <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+</a>
 
-  <span class="pagination  pagination--counter">PAGE : 2 OF 9</span>
-
-  
-    <a href="/blog/page3" class="pagination  pagination--next">OLDER &rarr;</a>
-  
-
-</nav>
-
-  </section>
-
-
-
-  </div>
-
-  <!-- prettier-ignore -->
-
-<aside class="aside  typeset  aside--right">
-
-  
-    <section class="section  section--description">
-      <h4>ABOUT ME</h4>
-      <!-- <p></p> -->
-      <!-- prettier-ignore -->
-<nav class="nav  nav--social">
-  
-    
-      
-      <a href="https://github.com/JinJeon">
-        <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
-
-      </a>
     
   
     
       
-      <a href="https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796">
-        <svg width="16" height="16" class="icon  icon--nav" role="img" alt="nav"><title>nav</title><use xlink:href="#nav" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->mailto:nanyong01@gmail.com?subject=백준 18115번&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/11/24/18115/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
     
   
-</nav>
+</div>
+ 
 
-    </section>
+  </article>
 
   
-
-</aside>
-
-
 </main>
 
 <footer class="footer">
