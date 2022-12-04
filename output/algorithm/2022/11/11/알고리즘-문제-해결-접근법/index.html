@@ -10,32 +10,29 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>알고리즘 문제 해결 접근법 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="JINJEONIMUM" />
+<meta property="og:title" content="알고리즘 문제 해결 접근법" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/blog/page6/" />
-<meta property="og:url" content="http://localhost:4000/blog/page6/" />
+<meta name="description" content="해당 내용은 UDEMY의 알고리즘 ∙ 자료구조 강의를 수강 후 정리한 내용입니다. 알고리즘이란? 특정 작업을 달성하기 위한 과정이나 일련의 단계. 즉, ‘일련의 단계’의 의미를 가리킵니다. 프로그래밍 수행 시 하는 모든 작업에 일종의 알고리즘이 들어가게 되므로, 알고리즘을 알아야 두어야합니다. 알고리즘을 잘 이해하기 위해서 문제 해결 과정을 수립하고, 일반적인 문제 패턴들을 파악해야 합니다. 그리고 문제 해결 과정으로는 아래와 같은 순서들이 존재합니다. 문제 이해하기 구체적인 예시 알아보기 문제 세분화 하기 문제 해결 및 단순화하기 문제 복습 및 재구성하기 문제의 이해 문제의 해결에 있어서 새로움을 맞닥뜨리고 이를 해결하는 것이 가장 어렵습니다. 그래서 단게별 지침을 통해 계획을 수립할 필요가 있습니다. 문제를 풀기 시작하기에 앞서 이를 이해하는 과정이 훨씬 중요한데, 이는 문제의 해결을 정의하는 데에 큰 도움이 됩니다. 문제 이해의 과정에서 중요한 것은 아래와 같은 사항들이 있습니다. 문제를 그대로 생각하는 것이 아니라 나만의 방식으로 바꿔서 질문이 무엇인지 실제로 이해하기 문제의 입력값과 그에 따른 올바른 출력값을 파악하기 주어진 입력값만으로 출력값을 가져올 수 있는 지 확인하기 데이터의 중요한 부분에 라벨링을 하기 예를 들어, ‘두 개의 숫자를 더해 결과를 만드는 함수를 설정’하는 경우, 아래와 같은 사항들을 고려해서 문제를 이해해볼 수 있습니다. 두 개의 큰 숫자를 더하려는 경우, 자바스크립트는 Infinity라는 값을 보여주고 계산을 포기하게 됨 하나는 String, 하나는 Number로 설정된 두 값의 합에 대해서는 제대로 된 결과를 보여주지 못함 두 개의 값이 들어와야 하는 상황에서 하나의 값만 입력될 경우, 어떻게 처리할 지에 대한 문제가 발생함 라벨링을 위해서 add, num1, num2와 같은 값들을 설정하게 됨 구체적인 예시 알아보기 예시를 통해 온전한 검사를 수행해볼 수 있고, 예시를 적용해 많은 정보를 얻을 수도 있습니다. 예시를 알아보는 순서로는 ‘쉬운 예시로부터 복잡한 예시의 방향으로 진행’하는 것과 ‘빈 입력값 또는 유효하지 않은 입력값이 주어진 상황 살펴보기’가 있습니다. 예시로 ‘문자열에서 각 문자의 수를 반환하기’를 하는 상황이 주어졌을 때 아래와 같은 것들을 살펴볼 수 있습니다. 문자 수 객체가 미리 주어지는 상황인지, 직접 찾아가며 객체에 넣어주어야 하는지 여부 확인 &#39;aaaa&#39; {a: 4} or {a: 4, b: 0 ... } &quot;hello&quot; {h: 1, e: 1, l: 2, o: 1} 대소문자에 대한 구분 여부 확인 &quot;Hello&quot; {H: 1} or {h: 1} 빈 입력값 또는 부적절한 값이 들어오는 경우 → null, false, error 등이 나오게 하기 위와 같은 예시들은 실무를 할 때에도 확실하게 상황을 분리하는 데에 도움이 됩니다. 복잡한 입력값과 예시를 입력해 문제에 대해 더 잘 이해할 수 있습니다. 세분화하기 문제에 대한 단계를 실제 작성하면서 나누는 단계입니다. 이 단계를 통해 아래와 같은 이점들을 얻을 수 있습니다. 실제 면접의 경우에도 제 시간 내에 풀 수 없는 문제가 출제되고, 흐름을 보는 경우가 존재하기 때문에 세분화를 통해 먼저 단계를 나눠보는 것이 좋은 습관이 될 수 있습니다. 코드를 실제 작성하기 전에 상상을 해 볼 수 있음 이해되지 않는 부분에 대한 이해를 도움 확신이 들지 않는 부분에 대해 확신을 위한 작업을 할 수도 있음 의사코드, 유사코드를 작성하여 전체적인 흐름을 확인하고, 접근 방식을 명확히 할 수 있음 문제 해결하기 ∙ 단순화하기 실제로 문제를 해결하는 부분입니다. 단순화란 해결하기 어려운 부분을 맞닥뜨렸을 때, 단순한 해결책을 작성하고 다시 어려운 부분에 통합하는 과정을 의미합니다. 단순화를 하는 과정이 어려운 부분을 해결하는 데에 도움을 줄 수 있습니다. 문제 해결 시 단순한 부분을 처리하고, 이후 어려운 부분과 통합할 것임을 염두에 두어야 합니다. 보통 어려운 문제의 해결 시 문제 단순화 과정을 통해 실제 해결책을 깊이 이해하고 어려운 부분에 대한 해결도 이루어지게 되기 때문입니다. 이전 예시(문자열의 각 문자 구하기)를 현재 단계에서 다시 살펴보면, 아래와 같은 코드가 나오게 됩니다. 우선 의사 코드(주석처리된 부분들)에 맞춘 코드를 작성하고, 예외처리가 제대로 되지 않을 수 있는 부분(대 ∙ 소문자, 특수문자 등)에 대해 처리하여 코드 작성이 이루어졌습니다. 이 때, 코드의 성급한 작성보다는 페이지에 작성해서 되길 바라되, 어려운 부분들을 파악하고 올바른 부분들에 바로 연결할 수 있도록 하는 것이 좋습니다. const charCount = (str) =&gt; { // 마지막에 리턴할 객체 생성 const result = {}; const checkRegex = // 문자열을 순회 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); // 문자열이 객체에 있는 경우, 1추가 없을 시 1로 생성 if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } return result; }; 되돌아보기와 리펙터 해결책이 좋은 지에 대한 유무와 상관없이 정리 작업은 개발자의 발전을 위해 항상 이루어져야 합니다. 작동하는 것에 그치지 않고 코드를 향상시키고자 노력하는 것은 항상 중요하기 때문입니다. 리펙터링을 할 때 고려할 사항으로는 아래와 같은 것들이 있습니다. 코드를 한 줄씩 살펴보면서 효율성, 가독성 등을 확인 해결책의 성능을 향상시킬 수 있는 지 고려하기 → 시간 복잡도, 공간 복잡도 다른 사람이 해결한 방식에 대해서 알아보기 작동만 하는 코드보다, 그 코드를 다시 분석해보기 문제를 해결함으로써 직감을 발달시켜 다른 문제를 해결할 수 있는 직관성을 기를 수 있습니다. 이를 위해서 해결책을 작성한 뒤 다른 문제와의 유사점을 찾아야합니다. const charCount = (str) =&gt; { const result = {}; const regexChecker = /[a-z0-9]/; // 문자, 숫자를 체크하는 정규표현식을 추가 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } } return result; }; for (const char of str) { // 리펙토링 작업을 위해 for문을 for of문으로 바꿈 if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } z; } } obj[char] = ++obj[char] || 1; // if else 문에 대한 리펙토링 // obj[char]가 없는 경우 1로 바꾸도록 설정" />
+<meta property="og:description" content="해당 내용은 UDEMY의 알고리즘 ∙ 자료구조 강의를 수강 후 정리한 내용입니다. 알고리즘이란? 특정 작업을 달성하기 위한 과정이나 일련의 단계. 즉, ‘일련의 단계’의 의미를 가리킵니다. 프로그래밍 수행 시 하는 모든 작업에 일종의 알고리즘이 들어가게 되므로, 알고리즘을 알아야 두어야합니다. 알고리즘을 잘 이해하기 위해서 문제 해결 과정을 수립하고, 일반적인 문제 패턴들을 파악해야 합니다. 그리고 문제 해결 과정으로는 아래와 같은 순서들이 존재합니다. 문제 이해하기 구체적인 예시 알아보기 문제 세분화 하기 문제 해결 및 단순화하기 문제 복습 및 재구성하기 문제의 이해 문제의 해결에 있어서 새로움을 맞닥뜨리고 이를 해결하는 것이 가장 어렵습니다. 그래서 단게별 지침을 통해 계획을 수립할 필요가 있습니다. 문제를 풀기 시작하기에 앞서 이를 이해하는 과정이 훨씬 중요한데, 이는 문제의 해결을 정의하는 데에 큰 도움이 됩니다. 문제 이해의 과정에서 중요한 것은 아래와 같은 사항들이 있습니다. 문제를 그대로 생각하는 것이 아니라 나만의 방식으로 바꿔서 질문이 무엇인지 실제로 이해하기 문제의 입력값과 그에 따른 올바른 출력값을 파악하기 주어진 입력값만으로 출력값을 가져올 수 있는 지 확인하기 데이터의 중요한 부분에 라벨링을 하기 예를 들어, ‘두 개의 숫자를 더해 결과를 만드는 함수를 설정’하는 경우, 아래와 같은 사항들을 고려해서 문제를 이해해볼 수 있습니다. 두 개의 큰 숫자를 더하려는 경우, 자바스크립트는 Infinity라는 값을 보여주고 계산을 포기하게 됨 하나는 String, 하나는 Number로 설정된 두 값의 합에 대해서는 제대로 된 결과를 보여주지 못함 두 개의 값이 들어와야 하는 상황에서 하나의 값만 입력될 경우, 어떻게 처리할 지에 대한 문제가 발생함 라벨링을 위해서 add, num1, num2와 같은 값들을 설정하게 됨 구체적인 예시 알아보기 예시를 통해 온전한 검사를 수행해볼 수 있고, 예시를 적용해 많은 정보를 얻을 수도 있습니다. 예시를 알아보는 순서로는 ‘쉬운 예시로부터 복잡한 예시의 방향으로 진행’하는 것과 ‘빈 입력값 또는 유효하지 않은 입력값이 주어진 상황 살펴보기’가 있습니다. 예시로 ‘문자열에서 각 문자의 수를 반환하기’를 하는 상황이 주어졌을 때 아래와 같은 것들을 살펴볼 수 있습니다. 문자 수 객체가 미리 주어지는 상황인지, 직접 찾아가며 객체에 넣어주어야 하는지 여부 확인 &#39;aaaa&#39; {a: 4} or {a: 4, b: 0 ... } &quot;hello&quot; {h: 1, e: 1, l: 2, o: 1} 대소문자에 대한 구분 여부 확인 &quot;Hello&quot; {H: 1} or {h: 1} 빈 입력값 또는 부적절한 값이 들어오는 경우 → null, false, error 등이 나오게 하기 위와 같은 예시들은 실무를 할 때에도 확실하게 상황을 분리하는 데에 도움이 됩니다. 복잡한 입력값과 예시를 입력해 문제에 대해 더 잘 이해할 수 있습니다. 세분화하기 문제에 대한 단계를 실제 작성하면서 나누는 단계입니다. 이 단계를 통해 아래와 같은 이점들을 얻을 수 있습니다. 실제 면접의 경우에도 제 시간 내에 풀 수 없는 문제가 출제되고, 흐름을 보는 경우가 존재하기 때문에 세분화를 통해 먼저 단계를 나눠보는 것이 좋은 습관이 될 수 있습니다. 코드를 실제 작성하기 전에 상상을 해 볼 수 있음 이해되지 않는 부분에 대한 이해를 도움 확신이 들지 않는 부분에 대해 확신을 위한 작업을 할 수도 있음 의사코드, 유사코드를 작성하여 전체적인 흐름을 확인하고, 접근 방식을 명확히 할 수 있음 문제 해결하기 ∙ 단순화하기 실제로 문제를 해결하는 부분입니다. 단순화란 해결하기 어려운 부분을 맞닥뜨렸을 때, 단순한 해결책을 작성하고 다시 어려운 부분에 통합하는 과정을 의미합니다. 단순화를 하는 과정이 어려운 부분을 해결하는 데에 도움을 줄 수 있습니다. 문제 해결 시 단순한 부분을 처리하고, 이후 어려운 부분과 통합할 것임을 염두에 두어야 합니다. 보통 어려운 문제의 해결 시 문제 단순화 과정을 통해 실제 해결책을 깊이 이해하고 어려운 부분에 대한 해결도 이루어지게 되기 때문입니다. 이전 예시(문자열의 각 문자 구하기)를 현재 단계에서 다시 살펴보면, 아래와 같은 코드가 나오게 됩니다. 우선 의사 코드(주석처리된 부분들)에 맞춘 코드를 작성하고, 예외처리가 제대로 되지 않을 수 있는 부분(대 ∙ 소문자, 특수문자 등)에 대해 처리하여 코드 작성이 이루어졌습니다. 이 때, 코드의 성급한 작성보다는 페이지에 작성해서 되길 바라되, 어려운 부분들을 파악하고 올바른 부분들에 바로 연결할 수 있도록 하는 것이 좋습니다. const charCount = (str) =&gt; { // 마지막에 리턴할 객체 생성 const result = {}; const checkRegex = // 문자열을 순회 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); // 문자열이 객체에 있는 경우, 1추가 없을 시 1로 생성 if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } return result; }; 되돌아보기와 리펙터 해결책이 좋은 지에 대한 유무와 상관없이 정리 작업은 개발자의 발전을 위해 항상 이루어져야 합니다. 작동하는 것에 그치지 않고 코드를 향상시키고자 노력하는 것은 항상 중요하기 때문입니다. 리펙터링을 할 때 고려할 사항으로는 아래와 같은 것들이 있습니다. 코드를 한 줄씩 살펴보면서 효율성, 가독성 등을 확인 해결책의 성능을 향상시킬 수 있는 지 고려하기 → 시간 복잡도, 공간 복잡도 다른 사람이 해결한 방식에 대해서 알아보기 작동만 하는 코드보다, 그 코드를 다시 분석해보기 문제를 해결함으로써 직감을 발달시켜 다른 문제를 해결할 수 있는 직관성을 기를 수 있습니다. 이를 위해서 해결책을 작성한 뒤 다른 문제와의 유사점을 찾아야합니다. const charCount = (str) =&gt; { const result = {}; const regexChecker = /[a-z0-9]/; // 문자, 숫자를 체크하는 정규표현식을 추가 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } } return result; }; for (const char of str) { // 리펙토링 작업을 위해 for문을 for of문으로 바꿈 if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } z; } } obj[char] = ++obj[char] || 1; // if else 문에 대한 리펙토링 // obj[char]가 없는 경우 1로 바꾸도록 설정" />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/11/11/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%A0%91%EA%B7%BC%EB%B2%95/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/11/11/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%A0%91%EA%B7%BC%EB%B2%95/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
-<link rel="prev" href="http://localhost:4000/blog/page5" />
-<link rel="next" href="http://localhost:4000/blog/page7" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-11T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="JINJEONIMUM" />
+<meta property="twitter:title" content="알고리즘 문제 해결 접근법" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","headline":"JINJEONIMUM","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"url":"http://localhost:4000/blog/page6/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"알고리즘 문제 해결 접근법","dateModified":"2022-11-11T00:00:00+09:00","datePublished":"2022-11-11T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/11/11/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%A0%91%EA%B7%BC%EB%B2%95/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"해당 내용은 UDEMY의 알고리즘 ∙ 자료구조 강의를 수강 후 정리한 내용입니다. 알고리즘이란? 특정 작업을 달성하기 위한 과정이나 일련의 단계. 즉, ‘일련의 단계’의 의미를 가리킵니다. 프로그래밍 수행 시 하는 모든 작업에 일종의 알고리즘이 들어가게 되므로, 알고리즘을 알아야 두어야합니다. 알고리즘을 잘 이해하기 위해서 문제 해결 과정을 수립하고, 일반적인 문제 패턴들을 파악해야 합니다. 그리고 문제 해결 과정으로는 아래와 같은 순서들이 존재합니다. 문제 이해하기 구체적인 예시 알아보기 문제 세분화 하기 문제 해결 및 단순화하기 문제 복습 및 재구성하기 문제의 이해 문제의 해결에 있어서 새로움을 맞닥뜨리고 이를 해결하는 것이 가장 어렵습니다. 그래서 단게별 지침을 통해 계획을 수립할 필요가 있습니다. 문제를 풀기 시작하기에 앞서 이를 이해하는 과정이 훨씬 중요한데, 이는 문제의 해결을 정의하는 데에 큰 도움이 됩니다. 문제 이해의 과정에서 중요한 것은 아래와 같은 사항들이 있습니다. 문제를 그대로 생각하는 것이 아니라 나만의 방식으로 바꿔서 질문이 무엇인지 실제로 이해하기 문제의 입력값과 그에 따른 올바른 출력값을 파악하기 주어진 입력값만으로 출력값을 가져올 수 있는 지 확인하기 데이터의 중요한 부분에 라벨링을 하기 예를 들어, ‘두 개의 숫자를 더해 결과를 만드는 함수를 설정’하는 경우, 아래와 같은 사항들을 고려해서 문제를 이해해볼 수 있습니다. 두 개의 큰 숫자를 더하려는 경우, 자바스크립트는 Infinity라는 값을 보여주고 계산을 포기하게 됨 하나는 String, 하나는 Number로 설정된 두 값의 합에 대해서는 제대로 된 결과를 보여주지 못함 두 개의 값이 들어와야 하는 상황에서 하나의 값만 입력될 경우, 어떻게 처리할 지에 대한 문제가 발생함 라벨링을 위해서 add, num1, num2와 같은 값들을 설정하게 됨 구체적인 예시 알아보기 예시를 통해 온전한 검사를 수행해볼 수 있고, 예시를 적용해 많은 정보를 얻을 수도 있습니다. 예시를 알아보는 순서로는 ‘쉬운 예시로부터 복잡한 예시의 방향으로 진행’하는 것과 ‘빈 입력값 또는 유효하지 않은 입력값이 주어진 상황 살펴보기’가 있습니다. 예시로 ‘문자열에서 각 문자의 수를 반환하기’를 하는 상황이 주어졌을 때 아래와 같은 것들을 살펴볼 수 있습니다. 문자 수 객체가 미리 주어지는 상황인지, 직접 찾아가며 객체에 넣어주어야 하는지 여부 확인 &#39;aaaa&#39; {a: 4} or {a: 4, b: 0 ... } &quot;hello&quot; {h: 1, e: 1, l: 2, o: 1} 대소문자에 대한 구분 여부 확인 &quot;Hello&quot; {H: 1} or {h: 1} 빈 입력값 또는 부적절한 값이 들어오는 경우 → null, false, error 등이 나오게 하기 위와 같은 예시들은 실무를 할 때에도 확실하게 상황을 분리하는 데에 도움이 됩니다. 복잡한 입력값과 예시를 입력해 문제에 대해 더 잘 이해할 수 있습니다. 세분화하기 문제에 대한 단계를 실제 작성하면서 나누는 단계입니다. 이 단계를 통해 아래와 같은 이점들을 얻을 수 있습니다. 실제 면접의 경우에도 제 시간 내에 풀 수 없는 문제가 출제되고, 흐름을 보는 경우가 존재하기 때문에 세분화를 통해 먼저 단계를 나눠보는 것이 좋은 습관이 될 수 있습니다. 코드를 실제 작성하기 전에 상상을 해 볼 수 있음 이해되지 않는 부분에 대한 이해를 도움 확신이 들지 않는 부분에 대해 확신을 위한 작업을 할 수도 있음 의사코드, 유사코드를 작성하여 전체적인 흐름을 확인하고, 접근 방식을 명확히 할 수 있음 문제 해결하기 ∙ 단순화하기 실제로 문제를 해결하는 부분입니다. 단순화란 해결하기 어려운 부분을 맞닥뜨렸을 때, 단순한 해결책을 작성하고 다시 어려운 부분에 통합하는 과정을 의미합니다. 단순화를 하는 과정이 어려운 부분을 해결하는 데에 도움을 줄 수 있습니다. 문제 해결 시 단순한 부분을 처리하고, 이후 어려운 부분과 통합할 것임을 염두에 두어야 합니다. 보통 어려운 문제의 해결 시 문제 단순화 과정을 통해 실제 해결책을 깊이 이해하고 어려운 부분에 대한 해결도 이루어지게 되기 때문입니다. 이전 예시(문자열의 각 문자 구하기)를 현재 단계에서 다시 살펴보면, 아래와 같은 코드가 나오게 됩니다. 우선 의사 코드(주석처리된 부분들)에 맞춘 코드를 작성하고, 예외처리가 제대로 되지 않을 수 있는 부분(대 ∙ 소문자, 특수문자 등)에 대해 처리하여 코드 작성이 이루어졌습니다. 이 때, 코드의 성급한 작성보다는 페이지에 작성해서 되길 바라되, 어려운 부분들을 파악하고 올바른 부분들에 바로 연결할 수 있도록 하는 것이 좋습니다. const charCount = (str) =&gt; { // 마지막에 리턴할 객체 생성 const result = {}; const checkRegex = // 문자열을 순회 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); // 문자열이 객체에 있는 경우, 1추가 없을 시 1로 생성 if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } return result; }; 되돌아보기와 리펙터 해결책이 좋은 지에 대한 유무와 상관없이 정리 작업은 개발자의 발전을 위해 항상 이루어져야 합니다. 작동하는 것에 그치지 않고 코드를 향상시키고자 노력하는 것은 항상 중요하기 때문입니다. 리펙터링을 할 때 고려할 사항으로는 아래와 같은 것들이 있습니다. 코드를 한 줄씩 살펴보면서 효율성, 가독성 등을 확인 해결책의 성능을 향상시킬 수 있는 지 고려하기 → 시간 복잡도, 공간 복잡도 다른 사람이 해결한 방식에 대해서 알아보기 작동만 하는 코드보다, 그 코드를 다시 분석해보기 문제를 해결함으로써 직감을 발달시켜 다른 문제를 해결할 수 있는 직관성을 기를 수 있습니다. 이를 위해서 해결책을 작성한 뒤 다른 문제와의 유사점을 찾아야합니다. const charCount = (str) =&gt; { const result = {}; const regexChecker = /[a-z0-9]/; // 문자, 숫자를 체크하는 정규표현식을 추가 for (let i = 0; i &lt; str.result; i++) { const char = str[i].toLowerCase(); if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } } } return result; }; for (const char of str) { // 리펙토링 작업을 위해 for문을 for of문으로 바꿈 if (regexChecker.test(char)) { if (result[char] &gt; 0) { result[char] += 1; } else { result[char] = 1; } z; } } obj[char] = ++obj[char] || 1; // if else 문에 대한 리펙토링 // obj[char]가 없는 경우 1로 바꾸도록 설정","url":"http://localhost:4000/algorithm/2022/11/11/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%A0%91%EA%B7%BC%EB%B2%95/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-      
-      <title>POSTS - JINJEONIMUM</title>
-      <meta property="og:title" content="POSTS">
-      <meta name="description" content="">
-      <meta property="og:description" content="">
     
     
       
@@ -104,7 +101,7 @@
 
   </head>
 
-  <body class="layout-blog">
+  <body class="layout-post  알고리즘-문제-해결-접근법">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -215,196 +212,240 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>알고리즘을 풀기 위한 기본적인 접근 방법에 대한 설명</p>
+
+    </div>
+  </div>
+
 </header>
 
 
-<main class="main  container">
-
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
+<main class="main container">
+  <article class="article article--post content typeset">
+    <div class="article--title">
+      <h1>알고리즘 문제 해결 접근법</h1>
       
-        
-        <h1>POSTS</h1>
-        
-
-
-      
-
-    </article>
-
-    
-  <section class="section  typeset">
-    <ul class="list  list--posts">
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4-copy/">textarea 줄바꿈 시 자동 스크롤</a></h3>
-              
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-11-11T00:00:00+09:00" class="time">11 Nov 2022</time>
 </small>
 
-            </div>
-            <p>React에서 textarea 줄바꿈 시 자동 스크롤이 되도록 만들기</p>
+    </div>
 
+    <blockquote>
+  <p>해당 내용은 UDEMY의 <a href="https://www.udemy.com/course/best-javascript-data-structures/">알고리즘 ∙ 자료구조 강의</a>를 수강 후 정리한 내용입니다.</p>
+</blockquote>
 
-          </article>
-        </li>
+<h3 id="알고리즘이란">알고리즘이란?</h3>
+
+<p>특정 작업을 달성하기 위한 과정이나 일련의 단계. 즉, ‘일련의 단계’의 의미를 가리킵니다. 프로그래밍 수행 시 하는 모든 작업에 일종의 알고리즘이 들어가게 되므로, 알고리즘을 알아야 두어야합니다.</p>
+
+<p>알고리즘을 잘 이해하기 위해서 문제 해결 과정을 수립하고, 일반적인 문제 패턴들을 파악해야 합니다. 그리고 문제 해결 과정으로는 아래와 같은 순서들이 존재합니다.</p>
+
+<ol>
+  <li>문제 이해하기</li>
+  <li>구체적인 예시 알아보기</li>
+  <li>문제 세분화 하기</li>
+  <li>문제 해결 및 단순화하기</li>
+  <li>문제 복습 및 재구성하기</li>
+</ol>
+
+<hr />
+
+<h3 id="문제의-이해">문제의 이해</h3>
+
+<p>문제의 해결에 있어서 새로움을 맞닥뜨리고 이를 해결하는 것이 가장 어렵습니다. 그래서 단게별 지침을 통해 계획을 수립할 필요가 있습니다.</p>
+
+<p>문제를 풀기 시작하기에 앞서 이를 이해하는 과정이 훨씬 중요한데, 이는 문제의 해결을 정의하는 데에 큰 도움이 됩니다. 문제 이해의 과정에서 중요한 것은 아래와 같은 사항들이 있습니다.</p>
+
+<ol>
+  <li>문제를 그대로 생각하는 것이 아니라 <strong>나만의 방식으로 바꿔서</strong> 질문이 무엇인지 실제로 이해하기</li>
+  <li>문제의 <strong>입력값</strong>과 그에 따른 올바른 <strong>출력값</strong>을 파악하기</li>
+  <li>주어진 입력값만으로 출력값을 가져올 수 있는 지 확인하기</li>
+  <li>데이터의 중요한 부분에 <strong>라벨링</strong>을 하기</li>
+</ol>
+
+<p>예를 들어, ‘두 개의 숫자를 더해 결과를 만드는 함수를 설정’하는 경우, 아래와 같은 사항들을 고려해서 문제를 이해해볼 수 있습니다.</p>
+
+<ul>
+  <li>두 개의 큰 숫자를 더하려는 경우, 자바스크립트는 <code class="language-plaintext highlighter-rouge">Infinity</code>라는 값을 보여주고 계산을 포기하게 됨</li>
+  <li>하나는 <code class="language-plaintext highlighter-rouge">String</code>, 하나는 <code class="language-plaintext highlighter-rouge">Number</code>로 설정된 두 값의 합에 대해서는 제대로 된 결과를 보여주지 못함</li>
+  <li>두 개의 값이 들어와야 하는 상황에서 하나의 값만 입력될 경우, 어떻게 처리할 지에 대한 문제가 발생함</li>
+  <li>라벨링을 위해서 <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">num1</code>, <code class="language-plaintext highlighter-rouge">num2</code>와 같은 값들을 설정하게 됨</li>
+</ul>
+
+<hr />
+
+<h3 id="구체적인-예시-알아보기">구체적인 예시 알아보기</h3>
+
+<p>예시를 통해 온전한 검사를 수행해볼 수 있고, 예시를 적용해 많은 정보를 얻을 수도 있습니다.</p>
+
+<p>예시를 알아보는 순서로는 ‘쉬운 예시로부터 복잡한 예시의 방향으로 진행’하는 것과 ‘빈 입력값 또는 유효하지 않은 입력값이 주어진 상황 살펴보기’가 있습니다.</p>
+
+<p>예시로 ‘문자열에서 각 문자의 수를 반환하기’를 하는 상황이 주어졌을 때 아래와 같은 것들을 살펴볼 수 있습니다.</p>
+
+<ul>
+  <li>문자 수 객체가 미리 주어지는 상황인지, 직접 찾아가며 객체에 넣어주어야 하는지 여부 확인</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">aaaa</span><span class="dl">'</span> <span class="p">{</span><span class="nl">a</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span> <span class="nx">or</span> <span class="p">{</span><span class="nl">a</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="mi">0</span> <span class="p">...</span> <span class="p">}</span>
+<span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">{</span><span class="nl">h</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">e</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">l</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">o</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>대소문자에 대한 구분 여부 확인</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span> <span class="p">{</span><span class="nl">H</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span> <span class="nx">or</span> <span class="p">{</span><span class="nl">h</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>빈 입력값 또는 부적절한 값이 들어오는 경우 → <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">error</code> 등이 나오게 하기</li>
+</ul>
+
+<p>위와 같은 예시들은 실무를 할 때에도 확실하게 상황을 분리하는 데에 도움이 됩니다. 복잡한 입력값과 예시를 입력해 문제에 대해 더 잘 이해할 수 있습니다.</p>
+
+<hr />
+
+<h3 id="세분화하기">세분화하기</h3>
+
+<p>문제에 대한 단계를 실제 작성하면서 나누는 단계입니다. 이 단계를 통해 아래와 같은 이점들을 얻을 수 있습니다. 실제 면접의 경우에도 제 시간 내에 풀 수 없는 문제가 출제되고, 흐름을 보는 경우가 존재하기 때문에 세분화를 통해 먼저 단계를 나눠보는 것이 좋은 습관이 될 수 있습니다.</p>
+
+<ol>
+  <li>코드를 실제 작성하기 전에 상상을 해 볼 수 있음</li>
+  <li>이해되지 않는 부분에 대한 이해를 도움</li>
+  <li>확신이 들지 않는 부분에 대해 확신을 위한 작업을 할 수도 있음</li>
+  <li>의사코드, 유사코드를 작성하여 전체적인 흐름을 확인하고, 접근 방식을 명확히 할 수 있음</li>
+</ol>
+
+<hr />
+
+<h3 id="문제-해결하기--단순화하기">문제 해결하기 ∙ 단순화하기</h3>
+
+<p>실제로 문제를 해결하는 부분입니다.</p>
+
+<p><strong>단순화란 해결하기 어려운 부분을 맞닥뜨렸을 때, 단순한 해결책을 작성하고 다시 어려운 부분에 통합하는 과정을 의미합니다.</strong> 단순화를 하는 과정이 어려운 부분을 해결하는 데에 도움을 줄 수 있습니다. 문제 해결 시 단순한 부분을 처리하고, 이후 어려운 부분과 통합할 것임을 염두에 두어야 합니다. 보통 어려운 문제의 해결 시 문제 단순화 과정을 통해 실제 해결책을 깊이 이해하고 어려운 부분에 대한 해결도 이루어지게 되기 때문입니다.</p>
+
+<p>이전 예시(문자열의 각 문자 구하기)를 현재 단계에서 다시 살펴보면, 아래와 같은 코드가 나오게 됩니다. 우선 의사 코드(주석처리된 부분들)에 맞춘 코드를 작성하고, 예외처리가 제대로 되지 않을 수 있는 부분(대 ∙ 소문자, 특수문자 등)에 대해 처리하여 코드 작성이 이루어졌습니다.</p>
+
+<p><strong>이 때, 코드의 성급한 작성보다는 페이지에 작성해서 되길 바라되, 어려운 부분들을 파악하고 올바른 부분들에 바로 연결할 수 있도록 하는 것이 좋습니다.</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">charCount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 마지막에 리턴할 객체 생성</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="kd">const</span> <span class="nx">checkRegex</span> <span class="o">=</span>
+  <span class="c1">// 문자열을 순회</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">char</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="c1">// 문자열이 객체에 있는 경우, 1추가 없을 시 1로 생성</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="되돌아보기와-리펙터">되돌아보기와 리펙터</h3>
+
+<p>해결책이 좋은 지에 대한 유무와 상관없이 정리 작업은 개발자의 발전을 위해 항상 이루어져야 합니다. 작동하는 것에 그치지 않고 코드를 향상시키고자 노력하는 것은 항상 중요하기 때문입니다.</p>
+
+<p>리펙터링을 할 때 고려할 사항으로는 아래와 같은 것들이 있습니다.</p>
+
+<ul>
+  <li>코드를 한 줄씩 살펴보면서 효율성, 가독성 등을 확인</li>
+  <li>해결책의 성능을 향상시킬 수 있는 지 고려하기 → 시간 복잡도, 공간 복잡도</li>
+  <li>다른 사람이 해결한 방식에 대해서 알아보기</li>
+  <li>작동만 하는 코드보다, 그 코드를 다시 분석해보기</li>
+</ul>
+
+<p>문제를 해결함으로써 직감을 발달시켜 다른 문제를 해결할 수 있는 직관성을 기를 수 있습니다. 이를 위해서 <strong>해결책을 작성한 뒤 다른 문제와의 유사점을 찾아야합니다.</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">charCount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="kd">const</span> <span class="nx">regexChecker</span> <span class="o">=</span> <span class="sr">/</span><span class="se">[</span><span class="sr">a-z0-9</span><span class="se">]</span><span class="sr">/</span><span class="p">;</span>
+  <span class="c1">// 문자, 숫자를 체크하는 정규표현식을 추가</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">char</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">regexChecker</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">char</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">char</span> <span class="k">of</span> <span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 리펙토링 작업을 위해 for문을 for of문으로 바꿈</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">regexChecker</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">char</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">z</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">obj</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="nx">obj</span><span class="p">[</span><span class="nx">char</span><span class="p">]</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// if else 문에 대한 리펙토링</span>
+<span class="c1">// obj[char]가 없는 경우 1로 바꾸도록 설정</span>
+</code></pre></div></div>
+ <!-- prettier-ignore -->
+<div class="share">
+  
+    
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/">textarea 높이 조절하기</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-            </div>
-            <p>React에서 textarea 높이 조절하기</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/http/2022/10/26/HTTP%EC%9D%98-%ED%8A%B9%EC%A7%95/">HTTP의 특징</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-            </div>
-            <p>HTTP의 특징 및 그와 관련된 문제, 해결</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/javascript/2022/10/25/%EC%8A%A4%ED%81%AC%EB%A1%A4-%EC%8B%9C-header%EC%97%90-%EA%B7%B8%EB%A6%BC%EC%9E%90-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0/">스크롤 시 header에 그림자 보여주기</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#javascript">JAVASCRIPT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-25T00:00:00+09:00" class="time">25 Oct 2022</time>
-</small>
-
-            </div>
-            <p>스크롤 시 header에 그림자 보여주기</p>
-
-
-          </article>
-        </li>
       
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/">textarea 태그 Enter 처리 문제</a></h3>
-              
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-25T00:00:00+09:00" class="time">25 Oct 2022</time>
-</small>
-
-            </div>
-            <p>input과 textarea 차이로 인해 발생한 Enter 처리 문제</p>
-
-
-          </article>
-        </li>
       
-    </ul>
-    <nav class="nav  nav--paginator">
 
-  
-    <a href="/blog/page5" class="pagination  pagination--previous">&larr; NEWER</a>
-  
+      <a class="button" href="
+      <!---->https://github.com/JinJeon" style="background: #444545">GITHUB&nbsp; <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+</a>
 
-  <span class="pagination  pagination--counter">PAGE : 6 OF 11</span>
-
-  
-    <a href="/blog/page7" class="pagination  pagination--next">OLDER &rarr;</a>
-  
-
-</nav>
-
-  </section>
-
-
-
-  </div>
-
-  <!-- prettier-ignore -->
-
-<aside class="aside  typeset  aside--right">
-
-  
-    <section class="section  section--description">
-      <h4>ABOUT ME</h4>
-      <!-- <p></p> -->
-      <!-- prettier-ignore -->
-<nav class="nav  nav--social">
-  
-    
-      
-      <a href="https://github.com/JinJeon">
-        <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
-
-      </a>
     
   
     
       
-      <a href="https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796">
-        <svg width="16" height="16" class="icon  icon--nav" role="img" alt="nav"><title>nav</title><use xlink:href="#nav" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->mailto:nanyong01@gmail.com?subject=알고리즘 문제 해결 접근법&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/11/11/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%A0%91%EA%B7%BC%EB%B2%95/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
     
   
-</nav>
+</div>
+ 
 
-    </section>
+  </article>
 
   
-
-</aside>
-
-
 </main>
 
 <footer class="footer">
