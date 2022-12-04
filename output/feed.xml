@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-12-01T22:48:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">페이지 내 일부만 최신 상태로 변경하기</title><link href="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="페이지 내 일부만 최신 상태로 변경하기" /><published>2022-12-01T00:00:00+09:00</published><updated>2022-12-01T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%82%B4%20%EC%9D%BC%EB%B6%80%EB%A7%8C%20%EC%B5%9C%EC%8B%A0%20%EC%83%81%ED%83%9C%EB%A1%9C%20%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/"><![CDATA[<h3 id="페이지-렌더링-시-처음부터-데이터를-사용하는-문제">페이지 렌더링 시 처음부터 데이터를 사용하는 문제</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-12-04T12:46:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2470번</title><link href="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/" rel="alternate" type="text/html" title="백준 2470번" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80%202470%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2470">QUESTION LINK</a></strong></p>
+
+<p>주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다.</p>
+
+<ol>
+  <li>주어진 숫자들을 오름차순으로 정렬하기 (-98, -15, 0, 1, 22)</li>
+  <li>정렬된 숫자들의 왼쪽, 오른쪽에 각각 포인터를 두기</li>
+  <li>각 포인터에 해당하는 값들의 합을 구하고, 현재 갖고 있는 최소값과 비교하기</li>
+  <li>구해진 합이 최소값보다 큰 경우, 해당 포인터의 값과 최소값 저장하기</li>
+  <li>구해진 합이 0보다 큰 경우(우측 포인터 값이 좌측 포인터 값보다 큰 경우), 좌측 포인터를 한 칸 내리기</li>
+  <li>구해진 합이 0보다 작은 경우(좌측 포인터 값이 우측 포인터 값보다 큰 경우), 우측 포인터를 한 칸 올리기</li>
+  <li>우측 포인터와 좌측 포인터가 만나기 전까지 위 과정을 반복하기</li>
+</ol>
+
+<p>위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">values</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sortedValues</span> <span class="o">=</span> <span class="nx">values</span>
+  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
+<span class="c1">// 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함</span>
+
+<span class="kd">let</span> <span class="nx">results</span><span class="p">;</span>
+<span class="c1">// 결과를 담을 변수</span>
+<span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="c1">// 왼쪽 포인터의 index값으로, 처음에 0으로 시작함</span>
+<span class="kd">let</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">sortedValues</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 오른쪽 포인터의 index값으로, 처음에 배열의 마지막부터 시작함</span>
+<span class="kd">let</span> <span class="nx">min</span><span class="p">;</span>
+<span class="c1">// 포인터의 합 중 최소값일 경우 해당 변수에 담음</span>
+<span class="kd">let</span> <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="c1">// true일 시 반복문 종료</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nx">isEnd</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">start</span><span class="p">]</span> <span class="o">+</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">end</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">min</span> <span class="o">||</span> <span class="nx">min</span> <span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함</span>
+    <span class="nx">min</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+    <span class="nx">results</span> <span class="o">=</span> <span class="p">[</span><span class="nx">sortedValues</span><span class="p">[</span><span class="nx">start</span><span class="p">],</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">end</span><span class="p">]];</span>
+  <span class="p">}</span>
+  <span class="c1">// 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">end</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">start</span> <span class="o">===</span> <span class="nx">end</span><span class="p">)</span> <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 <strong>포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)</strong>을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다. 주어진 숫자들을 오름차순으로 정렬하기 (-98, -15, 0, 1, 22) 정렬된 숫자들의 왼쪽, 오른쪽에 각각 포인터를 두기 각 포인터에 해당하는 값들의 합을 구하고, 현재 갖고 있는 최소값과 비교하기 구해진 합이 최소값보다 큰 경우, 해당 포인터의 값과 최소값 저장하기 구해진 합이 0보다 큰 경우(우측 포인터 값이 좌측 포인터 값보다 큰 경우), 좌측 포인터를 한 칸 내리기 구해진 합이 0보다 작은 경우(좌측 포인터 값이 우측 포인터 값보다 큰 경우), 우측 포인터를 한 칸 올리기 우측 포인터와 좌측 포인터가 만나기 전까지 위 과정을 반복하기 위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다. const [count, values] = fs.readFileSync(filePath).toString().trim().split("\n"); const sortedValues = values .split(" ") .map(Number) .sort((a, b) =&gt; a - b); // 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함 let results; // 결과를 담을 변수 let start = 0; // 왼쪽 포인터의 index값으로, 처음에 0으로 시작함 let end = sortedValues.length - 1; // 오른쪽 포인터의 index값으로, 처음에 배열의 마지막부터 시작함 let min; // 포인터의 합 중 최소값일 경우 해당 변수에 담음 let isEnd = false; // true일 시 반복문 종료 while (!isEnd) { const sum = sortedValues[start] + sortedValues[end]; if (!min || min &gt; Math.abs(sum)) { // 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함 min = Math.abs(sum); results = [sortedValues[start], sortedValues[end]]; } // 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림 if (sum &lt; 0) { start += 1; } else if (sum &gt; 0) { end -= 1; } else { isEnd = true; } if (start === end) isEnd = true; } const result = results.join(" "); console.log(result); 해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">페이지 내 일부만 최신 상태로 변경하기</title><link href="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/" rel="alternate" type="text/html" title="페이지 내 일부만 최신 상태로 변경하기" /><published>2022-12-01T00:00:00+09:00</published><updated>2022-12-01T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%82%B4%20%EC%9D%BC%EB%B6%80%EB%A7%8C%20%EC%B5%9C%EC%8B%A0%20%EC%83%81%ED%83%9C%EB%A1%9C%20%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0%20copy</id><content type="html" xml:base="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/"><![CDATA[<h3 id="페이지-렌더링-시-처음부터-데이터를-사용하는-문제">페이지 렌더링 시 처음부터 데이터를 사용하는 문제</h3>
 
 <p>진행 중인 프로젝트의 쉐어 상세 페이지 내에서, 현재 처음에 페이지 정보를 모두 받아와 보여주는 방식으로 구성이 되어 있습니다. 하지만, 이렇게 진행할 경우 사용자가 쉐어 신청 ∙ 취소를 할 때와 찜 하기 ∙ 취소를 할 때, 즉각적인 업데이트를 위해서는 페이지 정보를 모두 다시 받아와야 합니다. 이로 인해 버튼을 클릭할 때마다 페이지의 로딩이 이루어지고 다시 화면이 보이는 깜빡거림 문제가 발생하게 됩니다.</p>
 
@@ -940,85 +998,4 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 <strong>필요한 값과 규칙성</strong>을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [["*", " ", "*"][("*", " ", "*")]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = "*"; newLine[totalLength - 1 - j] = "*"; } else { const marker = j &lt; i ? " " : "*"; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? "*" : " "; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = " "; newLine[totalLength - 1 - j] = " "; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join("")).join("\n"); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">React 개발 시 https 사용하기</title><link href="http://localhost:4000/react/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="React 개발 시 https 사용하기" /><published>2022-11-15T00:00:00+09:00</published><updated>2022-11-15T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/11/15/React%20%EA%B0%9C%EB%B0%9C%20%EC%8B%9C%20https%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/react/2022/11/15/React-%EA%B0%9C%EB%B0%9C-%EC%8B%9C-https-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"><![CDATA[<h3 id="https로-넘어가게-된-이유">https로 넘어가게 된 이유</h3>
-
-<p>현재 개발 중인 앱을 배포하며, 기존에 http로 되어있던 api들을 https로 변경해주었습니다. 이에 따라 배포된 페이지는 https로 이루어져 api를 정상적으로 받아왔지만, 오히려 개발 중에는 http를 사용 중이어서 아래와 같은 에러가 나왔습니다.</p>
-
-<p>사파리의 경우, SSL 오류로 인해 동작 자체가 멈추었고, 크롬에서는 기본적인 동작은 하나, api를 받아오는 단계를 진행하지 못하는 것을 볼 수 있었습니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/1.png" alt="" width="100%" height="" /> 
-</figure>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/2.png" alt="" width="100%" height="" /> 
-</figure>
-
-<p>기존에 개발을 진행할 때에는 CORS를 피하기 위해 http-proxy-middleware를 사용했습니다. 하지만, 현재 상황에서는 따로 이전과 같은 방법이 필요가 없다는 것을 알게 되었고, 현재 개발 환경 상에서 localhost를 https로 설정해주면 된다는 결론을 내렸습니다.</p>
-
-<h3 id="packagejson-설정">package.json 설정</h3>
-
-<p>기본적으로 http가 아닌 https로 개발 환경을 설정합니다. 아래와 같이 https로 이동할 수 있도록 합니다.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTPS=true react-app-rewired start"</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">HTTPS를</span><span class="w"> </span><span class="err">적용</span><span class="w">
-</span><span class="p">}</span><span class="err">,</span><span class="w">
-</span></code></pre></div></div>
-
-<p>하지만, 아래와 같은 에러가 나오는 것을 볼 수 있는데, 이는 연결이 안전하지 않기 때문에 문제가 되어 에러가 나오는 것으로, 이를 해결하기 위해서 SSL 인증서를 만들어주어야 합니다. 여기서는 <code class="language-plaintext highlighter-rouge">mkcert</code>라는 것을 이용해 인증서를 만들었습니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/3.png" alt="" width="100%" height="" /> 
-</figure>
-
-<h3 id="mkcert-사용하기">mkcert 사용하기</h3>
-
-<p>인증서 생성을 위한 인증 기관을 만들기 위해 <code class="language-plaintext highlighter-rouge">mkcert</code>를 설치하게 됩니다. 아래 코드들을 통해서 설치할 수 있습니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install mkcert
-// brew로 mkcert 설치
-
-mkcert -install
-// mkcert를 컴퓨터에 설치
-</code></pre></div></div>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/4.png" alt="" width="100%" height="" /> 
-</figure>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/5.png" alt="" width="100%" height="" /> 
-</figure>
-
-<p>그리고 현재 사용 중인 React의 root 디렉토리에 <code class="language-plaintext highlighter-rouge">.cert</code>라는 디렉토리를 만든 뒤, 내부에 인증서를 만들어 넣어줍니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p .cert
-// .cert라는 디렉토리를 생성
-
-mkcert -key-file ./.cert/key.pem -cert-file ./.cert/cert.pem "localhost"
-// 인증서를 만들어 넣어줌.
-</code></pre></div></div>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/6.png" alt="" width="100%" height="" /> 
-</figure>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/7.png" alt="" width="100%" height="" /> 
-</figure>
-
-<p>그리고 만들어진 디렉토리는 개발 단계에서만 사용되기 때문에, <code class="language-plaintext highlighter-rouge">.gitignore</code>로 커밋 제외해줍니다.</p>
-
-<figure class="figure  figure--center">
-  <img class="image" src="/image/221115/8.png" alt="" width="100%" height="" /> 
-</figure>
-
-<p>마지막으로, React가 시작될 시, SSL 인증서를 포함하도록 하기 위해 아래와 같은 형식의 코드로 <code class="language-plaintext highlighter-rouge">package.json</code>에 작성합니다.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-app-rewired start"</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">CRT</span><span class="w"> </span><span class="err">FILE</span><span class="p">,</span><span class="w"> </span><span class="err">KEY</span><span class="w"> </span><span class="err">FILE을</span><span class="w"> </span><span class="err">갖고</span><span class="w"> </span><span class="err">실행하도록</span><span class="w"> </span><span class="err">설정</span><span class="w">
-  </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="err">,</span><span class="w">
-</span></code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="REACT" /><summary type="html"><![CDATA[https로 넘어가게 된 이유 현재 개발 중인 앱을 배포하며, 기존에 http로 되어있던 api들을 https로 변경해주었습니다. 이에 따라 배포된 페이지는 https로 이루어져 api를 정상적으로 받아왔지만, 오히려 개발 중에는 http를 사용 중이어서 아래와 같은 에러가 나왔습니다. 사파리의 경우, SSL 오류로 인해 동작 자체가 멈추었고, 크롬에서는 기본적인 동작은 하나, api를 받아오는 단계를 진행하지 못하는 것을 볼 수 있었습니다. 기존에 개발을 진행할 때에는 CORS를 피하기 위해 http-proxy-middleware를 사용했습니다. 하지만, 현재 상황에서는 따로 이전과 같은 방법이 필요가 없다는 것을 알게 되었고, 현재 개발 환경 상에서 localhost를 https로 설정해주면 된다는 결론을 내렸습니다. package.json 설정 기본적으로 http가 아닌 https로 개발 환경을 설정합니다. 아래와 같이 https로 이동할 수 있도록 합니다. "scripts": { "start": "HTTPS=true react-app-rewired start", // HTTPS를 적용 }, 하지만, 아래와 같은 에러가 나오는 것을 볼 수 있는데, 이는 연결이 안전하지 않기 때문에 문제가 되어 에러가 나오는 것으로, 이를 해결하기 위해서 SSL 인증서를 만들어주어야 합니다. 여기서는 mkcert라는 것을 이용해 인증서를 만들었습니다. mkcert 사용하기 인증서 생성을 위한 인증 기관을 만들기 위해 mkcert를 설치하게 됩니다. 아래 코드들을 통해서 설치할 수 있습니다. brew install mkcert // brew로 mkcert 설치 mkcert -install // mkcert를 컴퓨터에 설치 그리고 현재 사용 중인 React의 root 디렉토리에 .cert라는 디렉토리를 만든 뒤, 내부에 인증서를 만들어 넣어줍니다. mkdir -p .cert // .cert라는 디렉토리를 생성 mkcert -key-file ./.cert/key.pem -cert-file ./.cert/cert.pem "localhost" // 인증서를 만들어 넣어줌. 그리고 만들어진 디렉토리는 개발 단계에서만 사용되기 때문에, .gitignore로 커밋 제외해줍니다. 마지막으로, React가 시작될 시, SSL 인증서를 포함하도록 하기 위해 아래와 같은 형식의 코드로 package.json에 작성합니다. "scripts": { "start": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-app-rewired start", // CRT FILE, KEY FILE을 갖고 실행하도록 설정 ... },]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 <strong>필요한 값과 규칙성</strong>을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [["*", " ", "*"][("*", " ", "*")]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = "*"; newLine[totalLength - 1 - j] = "*"; } else { const marker = j &lt; i ? " " : "*"; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? "*" : " "; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = " "; newLine[totalLength - 1 - j] = " "; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join("")).join("\n"); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
