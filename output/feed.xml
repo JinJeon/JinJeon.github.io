@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-12-04T12:46:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2470번</title><link href="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/" rel="alternate" type="text/html" title="백준 2470번" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80%202470%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2470">QUESTION LINK</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-12-04T22:52:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 2470번</title><link href="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/" rel="alternate" type="text/html" title="백준 2470번" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80%202470%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2470">QUESTION LINK</a></strong></p>
 
 <p>주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다.</p>
 
@@ -56,7 +56,280 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 <strong>포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)</strong>을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다. 주어진 숫자들을 오름차순으로 정렬하기 (-98, -15, 0, 1, 22) 정렬된 숫자들의 왼쪽, 오른쪽에 각각 포인터를 두기 각 포인터에 해당하는 값들의 합을 구하고, 현재 갖고 있는 최소값과 비교하기 구해진 합이 최소값보다 큰 경우, 해당 포인터의 값과 최소값 저장하기 구해진 합이 0보다 큰 경우(우측 포인터 값이 좌측 포인터 값보다 큰 경우), 좌측 포인터를 한 칸 내리기 구해진 합이 0보다 작은 경우(좌측 포인터 값이 우측 포인터 값보다 큰 경우), 우측 포인터를 한 칸 올리기 우측 포인터와 좌측 포인터가 만나기 전까지 위 과정을 반복하기 위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다. const [count, values] = fs.readFileSync(filePath).toString().trim().split("\n"); const sortedValues = values .split(" ") .map(Number) .sort((a, b) =&gt; a - b); // 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함 let results; // 결과를 담을 변수 let start = 0; // 왼쪽 포인터의 index값으로, 처음에 0으로 시작함 let end = sortedValues.length - 1; // 오른쪽 포인터의 index값으로, 처음에 배열의 마지막부터 시작함 let min; // 포인터의 합 중 최소값일 경우 해당 변수에 담음 let isEnd = false; // true일 시 반복문 종료 while (!isEnd) { const sum = sortedValues[start] + sortedValues[end]; if (!min || min &gt; Math.abs(sum)) { // 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함 min = Math.abs(sum); results = [sortedValues[start], sortedValues[end]]; } // 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림 if (sum &lt; 0) { start += 1; } else if (sum &gt; 0) { end -= 1; } else { isEnd = true; } if (start === end) isEnd = true; } const result = results.join(" "); console.log(result); 해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">페이지 내 일부만 최신 상태로 변경하기</title><link href="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/" rel="alternate" type="text/html" title="페이지 내 일부만 최신 상태로 변경하기" /><published>2022-12-01T00:00:00+09:00</published><updated>2022-12-01T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%82%B4%20%EC%9D%BC%EB%B6%80%EB%A7%8C%20%EC%B5%9C%EC%8B%A0%20%EC%83%81%ED%83%9C%EB%A1%9C%20%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0%20copy</id><content type="html" xml:base="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/"><![CDATA[<h3 id="페이지-렌더링-시-처음부터-데이터를-사용하는-문제">페이지 렌더링 시 처음부터 데이터를 사용하는 문제</h3>
+<p>해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 <strong>포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)</strong>을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다. 주어진 숫자들을 오름차순으로 정렬하기 (-98, -15, 0, 1, 22) 정렬된 숫자들의 왼쪽, 오른쪽에 각각 포인터를 두기 각 포인터에 해당하는 값들의 합을 구하고, 현재 갖고 있는 최소값과 비교하기 구해진 합이 최소값보다 큰 경우, 해당 포인터의 값과 최소값 저장하기 구해진 합이 0보다 큰 경우(우측 포인터 값이 좌측 포인터 값보다 큰 경우), 좌측 포인터를 한 칸 내리기 구해진 합이 0보다 작은 경우(좌측 포인터 값이 우측 포인터 값보다 큰 경우), 우측 포인터를 한 칸 올리기 우측 포인터와 좌측 포인터가 만나기 전까지 위 과정을 반복하기 위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다. const [count, values] = fs.readFileSync(filePath).toString().trim().split("\n"); const sortedValues = values .split(" ") .map(Number) .sort((a, b) =&gt; a - b); // 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함 let results; // 결과를 담을 변수 let start = 0; // 왼쪽 포인터의 index값으로, 처음에 0으로 시작함 let end = sortedValues.length - 1; // 오른쪽 포인터의 index값으로, 처음에 배열의 마지막부터 시작함 let min; // 포인터의 합 중 최소값일 경우 해당 변수에 담음 let isEnd = false; // true일 시 반복문 종료 while (!isEnd) { const sum = sortedValues[start] + sortedValues[end]; if (!min || min &gt; Math.abs(sum)) { // 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함 min = Math.abs(sum); results = [sortedValues[start], sortedValues[end]]; } // 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림 if (sum &lt; 0) { start += 1; } else if (sum &gt; 0) { end -= 1; } else { isEnd = true; } if (start === end) isEnd = true; } const result = results.join(" "); console.log(result); 해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BINARY HEAP ∙ PRIORITY QUEUE</title><link href="http://localhost:4000/algorithm/2022/12/04/BINARY-HEAP-PRIORITY-QUEUE/" rel="alternate" type="text/html" title="BINARY HEAP ∙ PRIORITY QUEUE" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/BINARY%20HEAP%20%E2%88%99%20PRIORITY%20QUEUE</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/BINARY-HEAP-PRIORITY-QUEUE/"><![CDATA[<blockquote>
+  <p>해당 내용은 UDEMY의 <a href="https://www.udemy.com/course/best-javascript-data-structures/">알고리즘 ∙ 자료구조 강의</a>를 수강 후 정리한 내용입니다.</p>
+</blockquote>
+
+<h3 id="이진-힙binary-heap">이진 힙(Binary Heap)</h3>
+
+<p>두 개의 자식 노드를 가지며 부모 노드가 무조건 자식 노드보다 크거나(최대 이진 힙) 작은(최소 이진 힙) 구조를 의미합니다. 이진 검색 트리와 매우 비슷하나 몇 가지 다른 규칙들이 존재하는데, 최대 이진 힙의 경우, 부모 노드가 자식 노드보다 항상 큰 값을 가지고 최소 이진 힙에서는 이와 반대되어 존재합니다. 또한, 이진 힙은 언제나 <strong>최적의 용량을 가져, 가장 적은 용량</strong>을 채웁니다.</p>
+
+<p>힙을 통해서 <strong>‘우선순위 큐’</strong>라는 것을 만들 수 있으며(항상 이진 힙이 사용), 그래프 순회에도 자주 사용됩니다.</p>
+
+<h3 id="힙-정렬">힙 정렬</h3>
+
+<p>앞서 말했듯, 힙 정렬은 이진 검색 트리와 다른 점으로 <strong>크기의 순서가 정해졌다는 것</strong>(큰 순서 ∙ 작은 순서)과 <strong>왼쪽이 무조건 먼저 들어온다</strong>는 것이 있습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221204/0.png" alt="" width="75%" height="" /> 
+</figure>
+
+<p>위 그림으로 보면 <code class="language-plaintext highlighter-rouge">index</code>가 n인 값의 왼쪽 자식은 <strong>2n+1</strong>, 오른쪽 자식은 <strong>2n+2</strong>의 인덱스에 저장된 것을 볼 수 있으며, 이를 통해서 부모의 위치를 기반으로 자식의 위치를 찾는 것을 할 수가 있습니다. 예를 들어, <code class="language-plaintext highlighter-rouge">index</code> 11, 12의 경우, 각각 1을 빼고 2로 나눌 시 5, 5.5가 되는데 이를 <code class="language-plaintext highlighter-rouge">Math.floor()</code>로 표현할 시 5가 되고 이 값은 부모 요소의 <code class="language-plaintext highlighter-rouge">index</code>값이 됩니다.</p>
+
+<h3 id="insert-메소드-만들기">Insert 메소드 만들기</h3>
+
+<p>기본적으로 만들어지는 Binary Heap 클래스의 <code class="language-plaintext highlighter-rouge">constructor</code>는 <code class="language-plaintext highlighter-rouge">values=[]</code> 밖에 없으며, 나머지는 메소드를 통해서 이루어집니다.</p>
+
+<p>이진 힙(최대값)을 만드는 과정에서, 이전 값보다 큰 값이 들어올 경우, <strong>bubble up</strong>을 해야 합니다.</p>
+
+<ul>
+  <li>부모와 자식 간의 값을 비교해서 자식이 더 큰 경우, 이 둘 사이의 index값을 바꿔줍니다.</li>
+  <li>같은 형식을 반복해서 부모보다 올라가는 값이 작은 경우, 해당 형식을 중단합니다.</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MaxBinaryHeap</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">55</span><span class="p">];</span>
+    <span class="c1">// 기본적으로 예시를 들어줄 값을 넣음</span>
+  <span class="p">}</span>
+
+  <span class="nx">insert</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bubbleUp</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// push되어 들어간 값이 마지막에 위치하므로 index를 위와 같이 설정</span>
+    <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="c1">// 현재 push되어 들어온 값</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// index가 현재 최대 이진 힙의 첫 자리보다 큰 경우 중단</span>
+      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="c1">// 앞에서 나온 바와 같이, 현재 index의 부모 index는 1을 빼고 2로 나눈 값의 내림과 같음</span>
+      <span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">];</span>
+      <span class="c1">// 부모 값을 구하고 비교</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="c1">// 부모 값이 더 작을 경우, 서로 위치를 바꿔주고 index값을 부모 값으로 만듬</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+      <span class="nx">index</span> <span class="o">=</span> <span class="nx">parentIndex</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MaxBinaryHeap</span><span class="p">();</span>
+<span class="nx">heap</span><span class="p">.</span><span class="nx">insert</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="extractmax-메소드-만들기">extractMax 메소드 만들기</h3>
+
+<p>최대 이진 힙에서는 루트가 가장 큰 값을 갖게 되고, 이 값을 제거해주면 됩니다. 그리고 이 때 제거되고 비어있는 값을 그대로 내버려 둘 수는 없기 때문에, 이 부분을 가장 하단의 것과 교체하고 이를 내리는 작업이 필요합니다.이 과정을 버블 다운, 퍼콜레이트 다운, 시프트 다운, 싱크 다운 등의 단어들로 불립니다. 순서는 아래와 같습니다.</p>
+
+<ol>
+  <li>최대 값을 빼내고 해당 위치에 가장 마지막 인덱스의 값을 넣기</li>
+  <li>루트에 위치한 값의 좌측 → 우측 순서로 보면서 루트값보다 큰 값이 있을 시 그 값과 교체</li>
+  <li>교체하는 작업을 지속한 뒤, 좌측에 값이 없거나 양측의 값이 현재 값보다 작은 경우 교체 작업 중단</li>
+  <li>좌 ∙ 우의 값 중 더 큰 값과 교체를 해야하므로, 좌측의 값 확인 후 우측의 값을 확인해 교체</li>
+</ol>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221204/1.png" alt="" width="75%" height="" /> 
+</figure>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">extractMax</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">max</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="c1">// 최대 값을 먼저 저장함</span>
+  <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+  <span class="c1">// 마지막 값을 빼내어 갖고 있음</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 해당 정렬의 개수가 1개일 경우, pop을 하고 난 뒤에 다시 sinkDown으로 넣어주는 것을 방지</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lastValue</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sinkDown</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">max</span><span class="p">;</span>
+  <span class="c1">// 최대값을 리턴함</span>
+<span class="p">}</span>
+
+<span class="nx">sinkDown</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">length</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="c1">// 계속 움직이면서 넣어주게 될 값</span>
+
+  <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 처음에는 index가 루트에서 출발하므로 0에서 시작</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">leftIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">rightIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">swap</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="c1">// 현재 index와 바뀌게 될 index를 swap으로 설정</span>
+    <span class="kd">let</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 왼쪽 인덱스 값이 존재하고 해당 값이 기존 값보다 클 경우 swap에 저장</span>
+      <span class="nx">leftChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">leftIndex</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">leftChild</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">swap</span> <span class="o">=</span> <span class="nx">leftIndex</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 좌측보다 우측 값이 더 크고, 해당 값보다도 더 클 때 swap에 저장</span>
+      <span class="nx">rightChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">rightIndex</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span>
+        <span class="p">(</span><span class="o">!</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">)</span> <span class="o">||</span>
+        <span class="p">(</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span> <span class="o">&gt;</span> <span class="nx">leftChild</span><span class="p">)</span>
+      <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">swap</span> <span class="o">=</span> <span class="nx">rightIndex</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+    <span class="c1">// swap에 없을 시 왼쪽 오른쪽 값보다 해당 값이 더 크다고 판단</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+    <span class="c1">// swap에 들어온 값과 서로 바꿔줌</span>
+    <span class="nx">index</span> <span class="o">=</span> <span class="nx">swap</span><span class="p">;</span>
+    <span class="c1">// 새로운 index로 바꾼 위치를 설정</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="우선-순위-큐queue">우선 순위 큐(Queue)</h3>
+
+<p>각 요소가 그에 해당하는 우선순위를 가지는 데이터 구조입니다. 서로 다른 우선순위를 가지는 데이터나 정보를 관리할 필요가 있는 상황에서 활용할 수 있으며, 먼저 들어간 값이 존재한 상황에서도 이후에 들어온 값이 우선 순위를 갖고 있으면, 해당 값이 먼저 처리가 될 수 있도록 할 수 있습니다.</p>
+
+<p>예시로 ‘유닉스’가 있는데, 여기서 프로세서 ID라고 할 수 있는 ‘나이스’가 우선순위의 역할을 합니다. 대부분은 입력된 순서대로 처리가 되지만, 간혹 다른 것들이 앞서서 실행되는 상황이 발생하기도 하며 이러한 상황에서 사용한다고 볼 수 있습니다.</p>
+
+<p><strong>우선 순위 큐와 힙은 별개의 것으로 생각해야 하는데, 이는 그저 추상적인 개념에 불과하기 때문입니다.</strong></p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221204/2.png" alt="" width="75%" height="" /> 
+</figure>
+
+<p>예시로 위 사진을 보면, 우선순위가 가장 높은 1번을 찾아야하는데, 이 상황에서 별 다른 방법없이 직접 비교해가며 찾는 것을 할 경우, 1을 발견하고 나서 다른 것들이 1번보다 앞서는 지를 지속적으로 확인해야 한다는 문제점이 발생하게 됩니다. 이러한 상황에 우선 순위 큐를 활용할 수 있습니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221204/3.png" alt="" width="75%" height="" /> 
+</figure>
+
+<p>위 예시 사진과 같이 우선 순위를 지정할 때, 이전에 있었던 요소들보다 더 우선순위가 높은 것이 들어오게 되면 이를 <strong>bubble up</strong> 시켜서 순위를 높이는 방식으로 문제를 처리할 수 있습니다. 이러한 방식의 처리는 <strong>O(logN)</strong>의 시간 복잡도가 나오고, 앞선 예시의 처리방식(시간복잡도가 <strong>O(N)</strong>)보다 훨씬 효율적으로 처리를 할 수 있습니다.</p>
+
+<h3 id="우선-순위-큐-코드-작성">우선 순위 큐 코드 작성</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">PriorityQueue</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+
+  <span class="nx">enqueue</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newNode</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bubbleUp</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+      <span class="nx">index</span> <span class="o">=</span> <span class="nx">parentIndex</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">dequeue</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">max</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lastValue</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">sinkDown</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">max</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">sinkDown</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">length</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">leftIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">rightIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">swap</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">leftChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">leftIndex</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">leftChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">swap</span> <span class="o">=</span> <span class="nx">leftIndex</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">rightChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">rightIndex</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span>
+          <span class="p">(</span><span class="o">!</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">(</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">leftChild</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span>
+        <span class="p">)</span> <span class="p">{</span>
+          <span class="nx">swap</span> <span class="o">=</span> <span class="nx">rightIndex</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">];</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="nx">index</span> <span class="o">=</span> <span class="nx">swap</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">priority</span> <span class="o">=</span> <span class="nx">priority</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PriorityQueue</span><span class="p">();</span>
+
+<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">dequeue</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>위 코드를 보면, 이진 힙을 만들 때 사용했던 코드를 그대로 활용해서 만들 수 있습니다. 이 중에 달라진 것은 <code class="language-plaintext highlighter-rouge">Node</code>라는 클래스가 추가되고, 내부에 <code class="language-plaintext highlighter-rouge">value</code>(자체적인 값), <code class="language-plaintext highlighter-rouge">priority</code>(우선 순위)가 추가된다는 것입니다.</p>
+
+<p>비교를 할 때 이진 힙에서는 값 자체로 비교를 했으나, 여기서는 추가적인 <code class="language-plaintext highlighter-rouge">Node</code> 클래스를 만들었기 때문에 내부에 있는 <code class="language-plaintext highlighter-rouge">priority</code>로 비교를 해주면 됩니다. 현재 위 코드는 최대 이진 힙으로 만들어진 것을 변형했지만, 여기서 부등호만 변경해주면 최소 이진 힙으로 만들 수 있으며, 이를 통해 <code class="language-plaintext highlighter-rouge">priority</code>가 작은 값이 가장 위에 위치하도록 설정할 수 있습니다.</p>
+
+<p>현재 코드는 우선 순위로만 비교를 하지만, 실제 활용 시에는 우선 순위외에 다른 요소들이 들어올 수 있어, <code class="language-plaintext highlighter-rouge">Node</code> 클래스에 해당 요소를 추가하고 이를 <code class="language-plaintext highlighter-rouge">enqueue</code>나 <code class="language-plaintext highlighter-rouge">dequeue</code>에서 더 활용하면서 우선 순위를 지정해줄 수 있습니다.</p>
+
+<p>우선 순위 큐는 위와 같은 과정을 통해서 삽입과 제거 모두 <strong>O(logN)</strong>의 시간 복잡도를 가집니다.</p>
+
+<h3 id="이진-힙의-big-o">이진 힙의 BIG O</h3>
+
+<p>이진 힙의 경우 <strong>O(logN)</strong>의 시간 복잡도를 가지는데, 이는 상당히 빠른 속도로 문제를 해결할 수 있다는 것을 알 수 있습니다. (logN이라는 것은 2를 밑으로 하는 log의 N배라는 것을 의미)</p>
+
+<p>예를 들어, 노드가 5개의 층인 경우, 총 2의 5제곱의 노드들이 생성되게 되는데, 이러한 상황에서도 노드가 추가될 때에는 총 5의 시간 복잡도를 갖게 됩니다.</p>
+
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221204/4.png" alt="" width="75%" height="" /> 
+</figure>
+
+<p>최악의 상황이 위 사진과 같이 나올 수 있는데, 이런 경우에는 heap을 사용할 수가 없습니다. 왜냐하면 heap은 기본적으로 이러한 모양이 될 수가 없다는 것을 전제(무조건 왼쪽 ∙ 오른쪽 순서로 값을 채워나감)로 하기 때문</p>
+
+<p>이진 힙에서 값을 찾아야 하는 경우에는 <strong>O(N)</strong>의 시간복잡도가 나오게 됩니다. 즉, <strong>이진 힙은 탐색보다는 삽입과 제거를 다루는 상황에 가장 최적화된 구조</strong>라는 것을 알 수 있습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[해당 내용은 UDEMY의 알고리즘 ∙ 자료구조 강의를 수강 후 정리한 내용입니다. 이진 힙(Binary Heap) 두 개의 자식 노드를 가지며 부모 노드가 무조건 자식 노드보다 크거나(최대 이진 힙) 작은(최소 이진 힙) 구조를 의미합니다. 이진 검색 트리와 매우 비슷하나 몇 가지 다른 규칙들이 존재하는데, 최대 이진 힙의 경우, 부모 노드가 자식 노드보다 항상 큰 값을 가지고 최소 이진 힙에서는 이와 반대되어 존재합니다. 또한, 이진 힙은 언제나 최적의 용량을 가져, 가장 적은 용량을 채웁니다. 힙을 통해서 ‘우선순위 큐’라는 것을 만들 수 있으며(항상 이진 힙이 사용), 그래프 순회에도 자주 사용됩니다. 힙 정렬 앞서 말했듯, 힙 정렬은 이진 검색 트리와 다른 점으로 크기의 순서가 정해졌다는 것(큰 순서 ∙ 작은 순서)과 왼쪽이 무조건 먼저 들어온다는 것이 있습니다. 위 그림으로 보면 index가 n인 값의 왼쪽 자식은 2n+1, 오른쪽 자식은 2n+2의 인덱스에 저장된 것을 볼 수 있으며, 이를 통해서 부모의 위치를 기반으로 자식의 위치를 찾는 것을 할 수가 있습니다. 예를 들어, index 11, 12의 경우, 각각 1을 빼고 2로 나눌 시 5, 5.5가 되는데 이를 Math.floor()로 표현할 시 5가 되고 이 값은 부모 요소의 index값이 됩니다. Insert 메소드 만들기 기본적으로 만들어지는 Binary Heap 클래스의 constructor는 values=[] 밖에 없으며, 나머지는 메소드를 통해서 이루어집니다. 이진 힙(최대값)을 만드는 과정에서, 이전 값보다 큰 값이 들어올 경우, bubble up을 해야 합니다. 부모와 자식 간의 값을 비교해서 자식이 더 큰 경우, 이 둘 사이의 index값을 바꿔줍니다. 같은 형식을 반복해서 부모보다 올라가는 값이 작은 경우, 해당 형식을 중단합니다. class MaxBinaryHeap { constructor() { this.values = [41, 39, 33, 18, 27, 12, 55]; // 기본적으로 예시를 들어줄 값을 넣음 } insert(element) { this.values.push(element); this.bubbleUp(); } bubbleUp() { let index = this.values.length - 1; // push되어 들어간 값이 마지막에 위치하므로 index를 위와 같이 설정 const element = this.values[index]; // 현재 push되어 들어온 값 while (index &gt; 0) { // index가 현재 최대 이진 힙의 첫 자리보다 큰 경우 중단 let parentIndex = Math.floor((index - 1) / 2); // 앞에서 나온 바와 같이, 현재 index의 부모 index는 1을 빼고 2로 나눈 값의 내림과 같음 let parent = this.values[parentIndex]; // 부모 값을 구하고 비교 if (parent &gt;= element) break; // 부모 값이 더 작을 경우, 서로 위치를 바꿔주고 index값을 부모 값으로 만듬 this.values[parentIndex] = element; this.values[index] = parent; index = parentIndex; } } } const heap = new MaxBinaryHeap(); heap.insert(); extractMax 메소드 만들기 최대 이진 힙에서는 루트가 가장 큰 값을 갖게 되고, 이 값을 제거해주면 됩니다. 그리고 이 때 제거되고 비어있는 값을 그대로 내버려 둘 수는 없기 때문에, 이 부분을 가장 하단의 것과 교체하고 이를 내리는 작업이 필요합니다.이 과정을 버블 다운, 퍼콜레이트 다운, 시프트 다운, 싱크 다운 등의 단어들로 불립니다. 순서는 아래와 같습니다. 최대 값을 빼내고 해당 위치에 가장 마지막 인덱스의 값을 넣기 루트에 위치한 값의 좌측 → 우측 순서로 보면서 루트값보다 큰 값이 있을 시 그 값과 교체 교체하는 작업을 지속한 뒤, 좌측에 값이 없거나 양측의 값이 현재 값보다 작은 경우 교체 작업 중단 좌 ∙ 우의 값 중 더 큰 값과 교체를 해야하므로, 좌측의 값 확인 후 우측의 값을 확인해 교체 extractMax() { const max = this.values[0]; // 최대 값을 먼저 저장함 const lastValue = this.values.pop(); // 마지막 값을 빼내어 갖고 있음 if (this.values.length) { // 해당 정렬의 개수가 1개일 경우, pop을 하고 난 뒤에 다시 sinkDown으로 넣어주는 것을 방지 this.values[0] = lastValue; this.sinkDown(); } return max; // 최대값을 리턴함 } sinkDown() { const { length } = this.values; const element = this.values[0]; // 계속 움직이면서 넣어주게 될 값 let index = 0; // 처음에는 index가 루트에서 출발하므로 0에서 시작 while (true) { const leftIndex = index * 2 + 1; const rightIndex = index * 2 + 2; let swap = null; // 현재 index와 바뀌게 될 index를 swap으로 설정 let leftChild, rightChild; if (leftIndex &lt; length) { // 왼쪽 인덱스 값이 존재하고 해당 값이 기존 값보다 클 경우 swap에 저장 leftChild = this.values[leftIndex]; if (leftChild &gt; element) { swap = leftIndex; } } if (rightIndex &lt; length) { // 좌측보다 우측 값이 더 크고, 해당 값보다도 더 클 때 swap에 저장 rightChild = this.values[rightIndex]; if ( (!swap &amp;&amp; rightChild &gt; element) || (swap &amp;&amp; rightChild &gt; leftChild) ) { swap = rightIndex; } } if (!swap) break; // swap에 없을 시 왼쪽 오른쪽 값보다 해당 값이 더 크다고 판단 this.values[index] = this.values[swap]; this.values[swap] = element; // swap에 들어온 값과 서로 바꿔줌 index = swap; // 새로운 index로 바꾼 위치를 설정 } } 우선 순위 큐(Queue) 각 요소가 그에 해당하는 우선순위를 가지는 데이터 구조입니다. 서로 다른 우선순위를 가지는 데이터나 정보를 관리할 필요가 있는 상황에서 활용할 수 있으며, 먼저 들어간 값이 존재한 상황에서도 이후에 들어온 값이 우선 순위를 갖고 있으면, 해당 값이 먼저 처리가 될 수 있도록 할 수 있습니다. 예시로 ‘유닉스’가 있는데, 여기서 프로세서 ID라고 할 수 있는 ‘나이스’가 우선순위의 역할을 합니다. 대부분은 입력된 순서대로 처리가 되지만, 간혹 다른 것들이 앞서서 실행되는 상황이 발생하기도 하며 이러한 상황에서 사용한다고 볼 수 있습니다. 우선 순위 큐와 힙은 별개의 것으로 생각해야 하는데, 이는 그저 추상적인 개념에 불과하기 때문입니다. 예시로 위 사진을 보면, 우선순위가 가장 높은 1번을 찾아야하는데, 이 상황에서 별 다른 방법없이 직접 비교해가며 찾는 것을 할 경우, 1을 발견하고 나서 다른 것들이 1번보다 앞서는 지를 지속적으로 확인해야 한다는 문제점이 발생하게 됩니다. 이러한 상황에 우선 순위 큐를 활용할 수 있습니다. 위 예시 사진과 같이 우선 순위를 지정할 때, 이전에 있었던 요소들보다 더 우선순위가 높은 것이 들어오게 되면 이를 bubble up 시켜서 순위를 높이는 방식으로 문제를 처리할 수 있습니다. 이러한 방식의 처리는 O(logN)의 시간 복잡도가 나오고, 앞선 예시의 처리방식(시간복잡도가 O(N))보다 훨씬 효율적으로 처리를 할 수 있습니다. 우선 순위 큐 코드 작성 class PriorityQueue { constructor() { this.values = []; } enqueue(value, priority) { const newNode = new Node(value, priority); this.values.push(newNode); this.bubbleUp(); } bubbleUp() { let index = this.values.length - 1; const element = this.values[index]; while (index &gt; 0) { let parentIndex = Math.floor((index - 1) / 2); let parent = this.values[parentIndex]; if (parent.priority &gt;= element.priority) break; this.values[parentIndex] = element; this.values[index] = parent; index = parentIndex; } } dequeue() { const max = this.values[0]; const lastValue = this.values.pop(); if (this.values.length) { this.values[0] = lastValue; this.sinkDown(); } return max; } sinkDown() { const { length } = this.values; const element = this.values[0]; let index = 0; while (true) { const leftIndex = index * 2 + 1; const rightIndex = index * 2 + 2; let swap = null; let leftChild, rightChild; if (leftIndex &lt; length) { leftChild = this.values[leftIndex]; if (leftChild.priority &gt; element.priority) { swap = leftIndex; } } if (rightIndex &lt; length) { rightChild = this.values[rightIndex]; if ( (!swap &amp;&amp; rightChild.priority &gt; element.priority) || (swap &amp;&amp; rightChild.priority &gt; leftChild.priority) ) { swap = rightIndex; } } if (!swap) break; this.values[index] = this.values[swap]; this.values[swap] = element; index = swap; } } } class Node { constructor(value, priority) { this.value = value; this.priority = priority; } } const queue = new PriorityQueue(); queue.enqueue("A", 1); queue.enqueue("B", 5); queue.enqueue("C", 2); console.log(queue.values); console.log(queue.dequeue()); 위 코드를 보면, 이진 힙을 만들 때 사용했던 코드를 그대로 활용해서 만들 수 있습니다. 이 중에 달라진 것은 Node라는 클래스가 추가되고, 내부에 value(자체적인 값), priority(우선 순위)가 추가된다는 것입니다. 비교를 할 때 이진 힙에서는 값 자체로 비교를 했으나, 여기서는 추가적인 Node 클래스를 만들었기 때문에 내부에 있는 priority로 비교를 해주면 됩니다. 현재 위 코드는 최대 이진 힙으로 만들어진 것을 변형했지만, 여기서 부등호만 변경해주면 최소 이진 힙으로 만들 수 있으며, 이를 통해 priority가 작은 값이 가장 위에 위치하도록 설정할 수 있습니다. 현재 코드는 우선 순위로만 비교를 하지만, 실제 활용 시에는 우선 순위외에 다른 요소들이 들어올 수 있어, Node 클래스에 해당 요소를 추가하고 이를 enqueue나 dequeue에서 더 활용하면서 우선 순위를 지정해줄 수 있습니다. 우선 순위 큐는 위와 같은 과정을 통해서 삽입과 제거 모두 O(logN)의 시간 복잡도를 가집니다. 이진 힙의 BIG O 이진 힙의 경우 O(logN)의 시간 복잡도를 가지는데, 이는 상당히 빠른 속도로 문제를 해결할 수 있다는 것을 알 수 있습니다. (logN이라는 것은 2를 밑으로 하는 log의 N배라는 것을 의미) 예를 들어, 노드가 5개의 층인 경우, 총 2의 5제곱의 노드들이 생성되게 되는데, 이러한 상황에서도 노드가 추가될 때에는 총 5의 시간 복잡도를 갖게 됩니다. 최악의 상황이 위 사진과 같이 나올 수 있는데, 이런 경우에는 heap을 사용할 수가 없습니다. 왜냐하면 heap은 기본적으로 이러한 모양이 될 수가 없다는 것을 전제(무조건 왼쪽 ∙ 오른쪽 순서로 값을 채워나감)로 하기 때문 이진 힙에서 값을 찾아야 하는 경우에는 O(N)의 시간복잡도가 나오게 됩니다. 즉, 이진 힙은 탐색보다는 삽입과 제거를 다루는 상황에 가장 최적화된 구조라는 것을 알 수 있습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">페이지 내 일부만 최신 상태로 변경하기</title><link href="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/" rel="alternate" type="text/html" title="페이지 내 일부만 최신 상태로 변경하기" /><published>2022-12-01T00:00:00+09:00</published><updated>2022-12-01T00:00:00+09:00</updated><id>http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%82%B4%20%EC%9D%BC%EB%B6%80%EB%A7%8C%20%EC%B5%9C%EC%8B%A0%20%EC%83%81%ED%83%9C%EB%A1%9C%20%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0%20copy</id><content type="html" xml:base="http://localhost:4000/react/2022/12/01/%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%82%B4-%EC%9D%BC%EB%B6%80%EB%A7%8C-%EC%B5%9C%EC%8B%A0-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0-copy/"><![CDATA[<h3 id="페이지-렌더링-시-처음부터-데이터를-사용하는-문제">페이지 렌더링 시 처음부터 데이터를 사용하는 문제</h3>
 
 <p>진행 중인 프로젝트의 쉐어 상세 페이지 내에서, 현재 처음에 페이지 정보를 모두 받아와 보여주는 방식으로 구성이 되어 있습니다. 하지만, 이렇게 진행할 경우 사용자가 쉐어 신청 ∙ 취소를 할 때와 찜 하기 ∙ 취소를 할 때, 즉각적인 업데이트를 위해서는 페이지 정보를 모두 다시 받아와야 합니다. 이로 인해 버튼을 클릭할 때마다 페이지의 로딩이 이루어지고 다시 화면이 보이는 깜빡거림 문제가 발생하게 됩니다.</p>
 
@@ -920,82 +1193,4 @@
 
 <p>해당 문제를 풀면서 예외처리를 제대로 해주지 못했던 것은 위 코드에서 가장 첫 조건식이었습니다. 일정이 끝나는 경우는 무조건 ‘일정이 없는 날이 나올 때’라고 고려를 해서 문제를 풀었으나, 달력의 마지막 날이 끝나는 경우에도 일정이 종료되기 때문에 이를 고려해 조건식을 추가했습니다.</p>
 
-<p>기존에 생각했던 풀이 방식보다 새롭게 알게 된 풀이 방식이 훨씬 간단했고, 예외 조건도 잘 고려해주기만 하면 금방 풀 수 있는 문제였습니다. <strong>문제 풀이와 예외 조건에 대한 고민</strong>이 더 필요하다는 것을 느꼈습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 처음 이 문제를 풀 때에는 주어지는 일정들을 모두 오름차순으로 정리한 뒤, 달력 배열에 직접 표기해가면서 끊어지는 상황마다 직사각형의 합을 구해주고자 했습니다. 하지만, 문제의 조건들을 다시 살펴본 결과 두 가지만 고려하면 된다는 것을 파악할 수 있었습니다. 세로길이는 주어지는 일정들을 직사각형으로 만들 때 일정이 겹치는 날이 가장 많은 곳의 개수와 같음 가로길이는 일정이 없는 날이 나오기 전까지 중복합을 해주고, 일정이 없는 날이 나올 시 중복합을 사용함 위 두 가지 조건을 이용해서 문제를 풀면되었기에, 우선 달력에 모든 일정들을 표기하는 작업을 먼저 했습니다. const [count, ...schedules] = fs .readFileSync(filePath) .toString() .trim() .split("\n"); const calendar = [...Array(365).fill(0)]; // 달력 내의 모든 값들을 0으로 우선 설정 schedules.forEach((schedule) =&gt; { // 각 일정마다 시작일부터 종료일까지 배열에 맞게 -1을 해주고 달력에 넣어줌 const [startDay, endDay] = schedule.split(" ").map((v) =&gt; +v); for (i = startDay - 1; i &lt;= endDay - 1; i += 1) { calendar[i] += 1; } }); 그리고 이렇게 설정된 달력을 통해서 가로, 세로, 넓이 합을 달력을 순회하면서 구해주도록 했습니다. calendar.forEach((count, index) =&gt; { // 달력의 마지막 날이며, 일정이 존재하는 경우 if (index === 365 - 1 &amp;&amp; count) { x += 1; if (count &gt; y) y = count; sum += x * y; return; } // 일정은 없으나 전날까지는 일정이 존재한 경우 if (!count &amp;&amp; x &amp;&amp; y) { sum += x * y; x = 0; y = 0; return; } // 일정이 있으나 이전에 일정이 없었던 경우 if (count &amp;&amp; !x) { x = 1; y = count; return; } // 일정이 이어지는 경우 if (count &amp;&amp; x) { x += 1; if (count &gt; y) y = count; } }); 해당 문제를 풀면서 예외처리를 제대로 해주지 못했던 것은 위 코드에서 가장 첫 조건식이었습니다. 일정이 끝나는 경우는 무조건 ‘일정이 없는 날이 나올 때’라고 고려를 해서 문제를 풀었으나, 달력의 마지막 날이 끝나는 경우에도 일정이 종료되기 때문에 이를 고려해 조건식을 추가했습니다. 기존에 생각했던 풀이 방식보다 새롭게 알게 된 풀이 방식이 훨씬 간단했고, 예외 조건도 잘 고려해주기만 하면 금방 풀 수 있는 문제였습니다. 문제 풀이와 예외 조건에 대한 고민이 더 필요하다는 것을 느꼈습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 10994번</title><link href="http://localhost:4000/algorithm/2022/11/19/10994/" rel="alternate" type="text/html" title="백준 10994번" /><published>2022-11-19T00:00:00+09:00</published><updated>2022-11-19T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/19/10994</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/19/10994/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/10994">QUESTION LINK</a></strong></p>
-
-<p>예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*********
-*       *
-* ***** *
-* *   * *
-* * * * *
-* *   * *
-* ***** *
-*       *
-*********
-</code></pre></div></div>
-
-<p>첫 번째는 <strong>반복을 최대한 줄이는 방법</strong>이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="o">+</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="c1">// 처음에 주어진 값</span>
-<span class="kd">const</span> <span class="nx">halfLength</span> <span class="o">=</span> <span class="nx">count</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-<span class="c1">// 절반의 값</span>
-<span class="kd">const</span> <span class="nx">totalLength</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
-<span class="c1">// 전체 길이의 값</span>
-</code></pre></div></div>
-
-<p>두 번째 어려웠던 점은 <strong>규칙성을 적용하는 방식</strong>이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">][(</span><span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)]];</span>
-<span class="c1">// 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함</span>
-</code></pre></div></div>
-
-<p>그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다.</p>
-
-<p>이를 통해, 아래와 같은 코드를 짤 수 있었습니다.</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="c1">// 결과가 모두 들어오는 배열</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌</span>
-  <span class="kd">const</span> <span class="nx">newLine</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="c1">// 현재 방문한 줄의 배열</span>
-
-  <span class="c1">// 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용</span>
-  <span class="c1">// totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌</span>
-  <span class="c1">// i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">j</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">i</span> <span class="p">?</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">halfLength</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">j</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">marker</span> <span class="o">=</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">i</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">marker</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">newLine</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="nx">resultArray</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">newLine</span><span class="p">;</span>
-  <span class="nx">resultArray</span><span class="p">[</span><span class="nx">totalLength</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">newLine</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 <strong>필요한 값과 규칙성</strong>을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 예시와 같이 규칙성을 통해, 별을 찍어야 할 위치를 지정해 그려주면 되는 간단한 문제였습니다. 하지만, 처음에 문제에서 규칙성을 찾고 문제를 해결하는 데에 몇 가지 어려운 점이 있었습니다. ********* * * * ***** * * * * * * * * * * * * * * * ***** * * * ********* 첫 번째는 반복을 최대한 줄이는 방법이었습니다. 위의 형태에서 좌우, 상하 대칭인 점을 이용해, 가능한 적은 양의 연산을 하려고 했습니다. 여기서 필요했던 것이 아래 별들의 ‘전체의 길이’와 ‘절반까지의 길이’였습니다. 처음에 이 두 값이 필요하다는 것을 제대로 인지하지 못했고, 이로 인해 결론적으로 같은 계산을 하면 되는 상황들을 자꾸 다시 계산하는 문제가 생겼었습니다. const count = +input[0]; // 처음에 주어진 값 const halfLength = count * 2 - 1; // 절반의 값 const totalLength = 1 + (count - 1) * 4; // 전체 길이의 값 두 번째 어려웠던 점은 규칙성을 적용하는 방식이였습니다. 문제를 풀면서 처음부터 한 줄마다 배열을 만들고, 그 안에서도 순회를 돌며 별을 채우는 방식을 사용하고자 했었습니다. [["*", " ", "*"][("*", " ", "*")]]; // 각 줄마다의 별을 각 index마다 그려주고 이를 합쳐주고자 함 그런데 여기서 처음에 규칙성을 적용하고자 할 때 현재 방문한 줄의 index값(i)와 현재 방문한 정확한 지표의 index값(j)를 어떤 식으로 이어서 적용해야하는지 어려웠었는데, 오히려 i와 j의 값을 다른 계산없이 1:1로 비교를 해주면 된다는 것을 알게 됐습니다. 이를 통해, 아래와 같은 코드를 짤 수 있었습니다. const resultArray = []; // 결과가 모두 들어오는 배열 for (let i = 0; i &lt; halfLength; i++) { // 절반만큼만 순회하고, 나머지 절반은 순회동안 채워줌 const newLine = []; // 현재 방문한 줄의 배열 // 현재 방문한 줄의 짝수, 홀수 여부에 따라 다른 규칙을 적용 // totalLength - 1 - j의 값을 통해 현재 방문한 곳의 반대편도 같은 값을 넣어줌 // i와 j의 비교만으로도 어떤 값을 넣을 지 지정이 가능함 if (!(i % 2)) { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { newLine[j] = "*"; newLine[totalLength - 1 - j] = "*"; } else { const marker = j &lt; i ? " " : "*"; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } } } else { for (let j = 0; j &lt; halfLength; j++) { if (!(j % 2)) { const marker = j &lt; i ? "*" : " "; newLine[j] = marker; newLine[totalLength - 1 - j] = marker; } else { newLine[j] = " "; newLine[totalLength - 1 - j] = " "; } } } resultArray[i] = newLine; resultArray[totalLength - 1 - i] = newLine; } const result = resultArray.map((v) =&gt; v.join("")).join("\n"); console.log(result); 이 문제를 풀면서 비록 쉬운 난이도의 문제여도, 정확하게 제게 필요한 값과 규칙성을 정리해놓지 못하면 풀이에 상당히 오랜 시간이 걸릴 수 있다는 것을 배울 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>기존에 생각했던 풀이 방식보다 새롭게 알게 된 풀이 방식이 훨씬 간단했고, 예외 조건도 잘 고려해주기만 하면 금방 풀 수 있는 문제였습니다. <strong>문제 풀이와 예외 조건에 대한 고민</strong>이 더 필요하다는 것을 느꼈습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 처음 이 문제를 풀 때에는 주어지는 일정들을 모두 오름차순으로 정리한 뒤, 달력 배열에 직접 표기해가면서 끊어지는 상황마다 직사각형의 합을 구해주고자 했습니다. 하지만, 문제의 조건들을 다시 살펴본 결과 두 가지만 고려하면 된다는 것을 파악할 수 있었습니다. 세로길이는 주어지는 일정들을 직사각형으로 만들 때 일정이 겹치는 날이 가장 많은 곳의 개수와 같음 가로길이는 일정이 없는 날이 나오기 전까지 중복합을 해주고, 일정이 없는 날이 나올 시 중복합을 사용함 위 두 가지 조건을 이용해서 문제를 풀면되었기에, 우선 달력에 모든 일정들을 표기하는 작업을 먼저 했습니다. const [count, ...schedules] = fs .readFileSync(filePath) .toString() .trim() .split("\n"); const calendar = [...Array(365).fill(0)]; // 달력 내의 모든 값들을 0으로 우선 설정 schedules.forEach((schedule) =&gt; { // 각 일정마다 시작일부터 종료일까지 배열에 맞게 -1을 해주고 달력에 넣어줌 const [startDay, endDay] = schedule.split(" ").map((v) =&gt; +v); for (i = startDay - 1; i &lt;= endDay - 1; i += 1) { calendar[i] += 1; } }); 그리고 이렇게 설정된 달력을 통해서 가로, 세로, 넓이 합을 달력을 순회하면서 구해주도록 했습니다. calendar.forEach((count, index) =&gt; { // 달력의 마지막 날이며, 일정이 존재하는 경우 if (index === 365 - 1 &amp;&amp; count) { x += 1; if (count &gt; y) y = count; sum += x * y; return; } // 일정은 없으나 전날까지는 일정이 존재한 경우 if (!count &amp;&amp; x &amp;&amp; y) { sum += x * y; x = 0; y = 0; return; } // 일정이 있으나 이전에 일정이 없었던 경우 if (count &amp;&amp; !x) { x = 1; y = count; return; } // 일정이 이어지는 경우 if (count &amp;&amp; x) { x += 1; if (count &gt; y) y = count; } }); 해당 문제를 풀면서 예외처리를 제대로 해주지 못했던 것은 위 코드에서 가장 첫 조건식이었습니다. 일정이 끝나는 경우는 무조건 ‘일정이 없는 날이 나올 때’라고 고려를 해서 문제를 풀었으나, 달력의 마지막 날이 끝나는 경우에도 일정이 종료되기 때문에 이를 고려해 조건식을 추가했습니다. 기존에 생각했던 풀이 방식보다 새롭게 알게 된 풀이 방식이 훨씬 간단했고, 예외 조건도 잘 고려해주기만 하면 금방 풀 수 있는 문제였습니다. 문제 풀이와 예외 조건에 대한 고민이 더 필요하다는 것을 느꼈습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
