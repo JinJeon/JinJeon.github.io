@@ -10,32 +10,29 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>백준 1654번 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="JINJEONIMUM" />
+<meta property="og:title" content="백준 1654번" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/blog/page7/" />
-<meta property="og:url" content="http://localhost:4000/blog/page7/" />
+<meta name="description" content="QUESTION LINK 주어진 전선들 중 요구하는 개수의 조각들이 나올 수 있도록 나누기를 반복해야하는 문제였습니다. 가장 먼저 고민했던 것은 ‘원하는 값을 구하기 위해서 주어진 값들에 대해 반복적인 나누기를 해야하는지’ 였는데 이 부분은 개수를 비교하기 위해서는 필수적으로 거쳐야하는 과정이라 어쩔 수 없다는 것을 파악했습니다. 다음으로 고민했던 것은 이분 탐색을 할 때, ‘어떻게 해야 만족되는 값들 중 가장 큰 값에 접근할 수 있는지’ 였습니다. 처음에는 최대값으로 현재 주어진 값들 중 가장 큰 값을 설정하고, while문을 통한 이분 탐색으로 만족되는 값을 구하고, 이후 하나씩 올라가며 최대값을 구하려고 하였으나, 이로 인해 시간 초과가 나왔습니다. 이후, 이분 탐색에 대해 알게 된 것이 원하는 결과가 나올 때까지 Upper Bound를 이용해서 값을 구해주면 된다는 것이었습니다. 여기서 Upper Bound는 특정 조건을 만족하는 값의 다음 값을 보여주게 되는 것인데, 이를 이용해서 원하는 값이 나오도록 할 수 있었습니다. 구현을 위해, 초기값으로는 최소값(min)과 최대값(max)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 중간값이 0이 나올 수도 있다는 문제가 생겨, 이 부분에 대한 처리가 꼭 필요합니다. const [counts, ...linesString] = fs .readFileSync(filePath) .toString() .trim() .split(&quot;\n&quot;); const [K, N] = counts.split(&quot; &quot;).map(Number); const lines = linesString.map(Number); let min = 1; // 최소값으로 0이 아닌 1로 설정 let max = Math.max(...lines); // 최대값은 현재 주어진 값들 중 가장 큰 값 이후, while문을 통한 반복을 하게 되는데, 여기서 조건 설정에 대한 어려움이 있었습니다. 앞서 말한 Upper Bound를 하기 위해서는 순회 시 구해진 값이 요구되는 값과 일치될 때 만족시킨 중간값(mid)보다 더 큰 값으로 최소값을 설정해 반복해야 Upper Bound를 통해 요구되는 값보다 하나 더 큰 값을 얻을 수 있게 됩니다. 하지만, 이렇게 진행을 하고 나서, 마지막에 while문을 종료시켜야 하는데 이 때 적용할 조건으로 기존에는 최소값이 최대값보다 작은 상황(min &lt; max)에 대해서만 진행하도록 했습니다. 이럴 경우 틀렸다는 결과가 나오게 되는데 이는 max값이 1이 될 수도 있다는 것을 고려하지 못하기 때문입니다. max가 1인 상황에서도 해당 순회가 한 번은 돌아가고 이에 따른 결과가 나와야 하기 때문에, min ≤ max로 조건을 설정해야 합니다. 그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 max값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다. while (min &lt;= max) { const mid = Math.floor((min + max) / 2); const count = lines.reduce((prev, next) =&gt; { return prev + Math.floor(next / mid); }, 0); // 모든 같은 길이의 전선들의 합 if (count &gt;= N) { // 값이 일치하더라도 최대까지 진행해 나가야 함 min = mid + 1; } else { max = mid - 1; } } console.log(max);" />
+<meta property="og:description" content="QUESTION LINK 주어진 전선들 중 요구하는 개수의 조각들이 나올 수 있도록 나누기를 반복해야하는 문제였습니다. 가장 먼저 고민했던 것은 ‘원하는 값을 구하기 위해서 주어진 값들에 대해 반복적인 나누기를 해야하는지’ 였는데 이 부분은 개수를 비교하기 위해서는 필수적으로 거쳐야하는 과정이라 어쩔 수 없다는 것을 파악했습니다. 다음으로 고민했던 것은 이분 탐색을 할 때, ‘어떻게 해야 만족되는 값들 중 가장 큰 값에 접근할 수 있는지’ 였습니다. 처음에는 최대값으로 현재 주어진 값들 중 가장 큰 값을 설정하고, while문을 통한 이분 탐색으로 만족되는 값을 구하고, 이후 하나씩 올라가며 최대값을 구하려고 하였으나, 이로 인해 시간 초과가 나왔습니다. 이후, 이분 탐색에 대해 알게 된 것이 원하는 결과가 나올 때까지 Upper Bound를 이용해서 값을 구해주면 된다는 것이었습니다. 여기서 Upper Bound는 특정 조건을 만족하는 값의 다음 값을 보여주게 되는 것인데, 이를 이용해서 원하는 값이 나오도록 할 수 있었습니다. 구현을 위해, 초기값으로는 최소값(min)과 최대값(max)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 중간값이 0이 나올 수도 있다는 문제가 생겨, 이 부분에 대한 처리가 꼭 필요합니다. const [counts, ...linesString] = fs .readFileSync(filePath) .toString() .trim() .split(&quot;\n&quot;); const [K, N] = counts.split(&quot; &quot;).map(Number); const lines = linesString.map(Number); let min = 1; // 최소값으로 0이 아닌 1로 설정 let max = Math.max(...lines); // 최대값은 현재 주어진 값들 중 가장 큰 값 이후, while문을 통한 반복을 하게 되는데, 여기서 조건 설정에 대한 어려움이 있었습니다. 앞서 말한 Upper Bound를 하기 위해서는 순회 시 구해진 값이 요구되는 값과 일치될 때 만족시킨 중간값(mid)보다 더 큰 값으로 최소값을 설정해 반복해야 Upper Bound를 통해 요구되는 값보다 하나 더 큰 값을 얻을 수 있게 됩니다. 하지만, 이렇게 진행을 하고 나서, 마지막에 while문을 종료시켜야 하는데 이 때 적용할 조건으로 기존에는 최소값이 최대값보다 작은 상황(min &lt; max)에 대해서만 진행하도록 했습니다. 이럴 경우 틀렸다는 결과가 나오게 되는데 이는 max값이 1이 될 수도 있다는 것을 고려하지 못하기 때문입니다. max가 1인 상황에서도 해당 순회가 한 번은 돌아가고 이에 따른 결과가 나와야 하기 때문에, min ≤ max로 조건을 설정해야 합니다. 그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 max값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다. while (min &lt;= max) { const mid = Math.floor((min + max) / 2); const count = lines.reduce((prev, next) =&gt; { return prev + Math.floor(next / mid); }, 0); // 모든 같은 길이의 전선들의 합 if (count &gt;= N) { // 값이 일치하더라도 최대까지 진행해 나가야 함 min = mid + 1; } else { max = mid - 1; } } console.log(max);" />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
-<link rel="prev" href="http://localhost:4000/blog/page6" />
-<link rel="next" href="http://localhost:4000/blog/page8" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-05T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="JINJEONIMUM" />
+<meta property="twitter:title" content="백준 1654번" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","headline":"JINJEONIMUM","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"url":"http://localhost:4000/blog/page7/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"백준 1654번","dateModified":"2022-12-05T00:00:00+09:00","datePublished":"2022-12-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"QUESTION LINK 주어진 전선들 중 요구하는 개수의 조각들이 나올 수 있도록 나누기를 반복해야하는 문제였습니다. 가장 먼저 고민했던 것은 ‘원하는 값을 구하기 위해서 주어진 값들에 대해 반복적인 나누기를 해야하는지’ 였는데 이 부분은 개수를 비교하기 위해서는 필수적으로 거쳐야하는 과정이라 어쩔 수 없다는 것을 파악했습니다. 다음으로 고민했던 것은 이분 탐색을 할 때, ‘어떻게 해야 만족되는 값들 중 가장 큰 값에 접근할 수 있는지’ 였습니다. 처음에는 최대값으로 현재 주어진 값들 중 가장 큰 값을 설정하고, while문을 통한 이분 탐색으로 만족되는 값을 구하고, 이후 하나씩 올라가며 최대값을 구하려고 하였으나, 이로 인해 시간 초과가 나왔습니다. 이후, 이분 탐색에 대해 알게 된 것이 원하는 결과가 나올 때까지 Upper Bound를 이용해서 값을 구해주면 된다는 것이었습니다. 여기서 Upper Bound는 특정 조건을 만족하는 값의 다음 값을 보여주게 되는 것인데, 이를 이용해서 원하는 값이 나오도록 할 수 있었습니다. 구현을 위해, 초기값으로는 최소값(min)과 최대값(max)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 중간값이 0이 나올 수도 있다는 문제가 생겨, 이 부분에 대한 처리가 꼭 필요합니다. const [counts, ...linesString] = fs .readFileSync(filePath) .toString() .trim() .split(&quot;\\n&quot;); const [K, N] = counts.split(&quot; &quot;).map(Number); const lines = linesString.map(Number); let min = 1; // 최소값으로 0이 아닌 1로 설정 let max = Math.max(...lines); // 최대값은 현재 주어진 값들 중 가장 큰 값 이후, while문을 통한 반복을 하게 되는데, 여기서 조건 설정에 대한 어려움이 있었습니다. 앞서 말한 Upper Bound를 하기 위해서는 순회 시 구해진 값이 요구되는 값과 일치될 때 만족시킨 중간값(mid)보다 더 큰 값으로 최소값을 설정해 반복해야 Upper Bound를 통해 요구되는 값보다 하나 더 큰 값을 얻을 수 있게 됩니다. 하지만, 이렇게 진행을 하고 나서, 마지막에 while문을 종료시켜야 하는데 이 때 적용할 조건으로 기존에는 최소값이 최대값보다 작은 상황(min &lt; max)에 대해서만 진행하도록 했습니다. 이럴 경우 틀렸다는 결과가 나오게 되는데 이는 max값이 1이 될 수도 있다는 것을 고려하지 못하기 때문입니다. max가 1인 상황에서도 해당 순회가 한 번은 돌아가고 이에 따른 결과가 나와야 하기 때문에, min ≤ max로 조건을 설정해야 합니다. 그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 max값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다. while (min &lt;= max) { const mid = Math.floor((min + max) / 2); const count = lines.reduce((prev, next) =&gt; { return prev + Math.floor(next / mid); }, 0); // 모든 같은 길이의 전선들의 합 if (count &gt;= N) { // 값이 일치하더라도 최대까지 진행해 나가야 함 min = mid + 1; } else { max = mid - 1; } } console.log(max);","url":"http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-      
-      <title>POSTS - JINJEONIMUM</title>
-      <meta property="og:title" content="POSTS">
-      <meta name="description" content="">
-      <meta property="og:description" content="">
     
     
       
@@ -104,7 +101,7 @@
 
   </head>
 
-  <body class="layout-blog">
+  <body class="layout-post  백준-1654번">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -215,196 +212,116 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>이분 탐색을 이용한 특정 길이 구하기</p>
+
+    </div>
+  </div>
+
 </header>
 
 
-<main class="main  container">
-
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
+<main class="main container">
+  <article class="article article--post content typeset">
+    <div class="article--title">
+      <h1>백준 1654번</h1>
       
-        
-        <h1>POSTS</h1>
-        
-
-
-      
-
-    </article>
-
-    
-  <section class="section  typeset">
-    <ul class="list  list--posts">
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/25/textarea-%EC%97%94%ED%84%B0-%EC%B2%98%EB%A6%AC-%EB%AC%B8%EC%A0%9C/">textarea 태그 Enter 처리 문제</a></h3>
-              
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-25T00:00:00+09:00" class="time">25 Oct 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-12-05T00:00:00+09:00" class="time">05 Dec 2022</time>
 </small>
 
-            </div>
-            <p>input과 textarea 차이로 인해 발생한 Enter 처리 문제</p>
+    </div>
 
+    <p><strong><a href="https://www.acmicpc.net/problem/1654">QUESTION LINK</a></strong></p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/http/2022/10/24/PORT-DNS-URI/">PORT ∙ DNS ∙ URI</a></h3>
-              
+<p>주어진 전선들 중 요구하는 개수의 조각들이 나올 수 있도록 나누기를 반복해야하는 문제였습니다. 가장 먼저 고민했던 것은 ‘원하는 값을 구하기 위해서 주어진 값들에 대해 반복적인 나누기를 해야하는지’ 였는데 이 부분은 개수를 비교하기 위해서는 필수적으로 거쳐야하는 과정이라 어쩔 수 없다는 것을 파악했습니다.</p>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-24T00:00:00+09:00" class="time">24 Oct 2022</time>
-</small>
+<p>다음으로 고민했던 것은 이분 탐색을 할 때, ‘어떻게 해야 만족되는 값들 중 가장 큰 값에 접근할 수 있는지’ 였습니다. 처음에는 최대값으로 현재 주어진 값들 중 가장 큰 값을 설정하고, <code class="language-plaintext highlighter-rouge">while</code>문을 통한 이분 탐색으로 만족되는 값을 구하고, 이후 하나씩 올라가며 최대값을 구하려고 하였으나, 이로 인해 <strong>시간 초과</strong>가 나왔습니다.</p>
 
-            </div>
-            <p>HTTP의 기본적인 PORT ∙ DNS ∙ URI 알아보기</p>
+<p>이후, 이분 탐색에 대해 알게 된 것이 원하는 결과가 나올 때까지 Upper Bound를 이용해서 값을 구해주면 된다는 것이었습니다. 여기서 Upper Bound는 특정 조건을 만족하는 값의 다음 값을 보여주게 되는 것인데, 이를 이용해서 원하는 값이 나오도록 할 수 있었습니다.</p>
 
+<p>구현을 위해, 초기값으로는 최소값(<code class="language-plaintext highlighter-rouge">min</code>)과 최대값(<code class="language-plaintext highlighter-rouge">max</code>)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 <strong>중간값이 0이 나올 수도 있다는 문제</strong>가 생겨, 이 부분에 대한 처리가 꼭 필요합니다.</p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/http/2022/10/23/IP_TCP_UDP/">IP, TCP ∙ UDP</a></h3>
-              
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">counts</span><span class="p">,</span> <span class="p">...</span><span class="nx">linesString</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span>
+  <span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">K</span><span class="p">,</span> <span class="nx">N</span><span class="p">]</span> <span class="o">=</span> <span class="nx">counts</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="nx">linesString</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-23T00:00:00+09:00" class="time">23 Oct 2022</time>
-</small>
+<span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 최소값으로 0이 아닌 1로 설정</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">lines</span><span class="p">);</span>
+<span class="c1">// 최대값은 현재 주어진 값들 중 가장 큰 값</span>
+</code></pre></div></div>
 
-            </div>
-            <p>HTTP의 기본적인 IP, TCP ∙ UDP 알아보기</p>
+<p>이후, <code class="language-plaintext highlighter-rouge">while</code>문을 통한 반복을 하게 되는데, 여기서 조건 설정에 대한 어려움이 있었습니다. 앞서 말한 Upper Bound를 하기 위해서는 순회 시 <strong>구해진 값이 요구되는 값과 일치될 때 만족시킨 중간값(mid)보다 더 큰 값으로 최소값을 설정해</strong> 반복해야 Upper Bound를 통해 요구되는 값보다 하나 더 큰 값을 얻을 수 있게 됩니다.</p>
 
+<p>하지만, 이렇게 진행을 하고 나서, 마지막에 while문을 종료시켜야 하는데 이 때 적용할 조건으로 기존에는 최소값이 최대값보다 작은 상황(<code class="language-plaintext highlighter-rouge">min &lt; max</code>)에 대해서만 진행하도록 했습니다. 이럴 경우 틀렸다는 결과가 나오게 되는데 이는 <strong>max값이 1이 될 수도 있다는 것</strong>을 고려하지 못하기 때문입니다. <code class="language-plaintext highlighter-rouge">max</code>가 1인 상황에서도 해당 순회가 한 번은 돌아가고 이에 따른 결과가 나와야 하기 때문에, <code class="language-plaintext highlighter-rouge">min ≤ max</code>로 조건을 설정해야 합니다.</p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/22/stomp(socket)-%EC%97%B0%EA%B2%B0-%EC%8B%A4%ED%8C%A8/">stomp(socket) 연결 실패 시 알림</a></h3>
-              
+<p>그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 <code class="language-plaintext highlighter-rouge">max</code>값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다.</p>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-22T00:00:00+09:00" class="time">22 Oct 2022</time>
-</small>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">min</span> <span class="o">&lt;=</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">min</span> <span class="o">+</span> <span class="nx">max</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">next</span> <span class="o">/</span> <span class="nx">mid</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="c1">// 모든 같은 길이의 전선들의 합</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="nx">N</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 값이 일치하더라도 최대까지 진행해 나가야 함</span>
+    <span class="nx">min</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">max</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-            </div>
-            <p>socket 연결 실패 시 사용자에게 보여줄 컴포넌트 만들기</p>
-
-
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/21/stomp(socket)-%EC%97%B0%EA%B2%B0-%ED%95%B4%EC%A0%9C%ED%95%98%EA%B8%B0/">stomp(socket) 연결 해제하기</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-21T00:00:00+09:00" class="time">21 Oct 2022</time>
-</small>
-
-            </div>
-            <p>불필요한 stomp(socket) 연결 해제하기</p>
-
-
-          </article>
-        </li>
-      
-    </ul>
-    <nav class="nav  nav--paginator">
-
-  
-    <a href="/blog/page6" class="pagination  pagination--previous">&larr; NEWER</a>
-  
-
-  <span class="pagination  pagination--counter">PAGE : 7 OF 11</span>
-
-  
-    <a href="/blog/page8" class="pagination  pagination--next">OLDER &rarr;</a>
-  
-
-</nav>
-
-  </section>
-
-
-
-  </div>
-
-  <!-- prettier-ignore -->
-
-<aside class="aside  typeset  aside--right">
-
-  
-    <section class="section  section--description">
-      <h4>ABOUT ME</h4>
-      <!-- <p></p> -->
-      <!-- prettier-ignore -->
-<nav class="nav  nav--social">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">max</span><span class="p">);</span>
+</code></pre></div></div>
+ <!-- prettier-ignore -->
+<div class="share">
   
     
       
-      <a href="https://github.com/JinJeon">
-        <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->https://github.com/JinJeon" style="background: #444545">GITHUB&nbsp; <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+</a>
+
     
   
     
       
-      <a href="https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796">
-        <svg width="16" height="16" class="icon  icon--nav" role="img" alt="nav"><title>nav</title><use xlink:href="#nav" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->mailto:nanyong01@gmail.com?subject=백준 1654번&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
     
   
-</nav>
+</div>
+ 
 
-    </section>
+  </article>
 
   
-
-</aside>
-
-
 </main>
 
 <footer class="footer">
