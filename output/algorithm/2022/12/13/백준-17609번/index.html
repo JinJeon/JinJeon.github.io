@@ -10,32 +10,29 @@
 
     
       <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>백준 17609번 | JINJEONIMUM</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="JINJEONIMUM" />
+<meta property="og:title" content="백준 17609번" />
 <meta name="author" content="JinJeon" />
 <meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4000/blog/page6/" />
-<meta property="og:url" content="http://localhost:4000/blog/page6/" />
+<meta name="description" content="QUESTION LINK 주어지는 문자열에 대해 해당 문자가 바로 좌우 대칭인지, 한 문자를 빼야 좌우 대칭인지를 파악하는 문제였습니다. 문제를 읽자마자 해결을 하기 위한 가장 큰 개념이 ‘투 포인터’라는 것은 파악할 수 있었습니다. 하지만, 해당 문제에서 주어진 것과 같이, 문자 하나를 뺐을 때 좌우 대칭인지에 대해서도 알아내야 하는 부분이 있었는데, 이 부분에서 조건문을 복잡하게 걸고 시작해 문제가 되었습니다. 결론적으로는, 좌우 대칭의 여부를 확인하는 함수를 만들고, 해당 함수를 통과하지 못하는 경우에 대해 해당 부분에 대한 좌 ∙ 우로 뺀 문자열을 한 번 더 검사하여 문제를 해결할 수 있었습니다. 위와 같은 순서로 문제를 해결하고자 하였으며, 이를 위해 먼저 좌우 대칭을 확인하는 코드를 작성했습니다. const getIsPalindrome = (string) =&gt; { let left = 0; let right = string.length - 1; let isPalindrome = true; while (left &lt; right &amp;&amp; isPalindrome) { if (string[left] === string[right]) { // 좌우가 일치할 시 양쪽 다 한 칸씩 당겨서 다시 검사 left += 1; right -= 1; } else { isPalindrome = false; // 좌우 대칭이 아닐 시 잘못되었음을 표시 } } return { isPalindrome, left, right }; // 잘못된 지점의 위치가 필요하므로, left, right를 함께 출력 }; 위와 같은 함수를 만들고, 이 함수와 더불어 위에서 설명되었던 그림의 형태로 문제를 해결하고자 하였습니다. // stringArray는 문제에서 주어진 문자열들의 배열 const resultArray = stringArray.map((string) =&gt; { const { isPalindrome, left, right } = getIsPalindrome(string); if (isPalindrome) return 0; // 처음에 좌우 대칭일 시, 바로 0을 리턴 const { isPalindrome: isPalindromeFromLeft } = getIsPalindrome( string.substring(left + 1, right + 1) ); if (isPalindromeFromLeft) return 1; // 왼쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 const { isPalindrome: isPalindromeFromRight } = getIsPalindrome( string.substring(left, right) ); if (isPalindromeFromRight) return 1; // 오른쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 return 2; }); 이러한 흐름을 통해서 문제를 해결할 수 있었습니다. 이 문제는 사실 자체적인 어려움이 크게 없는 문제였습니다. 하지만, 처음에 좌우 대칭을 검사하고, 좌우 대칭이 아닌 경우 한 번 더 각 상황에 맞는 검사를 하는, isPallindromeLeft, isPallindromeRight 값을 구하는 작업을 해야하는 상황에 대해서 while문을 통한 조건식으로만 해결하려고 하여, 계속 문제가 틀리거나 시간 초과라는 결과가 나왔습니다. 이와 같이, 문자열 내에서도 추가적인 같은 검사가 필요한 부분에 대해서 미리 함수를 만들어 처리하는 방법을 먼저 생각해 볼 필요가 있음을 이번 문제를 통해 깨달았습니다." />
+<meta property="og:description" content="QUESTION LINK 주어지는 문자열에 대해 해당 문자가 바로 좌우 대칭인지, 한 문자를 빼야 좌우 대칭인지를 파악하는 문제였습니다. 문제를 읽자마자 해결을 하기 위한 가장 큰 개념이 ‘투 포인터’라는 것은 파악할 수 있었습니다. 하지만, 해당 문제에서 주어진 것과 같이, 문자 하나를 뺐을 때 좌우 대칭인지에 대해서도 알아내야 하는 부분이 있었는데, 이 부분에서 조건문을 복잡하게 걸고 시작해 문제가 되었습니다. 결론적으로는, 좌우 대칭의 여부를 확인하는 함수를 만들고, 해당 함수를 통과하지 못하는 경우에 대해 해당 부분에 대한 좌 ∙ 우로 뺀 문자열을 한 번 더 검사하여 문제를 해결할 수 있었습니다. 위와 같은 순서로 문제를 해결하고자 하였으며, 이를 위해 먼저 좌우 대칭을 확인하는 코드를 작성했습니다. const getIsPalindrome = (string) =&gt; { let left = 0; let right = string.length - 1; let isPalindrome = true; while (left &lt; right &amp;&amp; isPalindrome) { if (string[left] === string[right]) { // 좌우가 일치할 시 양쪽 다 한 칸씩 당겨서 다시 검사 left += 1; right -= 1; } else { isPalindrome = false; // 좌우 대칭이 아닐 시 잘못되었음을 표시 } } return { isPalindrome, left, right }; // 잘못된 지점의 위치가 필요하므로, left, right를 함께 출력 }; 위와 같은 함수를 만들고, 이 함수와 더불어 위에서 설명되었던 그림의 형태로 문제를 해결하고자 하였습니다. // stringArray는 문제에서 주어진 문자열들의 배열 const resultArray = stringArray.map((string) =&gt; { const { isPalindrome, left, right } = getIsPalindrome(string); if (isPalindrome) return 0; // 처음에 좌우 대칭일 시, 바로 0을 리턴 const { isPalindrome: isPalindromeFromLeft } = getIsPalindrome( string.substring(left + 1, right + 1) ); if (isPalindromeFromLeft) return 1; // 왼쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 const { isPalindrome: isPalindromeFromRight } = getIsPalindrome( string.substring(left, right) ); if (isPalindromeFromRight) return 1; // 오른쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 return 2; }); 이러한 흐름을 통해서 문제를 해결할 수 있었습니다. 이 문제는 사실 자체적인 어려움이 크게 없는 문제였습니다. 하지만, 처음에 좌우 대칭을 검사하고, 좌우 대칭이 아닌 경우 한 번 더 각 상황에 맞는 검사를 하는, isPallindromeLeft, isPallindromeRight 값을 구하는 작업을 해야하는 상황에 대해서 while문을 통한 조건식으로만 해결하려고 하여, 계속 문제가 틀리거나 시간 초과라는 결과가 나왔습니다. 이와 같이, 문자열 내에서도 추가적인 같은 검사가 필요한 부분에 대해서 미리 함수를 만들어 처리하는 방법을 먼저 생각해 볼 필요가 있음을 이번 문제를 통해 깨달았습니다." />
+<link rel="canonical" href="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/" />
+<meta property="og:url" content="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/" />
 <meta property="og:site_name" content="JINJEONIMUM" />
 <meta property="og:image" content="http://localhost:4000/assets/default-social-image.png" />
-<link rel="prev" href="http://localhost:4000/blog/page5" />
-<link rel="next" href="http://localhost:4000/blog/page7" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-13T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="http://localhost:4000/assets/default-social-image.png" />
-<meta property="twitter:title" content="JINJEONIMUM" />
+<meta property="twitter:title" content="백준 17609번" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@JinJeon" />
 <meta name="google-site-verification" content="7CKejDwHNL3iIH9iErLzCNIZtAa3k5srzohnt33OgQs" />
 <script type="application/ld+json">
-{"@type":"WebPage","image":"http://localhost:4000/assets/default-social-image.png","headline":"JINJEONIMUM","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"url":"http://localhost:4000/blog/page6/","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"http://localhost:4000/assets/default-social-image.png","headline":"백준 17609번","dateModified":"2022-12-13T00:00:00+09:00","datePublished":"2022-12-13T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logos/logo.svg"},"name":"JinJeon"},"author":{"@type":"Person","name":"JinJeon"},"description":"QUESTION LINK 주어지는 문자열에 대해 해당 문자가 바로 좌우 대칭인지, 한 문자를 빼야 좌우 대칭인지를 파악하는 문제였습니다. 문제를 읽자마자 해결을 하기 위한 가장 큰 개념이 ‘투 포인터’라는 것은 파악할 수 있었습니다. 하지만, 해당 문제에서 주어진 것과 같이, 문자 하나를 뺐을 때 좌우 대칭인지에 대해서도 알아내야 하는 부분이 있었는데, 이 부분에서 조건문을 복잡하게 걸고 시작해 문제가 되었습니다. 결론적으로는, 좌우 대칭의 여부를 확인하는 함수를 만들고, 해당 함수를 통과하지 못하는 경우에 대해 해당 부분에 대한 좌 ∙ 우로 뺀 문자열을 한 번 더 검사하여 문제를 해결할 수 있었습니다. 위와 같은 순서로 문제를 해결하고자 하였으며, 이를 위해 먼저 좌우 대칭을 확인하는 코드를 작성했습니다. const getIsPalindrome = (string) =&gt; { let left = 0; let right = string.length - 1; let isPalindrome = true; while (left &lt; right &amp;&amp; isPalindrome) { if (string[left] === string[right]) { // 좌우가 일치할 시 양쪽 다 한 칸씩 당겨서 다시 검사 left += 1; right -= 1; } else { isPalindrome = false; // 좌우 대칭이 아닐 시 잘못되었음을 표시 } } return { isPalindrome, left, right }; // 잘못된 지점의 위치가 필요하므로, left, right를 함께 출력 }; 위와 같은 함수를 만들고, 이 함수와 더불어 위에서 설명되었던 그림의 형태로 문제를 해결하고자 하였습니다. // stringArray는 문제에서 주어진 문자열들의 배열 const resultArray = stringArray.map((string) =&gt; { const { isPalindrome, left, right } = getIsPalindrome(string); if (isPalindrome) return 0; // 처음에 좌우 대칭일 시, 바로 0을 리턴 const { isPalindrome: isPalindromeFromLeft } = getIsPalindrome( string.substring(left + 1, right + 1) ); if (isPalindromeFromLeft) return 1; // 왼쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 const { isPalindrome: isPalindromeFromRight } = getIsPalindrome( string.substring(left, right) ); if (isPalindromeFromRight) return 1; // 오른쪽을 당긴 값이 좌우 대칭일 시 1을 리턴 return 2; }); 이러한 흐름을 통해서 문제를 해결할 수 있었습니다. 이 문제는 사실 자체적인 어려움이 크게 없는 문제였습니다. 하지만, 처음에 좌우 대칭을 검사하고, 좌우 대칭이 아닌 경우 한 번 더 각 상황에 맞는 검사를 하는, isPallindromeLeft, isPallindromeRight 값을 구하는 작업을 해야하는 상황에 대해서 while문을 통한 조건식으로만 해결하려고 하여, 계속 문제가 틀리거나 시간 초과라는 결과가 나왔습니다. 이와 같이, 문자열 내에서도 추가적인 같은 검사가 필요한 부분에 대해서 미리 함수를 만들어 처리하는 방법을 먼저 생각해 볼 필요가 있음을 이번 문제를 통해 깨달았습니다.","url":"http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-      
-      <title>POSTS - JINJEONIMUM</title>
-      <meta property="og:title" content="POSTS">
-      <meta name="description" content="">
-      <meta property="og:description" content="">
     
     
       
@@ -104,7 +101,7 @@
 
   </head>
 
-  <body class="layout-blog">
+  <body class="layout-post  백준-17609번">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0; position: absolute">
   <symbol id="codepen" viewBox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"/></symbol>
   <symbol id="dribbble" viewBox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"/></symbol>
@@ -215,196 +212,126 @@
 
 
 
+  <div class="feature" style="background-image: url()">
+    <div class="container  typeset">
+      <p>투 포인터를 활용한 문자열 탐색</p>
+
+    </div>
+  </div>
+
 </header>
 
 
-<main class="main  container">
-
-  <div class="content">
-
-    <article class="article  article--page  typeset">
-
+<main class="main container">
+  <article class="article article--post content typeset">
+    <div class="article--title">
+      <h1>백준 17609번</h1>
       
-        
-        <h1>POSTS</h1>
-        
-
-
-      
-
-    </article>
-
-    
-  <section class="section  typeset">
-    <ul class="list  list--posts">
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/javascript/2022/11/01/url-image%EB%A5%BC-File-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/">url image를 File 타입으로 변경하기</a></h3>
-              
 
 <small class="small  post-meta">
   
   
     
-      <span class="label  label--category"><a href="/categories/#javascript">JAVASCRIPT</a></span>
+      <span class="label  label--category"><a href="/categories/#algorithm">ALGORITHM</a></span>
     
-  &nbsp;&middot;&nbsp;<time datetime="2022-11-01T00:00:00+09:00" class="time">01 Nov 2022</time>
+  &nbsp;&middot;&nbsp;<time datetime="2022-12-13T00:00:00+09:00" class="time">13 Dec 2022</time>
 </small>
 
-            </div>
-            <p>파일로 갖고 있지 않은 이미지를 File 타입으로 바꾸기</p>
+    </div>
 
+    <p><a href="https://www.acmicpc.net/problem/17609">QUESTION LINK</a></p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/javascript/2022/10/29/%EC%82%AC%ED%8C%8C%EB%A6%AC-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88-%EB%AC%B8%EC%A0%9C/">사파리 브라우저 높이 조절 문제</a></h3>
-              
+<p>주어지는 문자열에 대해 해당 문자가 바로 좌우 대칭인지, 한 문자를 빼야 좌우 대칭인지를 파악하는 문제였습니다. 문제를 읽자마자 해결을 하기 위한 가장 큰 개념이 ‘투 포인터’라는 것은 파악할 수 있었습니다. 하지만, 해당 문제에서 주어진 것과 같이, 문자 하나를 뺐을 때 좌우 대칭인지에 대해서도 알아내야 하는 부분이 있었는데, 이 부분에서 조건문을 복잡하게 걸고 시작해 문제가 되었습니다.</p>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#javascript">JAVASCRIPT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-29T00:00:00+09:00" class="time">29 Oct 2022</time>
-</small>
+<p>결론적으로는, 좌우 대칭의 여부를 확인하는 함수를 만들고, 해당 함수를 통과하지 못하는 경우에 대해 해당 부분에 대한 좌 ∙ 우로 뺀 문자열을 한 번 더 검사하여 문제를 해결할 수 있었습니다.</p>
 
-            </div>
-            <p>사파리 주소창 크기 변화로 인한 앱의 높이 조절 문제 해결하기</p>
+<figure class="figure  figure--center">
+  <img class="image" src="/image/221213/0.png" alt="" width="100%" height="" /> 
+</figure>
 
+<p>위와 같은 순서로 문제를 해결하고자 하였으며, 이를 위해 먼저 좌우 대칭을 확인하는 코드를 작성했습니다.</p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/http/2022/10/27/HTTP-%EB%A9%94%EC%8B%9C%EC%A7%80-copy/">HTTP 메시지</a></h3>
-              
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getIsPalindrome</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">isPalindrome</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#http">HTTP</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-27T00:00:00+09:00" class="time">27 Oct 2022</time>
-</small>
+  <span class="k">while</span> <span class="p">(</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">isPalindrome</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">string</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="o">===</span> <span class="nx">string</span><span class="p">[</span><span class="nx">right</span><span class="p">])</span> <span class="p">{</span>
+      <span class="c1">// 좌우가 일치할 시 양쪽 다 한 칸씩 당겨서 다시 검사</span>
+      <span class="nx">left</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="nx">right</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">isPalindrome</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="c1">// 좌우 대칭이 아닐 시 잘못되었음을 표시</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
-            </div>
-            <p>HTTP 메시지의 특징 및 종류</p>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">isPalindrome</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="p">};</span>
+  <span class="c1">// 잘못된 지점의 위치가 필요하므로, left, right를 함께 출력</span>
+<span class="p">};</span>
+</code></pre></div></div>
 
+<p>위와 같은 함수를 만들고, 이 함수와 더불어 위에서 설명되었던 그림의 형태로 문제를 해결하고자 하였습니다.</p>
 
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EC%A4%84%EB%B0%94%EA%BF%88-%EC%8B%9C-%EC%9E%90%EB%8F%99-%EC%8A%A4%ED%81%AC%EB%A1%A4-copy/">textarea 줄바꿈 시 자동 스크롤</a></h3>
-              
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// stringArray는 문제에서 주어진 문자열들의 배열</span>
+<span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="nx">stringArray</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">isPalindrome</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindrome</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// 처음에 좌우 대칭일 시, 바로 0을 리턴</span>
 
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromLeft</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span>
+    <span class="nx">string</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindromeFromLeft</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="c1">// 왼쪽을 당긴 값이 좌우 대칭일 시 1을 리턴</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromRight</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span>
+    <span class="nx">string</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span>
+  <span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindromeFromRight</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="c1">// 오른쪽을 당긴 값이 좌우 대칭일 시 1을 리턴</span>
+  <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div></div>
 
-            </div>
-            <p>React에서 textarea 줄바꿈 시 자동 스크롤이 되도록 만들기</p>
-
-
-          </article>
-        </li>
-      
-        <li class="item  item--post">
-          <article class="article  article--post">
-            <div class="article--title">
-              <h3><a href="/react/2022/10/26/textarea-%EB%86%92%EC%9D%B4-%EC%A1%B0%EC%A0%88%ED%95%98%EA%B8%B0/">textarea 높이 조절하기</a></h3>
-              
-
-<small class="small  post-meta">
-  
-  
-    
-      <span class="label  label--category"><a href="/categories/#react">REACT</a></span>
-    
-  &nbsp;&middot;&nbsp;<time datetime="2022-10-26T00:00:00+09:00" class="time">26 Oct 2022</time>
-</small>
-
-            </div>
-            <p>React에서 textarea 높이 조절하기</p>
-
-
-          </article>
-        </li>
-      
-    </ul>
-    <nav class="nav  nav--paginator">
-
-  
-    <a href="/blog/page5" class="pagination  pagination--previous">&larr; NEWER</a>
-  
-
-  <span class="pagination  pagination--counter">PAGE : 6 OF 11</span>
-
-  
-    <a href="/blog/page7" class="pagination  pagination--next">OLDER &rarr;</a>
-  
-
-</nav>
-
-  </section>
-
-
-
-  </div>
-
-  <!-- prettier-ignore -->
-
-<aside class="aside  typeset  aside--right">
-
-  
-    <section class="section  section--description">
-      <h4>ABOUT ME</h4>
-      <!-- <p></p> -->
-      <!-- prettier-ignore -->
-<nav class="nav  nav--social">
+<p>이러한 흐름을 통해서 문제를 해결할 수 있었습니다. 이 문제는 사실 자체적인 어려움이 크게 없는 문제였습니다. 하지만, 처음에 좌우 대칭을 검사하고, 좌우 대칭이 아닌 경우 한 번 더 각 상황에 맞는 검사를 하는, <code class="language-plaintext highlighter-rouge">isPallindromeLeft</code>, <code class="language-plaintext highlighter-rouge">isPallindromeRight</code> 값을 구하는 작업을 해야하는 상황에 대해서 <code class="language-plaintext highlighter-rouge">while</code>문을 통한 조건식으로만 해결하려고 하여, 계속 문제가 틀리거나 시간 초과라는 결과가 나왔습니다. 이와 같이, <strong>문자열 내에서도 추가적인 같은 검사가 필요한 부분에 대해서 미리 함수를 만들어 처리하는 방법</strong>을 먼저 생각해 볼 필요가 있음을 이번 문제를 통해 깨달았습니다.</p>
+ <!-- prettier-ignore -->
+<div class="share">
   
     
       
-      <a href="https://github.com/JinJeon">
-        <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->https://github.com/JinJeon" style="background: #444545">GITHUB&nbsp; <svg width="16" height="16" class="icon  icon--github" role="img" alt="github"><title>github</title><use xlink:href="#github" fill="CurrentColor"></use></svg>
+</a>
+
     
   
     
       
-      <a href="https://jinjeonimum.notion.site/1dd980ad8afc4724ace777b23e749796">
-        <svg width="16" height="16" class="icon  icon--nav" role="img" alt="nav"><title>nav</title><use xlink:href="#nav" fill="CurrentColor"></use></svg>
+      
+      
+      
 
-      </a>
+      
+
+      <a class="button" href="
+      <!---->mailto:nanyong01@gmail.com?subject=백준 17609번&body=CHECK OUT THIS : http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/" style="background: #498f64">EMAIL&nbsp; <svg width="16" height="16" class="icon  icon--email" role="img" alt="email"><title>email</title><use xlink:href="#email" fill="CurrentColor"></use></svg>
+</a>
+
     
   
-</nav>
+</div>
+ 
 
-    </section>
+  </article>
 
   
-
-</aside>
-
-
 </main>
 
 <footer class="footer">
