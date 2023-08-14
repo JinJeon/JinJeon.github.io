@@ -34,6 +34,7 @@ body {
 }
 .header {
   background-color: $headerBackgroundColour;
+
   &::after {
     display: block;
     height: 2px;
