@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2022-12-13T13:38:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 17609번</title><link href="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/" rel="alternate" type="text/html" title="백준 17609번" /><published>2022-12-13T00:00:00+09:00</published><updated>2022-12-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80%2017609%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/"><![CDATA[<p><a href="https://www.acmicpc.net/problem/17609">QUESTION LINK</a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-08-14T13:32:55+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">JINJEONIMUM</title><subtitle></subtitle><author><name>JinJeon</name></author><entry><title type="html">백준 17609번</title><link href="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/" rel="alternate" type="text/html" title="백준 17609번" /><published>2022-12-13T00:00:00+09:00</published><updated>2022-12-13T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80%2017609%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/13/%EB%B0%B1%EC%A4%80-17609%EB%B2%88/"><![CDATA[<p><a href="https://www.acmicpc.net/problem/17609">QUESTION LINK</a></p>
 
 <p>주어지는 문자열에 대해 해당 문자가 바로 좌우 대칭인지, 한 문자를 빼야 좌우 대칭인지를 파악하는 문제였습니다. 문제를 읽자마자 해결을 하기 위한 가장 큰 개념이 ‘투 포인터’라는 것은 파악할 수 있었습니다. 하지만, 해당 문제에서 주어진 것과 같이, 문자 하나를 뺐을 때 좌우 대칭인지에 대해서도 알아내야 하는 부분이 있었는데, 이 부분에서 조건문을 복잡하게 걸고 시작해 문제가 되었습니다.</p>
 
@@ -15,8 +15,8 @@
   <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
   <span class="kd">let</span> <span class="nx">isPalindrome</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
-  <span class="k">while</span> <span class="p">(</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">isPalindrome</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">string</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="o">===</span> <span class="nx">string</span><span class="p">[</span><span class="nx">right</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">while </span><span class="p">(</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">right</span> <span class="o">&amp;&amp;</span> <span class="nx">isPalindrome</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">string</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="o">===</span> <span class="nx">string</span><span class="p">[</span><span class="nx">right</span><span class="p">])</span> <span class="p">{</span>
       <span class="c1">// 좌우가 일치할 시 양쪽 다 한 칸씩 당겨서 다시 검사</span>
       <span class="nx">left</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
       <span class="nx">right</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
@@ -34,20 +34,20 @@
 <p>위와 같은 함수를 만들고, 이 함수와 더불어 위에서 설명되었던 그림의 형태로 문제를 해결하고자 하였습니다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// stringArray는 문제에서 주어진 문자열들의 배열</span>
-<span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="nx">stringArray</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">isPalindrome</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindrome</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="nx">stringArray</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">isPalindrome</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">getIsPalindrome</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isPalindrome</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
   <span class="c1">// 처음에 좌우 대칭일 시, 바로 0을 리턴</span>
 
-  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromLeft</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span>
-    <span class="nx">string</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromLeft</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">getIsPalindrome</span><span class="p">(</span>
+    <span class="nx">string</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
   <span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindromeFromLeft</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isPalindromeFromLeft</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
   <span class="c1">// 왼쪽을 당긴 값이 좌우 대칭일 시 1을 리턴</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromRight</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">getIsPalindrome</span><span class="p">(</span>
-    <span class="nx">string</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">isPalindrome</span><span class="p">:</span> <span class="nx">isPalindromeFromRight</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">getIsPalindrome</span><span class="p">(</span>
+    <span class="nx">string</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span>
   <span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isPalindromeFromRight</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isPalindromeFromRight</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
   <span class="c1">// 오른쪽을 당긴 값이 좌우 대칭일 시 1을 리턴</span>
   <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">});</span>
@@ -76,8 +76,8 @@
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">getParseResult</span> <span class="o">=</span>
   <span class="p">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">guard</span><span class="p">:</span> <span class="nx">ParseGuardType</span><span class="p">)</span> <span class="o">=&gt;</span>
   <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">ParseResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">parsedValue</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">guard</span><span class="p">(</span><span class="nx">parsedValue</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">parsedValue</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nf">guard</span><span class="p">(</span><span class="nx">parsedValue</span><span class="p">)</span>
       <span class="p">?</span> <span class="p">{</span> <span class="nx">parsedValue</span><span class="p">,</span> <span class="na">isSuccess</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
       <span class="p">:</span> <span class="p">{</span> <span class="na">isSuccess</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
   <span class="p">};</span>
@@ -93,18 +93,18 @@
 
     <span class="p">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">parseGuard</span><span class="p">:</span> <span class="nx">ParseGuardType</span><span class="p">)</span> <span class="o">=&gt;</span>
     <span class="p">({</span> <span class="nx">key</span> <span class="p">}:</span> <span class="p">{</span> <span class="nl">key</span><span class="p">:</span> <span class="nx">LocalStorageKeyType</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
       <span class="c1">// 파싱 전의 localStorage 데이터를 가져옴</span>
 
       <span class="k">try</span> <span class="p">{</span>
         <span class="c1">// 가져온 데이터가 존재하는 경우, 데이터를 파싱해서 리턴함</span>
         <span class="kd">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="nx">getParseResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">parseGuard</span><span class="p">)(</span><span class="nx">data</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">info</span> <span class="o">&amp;&amp;</span> <span class="nx">info</span><span class="p">.</span><span class="nx">isSuccess</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">info</span> <span class="o">&amp;&amp;</span> <span class="nx">info</span><span class="p">.</span><span class="nx">isSuccess</span><span class="p">)</span> <span class="p">{</span>
           <span class="k">return</span> <span class="nx">info</span><span class="p">.</span><span class="nx">parsedValue</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
           <span class="c1">// 실패 상황에 대한 에러 처리</span>
         <span class="p">}</span>
-      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// 관련 에러 처리</span>
       <span class="p">}</span>
 
@@ -121,7 +121,7 @@
 <span class="p">};</span>
 
 <span class="kd">const</span> <span class="nx">accessToken</span> <span class="o">=</span>
-  <span class="nx">getLocalStorageInfoTest</span> <span class="o">&lt;</span> <span class="nx">string</span> <span class="o">&gt;</span> <span class="nx">getIsString</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">access-token</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="nx">getLocalStorageInfoTest</span> <span class="o">&lt;</span> <span class="nx">string</span> <span class="o">&gt;</span> <span class="nf">getIsString</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">access-token</span><span class="dl">"</span> <span class="p">});</span>
 <span class="nx">headers</span><span class="p">[</span><span class="nx">AUTHORIZATION</span><span class="p">]</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">accessToken</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -144,35 +144,35 @@
 <p>즉, 주어진 값들에 대한 배열을 돌면서 각 <code class="language-plaintext highlighter-rouge">index</code>까지 도달하기 위한 최소값들을 구하고 이를 일종의 배열에 담고 있으면, 그 배열의 마지막 값이 곧 ‘종점으로 가기 위해 최소로 요구되는 힘’이 됩니다. 코드로 나타내면 아래와 같습니다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">valuesString</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span>
-  <span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">valuesString</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">valuesString</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
 <span class="c1">// 들어온 값들을 숫자로 정리한 배열</span>
 <span class="kd">const</span> <span class="nx">distances</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="c1">// 각 인덱스까지 오는 데에 필요한 최소 힘을 담는 배열</span>
 
-<span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">values</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// 배열의 각 index들을 돌면서 해당 index까지 도달하기 위한 최소 힘을 구함</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">index</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">index</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
   <span class="c1">// index가 0인 경우에는 혼자 있으므로 관련없음</span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">index</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">index</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 출발지를 0부터 index - 1까지로 하여, 0, i, index의 경로로 오기 위한 최소힘을 구함</span>
-    <span class="kd">const</span> <span class="nx">curPower</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">value</span> <span class="o">-</span> <span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
+    <span class="kd">const</span> <span class="nx">curPower</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="nx">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">value</span> <span class="o">-</span> <span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
     <span class="c1">// 순회하는 배열에서의 종점과 for문을 통해 돌고 있는 i 사이의 필요힘</span>
-    <span class="kd">const</span> <span class="nx">power</span> <span class="o">=</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">?</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">curPower</span><span class="p">,</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">:</span> <span class="nx">curPower</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">power</span> <span class="o">=</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">?</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">curPower</span><span class="p">,</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">:</span> <span class="nx">curPower</span><span class="p">;</span>
     <span class="c1">// i까지 오는 데에 대한 최소값이 없을 시는 현재 구한 값이 최소 힘이며,</span>
     <span class="c1">// 아닐 시 이미 구한 최소 힘과 비교하여 더 큰 값을 현재 필요힘으로 설정</span>
     <span class="nx">distances</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
-      <span class="p">?</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">power</span><span class="p">,</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span>
+      <span class="p">?</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="nx">power</span><span class="p">,</span> <span class="nx">distances</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span>
       <span class="p">:</span> <span class="nx">power</span><span class="p">;</span>
     <span class="c1">// 이전에 설정된 index의 최소 힘과 비교하여 더 작은 값이 있을 시</span>
     <span class="c1">// 그 값이 index에 도달하기 위한 최소 힘 값이 됨</span>
   <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">distances</span><span class="p">[</span><span class="nx">distances</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">distances</span><span class="p">[</span><span class="nx">distances</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
 </code></pre></div></div>
 
 <p>문제 자체에 대한 이해는 어렵지 않았으나, 이를 구현하는 과정을 생각하는 데에 시간이 오래 걸렸습니다. 무엇보다, <code class="language-plaintext highlighter-rouge">distances</code>라는 배열을 구상하고 이 배열을 통해서 지속적으로 값을 비교해나가며 최소값을 찾아가는 과정이 어려웠습니다. 이와 같은 문제를 마주쳤을 때, 이 코드의 <code class="language-plaintext highlighter-rouge">distances</code>와 같은 형태의 배열을 만들고, 비교해가는 과정이 이루어져야함을 알 수 있었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK ‘다이나믹 프로그래밍’으로 풀어야하는 문제였습니다. 해당 문제의 경우, 한 칸씩 이동을 할 때마다 해당 칸까지 갔던 거리의 최소값들을 구해주는 식으로 진행을 해야 문제를 풀 수 있었습니다. 그림으로 보면 아래와 같습니다. 위 그림을 통해서 보면, 2번과 3번을 지나면서도 각각에 대한 최소값들을 만들고 넘어오는 것을 볼 수 있습니다. 여기서 4번을 예시로 들면 4번에 오는 최단거리의 값을 만들 때에는 ‘1번 → 2번 → 4번’, ‘1번 → 3번 → 4번’으로 오는 방법이 존재하게 되는데, 여기서 2번을 지나갈 때와 3번을 지나갈 때 각각 미리 그 곳을 종점으로 하는 최소값을 기록한 다음에 넘어오면, 4번에서도 같은 방식으로 4번까지 오는 최소값을 구할 수 있게 되는 것입니다. 즉, 주어진 값들에 대한 배열을 돌면서 각 index까지 도달하기 위한 최소값들을 구하고 이를 일종의 배열에 담고 있으면, 그 배열의 마지막 값이 곧 ‘종점으로 가기 위해 최소로 요구되는 힘’이 됩니다. 코드로 나타내면 아래와 같습니다. const [_, valuesString] = fs .readFileSync(filePath) .toString() .trim() .split("\n"); const values = valuesString.split(" ").map(Number); // 들어온 값들을 숫자로 정리한 배열 const distances = []; // 각 인덱스까지 오는 데에 필요한 최소 힘을 담는 배열 values.forEach((value, index) =&gt; { // 배열의 각 index들을 돌면서 해당 index까지 도달하기 위한 최소 힘을 구함 if (!index) return; // index가 0인 경우에는 혼자 있으므로 관련없음 for (let i = 0; i &lt; index; i += 1) { // 출발지를 0부터 index - 1까지로 하여, 0, i, index의 경로로 오기 위한 최소힘을 구함 const curPower = (index - i) * (1 + Math.abs(value - values[i])); // 순회하는 배열에서의 종점과 for문을 통해 돌고 있는 i 사이의 필요힘 const power = distances[i] ? Math.max(curPower, distances[i]) : curPower; // i까지 오는 데에 대한 최소값이 없을 시는 현재 구한 값이 최소 힘이며, // 아닐 시 이미 구한 최소 힘과 비교하여 더 큰 값을 현재 필요힘으로 설정 distances[index] = distances[index] ? Math.min(power, distances[index]) : power; // 이전에 설정된 index의 최소 힘과 비교하여 더 작은 값이 있을 시 // 그 값이 index에 도달하기 위한 최소 힘 값이 됨 } }); console.log(distances[distances.length - 1]); 문제 자체에 대한 이해는 어렵지 않았으나, 이를 구현하는 과정을 생각하는 데에 시간이 오래 걸렸습니다. 무엇보다, distances라는 배열을 구상하고 이 배열을 통해서 지속적으로 값을 비교해나가며 최소값을 찾아가는 과정이 어려웠습니다. 이와 같은 문제를 마주쳤을 때, 이 코드의 distances와 같은 형태의 배열을 만들고, 비교해가는 과정이 이루어져야함을 알 수 있었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 1654번</title><link href="http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/" rel="alternate" type="text/html" title="백준 1654번" /><published>2022-12-05T00:00:00+09:00</published><updated>2022-12-05T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80%201654%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/05/%EB%B0%B1%EC%A4%80-1654%EB%B2%88/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/1654">QUESTION LINK</a></strong></p>
@@ -186,16 +186,16 @@
 <p>구현을 위해, 초기값으로는 최소값(<code class="language-plaintext highlighter-rouge">min</code>)과 최대값(<code class="language-plaintext highlighter-rouge">max</code>)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 <strong>중간값이 0이 나올 수도 있다는 문제</strong>가 생겨, 이 부분에 대한 처리가 꼭 필요합니다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">counts</span><span class="p">,</span> <span class="p">...</span><span class="nx">linesString</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span>
-  <span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="p">[</span><span class="nx">K</span><span class="p">,</span> <span class="nx">N</span><span class="p">]</span> <span class="o">=</span> <span class="nx">counts</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="nx">linesString</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">K</span><span class="p">,</span> <span class="nx">N</span><span class="p">]</span> <span class="o">=</span> <span class="nx">counts</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="nx">linesString</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="c1">// 최소값으로 0이 아닌 1로 설정</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">lines</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(...</span><span class="nx">lines</span><span class="p">);</span>
 <span class="c1">// 최대값은 현재 주어진 값들 중 가장 큰 값</span>
 </code></pre></div></div>
 
@@ -205,13 +205,13 @@
 
 <p>그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 <code class="language-plaintext highlighter-rouge">max</code>값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">min</span> <span class="o">&lt;=</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">min</span> <span class="o">+</span> <span class="nx">max</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">next</span> <span class="o">/</span> <span class="nx">mid</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while </span><span class="p">(</span><span class="nx">min</span> <span class="o">&lt;=</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">min</span> <span class="o">+</span> <span class="nx">max</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">next</span> <span class="o">/</span> <span class="nx">mid</span><span class="p">);</span>
   <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
   <span class="c1">// 모든 같은 길이의 전선들의 합</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="nx">N</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="nx">N</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 값이 일치하더라도 최대까지 진행해 나가야 함</span>
     <span class="nx">min</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -219,7 +219,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">max</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">max</span><span class="p">);</span>
 </code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 주어진 전선들 중 요구하는 개수의 조각들이 나올 수 있도록 나누기를 반복해야하는 문제였습니다. 가장 먼저 고민했던 것은 ‘원하는 값을 구하기 위해서 주어진 값들에 대해 반복적인 나누기를 해야하는지’ 였는데 이 부분은 개수를 비교하기 위해서는 필수적으로 거쳐야하는 과정이라 어쩔 수 없다는 것을 파악했습니다. 다음으로 고민했던 것은 이분 탐색을 할 때, ‘어떻게 해야 만족되는 값들 중 가장 큰 값에 접근할 수 있는지’ 였습니다. 처음에는 최대값으로 현재 주어진 값들 중 가장 큰 값을 설정하고, while문을 통한 이분 탐색으로 만족되는 값을 구하고, 이후 하나씩 올라가며 최대값을 구하려고 하였으나, 이로 인해 시간 초과가 나왔습니다. 이후, 이분 탐색에 대해 알게 된 것이 원하는 결과가 나올 때까지 Upper Bound를 이용해서 값을 구해주면 된다는 것이었습니다. 여기서 Upper Bound는 특정 조건을 만족하는 값의 다음 값을 보여주게 되는 것인데, 이를 이용해서 원하는 값이 나오도록 할 수 있었습니다. 구현을 위해, 초기값으로는 최소값(min)과 최대값(max)을 설정하게 되는데, 여기서 길이를 구하는 문제이기 때문에 최소값은 1로 처음에 설정을 해주어야 합니다. 이렇게 진행하지 않을 시, 이후 이분 탐색에서 중간값을 구할 때 중간값이 0이 나올 수도 있다는 문제가 생겨, 이 부분에 대한 처리가 꼭 필요합니다. const [counts, ...linesString] = fs .readFileSync(filePath) .toString() .trim() .split("\n"); const [K, N] = counts.split(" ").map(Number); const lines = linesString.map(Number); let min = 1; // 최소값으로 0이 아닌 1로 설정 let max = Math.max(...lines); // 최대값은 현재 주어진 값들 중 가장 큰 값 이후, while문을 통한 반복을 하게 되는데, 여기서 조건 설정에 대한 어려움이 있었습니다. 앞서 말한 Upper Bound를 하기 위해서는 순회 시 구해진 값이 요구되는 값과 일치될 때 만족시킨 중간값(mid)보다 더 큰 값으로 최소값을 설정해 반복해야 Upper Bound를 통해 요구되는 값보다 하나 더 큰 값을 얻을 수 있게 됩니다. 하지만, 이렇게 진행을 하고 나서, 마지막에 while문을 종료시켜야 하는데 이 때 적용할 조건으로 기존에는 최소값이 최대값보다 작은 상황(min &lt; max)에 대해서만 진행하도록 했습니다. 이럴 경우 틀렸다는 결과가 나오게 되는데 이는 max값이 1이 될 수도 있다는 것을 고려하지 못하기 때문입니다. max가 1인 상황에서도 해당 순회가 한 번은 돌아가고 이에 따른 결과가 나와야 하기 때문에, min ≤ max로 조건을 설정해야 합니다. 그리고 이렇게 조건을 진행할 경우, 기존의 Upper Bound와 달리 한 번 더 max값에 대한 처리가 이루어지기 때문에 추가적인 -1 조치는 필요가 없어지게 됩니다. while (min &lt;= max) { const mid = Math.floor((min + max) / 2); const count = lines.reduce((prev, next) =&gt; { return prev + Math.floor(next / mid); }, 0); // 모든 같은 길이의 전선들의 합 if (count &gt;= N) { // 값이 일치하더라도 최대까지 진행해 나가야 함 min = mid + 1; } else { max = mid - 1; } } console.log(max);]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 2470번</title><link href="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/" rel="alternate" type="text/html" title="백준 2470번" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80%202470%EB%B2%88</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/%EB%B0%B1%EC%A4%80-2470%EB%B2%88/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2470">QUESTION LINK</a></strong></p>
 
 <p>주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다.</p>
@@ -236,11 +236,11 @@
 
 <p>위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">values</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">values</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nf">toString</span><span class="p">().</span><span class="nf">trim</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">sortedValues</span> <span class="o">=</span> <span class="nx">values</span>
-  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
 <span class="c1">// 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함</span>
 
 <span class="kd">let</span> <span class="nx">results</span><span class="p">;</span>
@@ -254,28 +254,28 @@
 <span class="kd">let</span> <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 <span class="c1">// true일 시 반복문 종료</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nx">isEnd</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">while </span><span class="p">(</span><span class="o">!</span><span class="nx">isEnd</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">start</span><span class="p">]</span> <span class="o">+</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">end</span><span class="p">];</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">min</span> <span class="o">||</span> <span class="nx">min</span> <span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">min</span> <span class="o">||</span> <span class="nx">min</span> <span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">))</span> <span class="p">{</span>
     <span class="c1">// 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함</span>
-    <span class="nx">min</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+    <span class="nx">min</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
     <span class="nx">results</span> <span class="o">=</span> <span class="p">[</span><span class="nx">sortedValues</span><span class="p">[</span><span class="nx">start</span><span class="p">],</span> <span class="nx">sortedValues</span><span class="p">[</span><span class="nx">end</span><span class="p">]];</span>
   <span class="p">}</span>
   <span class="c1">// 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">end</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">start</span> <span class="o">===</span> <span class="nx">end</span><span class="p">)</span> <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">start</span> <span class="o">===</span> <span class="nx">end</span><span class="p">)</span> <span class="nx">isEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 <strong>포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)</strong>을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 주어진 숫자들 중 합이 0에 가깝도록 만들 수 있는 두 숫자를 찾는 문제였습니다. 투 포인터를 이용해서 풀어야하는 문제였고, 해당 문제를 풀기 위한 순서는 아래와 같습니다. 주어진 숫자들을 오름차순으로 정렬하기 (-98, -15, 0, 1, 22) 정렬된 숫자들의 왼쪽, 오른쪽에 각각 포인터를 두기 각 포인터에 해당하는 값들의 합을 구하고, 현재 갖고 있는 최소값과 비교하기 구해진 합이 최소값보다 큰 경우, 해당 포인터의 값과 최소값 저장하기 구해진 합이 0보다 큰 경우(우측 포인터 값이 좌측 포인터 값보다 큰 경우), 좌측 포인터를 한 칸 내리기 구해진 합이 0보다 작은 경우(좌측 포인터 값이 우측 포인터 값보다 큰 경우), 우측 포인터를 한 칸 올리기 우측 포인터와 좌측 포인터가 만나기 전까지 위 과정을 반복하기 위의 과정을 코드로 표현하면 아래와 같은 형태가 나오게 됩니다. const [count, values] = fs.readFileSync(filePath).toString().trim().split("\n"); const sortedValues = values .split(" ") .map(Number) .sort((a, b) =&gt; a - b); // 주어진 값들을 숫자로 만들고, 그 숫자들을 오름차순으로 정렬함 let results; // 결과를 담을 변수 let start = 0; // 왼쪽 포인터의 index값으로, 처음에 0으로 시작함 let end = sortedValues.length - 1; // 오른쪽 포인터의 index값으로, 처음에 배열의 마지막부터 시작함 let min; // 포인터의 합 중 최소값일 경우 해당 변수에 담음 let isEnd = false; // true일 시 반복문 종료 while (!isEnd) { const sum = sortedValues[start] + sortedValues[end]; if (!min || min &gt; Math.abs(sum)) { // 현재의 합이 최소값보다 작은 경우, 최소값과 결과값을 변경함 min = Math.abs(sum); results = [sortedValues[start], sortedValues[end]]; } // 0보다 작을 시 왼쪽 포인터를 한 칸 올리고, 0보다 클 시 오른쪽 포인터를 한 칸 내림 if (sum &lt; 0) { start += 1; } else if (sum &gt; 0) { end -= 1; } else { isEnd = true; } if (start === end) isEnd = true; } const result = results.join(" "); console.log(result); 해당 문제는 투 포인터를 이용해서 풀 수 있는 대표적인 문제였습니다. 하지만, 처음에 문제를 풀 때 포인터를 이동하기 위한 조건(합이 0보다 크거나 작을 때 해당 포인터 이동)을 제대로 설정하지 못했고, 이로 인해 허비된 시간이 많았습니다. 투 포인터를 사용하며 기본적으로 이동시키기 위한 조건이 올바르게 설정되도록 유의해야 합니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BINARY HEAP ∙ PRIORITY QUEUE</title><link href="http://localhost:4000/algorithm/2022/12/04/BINARY-HEAP-PRIORITY-QUEUE/" rel="alternate" type="text/html" title="BINARY HEAP ∙ PRIORITY QUEUE" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/12/04/BINARY%20HEAP%20%E2%88%99%20PRIORITY%20QUEUE</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/12/04/BINARY-HEAP-PRIORITY-QUEUE/"><![CDATA[<blockquote>
@@ -309,29 +309,29 @@
   <li>같은 형식을 반복해서 부모보다 올라가는 값이 작은 경우, 해당 형식을 중단합니다.</li>
 </ul>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MaxBinaryHeap</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MaxBinaryHeap</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">55</span><span class="p">];</span>
     <span class="c1">// 기본적으로 예시를 들어줄 값을 넣음</span>
   <span class="p">}</span>
 
-  <span class="nx">insert</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">bubbleUp</span><span class="p">();</span>
+  <span class="nf">insert</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">bubbleUp</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="nx">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
     <span class="c1">// push되어 들어간 값이 마지막에 위치하므로 index를 위와 같이 설정</span>
     <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
     <span class="c1">// 현재 push되어 들어온 값</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while </span><span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// index가 현재 최대 이진 힙의 첫 자리보다 큰 경우 중단</span>
-      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
       <span class="c1">// 앞에서 나온 바와 같이, 현재 index의 부모 index는 1을 빼고 2로 나눈 값의 내림과 같음</span>
       <span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">];</span>
       <span class="c1">// 부모 값을 구하고 비교</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">parent</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
       <span class="c1">// 부모 값이 더 작을 경우, 서로 위치를 바꿔주고 index값을 부모 값으로 만듬</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
@@ -340,8 +340,8 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MaxBinaryHeap</span><span class="p">();</span>
-<span class="nx">heap</span><span class="p">.</span><span class="nx">insert</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MaxBinaryHeap</span><span class="p">();</span>
+<span class="nx">heap</span><span class="p">.</span><span class="nf">insert</span><span class="p">();</span>
 </code></pre></div></div>
 
 <h3 id="extractmax-메소드-만들기">extractMax 메소드 만들기</h3>
@@ -359,22 +359,22 @@
   <img class="image" src="/image/221204/1.png" alt="" width="75%" height="" /> 
 </figure>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">extractMax</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">extractMax</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">max</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
   <span class="c1">// 최대 값을 먼저 저장함</span>
-  <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
   <span class="c1">// 마지막 값을 빼내어 갖고 있음</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// 해당 정렬의 개수가 1개일 경우, pop을 하고 난 뒤에 다시 sinkDown으로 넣어주는 것을 방지</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lastValue</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">sinkDown</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">sinkDown</span><span class="p">();</span>
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="nx">max</span><span class="p">;</span>
   <span class="c1">// 최대값을 리턴함</span>
 <span class="p">}</span>
 
-<span class="nx">sinkDown</span><span class="p">()</span> <span class="p">{</span>
+<span class="nf">sinkDown</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">length</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
   <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
   <span class="c1">// 계속 움직이면서 넣어주게 될 값</span>
@@ -382,31 +382,31 @@
   <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="c1">// 처음에는 index가 루트에서 출발하므로 0에서 시작</span>
 
-  <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">leftIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">rightIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
     <span class="kd">let</span> <span class="nx">swap</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="c1">// 현재 index와 바뀌게 될 index를 swap으로 설정</span>
     <span class="kd">let</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">;</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// 왼쪽 인덱스 값이 존재하고 해당 값이 기존 값보다 클 경우 swap에 저장</span>
       <span class="nx">leftChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">leftIndex</span><span class="p">];</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">leftChild</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">leftChild</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">swap</span> <span class="o">=</span> <span class="nx">leftIndex</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// 좌측보다 우측 값이 더 크고, 해당 값보다도 더 클 때 swap에 저장</span>
       <span class="nx">rightChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">rightIndex</span><span class="p">];</span>
-      <span class="k">if</span> <span class="p">(</span>
+      <span class="k">if </span><span class="p">(</span>
         <span class="p">(</span><span class="o">!</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">)</span> <span class="o">||</span>
         <span class="p">(</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span> <span class="o">&gt;</span> <span class="nx">leftChild</span><span class="p">)</span>
       <span class="p">)</span> <span class="p">{</span>
         <span class="nx">swap</span> <span class="o">=</span> <span class="nx">rightIndex</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
     <span class="c1">// swap에 없을 시 왼쪽 오른쪽 값보다 해당 값이 더 크다고 판단</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">];</span>
@@ -442,24 +442,24 @@
 
 <h3 id="우선-순위-큐-코드-작성">우선 순위 큐 코드 작성</h3>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">PriorityQueue</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PriorityQueue</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[];</span>
   <span class="p">}</span>
 
-  <span class="nx">enqueue</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newNode</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">bubbleUp</span><span class="p">();</span>
+  <span class="nf">enqueue</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">newNode</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">bubbleUp</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="nx">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">bubbleUp</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">while </span><span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">parentIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">((</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
       <span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">];</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
 
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">parentIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
@@ -467,46 +467,46 @@
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="nx">dequeue</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">dequeue</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">max</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">lastValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lastValue</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">sinkDown</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">sinkDown</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="nx">max</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="nx">sinkDown</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">sinkDown</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="p">{</span> <span class="nx">length</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
     <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
       <span class="kd">const</span> <span class="nx">leftIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
       <span class="kd">const</span> <span class="nx">rightIndex</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
       <span class="kd">let</span> <span class="nx">swap</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
       <span class="kd">let</span> <span class="nx">leftChild</span><span class="p">,</span> <span class="nx">rightChild</span><span class="p">;</span>
 
-      <span class="k">if</span> <span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">leftIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">leftChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">leftIndex</span><span class="p">];</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">leftChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">leftChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">swap</span> <span class="o">=</span> <span class="nx">leftIndex</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">rightIndex</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">rightChild</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">rightIndex</span><span class="p">];</span>
-        <span class="k">if</span> <span class="p">(</span>
+        <span class="k">if </span><span class="p">(</span>
           <span class="p">(</span><span class="o">!</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span> <span class="o">||</span>
           <span class="p">(</span><span class="nx">swap</span> <span class="o">&amp;&amp;</span> <span class="nx">rightChild</span><span class="p">.</span><span class="nx">priority</span> <span class="o">&gt;</span> <span class="nx">leftChild</span><span class="p">.</span><span class="nx">priority</span><span class="p">)</span>
         <span class="p">)</span> <span class="p">{</span>
           <span class="nx">swap</span> <span class="o">=</span> <span class="nx">rightIndex</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">swap</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">];</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">swap</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
       <span class="nx">index</span> <span class="o">=</span> <span class="nx">swap</span><span class="p">;</span>
@@ -514,21 +514,21 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">Node</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">priority</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">priority</span> <span class="o">=</span> <span class="nx">priority</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PriorityQueue</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="p">();</span>
 
-<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-<span class="nx">queue</span><span class="p">.</span><span class="nx">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">queue</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">queue</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="nx">queue</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">dequeue</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nf">dequeue</span><span class="p">());</span>
 </code></pre></div></div>
 
 <p>위 코드를 보면, 이진 힙을 만들 때 사용했던 코드를 그대로 활용해서 만들 수 있습니다. 이 중에 달라진 것은 <code class="language-plaintext highlighter-rouge">Node</code>라는 클래스가 추가되고, 내부에 <code class="language-plaintext highlighter-rouge">value</code>(자체적인 값), <code class="language-plaintext highlighter-rouge">priority</code>(우선 순위)가 추가된다는 것입니다.</p>
@@ -598,17 +598,17 @@
 <span class="p">});</span>
 
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">recruitmentState</span> <span class="o">=</span> <span class="nx">selectorFamily</span><span class="o">&lt;</span><span class="nx">RecruitmentType</span><span class="p">,</span> <span class="kr">string</span><span class="o">&gt;</span><span class="p">({</span>
-  <span class="na">key</span><span class="p">:</span> <span class="s2">`GET/recruitmentState/</span><span class="p">${</span><span class="nx">getRandomKey</span><span class="p">()}</span><span class="s2">`</span><span class="p">,</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s2">`GET/recruitmentState/</span><span class="p">${</span><span class="nf">getRandomKey</span><span class="p">()}</span><span class="s2">`</span><span class="p">,</span>
   <span class="na">get</span><span class="p">:</span>
     <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="k">async</span> <span class="p">({</span> <span class="kd">get</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="kd">get</span><span class="p">(</span><span class="nx">shareDetailTrigger</span><span class="p">);</span>
+    <span class="k">async </span><span class="p">({</span> <span class="kd">get</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nf">get</span><span class="p">(</span><span class="nx">shareDetailTrigger</span><span class="p">);</span>
       <span class="c1">// 쉐어 상세 데이터가 바뀔 경우 데이터를 다시 받아오기 위해 설정</span>
-      <span class="kd">get</span><span class="p">(</span><span class="nx">recruitmentTrigger</span><span class="p">);</span>
+      <span class="nf">get</span><span class="p">(</span><span class="nx">recruitmentTrigger</span><span class="p">);</span>
       <span class="c1">// 현제 상태값을 한 번 다시 바꿔주기 위해 사용</span>
-      <span class="kd">const</span> <span class="nx">shareDetailData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getShareDetailData</span><span class="p">({</span> <span class="nx">id</span> <span class="p">});</span>
+      <span class="kd">const</span> <span class="nx">shareDetailData</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getShareDetailData</span><span class="p">({</span> <span class="nx">id</span> <span class="p">});</span>
       <span class="c1">// API를 통해 쉐어 상세 데이터 값을 받아옴</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shareDetailData</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">shareDetailData</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">shareDetailData</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">shareDetailData</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
       <span class="kd">const</span> <span class="p">{</span>
         <span class="nx">recruitmentMemberThumbnailImageUrls</span><span class="p">,</span>
         <span class="nx">currentRecruitment</span><span class="p">,</span>
@@ -635,9 +635,9 @@
   <span class="na">finalRecruitment</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="na">wishCount</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">};</span>
-<span class="kd">const</span> <span class="p">[</span><span class="nx">curRecruitmentInfo</span><span class="p">,</span> <span class="nx">setCurRecruitmentInfo</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">defaultRecruitmentInfo</span><span class="p">);</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="na">state</span><span class="p">:</span> <span class="nx">recruitmentInfoState</span><span class="p">,</span> <span class="na">contents</span><span class="p">:</span> <span class="nx">recruitmentInfo</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useRecoilValueLoadable</span><span class="p">(</span>
-  <span class="nx">recruitmentState</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">),</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">curRecruitmentInfo</span><span class="p">,</span> <span class="nx">setCurRecruitmentInfo</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="nx">defaultRecruitmentInfo</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="na">state</span><span class="p">:</span> <span class="nx">recruitmentInfoState</span><span class="p">,</span> <span class="na">contents</span><span class="p">:</span> <span class="nx">recruitmentInfo</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">useRecoilValueLoadable</span><span class="p">(</span>
+  <span class="nf">recruitmentState</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">),</span>
 <span class="p">);</span>
 <span class="c1">// 실제 사용될 값들을 설정</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">currentRecruitment</span><span class="p">,</span> <span class="nx">finalRecruitment</span><span class="p">,</span> <span class="nx">recruitmentMemberThumbnailImageUrls</span> <span class="p">}</span> <span class="o">=</span>
@@ -645,10 +645,10 @@
 
 <span class="p">...</span>
 
-<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// API를 통해 호출된 값이 정상적으로 들어있을 경우 호출된 값을 보여줄 값으로서 설정</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">recruitmentInfoState</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">hasValue</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">recruitmentInfo</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">setCurRecruitmentInfo</span><span class="p">(</span><span class="nx">recruitmentInfo</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">recruitmentInfoState</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">hasValue</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">recruitmentInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setCurRecruitmentInfo</span><span class="p">(</span><span class="nx">recruitmentInfo</span><span class="p">);</span>
     <span class="k">return</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">},</span> <span class="p">[</span><span class="nx">recruitmentInfoState</span><span class="p">]);</span>
@@ -656,13 +656,13 @@
 
 <p>위와 같이 설정이 끝나면 마지막으로, 저 설정된 API들을 원하는 상황에도 새롭게 받아올 수 있도록 <code class="language-plaintext highlighter-rouge">trigger</code>들을 적용해주면 됩니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">changeParticipating</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">isRequestSuccess</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">({</span> <span class="nx">id</span> <span class="p">});</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">changeParticipating</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isRequestSuccess</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">request</span><span class="p">({</span> <span class="nx">id</span> <span class="p">});</span>
   <span class="p">...</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isRequestSuccess</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isRequestSuccess</span><span class="p">)</span> <span class="p">{</span>
     <span class="p">...</span>
-    <span class="nx">setRecruitmentTrigger</span><span class="p">((</span><span class="nx">prev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nf">setRecruitmentTrigger</span><span class="p">((</span><span class="nx">prev</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="c1">// 정상적으로 요청이 진행되었을 경우, trigger를 실행시켜 서버로부터 최신의 상태값을 받아오도록 함</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">요청을 처리하지 못했습니다.</span><span class="dl">'</span><span class="p">;</span>
@@ -691,20 +691,20 @@
 <p>여기서 처음에 문제가 되었던 부분 중 하나는 배열이 문자열 형식으로 들어온다는 것이었는데, 이는 배열의 앞 ∙ 뒤가 <code class="language-plaintext highlighter-rouge">‘[’</code>, <code class="language-plaintext highlighter-rouge">‘]’</code>로 이루어졌다는 점을 통해, <code class="language-plaintext highlighter-rouge">String.substring()</code>으로 앞 ∙ 뒤를 제거하고 ‘,’를 통해서 배열을 직접 만들어주는 것으로 설정했습니다. 그리고 배열이 비어있는 경우는 변환 시 <code class="language-plaintext highlighter-rouge">['']</code>와 같은 형태가 되어, 이를 구분 짓는 방법도 추가해주었습니다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">_</span><span class="p">,</span> <span class="p">...</span><span class="nx">commands</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fs</span>
-  <span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">toString</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[];</span>
 
-<span class="nx">commands</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">commandLine</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">commandLine</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">index</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
   <span class="kd">const</span> <span class="nx">arrayString</span> <span class="o">=</span> <span class="nx">commands</span><span class="p">[</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
-  <span class="kd">const</span> <span class="nx">command</span> <span class="o">=</span> <span class="nx">commandLine</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="nx">arrayString</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">arrayString</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">command</span> <span class="o">=</span> <span class="nx">commandLine</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="nx">arrayString</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">arrayString</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">);</span>
   <span class="c1">// 배열 문자열의 앞 뒤를 자르고 ','로 구분된 배열을 만듬</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">)</span> <span class="nx">array</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">)</span> <span class="nx">array</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
   <span class="c1">// 빈 배열의 문자열인 경우 실제로 배열이 비어있게 만듬</span>
 
   <span class="p">...</span>
@@ -723,42 +723,42 @@
   <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
   <span class="kd">let</span> <span class="nx">isError</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 
-  <span class="nx">command</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isError</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="nx">command</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">isError</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="c1">// 에러라면 더 이상 진행하지 않음</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">word</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">R</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">word</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">R</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// isLeft값만을 계속 바꿔주어 어느쪽에서 삭제를 해야하는 지 결정함</span>
       <span class="nx">isLeft</span> <span class="o">=</span> <span class="o">!</span><span class="nx">isLeft</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="c1">// isLeft 값에 따라 삭제할 곳을 정함</span>
       <span class="nx">isLeft</span> <span class="p">?</span> <span class="p">(</span><span class="nx">left</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="nx">right</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">left</span> <span class="o">&gt;</span> <span class="nx">right</span><span class="p">)</span> <span class="nx">isError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">left</span> <span class="o">&gt;</span> <span class="nx">right</span><span class="p">)</span> <span class="nx">isError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
       <span class="c1">// 왼쪽이 오른쪽보다 커지는 경우 더 이상 삭제할 것이 없으므로 에러를 보여줌</span>
     <span class="p">}</span>
   <span class="p">});</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isError</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
     <span class="k">return</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="kd">const</span> <span class="nx">curResult</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">curResult</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
   <span class="c1">// 남아있는 배열들을 가져옴</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isLeft</span><span class="p">)</span> <span class="nx">curResult</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">isLeft</span><span class="p">)</span> <span class="nx">curResult</span><span class="p">.</span><span class="nf">reverse</span><span class="p">();</span>
   <span class="c1">// 거꾸로 된 상활일 경우 한 번 뒤집어줌</span>
-  <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">curResult</span><span class="p">);</span>
+  <span class="nx">resultArray</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">curResult</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span>
-  <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="k">return</span> <span class="s2">`[</span><span class="p">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">)}</span><span class="s2">]`</span><span class="p">;</span>
+  <span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">`[</span><span class="p">${</span><span class="nx">value</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">)}</span><span class="s2">]`</span><span class="p">;</span>
     <span class="c1">// 배열 문자열로 다시 만들어줌</span>
   <span class="p">})</span>
-  <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>이 문제의 경우, 예외 처리를 해주는 상황에서 계속 문제를 틀리게 됐습니다. 특히, 처음에 ‘D’를 입력했을 때 비어있는 경우 에러를 보여주어야 하는데, 배열이 비어있으면 무조건 에러를 보여주는 것으로 처리를 하는 바람에 문제가 되었습니다. 더불어, 빈 배열을 입력받는 경우, 이를 실제 배열로 바꾸면 <code class="language-plaintext highlighter-rouge">[’’]</code>의 형태가 되는데, 이를 그대로 처리하려다보니 문제가 되었습니다. 올바른 처리를 위해서는 처음에 설정을 할 때 확실하게 예외 처리를 하는 것이 중요하다는 걸 느꼈습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 배열의 앞 ∙ 뒤를 제거한 다음 마지막에 나오게 된 배열을 보여주면 되는 문제입니다. 처음에는 deque를 구현하고, 이를 사용해서 문제를 해결하고자 했습니다. 하지만, 배열의 앞 ∙ 뒤 만을 제거해주면 되므로, 제거된 부분들이 어디인지만 확인하고, 마지막에 한 번에 제거해주면 된다는 사실을 알고 이를 구현하고자 했습니다. 그리고 이런 식으로 위치가 다 지정된 뒤에는 isLeft 값에 따라 마지막에 만들어진 배열을 Array.reverse()를 통해 뒤집을 지를 결정하면 됩니다. 여기서 처음에 문제가 되었던 부분 중 하나는 배열이 문자열 형식으로 들어온다는 것이었는데, 이는 배열의 앞 ∙ 뒤가 ‘[’, ‘]’로 이루어졌다는 점을 통해, String.substring()으로 앞 ∙ 뒤를 제거하고 ‘,’를 통해서 배열을 직접 만들어주는 것으로 설정했습니다. 그리고 배열이 비어있는 경우는 변환 시 ['']와 같은 형태가 되어, 이를 구분 짓는 방법도 추가해주었습니다. const [_, ...commands] = fs .readFileSync(filePath) .toString() .trim() .split("\n"); const resultArray = []; commands.forEach((commandLine, index) =&gt; { if (index % 3 !== 0) return; const arrayString = commands[index + 2]; const command = commandLine.split(""); const array = arrayString.substring(1, arrayString.length - 1).split(","); // 배열 문자열의 앞 뒤를 자르고 ','로 구분된 배열을 만듬 if (!array[0].length) array.pop(); // 빈 배열의 문자열인 경우 실제로 배열이 비어있게 만듬 ... 그리고 위에서 하고자 했던 방법과 같이, 명령어에 따라 ‘R’인 경우는 뒤집혔다는 것을 나타내기 위해 isLeft값을 기존 값에서 바꾸고, ‘D’인 경우에는 isLeft의 상태에 따라 왼쪽 값을 늘리거나 또는 오른쪽 값을 줄입니다. 여기서 에러를 판단하는 상황이 중요했는데, 이는 왼쪽, 오른쪽이 삭제되면서 점점 만나고 왼쪽이 오른쪽보다 커질 때 더 이상 삭제할 것이 없다고 판단하는 것으로 처리했습니다. 그리고 여기서 한 가지 더 예외 처리를 해주어야 할 것은, 에러가 발생하는 타이밍이 ‘D’를 입력했을 경우라서 배열이 비어있다고 무조건 에러를 보여주어선 안 됩니다. ... let isLeft = true; let left = 0; let right = array.length; let isError = false; command.forEach((word) =&gt; { if (isError) return; // 에러라면 더 이상 진행하지 않음 if (word === "R") { // isLeft값만을 계속 바꿔주어 어느쪽에서 삭제를 해야하는 지 결정함 isLeft = !isLeft; } else { // isLeft 값에 따라 삭제할 곳을 정함 isLeft ? (left += 1) : (right -= 1); if (left &gt; right) isError = true; // 왼쪽이 오른쪽보다 커지는 경우 더 이상 삭제할 것이 없으므로 에러를 보여줌 } }); if (isError) { resultArray.push("error"); return; } const curResult = array.slice(left, right); // 남아있는 배열들을 가져옴 if (!isLeft) curResult.reverse(); // 거꾸로 된 상활일 경우 한 번 뒤집어줌 resultArray.push(curResult); }); const result = resultArray .map((value) =&gt; { if (value === "error") return value; return `[${value.join(",")}]`; // 배열 문자열로 다시 만들어줌 }) .join("\n"); console.log(result); 이 문제의 경우, 예외 처리를 해주는 상황에서 계속 문제를 틀리게 됐습니다. 특히, 처음에 ‘D’를 입력했을 때 비어있는 경우 에러를 보여주어야 하는데, 배열이 비어있으면 무조건 에러를 보여주는 것으로 처리를 하는 바람에 문제가 되었습니다. 더불어, 빈 배열을 입력받는 경우, 이를 실제 배열로 바꾸면 [’’]의 형태가 되는데, 이를 그대로 처리하려다보니 문제가 되었습니다. 올바른 처리를 위해서는 처음에 설정을 할 때 확실하게 예외 처리를 하는 것이 중요하다는 걸 느꼈습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 2504번</title><link href="http://localhost:4000/algorithm/2022/11/24/2504/" rel="alternate" type="text/html" title="백준 2504번" /><published>2022-11-24T00:00:00+09:00</published><updated>2022-11-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/24/2504</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/24/2504/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/2504">QEUSTION LINK</a></strong></p>
@@ -788,22 +788,22 @@
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="c1">// 괄호가 올바른 지에 대한 boolean 값</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="c1">// 현재 닫는 괄호의 내부에 있는 값들의 합</span>
   <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
 
-  <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while </span><span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 여는 괄호가 나오면 기존에 더해두었던 값에 괄호에 해당하는 값을 곱해주고,</span>
     <span class="c1">// 값이 없는 경우(비어있는 경우) 2를 stack에 담아줌</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
       <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
       <span class="c1">// 숫자가 나오면 해당 숫자를 기존에 있던 값에 더해주고, 다시 stack에서 pop</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
-      <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+      <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
       <span class="c1">// 숫자나 일치하는 여는 괄호가 아닐 시, 잘못된 괄호가 들어온 것이므로 결과가 틀렸음을 설정</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
@@ -814,48 +814,48 @@
 
 <p>이러한 흐름으로 관련된 괄호들에 대한 모든 조건식을 만들어주면 아래와 같은 전체 코드가 나오게 됩니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">stringArray</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">stringArray</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">split</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
 <span class="c1">// 입력값을 모두 쪼개둔 값</span>
 <span class="kd">const</span> <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="kd">let</span> <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
-<span class="nx">stringArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isResult</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+<span class="nx">stringArray</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">isResult</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">while </span><span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">(</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">||</span> <span class="mi">2</span><span class="p">);</span>
         <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
-        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">string</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">insideValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kd">let</span> <span class="nx">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kd">let</span> <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">||</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="k">while </span><span class="p">(</span><span class="nx">isResult</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stop</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">[</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">insideValue</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">||</span> <span class="mi">3</span><span class="p">);</span>
         <span class="nx">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">prevString</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">insideValue</span> <span class="o">+=</span> <span class="nx">prevString</span><span class="p">;</span>
-        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="nx">prevString</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">isResult</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
       <span class="p">}</span>
@@ -866,8 +866,8 @@
 
 <p>위 코드를 통해 <code class="language-plaintext highlighter-rouge">stack</code> 결과값을 가져올 때 올바른 괄호 배치가 이루어졌을 시에는 숫자만 담긴 배열이 나오게 됩니다. 하지만, 서로 일치하지 않는 괄호를 가진 경우에는 배열이 비어있거나, 괄호값이 남아있는 채로 <code class="language-plaintext highlighter-rouge">stack</code> 배열이 나오게 됩니다. 즉, 배열 내의 요소들이 숫자로만 이루어진 경우에만 해당 숫자값을 결과로 리턴하고 나머지는 0으로 리턴하면 됩니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">isResult</span> <span class="p">?</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="p">?</span> <span class="nx">result</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">isResult</span> <span class="p">?</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="p">?</span> <span class="nx">result</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div></div>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QEUSTION LINK 문제에서 주어진 괄호 각각의 형태에 따라 조건을 나누어 풀어야 하는 문제였습니다. stack 자료구조를 사용해서 풀어야 했는데, 처음에 풀 때에는 어떤 식으로 계산을 풀어나가야 할 지에 대해 의문이 들었습니다. 우선 다음과 같은 순서에 따라 문제를 풀고자 했습니다. 열린 괄호일 때 stack에 담아주기 닫힌 괄호일 때 stack.pop()의 값이 열린 괄호와 일치하는지 확인하기 일치할 경우 해당 값으로 stack에 다시 넣어주기 stack을 통해서 괄호가 일치하는 경우에 대해서만 처리해야한다는 사실은 인지했으나, 이미 계산이 된 숫자들을 어떤 식으로 담고, 처리를 진행해야할 지에 대해서는 어려움이 남았었습니다. 예를 들어, 아래와 같은 상황이 발생했습니다. // '(()[][]' 여기까지 진행된 상태일 때, '])' 부분을 어떻게 처리할 지 const stack = ["(", 2, "[", 3, 3]; // 여기서 "]"가 나오면 3을 어떤 식으로 처리하고 넘어가야 할 지를 파악하지 못함 이 부분에서 어려움이 있었으나, 이후, stack에서 하나씩 pop을 할 때, 숫자가 나오면 해당 숫자들을 더하고, 다시 여는 괄호(”[”, “(”)가 나오면 해당 괄호에 관한 값을 곱해주면 된다는 것을 알 수 있었습니다. 닫힌 괄호일 때 stack.pop()의 값이 숫자일 경우 기존 내부값에 더하기 닫힌 괄호일 때 stack.pop()의 값이 일치하는 열린 괄호일 경우 해당 값으로 내부값 곱하기 let isResult = true; // 괄호가 올바른 지에 대한 boolean 값 if (string === ")") { let insideValue = 0; // 현재 닫는 괄호의 내부에 있는 값들의 합 let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { // 여는 괄호가 나오면 기존에 더해두었던 값에 괄호에 해당하는 값을 곱해주고, // 값이 없는 경우(비어있는 경우) 2를 stack에 담아줌 if (prevString === "(") { stack.push(insideValue * 2 || 2); stop = true; // 숫자가 나오면 해당 숫자를 기존에 있던 값에 더해주고, 다시 stack에서 pop } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); // 숫자나 일치하는 여는 괄호가 아닐 시, 잘못된 괄호가 들어온 것이므로 결과가 틀렸음을 설정 } else { isResult = false; } } } 이러한 흐름으로 관련된 괄호들에 대한 모든 조건식을 만들어주면 아래와 같은 전체 코드가 나오게 됩니다. const stringArray = input[0].split(""); // 입력값을 모두 쪼개둔 값 const stack = []; let isResult = true; stringArray.forEach((string) =&gt; { if (!isResult) return; if (string === "(") { stack.push(string); } if (string === ")") { let insideValue = 0; let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { if (prevString === "(") { stack.push(insideValue * 2 || 2); stop = true; } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); } else { isResult = false; } } } if (string === "[") { stack.push(string); } if (string === "]") { let insideValue = 0; let stop = false; let prevString = stack.pop(); while (isResult &amp;&amp; !stop) { if (prevString === "[") { stack.push(insideValue * 3 || 3); stop = true; } else if (typeof prevString === "number") { insideValue += prevString; prevString = stack.pop(); } else { isResult = false; } } } }); 위 코드를 통해 stack 결과값을 가져올 때 올바른 괄호 배치가 이루어졌을 시에는 숫자만 담긴 배열이 나오게 됩니다. 하지만, 서로 일치하지 않는 괄호를 가진 경우에는 배열이 비어있거나, 괄호값이 남아있는 채로 stack 배열이 나오게 됩니다. 즉, 배열 내의 요소들이 숫자로만 이루어진 경우에만 해당 숫자값을 결과로 리턴하고 나머지는 0으로 리턴하면 됩니다. const result = isResult ? stack.reduce((a, b) =&gt; a + b, 0) : 0; console.log(typeof result === "number" ? result : 0);]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">백준 18115번</title><link href="http://localhost:4000/algorithm/2022/11/24/18115/" rel="alternate" type="text/html" title="백준 18115번" /><published>2022-11-24T00:00:00+09:00</published><updated>2022-11-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/11/24/18115</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/11/24/18115/"><![CDATA[<p><strong><a href="https://www.acmicpc.net/problem/18115">QUESTION LINK</a></strong></p>
 
 <p>카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다.</p>
@@ -883,7 +883,7 @@
 
 <p>여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
 <span class="c1">// [2, 3, 3, 2, 1]</span>
 <span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 <span class="c1">// 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨</span>
@@ -891,7 +891,7 @@
 
 <p>이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">orders</span> <span class="o">=</span> <span class="nx">ordersArray</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">ordersLength</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -900,29 +900,29 @@
 <span class="c1">// 결과 배열. index가 클 수록 아래에 있는 것으로 가정</span>
 
 <span class="c1">// 카드 숫자가 실제 카드의 개수보다 많아지면 종료</span>
-<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">while </span><span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// 카드의 정해져있던 명령</span>
   <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
 
   <span class="c1">// 1인 경우 배열의 가장 처음으로 옴</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">];</span>
   <span class="p">}</span>
   <span class="c1">// 2인 경우 배열의 두 번재 자리로 옴</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">resultArray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span> <span class="o">=</span> <span class="p">[</span><span class="nx">resultArray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">resultArray</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
   <span class="p">}</span>
   <span class="c1">// 3인 경우 가장 아래에 배치</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">resultArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultArray</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="nx">target</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">resultArray</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다.</p>
@@ -932,8 +932,8 @@
 <p><strong>덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다.</strong></p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 덱에서 각 노드들의 특징을 담은 클래스</span>
-<span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">Node</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
@@ -941,19 +941,19 @@
 <span class="p">}</span>
 
 <span class="c1">// 실제로 만들어질 덱의 클래스</span>
-<span class="kd">class</span> <span class="nx">Deque</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">Deque</span> <span class="p">{</span>
   <span class="c1">// 처음에는 head, tail이 모두 비어있음</span>
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="c1">// head에 값을 추가</span>
-  <span class="nx">putHead</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nf">putHead</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -968,10 +968,10 @@
   <span class="p">}</span>
 
   <span class="c1">// tail에 값을 추가</span>
-  <span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nf">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -986,18 +986,18 @@
   <span class="p">}</span>
 
   <span class="c1">// 이번 문제를 풀기 위해 만들어진 메서드</span>
-  <span class="nx">putSecond</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nf">putSecond</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="c1">// 값이 없는 경우, head와 tail이 모두 node로 설정됨</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">node</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="c1">// 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정</span>
       <span class="kd">const</span> <span class="p">{</span> <span class="nx">head</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
       <span class="kd">const</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">head</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">second</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">second</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nf">putTail</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">node</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="nx">head</span><span class="p">;</span>
         <span class="nx">node</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">second</span><span class="p">;</span>
@@ -1009,8 +1009,8 @@
   <span class="p">}</span>
 
   <span class="c1">// head를 제거하고 그 다음 값을 head로 설정</span>
-  <span class="nx">getHead</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="nf">getHead</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">prevHead</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">head</span> <span class="o">=</span> <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
     <span class="nx">prevHead</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
@@ -1019,8 +1019,8 @@
   <span class="p">}</span>
 
   <span class="c1">// tail을 제거하고 그 다음 값을 tail로 설정</span>
-  <span class="nx">getTail</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="nf">getTail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">tail</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">prevTail</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">tail</span> <span class="o">=</span> <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span><span class="p">;</span>
     <span class="nx">prevTail</span><span class="p">.</span><span class="nx">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
@@ -1033,21 +1033,21 @@
 <p>위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deque</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Deque</span><span class="p">();</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">while </span><span class="p">(</span><span class="nx">target</span> <span class="o">&lt;=</span> <span class="nx">orders</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">orders</span><span class="p">[</span><span class="nx">ordersLength</span> <span class="o">-</span> <span class="nx">target</span><span class="p">];</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">deque</span><span class="p">.</span><span class="nx">putHead</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nf">putHead</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
     <span class="c1">// 가장 앞에 추가하므로 putHead 사용</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">deque</span><span class="p">.</span><span class="nx">putSecond</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nf">putSecond</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
     <span class="c1">// 두 번째 위치에 추가하므로 putSecond 사용</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">deque</span><span class="p">.</span><span class="nx">putTail</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">order</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deque</span><span class="p">.</span><span class="nf">putTail</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
     <span class="c1">// 가장 마지막에 추가하므로 putTail 사용</span>
   <span class="p">}</span>
 
@@ -1057,15 +1057,15 @@
 <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">deque</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nx">curNode</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">while </span><span class="p">(</span><span class="nx">curNode</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">result</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">curNode</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
   <span class="nx">curNode</span> <span class="o">=</span> <span class="nx">curNode</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">result</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="c1">// 처음에 만들어진 빈칸 제거</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. <strong>이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고</strong>, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.</p>]]></content><author><name>JinJeon</name></author><category term="ALGORITHM" /><summary type="html"><![CDATA[QUESTION LINK 카드가 규칙에 따라 이동해서 만들어진 카드의 최종적인 오름차순 배열 형태를 다시 기존 형태로 되돌려야하는 문제입니다. 5 2 3 3 2 1 예를 들어, 위와 같은 값이 주어졌다고 할 때, 실제로 만들어진 카드의 최종 결과물은 왼쪽이 아래, 오른쪽이 위라고 할 때 아래와 같은 형태를 만들게 됩니다. [5, 4, 3, 2, 1]; 여기서, 기존의 배열로 되돌리기 위해서는 가장 위에 있는 카드, 즉 위 배열의 가장 마지막 요소부터 차례대로 규칙을 반대로 적용해서 문제를 풀어주면 됩니다. 여기서 불필요한 배열을 줄이기 위해 위 예시를 통해 만들어지는 규칙 배열의 index를 활용하기로 했습니다. const orders = ordersArray.split(" "); // [2, 3, 3, 2, 1] const ordersLength = orders.length; // 각 요소의 ordersLength - index는 실제 카드의 숫자를 나타내게 됨 이를 활용해 순서 배열들을 거꾸로 순회하며, 해당 카드의 규칙 이전 상태로 되돌리는 코드를 아래와 같이 작성했습니다. const orders = ordersArray.split(" "); const ordersLength = orders.length; let target = 1; // 실제 카드의 숫자 let resultArray = []; // 결과 배열. index가 클 수록 아래에 있는 것으로 가정 // 카드 숫자가 실제 카드의 개수보다 많아지면 종료 while (target &lt;= orders.length) { // 카드의 정해져있던 명령 const order = orders[ordersLength - target]; // 1인 경우 배열의 가장 처음으로 옴 if (order === "1") { resultArray = [target, ...resultArray]; } // 2인 경우 배열의 두 번재 자리로 옴 if (order === "2") { resultArray = [resultArray[0], target, ...resultArray.slice(1)]; } // 3인 경우 가장 아래에 배치 if (order === "3") { resultArray.push(target); } target += 1; } const result = resultArray.join(" "); console.log(result); 위와 같은 코드를 작성하여 예시로 정해져있던 문제들을 모두 해결할 수 있었습니다. 하지만, 이런 식으로 문제를 해결할 경우, ‘시간 초과’가 계속해서 나왔고, 이 문제를 해결하기 위한 방법을 다시 생각해보았습니다. 여기서 이 문제의 기본적인 사용 알고리즘이 ‘덱’이라는 것을 알게 됐습니다. 이를 위해, 자바스크립트로 ‘덱’을 만드는 방법을 다시 고안했습니다. 덱(deque)은 양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조의 형태로, 두 개의 포인터를 사용해 양쪽에서 삭제와 삽입을 발생시킬 수 있습니다. 큐(queue)와 스택(stack)을 합친 형태로 볼 수 있습니다. // 덱에서 각 노드들의 특징을 담은 클래스 class Node { constructor(data) { this.data = data; this.prev = null; this.next = null; } } // 실제로 만들어질 덱의 클래스 class Deque { // 처음에는 head, tail이 모두 비어있음 constructor() { this.count = 0; this.head = null; this.tail = null; } // head에 값을 추가 putHead(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 head를 새롭게 지정된 node의 뒷부분으로 보냄 const prevHead = this.head; this.head = node; this.head.next = prevHead; prevHead.prev = node; } this.count += 1; } // tail에 값을 추가 putTail(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 이전의 tail을 새롭게 지정된 node의 앞부분으로 보냄 const prevTail = this.tail; prevTail.next = node; node.prev = prevTail; this.tail = node; } this.count += 1; } // 이번 문제를 풀기 위해 만들어진 메서드 putSecond(data) { const node = new Node(data); // 값이 없는 경우, head와 tail이 모두 node로 설정됨 if (!this.count) { this.head = node; this.tail = node; } else { // 값이 있는 경우, head의 뒤, 기존의 second앞에 배치하도록 설정 const { head } = this; const second = head.next; if (!second) { this.putTail(data); } else { node.prev = head; node.next = second; head.next = node; second.prev = node; this.count += 1; } } } // head를 제거하고 그 다음 값을 head로 설정 getHead() { if (!this.head) return; const prevHead = this.head; this.head = prevHead.next; prevHead.next = null; this.count -= 1; return data; } // tail을 제거하고 그 다음 값을 tail로 설정 getTail() { if (!this.tail) return; const prevTail = this.head; this.tail = prevTail.prev; prevTail.prev = null; this.count -= 1; return data; } } 위와 같은 형태의 덱을 만들고, 이를 문제에 다시 적용해주었습니다. let target = 1; const deque = new Deque(); while (target &lt;= orders.length) { const order = orders[ordersLength - target]; if (order === "1") { deque.putHead(target); // 가장 앞에 추가하므로 putHead 사용 } if (order === "2") { deque.putSecond(target); // 두 번째 위치에 추가하므로 putSecond 사용 } if (order === "3") { deque.putTail(target); // 가장 마지막에 추가하므로 putTail 사용 } target += 1; } let result = ""; let curNode = deque.head; while (curNode) { result += ` ${curNode.data}`; curNode = curNode.next; } result = result.slice(1); // 처음에 만들어진 빈칸 제거 console.log(result); 위와 같은 형태를 사용함으로서 이 문제를 해결할 수 있었습니다. 이번 문제의 경우, 앞 ∙ 뒤로 자료를 추가하는 형태로 문제가 만들어져있었습니다. 이러한 형태의 문제는 큐, 스택을 모두 사용해야 하므로 덱을 사용해야 한다는 것을 알게 됐고, 오래간만에 자바스크립트의 클래스도 사용해볼 수 있는 기회가 되었습니다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/default-social-image.png" /><media:content medium="image" url="http://localhost:4000/assets/default-social-image.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

@@ -33,8 +33,16 @@ body {
   }
 }
 .header {
-  background: $headerBackgroundColour;
-  border-bottom: dashed 0.2rem $featureFontColour;
+  background-color: $headerBackgroundColour;
+  &::after {
+    display: block;
+    height: 2px;
+    margin-bottom: -1px;
+    background: linear-gradient(to right, #0000005c 60%, transparent 40%) repeat-x;
+    background-size: 16px;
+    content: "";
+  }
+
   .feature {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -453,13 +461,7 @@ textarea {
 }
 
 label {
-  @include baseline(
-    $fontsize: zeta,
-    $font: $bodytype,
-    $lineheight: 2,
-    $below: 2,
-    $breakpoint: all
-  );
+  @include baseline($fontsize: zeta, $font: $bodytype, $lineheight: 2, $below: 2, $breakpoint: all);
 }
 
 code {
